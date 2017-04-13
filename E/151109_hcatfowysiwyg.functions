@@ -1,0 +1,140 @@
+
+  write2src "\renewcommand*{\rmdefault}{pju}\normalfont"
+  write2src "\renewcommand*{\embody}{\fontfamily{grm}\selectfont\relscale{.85}}"
+  write2src "\renewcommand{\texttt}[1]{%
+             {\relscale{.8}\fontfamily{\ttstandard}\selectfont%
+              \seqsplit{#1}}}"
+  write2src "\fontsize{11pt}{11pt}\selectfont"
+  write2src "\chapterfont{\fontfamily{pgd}\selectfont}"
+  QSEP=`echo $RANDOM | md5sum | base64 | # CREATE RANDOM STRING
+        sed 's/[^a-z]//g' | cut -c 1-8`  # NO DIGITS/ 8 ONLY
+  write2src "\newcommand\\$QSEP{\vspace{0pt plus 5pt minus 5pt}}"
+  write2src "\setlength{\parskip}{2pt plus 4pt minus 0pt}"
+
+  write2src "\makeatletter
+             \renewenvironment{quote}
+                   {\list{}{\listparindent=2pt
+                            \itemindent\listparindent
+                            \leftmargin=5pt
+                            \rightmargin=10pt
+                            \topsep=10pt
+                    \renewcommand{\embody}{} % MAYBE SOLVE BY IF
+                           }%
+                    \item\relax}
+                   {\endlist}
+             \makeatother"
+
+ # write2src "\AtBeginEnvironment{quote}{
+ #             \\$QSEP\fontfamily{grm}\selectfont\relscale{.85}}"
+ # write2src "\AtEndEnvironment{quote}{\\$QSEP}"
+ # http://tex.stackexchange.com/questions/36708/how-can-i-undo-an-etoolbox-patch
+   write2src "\renewcommand{\AtBeginQuote}{
+               \\$QSEP\fontfamily{grm}\selectfont\relscale{.8}}"
+   write2src "\renewcommand{\AtEndQuote}{\\$QSEP}"
+
+   write2src "\newenvironment{figlettext}
+             {\addtolength{\baselineskip}{\fill}%
+              \addtolength{\parskip}{\fill}%
+              \VerbatimEnvironment%
+              \begin{Verbatim}[fontsize=\relsize{-3},fontseries=b]}%
+             {\end{Verbatim}\medskip\vfill}"
+
+   write2src "\addtolength{\skip\footins}{\fill}"
+   write2src "\raggedbottom"
+
+
+# --------------------------------------------------------------------------- #
+
+  INCLUDEID="% "`printf "_%.0s" {1..35}`" "`echo $RANDOM | #
+             cut -c 1-4`" "`printf "_%.0s" {1..34}`" %"
+
+  echo -e "\n\n\n\n" >> $SRCDUMP
+  echo "$INCLUDEID"  >> $SRCDUMP
+  echo -e "\n\n\n\n" >> $SRCDUMP
+
+# --------------------------------------------------------------------------- #
+
+function FIGLETHEADINGS(){
+
+   TMPNOW=super.tmp
+
+   FLF="lib/fonts/figlet/cybermedium.flf"
+
+ # SEPARATE PREVIOUS
+ # ----------------------------
+   tac $SRCDUMP                | #
+   sed -n "/$INCLUDEID/,\$p"   | #
+   tac             > ${SRCDUMP}.tmp
+   echo -e "\n\n" >> ${SRCDUMP}.tmp
+ 
+   cat $SRCDUMP                | #
+   sed -n "/$INCLUDEID/,\$p"   | #
+   sed '1d'       >  $TMPNOW
+   echo -e "\n\n" >> $TMPNOW
+
+   HNUMPREV=1
+   S=XX ;COUNT=1
+   HGREP="^\\\\chapter{|^\\\\section{|^\\\\subsection{"
+
+   for H in `cat $TMPNOW       | #
+             egrep -n "$HGREP" | #
+             sed "s/ /$S/g"`
+    do
+      #FLF=`ls lib/fonts/figlet/*.* | shuf -n 1`
+       HTYP=`echo $H           | #
+             cut -d "\\\" -f 2 | #
+             cut -d "{" -f 1`  
+       HTXT=`echo "$H" | sed "s/$S/ /g" | #
+             sed "s/~/ /g" | #
+             cut -d "{" -f 2 | cut -d "}" -f 1`
+       HNUM=`echo $H | cut -d ":" -f 1`
+      #if [ $COUNT -gt 1 ]; then
+           sed "$HNUMPREV,$HNUM!d" $TMPNOW | #
+           egrep -v "$HGREP" >> ${SRCDUMP}.tmp
+      #fi
+
+       echo "\begin{samepage}"   >> ${SRCDUMP}.tmp 
+       echo "  \\$HTYP{}"        >> ${SRCDUMP}.tmp
+       echo "\begin{figlettext}" >> ${SRCDUMP}.tmp 
+       echo $HTXT     | #
+       fmt -s -w 12   | # 20
+       figlet -w 200 -f $FLF     >> ${SRCDUMP}.tmp
+       echo "\end{figlettext}"   >> ${SRCDUMP}.tmp 
+       echo "\end{samepage}"     >> ${SRCDUMP}.tmp 
+
+       HNUMPREV=$HNUM
+       COUNT=`expr $COUNT + 1`
+   done
+  
+   sed -n "$HNUM,\$p" $TMPNOW | #
+   egrep -v "$HGREP"          >> ${SRCDUMP}.tmp
+
+   mv ${SRCDUMP}.tmp $SRCDUMP
+   rm $TMPNOW
+}
+
+# --------------------------------------------------------------------------- #
+
+function BY(){
+
+  write2src "\vspace{-.4\baselineskip}"
+  write2src "{\by{$*}}"
+  write2src "\bigskip\bigskip"
+  write2src ""
+  write2src "\vfill"
+
+}
+
+# --------------------------------------------------------------------------- #
+
+function RESETFONT() {
+
+  write2src "\fontsize{11pt}{11pt}\selectfont"
+}
+
+# --------------------------------------------------------------------------- #
+
+
+
+
+
