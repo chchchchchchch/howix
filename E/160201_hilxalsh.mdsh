@@ -47,7 +47,7 @@ authors under copyleft licenses.
 
 % INTRODUCTION AS SOURCE CODE
 % --------------------------------------------------------------------------- %
-% SRCODE: EDIT/160201_hilxash.mdsh 1-50
+% SRCODE: E/160201_hilxalsh.mdsh 1-50
 
 
 %  T H I S   B O O K   S E T U P 
@@ -68,7 +68,7 @@ authors under copyleft licenses.
 % INCLUDE: http://github.com/christop/DOK/raw/4ffbf18/EDIT/151126_lac08.mdsh 1-182
 % SRCODE:  http://github.com/christop/DOK/raw/4ffbf18/EDIT/151126_lac08.mdsh 1-182
 
-% SRCODE: https://gitlab.com/christophh/memo/raw/1772d8c/EDIT/160001.mdsh 70-100
+% SRCODE: https://gitlab.com/chch/memo/raw/1772d8c/EDIT/160001.mdsh 70-100
 
 % SPREAD:  http://github.com/christop/A5x2/raw/4328cfc/EDIT/150118_allworknoplay.svg 1
 % SPREAD:  http://github.com/christop/A5x2/raw/4328cfc/EDIT/150118_allworknoplay.svg 2
@@ -100,7 +100,7 @@ authors under copyleft licenses.
 % RESETALL:
 
 
-% SPREAD: https://gitlab.com/christophh/2xA5/raw/620272a3/EDIT/151130_computerlib.svg 2
+% SPREAD: https://gitlab.com/chch/2xA5/raw/620272a3/EDIT/151130_computerlib.svg 2
 % HREF: OFF
 % ------------------
 % http://www.forkable.eu/g/i-bd/o/non-free/fr/A3/recto/1016-004831.pdf
@@ -136,18 +136,18 @@ authors under copyleft licenses.
 
 %  L G M:  R E A D / W R I T E
 % --------------------------------------------------------------------------- %
-% INCLUDE: https://gitlab.com/christophh/DOK/raw/d2d6321/EDIT/151128_rw.mdsh
+% INCLUDE: https://gitlab.com/chch/DOK/raw/d2d6321/EDIT/151128_rw.mdsh
 
 %  C H M O D   + X
 % --------------------------------------------------------------------------- %
 % HREF: OFF
-% INCLUDE: https://gitlab.com/christophh/DOK/raw/510cca9/EDIT/160214_chmodx.mdsh
+% INCLUDE: https://gitlab.com/chch/DOK/raw/510cca9/EDIT/160214_chmodx.mdsh
 
 
 %  W H A T   T H E   F O R K ? !
 % --------------------------------------------------------------------------- %
 % HREF: OFF
-% INCLUDE: http://gitlab.com/christophh/DOK/raw/0a2199b/EDIT/160211_wtf.mdsh
+% INCLUDE: http://gitlab.com/chch/DOK/raw/0a2199b/EDIT/160211_wtf.mdsh
 
 % FLUSHLOG:
 
@@ -211,12 +211,12 @@ authors under copyleft licenses.
 %  D O   I T   T O G E T H E R
 % --------------------------------------------------------------------------- %
 % HREF: OFF
-% INCLUDE: http://gitlab.com/christophh/DOK/raw/4ad2ed4/EDIT/160214_dit.mdsh
+% INCLUDE: http://gitlab.com/chch/DOK/raw/4ad2ed4/EDIT/160214_dit.mdsh
 
 
 %  A M R O   2 0 1 6 
 % --------------------------------------------------------------------------- %
-% INCLUDE: http://gitlab.com/christophh/DOK/raw/fe8989a/EDIT/160214_amroxiv.mdsh
+% INCLUDE: http://gitlab.com/chch/DOK/raw/fe8989a/EDIT/160214_amroxiv.mdsh
 
 
 % --------------------------------------------------------------------------- %

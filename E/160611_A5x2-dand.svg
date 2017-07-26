@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- CLEANED: 1495574223/8a143837c4126294248c7be246f50689 -->
+
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -439,7 +441,11 @@
    showguides="false"
    showborder="false"
    inkscape:showpageshadow="false"
-   inkscape:guide-bbox="true"><sodipodi:guide
+   inkscape:guide-bbox="true"
+   inkscape:zoom="2.6403864"
+   inkscape:cx="834.84366"
+   inkscape:cy="3019.9236"
+   inkscape:current-layer="layer60"><sodipodi:guide
      position="21.259843,754.72441"
      orientation="0,1048.8189"
      id="guide4271" /><sodipodi:guide
@@ -584,6 +590,7 @@
      y="715.59247"
      x="587.19934"
      style="font-size:6.22662497px;font-variant:normal;writing-mode:lr-tb;fill:#ff00ff;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Nimbus Sans L;-inkscape-font-specification:NimbusSanL-Regu">1</tspan></text>
+
 <path
    d="m 78.807421,36.295005 338.312509,0"
    style="fill:none;stroke:#ff00ff;stroke-width:0.24875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
@@ -617,6 +624,7 @@
      x="500.60495"
      y="715.59247"
      id="tspan3137">2</tspan></text>
+
 <path
    id="path68"
    style="color:#000000;fill:none;stroke:#ff00ff;stroke-width:0.24875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -665,6 +673,7 @@
      x="372.1748"
      id="tspan4212-6-0-2"
      sodipodi:role="line">TODO: hyperconnective instrument</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -683,6 +692,7 @@
      x="311.4332"
      id="tspan4212-6"
      sodipodi:role="line">Hello Zagreb.</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Hind;-inkscape-font-specification:Hind Medium"
@@ -694,6 +704,7 @@
      id="tspan4216-9"
      x="312.66519"
      y="-2082.9006">Hello Zagreb.</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text4218-4"
@@ -705,6 +716,7 @@
      x="314.59302"
      id="tspan4220-7"
      sodipodi:role="line">Hello Zagreb.</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Vremena Grotesk;-inkscape-font-specification:Vremena Grotesk"
@@ -716,6 +728,7 @@
      id="tspan4224-5"
      x="312.49719"
      y="-1973.178">Hello Zagreb.</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text4226-1"
@@ -727,6 +740,7 @@
      x="314.07349"
      id="tspan4228-4"
      sodipodi:role="line">Hello Zagreb.</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:MgOpen Moderna;-inkscape-font-specification:MgOpen Moderna"
@@ -738,6 +752,7 @@
      id="tspan4232-9"
      x="316.75317"
      y="-1859.2114">Hello Zagreb.</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text4234-2"
@@ -749,6 +764,7 @@
      x="313.72919"
      id="tspan4236-1"
      sodipodi:role="line">Hello Zagreb.</tspan></text>
+
     <flowRoot
    transform="translate(-2.5000001e-6,-2360)"
    xml:space="preserve"
@@ -792,6 +808,7 @@
      x="311.4332"
      id="tspan4212"
      sodipodi:role="line">Hello Zagreb.</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Hind;-inkscape-font-specification:Hind Medium"
@@ -803,6 +820,7 @@
      id="tspan4216"
      x="312.66519"
      y="-2082.9006">Hello Zagreb.</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text4218"
@@ -814,6 +832,7 @@
      x="314.59302"
      id="tspan4220"
      sodipodi:role="line">Hello Zagreb.</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Vremena Grotesk;-inkscape-font-specification:Vremena Grotesk"
@@ -825,6 +844,7 @@
      id="tspan4224"
      x="312.49719"
      y="-1973.178">Hello Zagreb.</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text4226"
@@ -836,6 +856,7 @@
      x="314.07349"
      id="tspan4228"
      sodipodi:role="line">Hello Zagreb.</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:MgOpen Moderna;-inkscape-font-specification:MgOpen Moderna"
@@ -847,6 +868,7 @@
      id="tspan4232"
      x="316.75317"
      y="-1859.2114">Hello Zagreb.</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text4234"
@@ -858,6 +880,7 @@
      x="313.72919"
      id="tspan4236"
      sodipodi:role="line">Hello Zagreb.</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:HK Grotesk;-inkscape-font-specification:HK Grotesk"
@@ -869,6 +892,7 @@
      id="tspan4240"
      x="1181.4332"
      y="-2172.9521">WYSIWYG</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text4242"
@@ -880,6 +904,7 @@
      x="1182.6653"
      id="tspan4244"
      sodipodi:role="line">WYSIWYG</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -891,6 +916,7 @@
      id="tspan4248"
      x="1184.593"
      y="-2032.9681">WYSIWYG</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text4250"
@@ -902,6 +928,7 @@
      x="1182.4972"
      id="tspan4252"
      sodipodi:role="line">WYSIWYG</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:TGL;-inkscape-font-specification:TGL"
@@ -913,6 +940,7 @@
      id="tspan4256"
      x="1184.0735"
      y="-1892.9792">WYSIWYG</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text4258"
@@ -924,6 +952,7 @@
      x="1186.7532"
      id="tspan4260"
      sodipodi:role="line">WYSIWYG</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Inconsolata;-inkscape-font-specification:Inconsolata"
@@ -935,6 +964,7 @@
      id="tspan4264"
      x="1183.7292"
      y="-1753.952">WYSIWYG</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text4266"
@@ -946,6 +976,7 @@
      x="1602.4332"
      id="tspan4268"
      sodipodi:role="line">WYSIWYG</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:MgOpen Moderna;-inkscape-font-specification:MgOpen Moderna"
@@ -957,6 +988,7 @@
      id="tspan4272"
      x="1607.7532"
      y="-1823.2114">WYSIWYG</tspan></text>
+
     <path
    style="color:#280b0b;fill:#f9f9f9;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 296,-2222 153,0 0,351.1613 21,112.8387 -174,0 z"
@@ -1172,6 +1204,7 @@
      sodipodi:role="line"
      id="tspan4046"
      style="word-spacing:6px;fill:#280b0b">only to popularity and success;</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#00ff00;fill-opacity:1;stroke:none;display:inline;font-family:HK Grotesk;-inkscape-font-specification:HK Grotesk"
@@ -1183,6 +1216,7 @@
      sodipodi:role="line"
      x="186.75317"
      y="-1733.2114">http://www.gnu.org/philosophy/open-source-misses-the-point</tspan></text>
+
     <flowRoot
    transform="translate(-5.9375e-6,-2360)"
    xml:space="preserve"
@@ -1504,6 +1538,7 @@
      x="434.21686"
      y="-1985.4229"
      id="tspan11490">Article</tspan></text>
+
     <path
    sodipodi:nodetypes="cccccc"
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -1534,6 +1569,7 @@
      y="-1985.4229"
      x="459.18909"
      sodipodi:role="line">Softw...</tspan></text>
+
     <path
    id="path11504"
    d="m 500.64772,-1978.9223 -17.20233,0 0,-20.609 12.90174,0 4.30059,4.4262 z"
@@ -1564,6 +1600,7 @@
      x="485.37451"
      y="-1985.4229"
      id="tspan11514">Style</tspan></text>
+
     <path
    sodipodi:nodetypes="cccccc"
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -1594,6 +1631,7 @@
      y="-2034.4238"
      x="460.78702"
      sodipodi:role="line">you</tspan></text>
+
     <path
    id="path11528"
    d="m 501.47182,-2027.9223 -17.20241,0 0,-20.609 12.90184,0 4.30057,4.4262 z"
@@ -1624,6 +1662,7 @@
      x="486.19852"
      y="-2034.4238"
      id="tspan11538">want</tspan></text>
+
     <g
    style="display:inline"
    transform="matrix(1.4349479,0,0,1.4350061,3.101202,-2643.5221)"
@@ -1654,6 +1693,7 @@
      x="298.34326"
      sodipodi:role="line"
      id="tspan11550">Chart</tspan></text>
+
       <path
    id="path11552"
    d="m 309.22551,411.02212 -11.98811,0 0,-14.36165 8.99109,0 2.99702,3.08448 z"
@@ -1684,6 +1724,7 @@
      x="298.34326"
      y="409.32379"
      id="tspan11562">enter</tspan></text>
+
       <path
    sodipodi:nodetypes="cccccc"
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.34843764;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -1718,6 +1759,7 @@
      x="298.34326"
      sodipodi:role="line"
      id="tspan11576">m</tspan></text>
+
       <path
    id="path11578"
    d="m 309.22551,375.60643 -11.98811,0 0,-14.36164 8.99109,0 2.99702,3.08447 z"
@@ -1752,6 +1794,7 @@
      x="298.34326"
      y="371.90652"
      id="tspan11590">Doc</tspan></text>
+
     </g>
     <path
    sodipodi:nodetypes="cc"
@@ -2037,6 +2080,7 @@
      x="288.78445"
      y="-2149.9929"
      id="tspan11722">Beaker Graph</tspan></text>
+
     <text
    transform="scale(1.0000227,0.9999773)"
    sodipodi:linespacing="110%"
@@ -2049,6 +2093,7 @@
      y="-2141.7122"
      x="225.68973"
      sodipodi:role="line">Paginate</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:3.63020515px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:semi-condensed;text-indent:0;text-align:start;text-decoration:none;line-height:110.00000238%;letter-spacing:0.0726041px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#280b0b;fill:#280b0b;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans Bold"
@@ -2061,6 +2106,7 @@
      x="209.24655"
      y="-2141.7122"
      id="tspan11730">Close</tspan></text>
+
     <path
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 271.15639,-2012.3891 -34.94313,0"
@@ -2078,6 +2124,7 @@
      x="296.81284"
      id="tspan11736"
      sodipodi:role="line">Oil Allocation Usage per Household</tspan></text>
+
     <g
    style="fill:#280b0b;display:inline"
    id="g11738"
@@ -2094,6 +2141,7 @@
      x="1759.0487"
      id="tspan11742"
      sodipodi:role="line">Displays for Of f ice Automation</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:14px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:semi-condensed;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans Oblique Semi-Condensed"
@@ -2105,6 +2153,7 @@
      id="tspan11746"
      x="1759.0487"
      y="425.98834">Large, High-Resolution, Bit-Map</tspan></text>
+
       <text
    sodipodi:linespacing="110%"
    id="text11748"
@@ -2124,6 +2173,7 @@
      y="476.78833"
      x="1774.0487"
      sodipodi:role="line">display like printed paper</tspan></text>
+
     </g>
     <text
    xml:space="preserve"
@@ -2137,6 +2187,7 @@
      id="tspan11758"
      x="296.35355"
      y="-1961.0663">(based on 1981 reports)</tspan></text>
+
     <g
    style="fill:#280b0b;display:inline"
    id="g11760"
@@ -2324,6 +2375,7 @@
      id="tspan11842"
      x="341.56772"
      y="-2044.7404">40% Fuels</tspan></text>
+
     <path
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 333.38604,-2026.3668 5.01128,0 0,5.0114 -5.01128,0 z"
@@ -2340,6 +2392,7 @@
      x="341.56772"
      id="tspan11848"
      sodipodi:role="line">24% Lubricants</tspan></text>
+
     <path
    id="path11850"
    d="m 333.38604,-2012.6072 5.01128,0 0,5.0115 -5.01128,0 z"
@@ -2356,6 +2409,7 @@
      id="tspan11854"
      x="341.56772"
      y="-2008.7783">13% Plastics</tspan></text>
+
     <path
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 333.38604,-2000.0984 5.01128,0 0,5.0115 -5.01128,0 z"
@@ -2376,6 +2430,7 @@
      x="341.56772"
      sodipodi:role="line"
      id="tspan11862">       Materials</tspan></text>
+
     <path
    sodipodi:nodetypes="cccsssscc"
    id="path11864"
@@ -2437,6 +2492,7 @@
      x="147.91455"
      id="tspan6731"
      sodipodi:role="line">WHAT YOU SEE IS WHAT YOU GET</tspan></text>
+
     <flowRoot
    transform="translate(-1.28125e-5,-2360)"
    xml:space="preserve"
@@ -2749,6 +2805,7 @@
      x="434.21686"
      y="-1985.4229"
      id="tspan11490-2">Article</tspan></text>
+
     <path
    sodipodi:nodetypes="cccccc"
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -2779,6 +2836,7 @@
      y="-1985.4229"
      x="459.18909"
      sodipodi:role="line">Softw...</tspan></text>
+
     <path
    id="path11504-8"
    d="m 500.64772,-1978.9223 -17.20233,0 0,-20.609 12.90174,0 4.30059,4.4262 z"
@@ -2809,6 +2867,7 @@
      x="485.37451"
      y="-1985.4229"
      id="tspan11514-3">Style</tspan></text>
+
     <path
    sodipodi:nodetypes="cccccc"
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -2839,6 +2898,7 @@
      y="-2034.4238"
      x="460.78702"
      sodipodi:role="line">you</tspan></text>
+
     <path
    id="path11528-5"
    d="m 501.47182,-2027.9223 -17.20241,0 0,-20.609 12.90184,0 4.30057,4.4262 z"
@@ -2869,6 +2929,7 @@
      x="486.19852"
      y="-2034.4238"
      id="tspan11538-7">want</tspan></text>
+
     <g
    style="display:inline"
    transform="matrix(1.4349479,0,0,1.4350061,3.101202,-2643.5221)"
@@ -2899,6 +2960,7 @@
      x="298.34326"
      sodipodi:role="line"
      id="tspan11550-6">Chart</tspan></text>
+
       <path
    id="path11552-0"
    d="m 309.22551,411.02212 -11.98811,0 0,-14.36165 8.99109,0 2.99702,3.08448 z"
@@ -2929,6 +2991,7 @@
      x="298.34326"
      y="409.32379"
      id="tspan11562-3">enter</tspan></text>
+
       <path
    sodipodi:nodetypes="cccccc"
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.34843764;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -2963,6 +3026,7 @@
      x="298.34326"
      sodipodi:role="line"
      id="tspan11576-4">m</tspan></text>
+
       <path
    id="path11578-3"
    d="m 309.22551,375.60643 -11.98811,0 0,-14.36164 8.99109,0 2.99702,3.08447 z"
@@ -2997,6 +3061,7 @@
      x="298.34326"
      y="371.90652"
      id="tspan11590-8">Doc</tspan></text>
+
     </g>
     <path
    sodipodi:nodetypes="cc"
@@ -3282,6 +3347,7 @@
      x="288.78445"
      y="-2149.9929"
      id="tspan11722-7">Beaker Graph</tspan></text>
+
     <text
    transform="scale(1.0000227,0.9999773)"
    sodipodi:linespacing="110%"
@@ -3294,6 +3360,7 @@
      y="-2141.7122"
      x="225.68973"
      sodipodi:role="line">Paginate</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:3.63020515px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:semi-condensed;text-indent:0;text-align:start;text-decoration:none;line-height:110.00000238%;letter-spacing:0.0726041px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#280b0b;fill:#280b0b;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans Bold"
@@ -3306,6 +3373,7 @@
      x="209.24655"
      y="-2141.7122"
      id="tspan11730-0">Close</tspan></text>
+
     <path
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 271.15639,-2012.3891 -34.94313,0"
@@ -3323,6 +3391,7 @@
      x="296.81284"
      id="tspan11736-2"
      sodipodi:role="line">Oil Allocation Usage per Household</tspan></text>
+
     <g
    style="fill:#280b0b;display:inline"
    id="g11738-7"
@@ -3339,6 +3408,7 @@
      x="1759.0487"
      id="tspan11742-5"
      sodipodi:role="line">Displays for Of f ice Automation</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:14px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:semi-condensed;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans Oblique Semi-Condensed"
@@ -3350,6 +3420,7 @@
      id="tspan11746-1"
      x="1759.0487"
      y="425.98834">Large, High-Resolution, Bit-Map</tspan></text>
+
       <text
    sodipodi:linespacing="110%"
    id="text11748-0"
@@ -3369,6 +3440,7 @@
      y="476.78833"
      x="1774.0487"
      sodipodi:role="line">display like printed paper</tspan></text>
+
     </g>
     <text
    xml:space="preserve"
@@ -3382,6 +3454,7 @@
      id="tspan11758-6"
      x="296.35355"
      y="-1961.0663">(based on 1981 reports)</tspan></text>
+
     <g
    style="fill:#280b0b;display:inline"
    id="g11760-9"
@@ -3569,6 +3642,7 @@
      id="tspan11842-7"
      x="341.56772"
      y="-2044.7404">40% Fuels</tspan></text>
+
     <path
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 333.38604,-2026.3668 5.01128,0 0,5.0114 -5.01128,0 z"
@@ -3585,6 +3659,7 @@
      x="341.56772"
      id="tspan11848-3"
      sodipodi:role="line">24% Lubricants</tspan></text>
+
     <path
    id="path11850-2"
    d="m 333.38604,-2012.6072 5.01128,0 0,5.0115 -5.01128,0 z"
@@ -3601,6 +3676,7 @@
      id="tspan11854-2"
      x="341.56772"
      y="-2008.7783">13% Plastics</tspan></text>
+
     <path
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 333.38604,-2000.0984 5.01128,0 0,5.0115 -5.01128,0 z"
@@ -3621,6 +3697,7 @@
      x="341.56772"
      sodipodi:role="line"
      id="tspan11862-3">       Materials</tspan></text>
+
     <path
    sodipodi:nodetypes="cccsssscc"
    id="path11864-9"
@@ -3703,6 +3780,7 @@
      x="1759.0487"
      y="402.98834"
      dx="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -4.9859042 -5.3694353 0.38353109">Displays for Of f ice Automation</tspan></text>
+
       <text
    sodipodi:linespacing="141%"
    id="text12404"
@@ -3714,6 +3792,7 @@
      x="1759.0487"
      id="tspan12406"
      sodipodi:role="line">Large, High-Resolution, Bit-Map</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:14px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:semi-condensed;text-align:start;line-height:110.00000238%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans Oblique Semi-Condensed"
@@ -3733,6 +3812,7 @@
      x="1774.0487"
      y="476.78833"
      id="tspan12414">display like printed paper</tspan></text>
+
     </g>
     <text
    sodipodi:linespacing="110%"
@@ -3746,6 +3826,7 @@
      x="781.59058"
      id="tspan12418"
      sodipodi:role="line">(based on 1981 reports)</tspan></text>
+
     <g
    transform="matrix(0.44285312,0,0,0.44287108,-93.72614,-2295.2701)"
    id="g12420"
@@ -3933,6 +4014,7 @@
      x="845.62256"
      id="tspan12502"
      sodipodi:role="line">40% Fuels</tspan></text>
+
     <path
    id="path12504-0"
    d="m 834.02834,-2032.5147 7.09694,0 0,7.0972 -7.09694,0 z"
@@ -3949,6 +4031,7 @@
      id="tspan12508"
      x="845.62256"
      y="-2027.1089">24% Lubricants</tspan></text>
+
     <path
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 834.02834,-2013.0284 7.09694,0 0,7.0973 -7.09694,0 z"
@@ -3965,6 +4048,7 @@
      x="845.62256"
      id="tspan12514"
      sodipodi:role="line">13% Plastics</tspan></text>
+
     <path
    id="path12516-6"
    d="m 834.02834,-1995.3135 7.09694,0 0,7.0972 -7.09694,0 z"
@@ -3985,6 +4069,7 @@
      sodipodi:role="line"
      x="845.62256"
      y="-1984.5498">       Materials</tspan></text>
+
     <path
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 742.68864,-2097.1815 96.24754,0 -14.75755,15.3571 0,104.3813 c 0,3.3555 -2.70124,6.0568 -6.05656,6.0568 l -65.69065,0 c -3.35533,0 -6.05656,-2.7013 -6.05656,-6.0568 l 0,-113.6816 z"
@@ -4057,6 +4142,7 @@
      id="tspan12394"
      x="782.24103"
      y="-1948.4678">Oil Allocation Usage per Household</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -4155,48 +4241,52 @@
    clip-path="url(#clipPath3223)"
    transform="translate(0,-1380)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/fp-tables.png"
    xlink:href="../src/dand/non-free/fp-tables.png"
-   checksum="ce906209e31aedd1"
-   y="0"
-   x="10"
+   clip-path="url(#clipPath3182)"
+   width="1024"
+   height="768"
    id="image3164"
-   height="768"
-   width="1024"
-   clip-path="url(#clipPath3182)" />
-      <image
-   xlink:href="../src/dand/non-free/fp-tables.png"
-   checksum="ce906209e31aedd1"
-   width="1024"
-   height="768"
-   id="image3178"
-   x="1110"
+   x="10"
    y="0"
+   checksum="ce906209e31aedd1" />
+      <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/fp-tables.png"
+   xlink:href="../src/dand/non-free/fp-tables.png"
+   transform="translate(-1120,0)"
    clip-path="url(#clipPath3186)"
-   transform="translate(-1120,0)" />
+   y="0"
+   x="1110"
+   id="image3178"
+   height="768"
+   width="1024"
+   checksum="ce906209e31aedd1" />
     </g>
     <g
    clip-path="url(#clipPath3235)"
    id="g3227"
    transform="translate(0,-1359)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/fp-tables.png"
    xlink:href="../src/dand/non-free/fp-tables.png"
-   checksum="ce906209e31aedd1"
+   y="0"
+   x="10"
+   id="image3229"
+   height="768"
+   width="1024"
    clip-path="url(#clipPath3182)"
+   checksum="ce906209e31aedd1" />
+      <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/fp-tables.png"
+   xlink:href="../src/dand/non-free/fp-tables.png"
    width="1024"
    height="768"
-   id="image3229"
-   x="10"
-   y="0" />
-      <image
-   xlink:href="../src/dand/non-free/fp-tables.png"
-   checksum="ce906209e31aedd1"
-   transform="translate(-1120,0)"
-   clip-path="url(#clipPath3186)"
-   y="0"
-   x="1110"
    id="image3231"
-   height="768"
-   width="1024" />
+   x="1110"
+   y="0"
+   clip-path="url(#clipPath3186)"
+   transform="translate(-1120,0)"
+   checksum="ce906209e31aedd1" />
     </g>
     <path
    style="color:#280b0b;fill:#fcfcfc;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -4208,26 +4298,28 @@
    clip-path="url(#clipPath3719)"
    transform="translate(-1160,-2460)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/fp-tables.png"
    xlink:href="../src/dand/non-free/fp-tables.png"
-   checksum="ce906209e31aedd1"
-   transform="translate(1280,-10)"
-   y="0"
-   x="10"
+   clip-path="url(#clipPath3571)"
+   width="1024"
+   height="768"
    id="image3594"
-   height="768"
-   width="1024"
-   clip-path="url(#clipPath3571)" />
+   x="10"
+   y="0"
+   transform="translate(1280,-10)"
+   checksum="ce906209e31aedd1" />
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/fp-tables.png"
    xlink:href="../src/dand/non-free/fp-tables.png"
-   checksum="ce906209e31aedd1"
-   transform="translate(-280,0)"
-   y="-10"
-   x="1290"
-   id="image3596"
-   height="768"
-   width="1024"
+   style="display:inline"
    clip-path="url(#clipPath3584)"
-   style="display:inline" />
+   width="1024"
+   height="768"
+   id="image3596"
+   x="1290"
+   y="-10"
+   transform="translate(-280,0)"
+   checksum="ce906209e31aedd1" />
     </g>
     <g
    style="display:inline"
@@ -4235,26 +4327,28 @@
    clip-path="url(#clipPath3762)"
    transform="translate(-1160,-2270)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/fp-tables.png"
    xlink:href="../src/dand/non-free/fp-tables.png"
-   checksum="ce906209e31aedd1"
-   transform="translate(1280,-10)"
-   y="0"
-   x="10"
+   clip-path="url(#clipPath3571-2)"
+   width="1024"
+   height="768"
    id="image3594-7"
-   height="768"
-   width="1024"
-   clip-path="url(#clipPath3571-2)" />
+   x="10"
+   y="0"
+   transform="translate(1280,-10)"
+   checksum="ce906209e31aedd1" />
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/fp-tables.png"
    xlink:href="../src/dand/non-free/fp-tables.png"
-   checksum="ce906209e31aedd1"
-   transform="translate(-280,0)"
-   y="-10"
-   x="1290"
-   id="image3596-4"
-   height="768"
-   width="1024"
+   style="display:inline"
    clip-path="url(#clipPath3584-4)"
-   style="display:inline" />
+   width="1024"
+   height="768"
+   id="image3596-4"
+   x="1290"
+   y="-10"
+   transform="translate(-280,0)"
+   checksum="ce906209e31aedd1" />
     </g>
     <path
    sodipodi:nodetypes="ccccc"
@@ -4274,16 +4368,17 @@
    id="rect3776"
    sodipodi:nodetypes="ccccc" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/fp-tables.png"
    xlink:href="../src/dand/non-free/fp-tables.png"
-   checksum="ce906209e31aedd1"
-   transform="translate(-1181,-2271)"
-   y="-10"
-   x="1340"
-   id="image3274-6"
-   height="768"
-   width="1024"
+   style="display:inline"
    clip-path="url(#clipPath3830-6)"
-   style="display:inline" />
+   width="1024"
+   height="768"
+   id="image3274-6"
+   x="1340"
+   y="-10"
+   transform="translate(-1181,-2271)"
+   checksum="ce906209e31aedd1" />
     <text
    sodipodi:linespacing="141%"
    id="text3102-2"
@@ -4295,6 +4390,7 @@
      x="212.75317"
      id="tspan3104-4"
      sodipodi:role="line">Microsoft™ Frontpage™</tspan></text>
+
     <g
    id="g3315"
    transform="translate(-86,-2372)"
@@ -4310,6 +4406,7 @@
      x="339.75317"
      id="tspan3263"
      sodipodi:role="line">1999</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:MgOpen Moderna;-inkscape-font-specification:MgOpen Moderna"
@@ -4321,18 +4418,20 @@
      id="tspan3267"
      x="298.75317"
      y="471.78864">~</tspan></text>
+
     </g>
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/fp-tables.png"
    xlink:href="../src/dand/non-free/fp-tables.png"
-   checksum="ce906209e31aedd1"
-   transform="translate(-1531,-2271)"
-   style="display:inline"
-   clip-path="url(#clipPath3864)"
-   width="1024"
-   height="768"
-   id="image3860"
+   y="-10"
    x="1340"
-   y="-10" />
+   id="image3860"
+   height="768"
+   width="1024"
+   clip-path="url(#clipPath3864)"
+   style="display:inline"
+   transform="translate(-1531,-2271)"
+   checksum="ce906209e31aedd1" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -4341,16 +4440,17 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/fp-tables.png"
    xlink:href="../src/dand/non-free/fp-tables.png"
-   checksum="ce906209e31aedd1"
-   transform="translate(-1176,-2523)"
-   y="-10"
-   x="1340"
-   id="image3274"
-   height="768"
-   width="1024"
+   style="display:inline"
    clip-path="url(#clipPath3286-7)"
-   style="display:inline" />
+   width="1024"
+   height="768"
+   id="image3274"
+   x="1340"
+   y="-10"
+   transform="translate(-1176,-2523)"
+   checksum="ce906209e31aedd1" />
   </g>
   <g
    style="display:none"
@@ -5049,13 +5149,14 @@
    id="path25537-1"
    sodipodi:nodetypes="ccccc" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606123718.png"
    xlink:href="../src/dand/free/20160606123718.png"
-   checksum="bc5bb3260ed608d7"
-   y="-1471"
-   x="1117"
-   id="image4863"
+   width="836"
    height="710"
-   width="836" />
+   id="image4863"
+   x="1117"
+   y="-1471"
+   checksum="bc5bb3260ed608d7" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -5236,6 +5337,7 @@
      x="120.50781"
      id="tspan5253"
      sodipodi:role="line">View</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -5247,6 +5349,7 @@
      id="tspan5257"
      x="120.50781"
      y="348">Arrange Icons By</tspan></text>
+
       <text
    sodipodi:linespacing="141%"
    id="text5259"
@@ -5258,6 +5361,7 @@
      x="120.50781"
      id="tspan5261"
      sodipodi:role="line">Refresh</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -5269,6 +5373,7 @@
      id="tspan5265"
      x="120.50781"
      y="391">Paste</tspan></text>
+
       <text
    sodipodi:linespacing="141%"
    id="text5267"
@@ -5280,6 +5385,7 @@
      x="120.50781"
      id="tspan5269"
      sodipodi:role="line">Paste Shortcut</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -5291,6 +5397,7 @@
      id="tspan5273"
      x="120.50781"
      y="425">Undo Rename</tspan></text>
+
       <path
    style="color:#280b0b;fill:#280b0b;stroke:none;stroke-width:0.99999994;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 114,456 219.5,0 0,17 -219.5,0 z"
@@ -5312,6 +5419,7 @@
      x="120.50781"
      id="tspan5283"
      sodipodi:role="line">New</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -5323,6 +5431,7 @@
      id="tspan5287"
      x="120.50781"
      y="494">Properties</tspan></text>
+
       <path
    style="color:#280b0b;fill:#ffffff;stroke:#280b0b;stroke-width:0.99999994;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 333.5,453.5 261,0 0,242 -261,0 z"
@@ -5344,6 +5453,7 @@
      x="351.50781"
      id="tspan5293"
      sodipodi:role="line">Folder</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -5355,6 +5465,7 @@
      id="tspan5297"
      x="351.50781"
      y="489">Shortcut</tspan></text>
+
       <text
    sodipodi:linespacing="141%"
    id="text5299"
@@ -5366,6 +5477,7 @@
      x="351.50781"
      id="tspan5301"
      sodipodi:role="line">Stuxnet Wormhole</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -5377,6 +5489,7 @@
      id="tspan5305"
      x="351.50781"
      y="536">CERN Particle Accelerator Sequence</tspan></text>
+
       <text
    sodipodi:linespacing="141%"
    id="text5307"
@@ -5388,6 +5501,7 @@
      x="351.50781"
      id="tspan5309"
      sodipodi:role="line">Bitmap Image</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -5399,6 +5513,7 @@
      id="tspan5313"
      x="351.50781"
      y="574">Text Document</tspan></text>
+
       <text
    sodipodi:linespacing="141%"
    id="text5315"
@@ -5410,6 +5525,7 @@
      x="351.50781"
      id="tspan5317"
      sodipodi:role="line">MS Power Point Presentation</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -5421,6 +5537,7 @@
      id="tspan5321"
      x="351.50781"
      y="612">MS Office Publisher Document</tspan></text>
+
       <text
    sodipodi:linespacing="141%"
    id="text5323"
@@ -5432,6 +5549,7 @@
      x="351.50781"
      id="tspan5325"
      sodipodi:role="line">Superfunny Chainletter</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -5443,6 +5561,7 @@
      id="tspan5329"
      x="351.50781"
      y="650">Windows Live Call</tspan></text>
+
       <text
    sodipodi:linespacing="141%"
    id="text5331"
@@ -5454,6 +5573,7 @@
      x="351.50781"
      id="tspan5333"
      sodipodi:role="line">MS Office Excel Worksheet</tspan></text>
+
       <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -5465,6 +5585,7 @@
      id="tspan5337"
      x="351.50781"
      y="688">WinZip File</tspan></text>
+
       <text
    sodipodi:linespacing="141%"
    id="text5341"
@@ -5476,6 +5597,7 @@
      x="120.50781"
      id="tspan5343"
      sodipodi:role="line">Call Home</tspan></text>
+
       <path
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.99999994;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 592.5,497.5 -256,0"
@@ -5621,6 +5743,7 @@
      id="tspan5520"
      x="577.25861"
      y="108.8007">text editor:self.html</tspan></text>
+
     </g>
     <g
    style="display:inline"
@@ -5712,6 +5835,7 @@
      x="577.25861"
      id="tspan5733"
      sodipodi:role="line">browser:self.html</tspan></text>
+
     </g>
   </g>
   <g
@@ -6059,6 +6183,7 @@
      id="tspan4224-5-0"
      x="93.497192"
      y="-2253.178">selfhtml</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -6067,35 +6192,38 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606123633.png"
    xlink:href="../src/dand/free/20160606123633.png"
-   checksum="6a8711e47cefe5b7"
-   clip-path="url(#clipPath6003)"
-   width="836"
-   height="709"
+   transform="translate(0,-2360)"
+   y="20"
+   x="70"
    id="image5921"
-   x="70"
-   y="20"
-   transform="translate(0,-2360)" />
+   height="709"
+   width="836"
+   clip-path="url(#clipPath6003)"
+   checksum="6a8711e47cefe5b7" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606123751.png"
    xlink:href="../src/dand/free/20160606123751.png"
-   checksum="7c4f24860c46b62e"
-   clip-path="url(#clipPath6003)"
-   width="836"
-   height="709"
+   transform="translate(0,-4240)"
+   y="20"
+   x="70"
    id="image6047"
-   x="70"
-   y="20"
-   transform="translate(0,-4240)" />
-    <image
-   xlink:href="../src/dand/free/20160606123858.png"
-   checksum="83ce9ed03add04e8"
-   clip-path="url(#clipPath6003)"
-   width="836"
    height="709"
-   id="image6089"
-   x="70"
+   width="836"
+   clip-path="url(#clipPath6003)"
+   checksum="7c4f24860c46b62e" />
+    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606123858.png"
+   xlink:href="../src/dand/free/20160606123858.png"
+   transform="translate(0,-1580)"
    y="20"
-   transform="translate(0,-1580)" />
+   x="70"
+   id="image6089"
+   height="709"
+   width="836"
+   clip-path="url(#clipPath6003)"
+   checksum="83ce9ed03add04e8" />
   </g>
   <g
    style="display:none"
@@ -6240,27 +6368,30 @@
      id="tspan4224-5-0-1"
      x="93.497192"
      y="106.82199">selfhtml</tspan></text>
+
     </g>
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606123633.png"
    xlink:href="../src/dand/free/20160606123633.png"
-   checksum="6a8711e47cefe5b7"
-   y="20"
-   x="70"
+   transform="translate(0,-2360)"
+   clip-path="url(#clipPath6003)"
+   width="836"
+   height="709"
    id="image5977"
-   height="709"
-   width="836"
-   clip-path="url(#clipPath6003)"
-   transform="translate(0,-2360)" />
-    <image
-   xlink:href="../src/dand/free/20160606123751.png"
-   checksum="7c4f24860c46b62e"
-   y="20"
    x="70"
-   id="image5979"
-   height="709"
-   width="836"
+   y="20"
+   checksum="6a8711e47cefe5b7" />
+    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606123751.png"
+   xlink:href="../src/dand/free/20160606123751.png"
+   transform="translate(0,-4240)"
    clip-path="url(#clipPath6003)"
-   transform="translate(0,-4240)" />
+   width="836"
+   height="709"
+   id="image5979"
+   x="70"
+   y="20"
+   checksum="7c4f24860c46b62e" />
     <g
    id="g6080"
    transform="translate(70,-2286)">
@@ -6361,15 +6492,16 @@
    sodipodi:nodetypes="cccc" />
     </g>
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606123858.png"
    xlink:href="../src/dand/free/20160606123858.png"
-   checksum="83ce9ed03add04e8"
-   transform="translate(71,-2286)"
-   y="20"
-   x="70"
-   id="image5981"
-   height="709"
+   clip-path="url(#clipPath6003)"
    width="836"
-   clip-path="url(#clipPath6003)" />
+   height="709"
+   id="image5981"
+   x="70"
+   y="20"
+   transform="translate(71,-2286)"
+   checksum="83ce9ed03add04e8" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -6406,15 +6538,16 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606123751.png"
    xlink:href="../src/dand/free/20160606123751.png"
-   checksum="7c4f24860c46b62e"
-   clip-path="url(#clipPath6003)"
-   width="836"
-   height="709"
-   id="image6170"
-   x="70"
+   transform="translate(0,-4240)"
    y="20"
-   transform="translate(0,-4240)" />
+   x="70"
+   id="image6170"
+   height="709"
+   width="836"
+   clip-path="url(#clipPath6003)"
+   checksum="7c4f24860c46b62e" />
     <g
    id="g6566"
    clip-path="url(#clipPath6593)"
@@ -6525,16 +6658,17 @@
    id="path6120-8" />
       </g>
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606123858.png"
    xlink:href="../src/dand/free/20160606123858.png"
-   checksum="83ce9ed03add04e8"
-   style="display:inline"
-   clip-path="url(#clipPath6003-91)"
-   width="836"
-   height="709"
-   id="image5981-4"
-   x="70"
+   transform="translate(71,85)"
    y="20"
-   transform="translate(71,85)" />
+   x="70"
+   id="image5981-4"
+   height="709"
+   width="836"
+   clip-path="url(#clipPath6003-91)"
+   style="display:inline"
+   checksum="83ce9ed03add04e8" />
     </g>
   </g>
   <g
@@ -6558,6 +6692,7 @@
      x="110.27361"
      y="-2055.1865"
      id="tspan5828">back in 1999</tspan></text>
+
     <path
    style="fill:#280b0b;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
    d="m 88,-2283 0,594 1,0 0,-1 0,-592 750,0 1,0 0,-1 z"
@@ -6701,6 +6836,7 @@
      x="110.27361"
      sodipodi:role="line"
      id="tspan5826">technically</tspan></text>
+
     <flowRoot
    transform="translate(-1.375e-5,-2360)"
    xml:space="preserve"
@@ -6741,6 +6877,7 @@
      y="304.81326"
      x="110.27361"
      sodipodi:role="line">back in 1999</tspan></text>
+
       <path
    sodipodi:nodetypes="ccccccccc"
    id="path25509-4-0-4"
@@ -6884,6 +7021,7 @@
      sodipodi:role="line"
      x="110.27361"
      y="463.06769">technically</tspan></text>
+
     </g>
     <flowRoot
    transform="translate(-1.84375e-5,-2360)"
@@ -6935,6 +7073,7 @@
      id="tspan5283-0"
      x="467.51562"
      y="547.5">View Source</tspan></text>
+
     </g>
   </g>
   <g
@@ -6962,6 +7101,7 @@
      y="304.81326"
      x="110.27361"
      sodipodi:role="line">back in 1999</tspan></text>
+
       <path
    sodipodi:nodetypes="ccccccccc"
    id="path25509-4-0-4-3"
@@ -7105,6 +7245,7 @@
      sodipodi:role="line"
      x="110.27361"
      y="463.06769">technically</tspan></text>
+
     </g>
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -7223,6 +7364,7 @@
      x="158.49719"
      id="tspan4224-5-0-1-6"
      sodipodi:role="line">view source</tspan></text>
+
     </g>
   </g>
   <g
@@ -7287,14 +7429,15 @@
    id="path6277"
    sodipodi:nodetypes="ccccc" />
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/stlasif.gif"
    xlink:href="../src/dand/non-free/stlasif.gif"
-   checksum="bf495a93b6ce16bb"
-   clip-path="url(#clipPath6264)"
-   y="402"
-   x="166"
-   id="image6151"
+   width="1021"
    height="790"
-   width="1021" />
+   id="image6151"
+   x="166"
+   y="402"
+   clip-path="url(#clipPath6264)"
+   checksum="bf495a93b6ce16bb" />
       <path
    style="color:#280b0b;fill:#d0d0d0;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 234,628 946,0 0,536 -946,0 z"
@@ -7321,14 +7464,15 @@
    d="m 1176,402 9,0 0,788 -9,0 z"
    style="color:#280b0b;fill:#d0cfc0;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/stlasif.gif"
    xlink:href="../src/dand/non-free/stlasif.gif"
-   checksum="bf495a93b6ce16bb"
-   width="1021"
-   height="790"
-   id="image6331"
-   x="166"
+   clip-path="url(#clipPath6264)"
    y="402"
-   clip-path="url(#clipPath6264)" />
+   x="166"
+   id="image6331"
+   height="790"
+   width="1021"
+   checksum="bf495a93b6ce16bb" />
       <path
    sodipodi:nodetypes="ccccc"
    id="path6333"
@@ -7346,15 +7490,16 @@
    d="m 69.5,-1710 0,-291.5 949,0 0,291.5"
    style="color:#280b0b;fill:#d4d4d4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/flash_edit-2.png"
    xlink:href="../src/dand/free/flash_edit-2.png"
-   checksum="74dbe85eb43347d8"
-   y="200"
-   x="410"
-   id="image6663"
-   height="634"
-   width="472"
+   transform="translate(-129,-2360)"
    clip-path="url(#clipPath6669)"
-   transform="translate(-129,-2360)" />
+   width="472"
+   height="634"
+   id="image6663"
+   x="410"
+   y="200"
+   checksum="74dbe85eb43347d8" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -7366,14 +7511,15 @@
    id="g6712"
    transform="translate(130,-2330)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/lf12f5.png"
    xlink:href="../src/dand/non-free/lf12f5.png"
-   checksum="498955e15c803307"
-   y="118"
-   x="-45"
-   id="image6821"
-   height="400"
+   clip-path="url(#clipPath6827)"
    width="600"
-   clip-path="url(#clipPath6827)" />
+   height="400"
+   id="image6821"
+   x="-45"
+   y="118"
+   checksum="498955e15c803307" />
       <path
    id="path16952-6"
    style="fill:#280b0b;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
@@ -7481,6 +7627,7 @@
      id="tspan5253-5"
      x="540.50781"
      y="-1898">Zoom In</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text5255-4"
@@ -7492,6 +7639,7 @@
      x="540.50781"
      id="tspan5257-0"
      sodipodi:role="line">Zoom Out</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -7503,6 +7651,7 @@
      id="tspan5261-3"
      x="540.50781"
      y="-1865">Show All</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text5263-2"
@@ -7514,6 +7663,7 @@
      x="540.50781"
      id="tspan5265-9"
      sodipodi:role="line">Quality</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -7525,6 +7675,7 @@
      id="tspan5269-1"
      x="540.50781"
      y="-1784">Settings</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text5271-9"
@@ -7536,6 +7687,7 @@
      x="540.50781"
      id="tspan5273-7"
      sodipodi:role="line">Global Settings</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -7547,6 +7699,7 @@
      id="tspan5343-9"
      x="540.50781"
      y="-1750">About Macromedia Flash Player</tspan></text>
+
     <path
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.99999994;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 745.5,-1831.5 -220,0"
@@ -7568,6 +7721,7 @@
      id="tspan6634"
      x="540.50781"
      y="-1815">Print...</tspan></text>
+
     <path
    sodipodi:nodetypes="cc"
    id="path6636"
@@ -7654,6 +7808,7 @@
      x="120.50781"
      id="tspan6484"
      sodipodi:role="line">View</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -7665,6 +7820,7 @@
      id="tspan6488"
      x="120.50781"
      y="-1352">Arrange Icons By</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text6490"
@@ -7676,6 +7832,7 @@
      x="120.50781"
      id="tspan6492"
      sodipodi:role="line">Refresh</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -7687,6 +7844,7 @@
      id="tspan6496"
      x="120.50781"
      y="-1309">Paste</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text6498"
@@ -7698,6 +7856,7 @@
      x="120.50781"
      id="tspan6500"
      sodipodi:role="line">Paste Shortcut</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -7709,6 +7868,7 @@
      id="tspan6504"
      x="120.50781"
      y="-1275">Undo Rename</tspan></text>
+
     <path
    style="color:#280b0b;fill:#280b0b;stroke:none;stroke-width:0.99999994;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 114,-1244 219.5,0 0,17 -219.5,0 z"
@@ -7730,6 +7890,7 @@
      x="120.50781"
      id="tspan6512"
      sodipodi:role="line">New</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -7741,6 +7902,7 @@
      id="tspan6516"
      x="120.50781"
      y="-1206">Properties</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text6518"
@@ -7752,6 +7914,7 @@
      x="120.50781"
      id="tspan6520"
      sodipodi:role="line">Call Home</tspan></text>
+
     <path
    style="color:#280b0b;fill:none;stroke:#ff0000;stroke-width:0.99999994;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 101.5,-1289.5 247,0 0,21 -247,0 z"
@@ -7768,19 +7931,21 @@
      x="368.73148"
      id="tspan6526"
      sodipodi:role="line">No more 'View Source'</tspan></text>
+
     <g
    style="display:inline"
    id="g6712-6"
    transform="translate(130,-2330)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/lf12f5.png"
    xlink:href="../src/dand/non-free/lf12f5.png"
-   checksum="498955e15c803307"
-   clip-path="url(#clipPath6827-5)"
-   width="600"
-   height="400"
-   id="image6821-2"
+   y="118"
    x="-45"
-   y="118" />
+   id="image6821-2"
+   height="400"
+   width="600"
+   clip-path="url(#clipPath6827-5)"
+   checksum="498955e15c803307" />
       <path
    id="path16952-6-1"
    style="fill:#280b0b;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
@@ -7893,6 +8058,7 @@
      id="tspan5253-5-8"
      x="540.50781"
      y="-1898">Zoom In</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text5255-4-9"
@@ -7904,6 +8070,7 @@
      x="540.50781"
      id="tspan5257-0-3"
      sodipodi:role="line">Zoom Out</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -7915,6 +8082,7 @@
      id="tspan5261-3-6"
      x="540.50781"
      y="-1865">Show All</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text5263-2-9"
@@ -7926,6 +8094,7 @@
      x="540.50781"
      id="tspan5265-9-4"
      sodipodi:role="line">Quality</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -7937,6 +8106,7 @@
      id="tspan5269-1-7"
      x="540.50781"
      y="-1784">Settings</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text5271-9-8"
@@ -7948,6 +8118,7 @@
      x="540.50781"
      id="tspan5273-7-2"
      sodipodi:role="line">Global Settings</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -7959,6 +8130,7 @@
      id="tspan5343-9-5"
      x="540.50781"
      y="-1750">About Macromedia Flash Player</tspan></text>
+
     <path
    style="color:#280b0b;fill:none;stroke:#280b0b;stroke-width:0.99999994;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 745.5,-1831.5 -220,0"
@@ -7980,6 +8152,7 @@
      id="tspan6634-3"
      x="540.50781"
      y="-1815">Print...</tspan></text>
+
     <path
    sodipodi:nodetypes="cc"
    id="path6636-2"
@@ -8005,6 +8178,7 @@
      id="tspan7604-5"
      x="505.73145"
      y="-2000.616">No more 'View Source'</tspan></text>
+
     <flowRoot
    transform="translate(-1.84375e-5,-2360)"
    xml:space="preserve"
@@ -8052,6 +8226,7 @@
      id="tspan4224-5-1"
      x="401.8002"
      y="-1993.178">~2006</tspan></text>
+
     <flowRoot
    transform="translate(-1.75e-5,-2360)"
    xml:space="preserve"
@@ -8093,6 +8268,7 @@
      x="422.1748"
      id="tspan4212-6-0-2-2"
      sodipodi:role="line">EXPLAIN: Relation GNU, Linux, Unix</tspan></text>
+
     <path
    id="path8146"
    d="m 345,-887 85,0 0,85 -85,0 z"
@@ -8125,6 +8301,7 @@
      x="366.75317"
      y="-1894.4114"
      id="tspan8244">Unix?</tspan></text>
+
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot8160-3"
@@ -8221,6 +8398,7 @@
      id="tspan8195"
      x="422.1748"
      y="-2401.1484">EXPLAIN: Relation GNU, Linux, Unix</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text8197"
@@ -8232,6 +8410,7 @@
      x="315.47348"
      id="tspan8199"
      sodipodi:role="line">Gnu's Not Unix</tspan></text>
+
     <g
    transform="translate(-104.99697,-2372)"
    id="g8201"
@@ -8253,6 +8432,7 @@
      x="229.14081"
      id="tspan8207"
      sodipodi:role="line">Hacker Joke</tspan></text>
+
     <path
    sodipodi:nodetypes="ccccc"
    style="color:#280b0b;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -8283,13 +8463,14 @@
    id="g4395"
    transform="translate(-40,-1420)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160607091409.png"
    xlink:href="../src/dand/free/20160607091409.png"
-   checksum="ca0500323fbaad80"
-   width="786"
-   height="667"
-   id="image4124"
+   y="181"
    x="152"
-   y="181" />
+   id="image4124"
+   height="667"
+   width="786"
+   checksum="ca0500323fbaad80" />
       <path
    sodipodi:nodetypes="ccccc"
    id="rect4127"
@@ -8320,13 +8501,14 @@
    id="g4371"
    transform="translate(1010,-3510)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160607091510.png"
    xlink:href="../src/dand/free/20160607091510.png"
-   checksum="42fdf27488d932ab"
-   width="843"
-   height="680"
-   id="image4207"
+   y="931"
    x="117"
-   y="931" />
+   id="image4207"
+   height="680"
+   width="843"
+   checksum="42fdf27488d932ab" />
       <path
    style="color:#280b0b;fill:#eaeaea;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 134,953 178,0 0,19 -178,0 z"
@@ -8357,13 +8539,14 @@
    id="g4379"
    transform="translate(-1065,-3155)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160607091626.png"
    xlink:href="../src/dand/free/20160607091626.png"
-   checksum="9f4b9e46b6806499"
-   width="826"
-   height="716"
-   id="image4279"
+   y="931"
    x="1164"
-   y="931" />
+   id="image4279"
+   height="716"
+   width="826"
+   checksum="9f4b9e46b6806499" />
       <path
    sodipodi:nodetypes="ccccc"
    id="path4210"
@@ -8399,13 +8582,14 @@
    id="g4387"
    transform="translate(0,-2360)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160607091713.png"
    xlink:href="../src/dand/free/20160607091713.png"
-   checksum="669108e0eff8df22"
-   width="828"
-   height="716"
-   id="image4351"
+   y="931"
    x="2098"
-   y="931" />
+   id="image4351"
+   height="716"
+   width="828"
+   checksum="669108e0eff8df22" />
       <path
    style="color:#280b0b;fill:#eaeaea;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 2115,953 178,0 0,19 -178,0 z"
@@ -8465,13 +8649,14 @@
    id="g4379-4"
    transform="translate(-1065,-3155)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160607091626.png"
    xlink:href="../src/dand/free/20160607091626.png"
-   checksum="9f4b9e46b6806499"
-   y="931"
-   x="1164"
-   id="image4279-3"
+   width="826"
    height="716"
-   width="826" />
+   id="image4279-3"
+   x="1164"
+   y="931"
+   checksum="9f4b9e46b6806499" />
       <path
    sodipodi:nodetypes="ccccc"
    id="path4210-9"
@@ -8511,24 +8696,26 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606195708.png"
    xlink:href="../src/dand/free/20160606195708.png"
-   checksum="35c80bbe937b6e6c"
-   y="-2508"
-   x="19"
-   id="image4861"
+   width="817"
    height="503"
-   width="817" />
+   id="image4861"
+   x="19"
+   y="-2508"
+   checksum="35c80bbe937b6e6c" />
     <g
    id="g4778"
    transform="translate(-150,-2566)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606195618.png"
    xlink:href="../src/dand/free/20160606195618.png"
-   checksum="3222fcdcdbc71ce4"
-   width="940"
-   height="630"
-   id="image3711"
+   y="300"
    x="306"
-   y="300" />
+   id="image3711"
+   height="630"
+   width="940"
+   checksum="3222fcdcdbc71ce4" />
       <path
    sodipodi:nodetypes="ccccc"
    id="rect3714"
@@ -8550,32 +8737,35 @@
    id="path4774"
    sodipodi:nodetypes="cccc" />
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606200816.png"
    xlink:href="../src/dand/free/20160606200816.png"
-   checksum="1f4349756e9abbad"
-   transform="translate(-310,-290)"
-   clip-path="url(#clipPath4770)"
-   width="940"
-   height="630"
-   id="image4765"
+   y="589"
    x="618"
-   y="589" />
+   id="image4765"
+   height="630"
+   width="940"
+   clip-path="url(#clipPath4770)"
+   transform="translate(-310,-290)"
+   checksum="1f4349756e9abbad" />
     </g>
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606195747.png"
    xlink:href="../src/dand/free/20160606195747.png"
-   checksum="bedf4dd606773eb6"
-   y="-3260"
-   x="-19"
-   id="image4923"
+   width="630"
    height="680"
-   width="630" />
+   id="image4923"
+   x="-19"
+   y="-3260"
+   checksum="bedf4dd606773eb6" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160606195908.png"
    xlink:href="../src/dand/free/20160606195908.png"
-   checksum="c9290fb92d17946e"
-   y="-2050"
-   x="-181"
-   id="image4985"
+   width="734"
    height="651"
-   width="734" />
+   id="image4985"
+   x="-181"
+   y="-2050"
+   checksum="c9290fb92d17946e" />
     <flowRoot
    transform="translate(-1.75e-5,-2360)"
    xml:space="preserve"
@@ -8624,6 +8814,7 @@
      id="tspan4220-7-0"
      sodipodi:role="line"
      style="font-size:144px;fill:#ffffff">:$ ?</tspan></text>
+
     <flowRoot
    transform="translate(-1.75e-5,-2360)"
    xml:space="preserve"
@@ -8727,6 +8918,7 @@
      x="51.78035"
      id="tspan4236-1-4"
      sodipodi:role="line">Köln</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:30.78164673px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Inconsolata;-inkscape-font-specification:Inconsolata"
@@ -8738,6 +8930,7 @@
      id="tspan5114"
      x="744.34729"
      y="-2007.2554">Falkenstein</tspan></text>
+
     <flowRoot
    transform="translate(-1.75e-5,-2360)"
    xml:space="preserve"
@@ -9063,13 +9256,14 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/i-know-this-scene-jurassic-park-when-lex-saves-day-by-hacking-into-unix-system-under-two.jpg"
    xlink:href="../src/dand/non-free/i-know-this-scene-jurassic-park-when-lex-saves-day-by-hacking-into-unix-system-under-two.jpg"
-   checksum="9cb0c708ce0f4313"
-   y="-2363"
-   x="-31"
-   id="image5211"
+   width="1439.4464"
    height="780"
-   width="1439.4464" />
+   id="image5211"
+   x="-31"
+   y="-2363"
+   checksum="9cb0c708ce0f4313" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -9092,6 +9286,7 @@
      x="512.815"
      y="-1632.8879"
      id="tspan5219">I know this.</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -9123,169 +9318,183 @@
    id="g5411"
    transform="translate(0,-2360)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
    xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
-   transform="translate(-300,530)"
-   y="127"
-   x="-3"
-   id="image5385"
-   height="644"
-   width="1144"
-   clip-path="url(#clipPath5405)" />
-      <image
-   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
    clip-path="url(#clipPath5405)"
    width="1144"
    height="644"
-   id="image5409"
+   id="image5385"
    x="-3"
    y="127"
-   transform="matrix(-1,0,0,1,1826,530)" />
+   transform="translate(-300,530)"
+   checksum="6a88eec89af5020e" />
+      <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
+   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
+   transform="matrix(-1,0,0,1,1826,530)"
+   y="127"
+   x="-3"
+   id="image5409"
+   height="644"
+   width="1144"
+   clip-path="url(#clipPath5405)"
+   checksum="6a88eec89af5020e" />
     </g>
     <g
    id="g5415"
    transform="translate(0,-2469)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
    xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
+   transform="translate(-300,530)"
+   y="127"
+   x="-3"
+   id="image5417"
+   height="644"
+   width="1144"
+   clip-path="url(#clipPath5405)"
+   checksum="6a88eec89af5020e" />
+      <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
+   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
    clip-path="url(#clipPath5405)"
    width="1144"
    height="644"
-   id="image5417"
-   x="-3"
-   y="127"
-   transform="translate(-300,530)" />
-      <image
-   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
-   transform="matrix(-1,0,0,1,1826,530)"
-   y="127"
-   x="-3"
    id="image5419"
-   height="644"
-   width="1144"
-   clip-path="url(#clipPath5405)" />
+   x="-3"
+   y="127"
+   transform="matrix(-1,0,0,1,1826,530)"
+   checksum="6a88eec89af5020e" />
     </g>
     <g
    transform="translate(0,-2579)"
    id="g5421">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
    xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
-   transform="translate(-300,530)"
-   y="127"
-   x="-3"
-   id="image5423"
-   height="644"
-   width="1144"
-   clip-path="url(#clipPath5405)" />
-      <image
-   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
    clip-path="url(#clipPath5405)"
    width="1144"
    height="644"
-   id="image5425"
+   id="image5423"
    x="-3"
    y="127"
-   transform="matrix(-1,0,0,1,1826,530)" />
+   transform="translate(-300,530)"
+   checksum="6a88eec89af5020e" />
+      <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
+   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
+   transform="matrix(-1,0,0,1,1826,530)"
+   y="127"
+   x="-3"
+   id="image5425"
+   height="644"
+   width="1144"
+   clip-path="url(#clipPath5405)"
+   checksum="6a88eec89af5020e" />
     </g>
     <g
    id="g5427"
    transform="translate(0,-2690)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
    xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
+   transform="translate(-300,530)"
+   y="127"
+   x="-3"
+   id="image5429"
+   height="644"
+   width="1144"
+   clip-path="url(#clipPath5405)"
+   checksum="6a88eec89af5020e" />
+      <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
+   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
    clip-path="url(#clipPath5405)"
    width="1144"
    height="644"
-   id="image5429"
-   x="-3"
-   y="127"
-   transform="translate(-300,530)" />
-      <image
-   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
-   transform="matrix(-1,0,0,1,1826,530)"
-   y="127"
-   x="-3"
    id="image5431"
-   height="644"
-   width="1144"
-   clip-path="url(#clipPath5405)" />
+   x="-3"
+   y="127"
+   transform="matrix(-1,0,0,1,1826,530)"
+   checksum="6a88eec89af5020e" />
     </g>
     <g
    transform="translate(0,-2800)"
    id="g5433">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
    xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
-   transform="translate(-300,530)"
-   y="127"
-   x="-3"
-   id="image5435"
-   height="644"
-   width="1144"
-   clip-path="url(#clipPath5405)" />
-      <image
-   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
    clip-path="url(#clipPath5405)"
    width="1144"
    height="644"
-   id="image5437"
+   id="image5435"
    x="-3"
    y="127"
-   transform="matrix(-1,0,0,1,1826,530)" />
+   transform="translate(-300,530)"
+   checksum="6a88eec89af5020e" />
+      <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
+   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
+   transform="matrix(-1,0,0,1,1826,530)"
+   y="127"
+   x="-3"
+   id="image5437"
+   height="644"
+   width="1144"
+   clip-path="url(#clipPath5405)"
+   checksum="6a88eec89af5020e" />
     </g>
     <g
    id="g5439"
    transform="translate(0,-2911)">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
    xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
+   transform="translate(-300,530)"
+   y="127"
+   x="-3"
+   id="image5441"
+   height="644"
+   width="1144"
+   clip-path="url(#clipPath5405)"
+   checksum="6a88eec89af5020e" />
+      <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
+   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
    clip-path="url(#clipPath5405)"
    width="1144"
    height="644"
-   id="image5441"
-   x="-3"
-   y="127"
-   transform="translate(-300,530)" />
-      <image
-   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
-   transform="matrix(-1,0,0,1,1826,530)"
-   y="127"
-   x="-3"
    id="image5443"
-   height="644"
-   width="1144"
-   clip-path="url(#clipPath5405)" />
+   x="-3"
+   y="127"
+   transform="matrix(-1,0,0,1,1826,530)"
+   checksum="6a88eec89af5020e" />
     </g>
     <g
    transform="translate(0,-3022)"
    id="g5445">
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
    xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
-   transform="translate(-300,530)"
-   y="127"
-   x="-3"
-   id="image5447"
-   height="644"
-   width="1144"
-   clip-path="url(#clipPath5405)" />
-      <image
-   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
    clip-path="url(#clipPath5405)"
    width="1144"
    height="644"
-   id="image5449"
+   id="image5447"
    x="-3"
    y="127"
-   transform="matrix(-1,0,0,1,1826,530)" />
+   transform="translate(-300,530)"
+   checksum="6a88eec89af5020e" />
+      <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
+   xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
+   transform="matrix(-1,0,0,1,1826,530)"
+   y="127"
+   x="-3"
+   id="image5449"
+   height="644"
+   width="1144"
+   clip-path="url(#clipPath5405)"
+   checksum="6a88eec89af5020e" />
     </g>
   </g>
   <g
@@ -9295,15 +9504,16 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
    xlink:href="../src/dand/non-free/zoap2qcomenv2cweyrt6.JPG"
-   checksum="6a88eec89af5020e"
-   y="127"
-   x="-3"
-   id="image5360"
-   height="644"
-   width="1144"
+   transform="translate(-3,-2361)"
    clip-path="url(#clipPath5379)"
-   transform="translate(-3,-2361)" />
+   width="1144"
+   height="644"
+   id="image5360"
+   x="-3"
+   y="127"
+   checksum="6a88eec89af5020e" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -9346,15 +9556,16 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/2how8wo.jpg"
    xlink:href="../src/dand/non-free/2how8wo.jpg"
-   checksum="7327efae41d5132a"
-   y="-79"
-   x="-254"
-   id="image5265"
-   height="900"
-   width="1600"
+   transform="translate(-10,-2360)"
    clip-path="url(#clipPath5294)"
-   transform="translate(-10,-2360)" />
+   width="1600"
+   height="900"
+   id="image5265"
+   x="-254"
+   y="-79"
+   checksum="7327efae41d5132a" />
   </g>
   <g
    style="display:none"
@@ -9373,6 +9584,7 @@
      y="-1636.8879"
      x="512.815"
      sodipodi:role="line">You didn't say the magic word.</tspan></text>
+
   </g>
   <g
    style="display:none"
@@ -9421,25 +9633,27 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/VVWS0506_osfa.png"
    xlink:href="../src/dand/non-free/VVWS0506_osfa.png"
-   checksum="08ad30b7e606249a"
-   y="191"
-   x="51"
-   id="image5511"
-   height="768"
-   width="861"
+   transform="translate(-130,-2448)"
    clip-path="url(#clipPath5528)"
-   transform="translate(-130,-2448)" />
-    <image
-   xlink:href="../src/dand/non-free/VVWS0506_unix.png"
-   checksum="f7a7e289f42129a9"
-   y="333"
-   x="426"
-   id="image5591"
-   height="768"
    width="861"
+   height="768"
+   id="image5511"
+   x="51"
+   y="191"
+   checksum="08ad30b7e606249a" />
+    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/VVWS0506_unix.png"
+   xlink:href="../src/dand/non-free/VVWS0506_unix.png"
+   transform="translate(-152,-2537)"
    clip-path="url(#clipPath5601)"
-   transform="translate(-152,-2537)" />
+   width="861"
+   height="768"
+   id="image5591"
+   x="426"
+   y="333"
+   checksum="f7a7e289f42129a9" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -9517,15 +9731,16 @@
    d="m 96,92.99 0,0.5 0,561.99995 0,0.5 0.5,0 380,0 0.5,0 0,-0.5 0,-561.99995 0,-0.5 -0.5,0 -380,0 z m 1,1 379,0 0,560.99995 -379,0 z"
    style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#280b0b;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
         <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/raymond-photo.jpg"
    xlink:href="../src/dand/non-free/raymond-photo.jpg"
-   checksum="d6555faecd14c92c"
-   y="152"
-   x="359"
-   id="image5665"
-   height="539"
-   width="424"
+   transform="translate(-290,-30)"
    clip-path="url(#clipPath5671)"
-   transform="translate(-290,-30)" />
+   width="424"
+   height="539"
+   id="image5665"
+   x="359"
+   y="152"
+   checksum="d6555faecd14c92c" />
       </g>
     </g>
     <path
@@ -9642,15 +9857,16 @@
    d="m 358,901.99 0,0.5 0,484 0,0.5 0.5,0 512,0 0.5,0 0,-0.5 0,-484 0,-0.5 -0.5,0 -512,0 z m 1,1 511,0 0,483 -511,0 z"
    style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#280b0b;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
       <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/pdp11-unix.jpg"
    xlink:href="../src/dand/non-free/pdp11-unix.jpg"
-   checksum="b7b02445c63d86ac"
-   clip-path="url(#clipPath6042)"
-   transform="matrix(0.99676973,0.08031256,-0.08031256,0.99676973,-150,420)"
-   width="652"
-   height="522"
-   id="image6036"
+   y="409.98706"
    x="518.91577"
-   y="409.98706" />
+   id="image6036"
+   height="522"
+   width="652"
+   transform="matrix(0.99676973,0.08031256,-0.08031256,0.99676973,-150,420)"
+   clip-path="url(#clipPath6042)"
+   checksum="b7b02445c63d86ac" />
     </g>
     <flowRoot
    transform="translate(-1.75e-5,-2360)"
@@ -9681,13 +9897,14 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/unixphilosophy.jpg"
    xlink:href="../src/dand/non-free/unixphilosophy.jpg"
-   checksum="05fac1f7c02cca97"
-   y="-2360"
-   x="-20"
-   id="image8372"
+   width="1056.3961"
    height="768"
-   width="1056.3961" />
+   id="image8372"
+   x="-20"
+   y="-2360"
+   checksum="05fac1f7c02cca97" />
     <flowRoot
    transform="translate(-1.84375e-5,-2360)"
    xml:space="preserve"
@@ -9780,6 +9997,7 @@
      id="tspan3339"
      x="282.58038"
      y="-1899.7584">Celebrating 40 years uptime</tspan></text>
+
     <flowRoot
    transform="translate(-106.67578,-1747.2033)"
    style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:Courier New;-inkscape-font-specification:Courier New"
@@ -10699,13 +10917,14 @@
      style="font-size:22px;line-height:200%;fill:#f2f2f2">was hosted at the KHM in early 2008.<flowSpan
    style="fill:#280b0b"
    id="flowSpan6635"> Inspired by the idea that within Linux culture users are encouraged to think and make their own applications,</flowSpan> the idea was to create a hyperconnective machine/instrument/environment</flowPara></flowRoot>    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/regen-pd.png"
    xlink:href="../src/dand/non-free/regen-pd.png"
-   checksum="0545a9585f6b1d18"
-   y="-2278"
-   x="117"
-   id="image6760"
+   width="790"
    height="585"
-   width="790" />
+   id="image6760"
+   x="117"
+   y="-2278"
+   checksum="0545a9585f6b1d18" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -10753,14 +10972,16 @@
      x="372.1748"
      id="tspan4212-6-0"
      sodipodi:role="line">TODO: hyperconnective instrument</tspan></text>
+
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/system_01_02.png"
    xlink:href="../src/dand/free/system_01_02.png"
-   checksum="6bf6602a15105033"
-   y="-2262"
-   x="106"
-   id="image6901"
+   width="800"
    height="552"
-   width="800" />
+   id="image6901"
+   x="106"
+   y="-2262"
+   checksum="6bf6602a15105033" />
   </g>
   <g
    style="display:none"
@@ -10783,14 +11004,16 @@
      id="tspan6948"
      x="372.1748"
      y="-2421.1484">TODO: hyperconnective instrument</tspan></text>
+
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/system_01_01.png"
    xlink:href="../src/dand/free/system_01_01.png"
-   checksum="6a8c6d3f2013581b"
-   y="-2280"
-   x="108"
-   id="image7011"
+   width="800"
    height="552"
-   width="800" />
+   id="image7011"
+   x="108"
+   y="-2280"
+   checksum="6a8c6d3f2013581b" />
   </g>
   <g
    inkscape:label="XX_002050"
@@ -10826,15 +11049,16 @@
    d="m -76,-2360 1100,0 0,768 -1100,0 z"
    style="color:#280b0b;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/system_02.png"
    xlink:href="../src/dand/free/system_02.png"
-   checksum="3f1278643b67759d"
-   y="-86.5"
-   x="191.63802"
-   id="image7091"
-   height="885"
-   width="640.724"
+   transform="translate(-40,-2340)"
    clip-path="url(#clipPath7096)"
-   transform="translate(-40,-2340)" />
+   width="640.724"
+   height="885"
+   id="image7091"
+   x="191.63802"
+   y="-86.5"
+   checksum="3f1278643b67759d" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -10843,15 +11067,16 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/DSC_0008.JPG"
    xlink:href="../src/dand/non-free/DSC_0008.JPG"
-   checksum="639b61dee89b2930"
-   y="-1052.6945"
-   x="-423.52374"
-   id="image6628"
-   height="1138.724"
-   width="1712.6409"
+   clip-path="url(#clipPath4026)"
    transform="matrix(0.03819344,0.99927036,-0.99927036,0.03819344,0,-2360)"
-   clip-path="url(#clipPath4026)" />
+   width="1712.6409"
+   height="1138.724"
+   id="image6628"
+   x="-423.52374"
+   y="-1052.6945"
+   checksum="639b61dee89b2930" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot10005-5"
@@ -10896,15 +11121,16 @@
      style="font-size:22px;line-height:200%;fill:#280b0b">Posters were generated from a pool of modular illustrations,</flowPara><flowPara
      style="font-size:22px;line-height:200%;fill:#f2f2f2"
      id="flowPara10158">producing not one poster, but a lot of variations.</flowPara></flowRoot>    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608123924.png"
    xlink:href="../src/dand/free/20160608123924.png"
-   checksum="29f769cc2932e5d8"
-   y="17"
-   x="24"
-   id="image7164"
-   height="719"
-   width="982"
+   transform="translate(20,-2364)"
    clip-path="url(#clipPath7313)"
-   transform="translate(20,-2364)" />
+   width="982"
+   height="719"
+   id="image7164"
+   x="24"
+   y="17"
+   checksum="29f769cc2932e5d8" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -10930,15 +11156,16 @@
      style="font-size:22px;line-height:200%;fill:#f2f2f2"><flowSpan
    id="flowSpan7469"
    style="font-size:22px;line-height:200%;fill:#280b0b">producing not one poster, </flowSpan>but a lot of variations.</flowPara></flowRoot>    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608131428.png"
    xlink:href="../src/dand/free/20160608131428.png"
-   checksum="90bac9eecbdd6317"
-   y="90"
-   x="21"
-   id="image7425"
-   height="768"
-   width="1024"
+   transform="translate(-11,-2394)"
    clip-path="url(#clipPath7431)"
-   transform="translate(-11,-2394)" />
+   width="1024"
+   height="768"
+   id="image7425"
+   x="21"
+   y="90"
+   checksum="90bac9eecbdd6317" />
   </g>
   <g
    style="display:none"
@@ -10962,13 +11189,14 @@
      style="font-size:22px;line-height:200%;fill:#280b0b">Posters were generated from a pool of modular illustrations,</flowPara><flowPara
      style="font-size:22px;line-height:200%;fill:#280b0b"
      id="flowPara7451">producing not one poster, but a lot of variations.</flowPara></flowRoot>    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608131448.png"
    xlink:href="../src/dand/free/20160608131448.png"
-   checksum="d00bff51f56e4f50"
-   y="-2360"
-   x="0"
-   id="image7541"
+   width="1024"
    height="768"
-   width="1024" />
+   id="image7541"
+   x="0"
+   y="-2360"
+   checksum="d00bff51f56e4f50" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -10992,13 +11220,14 @@
      id="flowPara7552">Posters were generated from a pool of modular illustrations,</flowPara><flowPara
      id="flowPara7554"
      style="font-size:22px;line-height:200%;fill:#280b0b">producing not one poster, but a lot of variations.</flowPara></flowRoot>    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608131511.png"
    xlink:href="../src/dand/free/20160608131511.png"
-   checksum="3178e352ac3c82b8"
-   width="1024"
-   height="768"
-   id="image7556"
+   y="-2360"
    x="0"
-   y="-2360" />
+   id="image7556"
+   height="768"
+   width="1024"
+   checksum="3178e352ac3c82b8" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11057,6 +11286,7 @@
      y="-2100.04"
      id="tspan7342"
      style="fill:#00ff00">Doug Gwyn, in Introducing Regular Expressions</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11441,6 +11671,7 @@
      y="-2077.72"
      style="font-size:48px;fill:#280b0b"
      id="tspan7908">design rules</tspan></text>
+
   </g>
   <g
    style="display:none"
@@ -11484,6 +11715,7 @@
      y="-2010.0399"
      style="font-size:48px;fill:#280b0b"
      id="tspan9717">to design posters</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11498,15 +11730,16 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/03_MAKEART2009_Printposter-03.jpg"
    xlink:href="../src/dand/free/03_MAKEART2009_Printposter-03.jpg"
-   checksum="28949130b83145eb"
-   y="-2.6816721"
-   x="-88.839478"
-   id="image8514"
-   height="785.1272"
-   width="1260.4049"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath6735)"
-   transform="translate(0,-2360)" />
+   width="1260.4049"
+   height="785.1272"
+   id="image8514"
+   x="-88.839478"
+   y="-2.6816721"
+   checksum="28949130b83145eb" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11515,25 +11748,27 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/03_MAKEART2009_Printposter-01.jpg"
    xlink:href="../src/dand/free/03_MAKEART2009_Printposter-01.jpg"
-   checksum="38654a410bfb0018"
-   y="-20.38686"
-   x="-69.578888"
-   id="image8561"
-   height="810.50104"
-   width="607.87579"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath6757)"
-   transform="translate(0,-2360)" />
+   width="607.87579"
+   height="810.50104"
+   id="image8561"
+   x="-69.578888"
+   y="-20.38686"
+   checksum="38654a410bfb0018" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/03_MAKEART2009_Printposter-02.jpg"
    xlink:href="../src/dand/free/03_MAKEART2009_Printposter-02.jpg"
-   checksum="9bf5990b373171d5"
-   y="-24.175434"
-   x="440.28754"
-   id="image8623"
-   height="822.77209"
-   width="617.55194"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath6746)"
-   transform="translate(0,-2360)" />
+   width="617.55194"
+   height="822.77209"
+   id="image8623"
+   x="440.28754"
+   y="-24.175434"
+   checksum="9bf5990b373171d5" />
   </g>
   <g
    style="display:none"
@@ -11542,15 +11777,16 @@
    inkscape:groupmode="layer"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_MAKEART2009_Variety-01_600dpi-dark.jpg"
    xlink:href="../src/dand/free/04_MAKEART2009_Variety-01_600dpi-dark.jpg"
-   checksum="de37a667975355bd"
-   y="-8.7347803"
-   x="-6.5073776"
-   id="image9105"
-   height="804.35712"
-   width="568.64478"
+   transform="matrix(0,1.5177852,-1.5177852,0,1095.3822,-2396.9878)"
    clip-path="url(#clipPath6768)"
-   transform="matrix(0,1.5177852,-1.5177852,0,1095.3822,-2396.9878)" />
+   width="568.64478"
+   height="804.35712"
+   id="image9105"
+   x="-6.5073776"
+   y="-8.7347803"
+   checksum="de37a667975355bd" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11559,15 +11795,16 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_MAKEART2009_Variety-02_600dpi-dark.jpg"
    xlink:href="../src/dand/free/04_MAKEART2009_Variety-02_600dpi-dark.jpg"
-   checksum="ab4be5bfd173ae15"
-   transform="matrix(0,1,-1,0,0,-2360)"
-   y="-1104.4604"
-   x="-34.843246"
-   id="image9127"
-   height="1184.921"
+   clip-path="url(#clipPath6779)"
    width="837.68652"
-   clip-path="url(#clipPath6779)" />
+   height="1184.921"
+   id="image9127"
+   x="-34.843246"
+   y="-1104.4604"
+   transform="matrix(0,1,-1,0,0,-2360)"
+   checksum="ab4be5bfd173ae15" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11586,6 +11823,7 @@
      x="255"
      id="tspan4220-7-5"
      sodipodi:role="line">http://forkable.eu/generators/wtf</tspan></text>
+
   </g>
   <g
    inkscape:label="XX_002700_liwoli"
@@ -11594,15 +11832,16 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/03_LIWOLI2010_Printposter-01.jpg"
    xlink:href="../src/dand/free/03_LIWOLI2010_Printposter-01.jpg"
-   checksum="bc19b9a06fabcfff"
-   y="-27.622992"
-   x="-147.52597"
-   id="image8691"
-   height="823.6123"
-   width="1352.2662"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath6790)"
-   transform="translate(0,-2360)" />
+   width="1352.2662"
+   height="823.6123"
+   id="image8691"
+   x="-147.52597"
+   y="-27.622992"
+   checksum="bc19b9a06fabcfff" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11611,13 +11850,14 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_LIWOLI2010_Variety-03_600dpi-dark.jpg"
    xlink:href="../src/dand/free/04_LIWOLI2010_Variety-03_600dpi-dark.jpg"
-   checksum="a565ca55f191ae9b"
-   y="-2696.6636"
-   x="-15.358306"
-   id="image9189"
+   width="1063.0605"
    height="1503.7164"
-   width="1063.0605" />
+   id="image9189"
+   x="-15.358306"
+   y="-2696.6636"
+   checksum="a565ca55f191ae9b" />
   </g>
   <g
    inkscape:label="XX_002722"
@@ -11626,15 +11866,16 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_LIWOLI2010_Variety-03_600dpi-dark.jpg"
    xlink:href="../src/dand/free/04_LIWOLI2010_Variety-03_600dpi-dark.jpg"
-   checksum="a565ca55f191ae9b"
-   width="2761.3357"
-   height="3905.9543"
-   id="image9194"
-   x="-1068.8123"
-   y="-2315.9539"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath9741)"
-   transform="translate(0,-2360)" />
+   y="-2315.9539"
+   x="-1068.8123"
+   id="image9194"
+   height="3905.9543"
+   width="2761.3357"
+   checksum="a565ca55f191ae9b" />
   </g>
   <g
    style="display:none"
@@ -11653,6 +11894,7 @@
      x="255.32031"
      y="-2028.9681"
      id="tspan8700">http://forkable.eu/generators/dit</tspan></text>
+
   </g>
   <g
    style="display:none"
@@ -11671,6 +11913,7 @@
      y="-2061.1484"
      x="372.1748"
      sodipodi:role="line">TODO: chmodx</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11679,15 +11922,16 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/03_MAKEART2010_Printposter-06.jpg"
    xlink:href="../src/dand/free/03_MAKEART2010_Printposter-06.jpg"
-   checksum="b41bcd60d4acc20e"
-   y="-26.95517"
-   x="-17.977386"
-   id="image8763"
-   height="817.20551"
-   width="1421.6707"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath6801)"
-   transform="translate(0,-2360)" />
+   width="1421.6707"
+   height="817.20551"
+   id="image8763"
+   x="-17.977386"
+   y="-26.95517"
+   checksum="b41bcd60d4acc20e" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11696,13 +11940,14 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/03_MAKEART2010_Printposter-05.jpg"
    xlink:href="../src/dand/free/03_MAKEART2010_Printposter-05.jpg"
-   checksum="77524d0045caab40"
-   y="-2256.5964"
-   x="-0.055603027"
-   id="image8826"
+   width="1024.1112"
    height="561.19299"
-   width="1024.1112" />
+   id="image8826"
+   x="-0.055603027"
+   y="-2256.5964"
+   checksum="77524d0045caab40" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11711,13 +11956,14 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/03_MAKEART2010_Printposter-02.jpg"
    xlink:href="../src/dand/free/03_MAKEART2010_Printposter-02.jpg"
-   checksum="fb8c289dfafe35c4"
-   y="-2374.6838"
-   x="202.93805"
-   id="image8889"
+   width="618.1239"
    height="797.36755"
-   width="618.1239" />
+   id="image8889"
+   x="202.93805"
+   y="-2374.6838"
+   checksum="fb8c289dfafe35c4" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11726,25 +11972,27 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_MAKEART2010_Variety-02_600dpi-dark.jpg"
    xlink:href="../src/dand/free/04_MAKEART2010_Variety-02_600dpi-dark.jpg"
-   checksum="4c4808f8b77cf152"
-   clip-path="url(#clipPath9747)"
-   width="573.59869"
-   height="811.36462"
+   transform="translate(490,-2360)"
+   y="-12.809252"
+   x="6.8815918"
    id="image8970"
-   x="6.8815918"
-   y="-12.809252"
-   transform="translate(490,-2360)" />
-    <image
-   xlink:href="../src/dand/free/04_MAKEART2010_Variety-01_600dpi-dark.jpg"
-   checksum="8c9dc8a4a485a355"
-   y="-12.809252"
-   x="6.8815918"
-   id="image8958"
    height="811.36462"
    width="573.59869"
+   clip-path="url(#clipPath9747)"
+   checksum="4c4808f8b77cf152" />
+    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_MAKEART2010_Variety-01_600dpi-dark.jpg"
+   xlink:href="../src/dand/free/04_MAKEART2010_Variety-01_600dpi-dark.jpg"
+   transform="translate(-36,-2360)"
    clip-path="url(#clipPath9753)"
-   transform="translate(-36,-2360)" />
+   width="573.59869"
+   height="811.36462"
+   id="image8958"
+   x="6.8815918"
+   y="-12.809252"
+   checksum="8c9dc8a4a485a355" />
   </g>
   <g
    inkscape:label="XX_XX_002932"
@@ -11753,25 +12001,27 @@
    style="display:none"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_MAKEART2010_Variety-02_600dpi-dark.jpg"
    xlink:href="../src/dand/free/04_MAKEART2010_Variety-02_600dpi-dark.jpg"
-   checksum="4c4808f8b77cf152"
-   transform="matrix(1.6287721,0,0,1.6287721,457.30143,-2607.0276)"
-   y="-12.809252"
-   x="6.8815918"
-   id="image8974"
-   height="811.36462"
-   width="573.59869"
-   clip-path="url(#clipPath8966)" />
-    <image
-   xlink:href="../src/dand/free/04_MAKEART2010_Variety-01_600dpi-dark.jpg"
-   checksum="8c9dc8a4a485a355"
-   transform="matrix(1.6287721,0,0,1.6287721,-381.51622,-2607.0276)"
    clip-path="url(#clipPath8966)"
    width="573.59869"
    height="811.36462"
-   id="image8976"
+   id="image8974"
    x="6.8815918"
-   y="-12.809252" />
+   y="-12.809252"
+   transform="matrix(1.6287721,0,0,1.6287721,457.30143,-2607.0276)"
+   checksum="4c4808f8b77cf152" />
+    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_MAKEART2010_Variety-01_600dpi-dark.jpg"
+   xlink:href="../src/dand/free/04_MAKEART2010_Variety-01_600dpi-dark.jpg"
+   y="-12.809252"
+   x="6.8815918"
+   id="image8976"
+   height="811.36462"
+   width="573.59869"
+   clip-path="url(#clipPath8966)"
+   transform="matrix(1.6287721,0,0,1.6287721,-381.51622,-2607.0276)"
+   checksum="8c9dc8a4a485a355" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11790,6 +12040,7 @@
      y="-2028.9681"
      x="255.32031"
      sodipodi:role="line">http://forkable.eu/generators/i-bd</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11841,6 +12092,7 @@
      x="294.51599"
      id="tspan4236-1-9"
      sodipodi:role="line">Free Software?</tspan></text>
+
   </g>
   <g
    style="display:none"
@@ -11903,6 +12155,7 @@
      id="tspan4236-1-9-8"
      sodipodi:role="line"
      style="font-size:36px">www.forkable.eu</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -11974,6 +12227,7 @@
      x="147.00256"
      y="-2015.2206"
      id="tspan11575">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -12029,13 +12283,14 @@
      style="font-size:22px;line-height:200%;fill:#f2f2f2">software_.</flowPara><flowPara
      id="flowPara8144"
      style="font-size:22px;line-height:200%;fill:#280b0b" /></flowRoot>    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/goldberg_01.png"
    xlink:href="../src/dand/non-free/goldberg_01.png"
-   checksum="bb7c6581f4a5599a"
-   y="-2274"
-   x="132"
-   id="image9292"
+   width="800"
    height="372"
-   width="800" />
+   id="image9292"
+   x="132"
+   y="-2274"
+   checksum="bb7c6581f4a5599a" />
     <text
    xml:space="preserve"
    style="font-size:20px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#00ff00;fill-opacity:1;stroke:none;font-family:Whois;-inkscape-font-specification:Whois Medium"
@@ -12051,6 +12306,7 @@
      x="144"
      y="-2285.8"
      id="tspan9651">(when she says  ISN'T HE GRAND!)</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text9333"
@@ -12124,6 +12380,7 @@
      x="143.90216"
      sodipodi:role="line"
      id="tspan9690">(If you don't know where to get an ooflepif, just forget the whole thing.)</tspan></text>
+
   </g>
   <g
    style="display:none"
@@ -12187,6 +12444,7 @@
      x="189.64101"
      id="tspan8192"
      sodipodi:role="line">Speculative Software?</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -12195,15 +12453,16 @@
    style="display:inline"
    sodipodi:insensitive="true">
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/non-free/_DSC4772.JPG"
    xlink:href="../src/dand/non-free/_DSC4772.JPG"
-   checksum="da4a9c9047f7a75d"
-   clip-path="url(#clipPath7755)"
-   transform="matrix(0.99944603,-0.03328102,0.03328102,0.99944603,0,-2361)"
-   width="1209.9807"
-   height="804.50842"
-   id="image7683"
+   y="0.40089476"
    x="-28.992315"
-   y="0.40089476" />
+   id="image7683"
+   height="804.50842"
+   width="1209.9807"
+   transform="matrix(0.99944603,-0.03328102,0.03328102,0.99944603,0,-2361)"
+   clip-path="url(#clipPath7755)"
+   checksum="da4a9c9047f7a75d" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot10312-3-2-8"
@@ -12245,7 +12504,35 @@
      style="font-size:22px;line-height:200%;fill:#f2f2f2"
      id="flowPara10488-6-4">a generic set of &quot;users&quot;. So in a way it is _personal software_.</flowPara><flowPara
      style="font-size:22px;line-height:200%;fill:#f2f2f2"
-     id="flowPara10372-7-0-5" /></flowRoot>  </g>
+     id="flowPara10372-7-0-5" /></flowRoot>  </g><g
+   inkscape:groupmode="layer"
+   id="layer60"
+   inkscape:label="004000"><path
+     style="fill:none;stroke:#00ff00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 776.58534,-2263.2847 c -0.2381,12.1429 3.55051,21.7457 9.37926,28.9709 5.82875,7.2252 6.92842,8.8544 7.67188,13.0755 0.74346,4.2211 -5.04244,10.1988 -4.69656,13.795 0.34588,3.5963 9.03881,6.1708 9.03881,6.1708 0,0 -1.16583,3.9747 -0.32866,5.6743 1.28319,2.6051 6.06509,2.8831 7.20223,4.9016 0.80475,3.9431 -0.49015,5.5134 4.279,6.3664 0,0 1.16524,10.3174 6.0835,11.1809 25.31343,4.4443 43.20749,-25.9541 43.51365,-37.7414"
+     id="path15935"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="czzzcaccsc" /><path
+     style="fill:none;stroke:#00ff00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;color:#000000;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+     d="m 792.17331,-2246.1388 c 4.11527,5.8181 15.19949,3.4757 19.31476,8.5843"
+     id="path15937"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" /><path
+     style="color:#000000;fill:none;stroke:#00ff00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+     d="m 798.31241,-2195.0926 c 6.03057,-3.1908 10.51455,4.2273 13.47171,4.5411 -0.30273,2.4218 -2.45698,2.6785 -2.71365,6.1007"
+     id="path15966"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" /><path
+     sodipodi:nodetypes="cc"
+     inkscape:connector-curvature="0"
+     id="path15974"
+     d="m 797.39691,-2226.4217 c 6.30805,4.4781 11.47192,0.1184 16.07448,2.1814"
+     style="color:#000000;fill:none;stroke:#00ff00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" /><path
+     style="color:#000000;fill:none;stroke:#00ff00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+     d="m 799.28596,-2225.3199 c 6.08882,2.8314 8.93926,9.6351 14.06863,1.1092"
+     id="path15976"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" /></g>
   <g
    style="display:none"
    inkscape:label="XX_004100"
@@ -12304,6 +12591,7 @@
      x="246.29849"
      id="tspan8192-6"
      sodipodi:role="line">Personal Software.</tspan></text>
+
   </g>
   <g
    style="display:none"
@@ -12433,6 +12721,7 @@
      x="195"
      y="-1761.7272"
      id="tspan8306">- 10-13 April: event</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -12446,16 +12735,17 @@
    d="m 3,-2360 1021,0 0,768 -1021,0 z"
    style="color:#280b0b;fill:#dddddd;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608183137.png"
    xlink:href="../src/dand/free/20160608183137.png"
-   checksum="85776bcbde0e3e29"
-   clip-path="url(#clipPath6931)"
-   width="1024"
-   height="768"
-   id="image7252"
-   x="0"
-   y="0"
+   transform="translate(0,-2360)"
    style="display:inline"
-   transform="translate(0,-2360)" />
+   y="0"
+   x="0"
+   id="image7252"
+   height="768"
+   width="1024"
+   clip-path="url(#clipPath6931)"
+   checksum="85776bcbde0e3e29" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot7180-86"
@@ -12490,16 +12780,17 @@
    id="rect2985-7"
    sodipodi:nodetypes="ccccc" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608183155.png"
    xlink:href="../src/dand/free/20160608183155.png"
-   checksum="15e37121d51a72f5"
-   style="display:inline"
-   y="0"
-   x="0"
-   id="image9921"
-   height="768"
-   width="1024"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath6931)"
-   transform="translate(0,-2360)" />
+   width="1024"
+   height="768"
+   id="image9921"
+   x="0"
+   y="0"
+   style="display:inline"
+   checksum="15e37121d51a72f5" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot7180-6"
@@ -12534,16 +12825,17 @@
    d="m 3,-2360 1021,0 0,768 -1021,0 z"
    style="color:#280b0b;fill:#dddddd;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608172714.png"
    xlink:href="../src/dand/free/20160608172714.png"
-   checksum="af3543aabf6512ea"
-   clip-path="url(#clipPath6931)"
-   width="1024"
-   height="768"
-   id="image6992"
-   x="0"
-   y="0"
+   transform="translate(0,-2360)"
    style="display:inline"
-   transform="translate(0,-2360)" />
+   y="0"
+   x="0"
+   id="image6992"
+   height="768"
+   width="1024"
+   clip-path="url(#clipPath6931)"
+   checksum="af3543aabf6512ea" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot7180-1"
@@ -12578,16 +12870,17 @@
    id="path6996"
    sodipodi:nodetypes="ccccc" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608172743.png"
    xlink:href="../src/dand/free/20160608172743.png"
-   checksum="8074c6446e963309"
-   style="display:inline"
-   y="0"
-   x="0"
-   id="image7018"
-   height="768"
-   width="1024"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath6931)"
-   transform="translate(0,-2360)" />
+   width="1024"
+   height="768"
+   id="image7018"
+   x="0"
+   y="0"
+   style="display:inline"
+   checksum="8074c6446e963309" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot7180-2"
@@ -12622,16 +12915,17 @@
    d="m 3,-2360 1021,0 0,768 -1021,0 z"
    style="color:#280b0b;fill:#dddddd;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608172756.png"
    xlink:href="../src/dand/free/20160608172756.png"
-   checksum="bbc1242ea99865d4"
-   clip-path="url(#clipPath6931)"
-   width="1024"
-   height="768"
-   id="image7044"
-   x="0"
-   y="0"
+   transform="translate(0,-2360)"
    style="display:inline"
-   transform="translate(0,-2360)" />
+   y="0"
+   x="0"
+   id="image7044"
+   height="768"
+   width="1024"
+   clip-path="url(#clipPath6931)"
+   checksum="bbc1242ea99865d4" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot7180-44"
@@ -12666,16 +12960,17 @@
    id="path7048"
    sodipodi:nodetypes="ccccc" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608172805.png"
    xlink:href="../src/dand/free/20160608172805.png"
-   checksum="566eb3801002d4fb"
-   style="display:inline"
-   y="0"
-   x="0"
-   id="image7070"
-   height="768"
-   width="1024"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath6931)"
-   transform="translate(0,-2360)" />
+   width="1024"
+   height="768"
+   id="image7070"
+   x="0"
+   y="0"
+   style="display:inline"
+   checksum="566eb3801002d4fb" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot7180-5"
@@ -12710,16 +13005,17 @@
    d="m 3,-2360 1021,0 0,768 -1021,0 z"
    style="color:#280b0b;fill:#dddddd;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608172828.png"
    xlink:href="../src/dand/free/20160608172828.png"
-   checksum="3fc00806c471b1b4"
-   clip-path="url(#clipPath6931)"
-   width="1024"
-   height="768"
-   id="image7096"
-   x="0"
-   y="0"
+   transform="translate(0,-2360)"
    style="display:inline"
-   transform="translate(0,-2360)" />
+   y="0"
+   x="0"
+   id="image7096"
+   height="768"
+   width="1024"
+   clip-path="url(#clipPath6931)"
+   checksum="3fc00806c471b1b4" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot7180-8"
@@ -12754,16 +13050,17 @@
    id="path7100"
    sodipodi:nodetypes="ccccc" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608173205.png"
    xlink:href="../src/dand/free/20160608173205.png"
-   checksum="1c356a15b34383dd"
-   style="display:inline"
-   y="0"
-   x="0"
-   id="image7122"
-   height="768"
-   width="1024"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath6931)"
-   transform="translate(0,-2360)" />
+   width="1024"
+   height="768"
+   id="image7122"
+   x="0"
+   y="0"
+   style="display:inline"
+   checksum="1c356a15b34383dd" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot7180-4"
@@ -12798,16 +13095,17 @@
    d="m 3,-2360 1021,0 0,768 -1021,0 z"
    style="color:#280b0b;fill:#dddddd;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608173228.png"
    xlink:href="../src/dand/free/20160608173228.png"
-   checksum="52ecbfb4af4eb0cb"
-   clip-path="url(#clipPath6931)"
-   width="1024"
-   height="768"
-   id="image7148"
-   x="0"
-   y="0"
+   transform="translate(0,-2360)"
    style="display:inline"
-   transform="translate(0,-2360)" />
+   y="0"
+   x="0"
+   id="image7148"
+   height="768"
+   width="1024"
+   clip-path="url(#clipPath6931)"
+   checksum="52ecbfb4af4eb0cb" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot7180-0"
@@ -12842,16 +13140,17 @@
    id="path7152"
    sodipodi:nodetypes="ccccc" />
     <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608173247.png"
    xlink:href="../src/dand/free/20160608173247.png"
-   checksum="65719118fd39a82b"
-   style="display:inline"
-   y="0"
-   x="0"
-   id="image7174"
-   height="768"
-   width="1024"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath6931)"
-   transform="translate(0,-2360)" />
+   width="1024"
+   height="768"
+   id="image7174"
+   x="0"
+   y="0"
+   style="display:inline"
+   checksum="65719118fd39a82b" />
     <flowRoot
    style="font-size:22px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:200%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Whois;-inkscape-font-specification:Whois Medium"
    id="flowRoot7180-3"
@@ -12907,16 +13206,17 @@
      id="flowPara7192">We developed an online interface, where people could ask or answer</flowPara><flowPara
      style="font-size:22px;line-height:200%;fill:#280b0b"
      id="flowPara7198">questions.</flowPara></flowRoot>    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608173408.png"
    xlink:href="../src/dand/free/20160608173408.png"
-   checksum="3e75f7350e94e26b"
-   clip-path="url(#clipPath6931)"
-   width="1024"
-   height="768"
-   id="image7200"
-   x="0"
-   y="0"
+   transform="translate(0,-2360)"
    style="display:inline"
-   transform="translate(0,-2360)" />
+   y="0"
+   x="0"
+   id="image7200"
+   height="768"
+   width="1024"
+   clip-path="url(#clipPath6931)"
+   checksum="3e75f7350e94e26b" />
   </g>
   <g
    style="display:none"
@@ -12955,16 +13255,17 @@
    id="flowSpan7222">These conversations were collected and used to generate</flowSpan></flowPara><flowPara
      id="flowPara7224"
      style="font-size:22px;line-height:200%;fill:#f2f2f2">posters to promote the event.</flowPara></flowRoot>    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/20160608173443.png"
    xlink:href="../src/dand/free/20160608173443.png"
-   checksum="8dd38bbc2d922371"
-   style="display:inline"
-   y="0"
-   x="0"
-   id="image7226"
-   height="768"
-   width="1024"
+   transform="translate(0,-2360)"
    clip-path="url(#clipPath6931)"
-   transform="translate(0,-2360)" />
+   width="1024"
+   height="768"
+   id="image7226"
+   x="0"
+   y="0"
+   style="display:inline"
+   checksum="8dd38bbc2d922371" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -13003,23 +13304,25 @@
    transform="translate(-20,0)"
    id="g5976">
         <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_LGM2013_Variety-02_600dpi-dark.jpg"
    xlink:href="../src/dand/free/04_LGM2013_Variety-02_600dpi-dark.jpg"
-   checksum="827db78a21fda3c6"
-   width="563.85724"
-   height="797.58508"
-   id="image5952"
+   clip-path="none"
+   y="-11.777328"
    x="506.1532"
-   y="-11.777328"
-   clip-path="none" />
-        <image
-   xlink:href="../src/dand/free/04_LGM2013_Variety-01_600dpi-dark.jpg"
-   checksum="b54a22b1d6aadf20"
-   y="-11.777328"
-   x="-10.846802"
-   id="image7405"
+   id="image5952"
    height="797.58508"
    width="563.85724"
-   clip-path="url(#clipPath5972)" />
+   checksum="827db78a21fda3c6" />
+        <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_LGM2013_Variety-01_600dpi-dark.jpg"
+   xlink:href="../src/dand/free/04_LGM2013_Variety-01_600dpi-dark.jpg"
+   clip-path="url(#clipPath5972)"
+   width="563.85724"
+   height="797.58508"
+   id="image7405"
+   x="-10.846802"
+   y="-11.777328"
+   checksum="b54a22b1d6aadf20" />
       </g>
     </g>
   </g>
@@ -13060,23 +13363,25 @@
    id="g6030"
    transform="translate(-20,0)">
         <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_LGM2013_Variety-02_600dpi-dark.jpg"
    xlink:href="../src/dand/free/04_LGM2013_Variety-02_600dpi-dark.jpg"
-   checksum="827db78a21fda3c6"
-   clip-path="none"
-   y="-11.777328"
-   x="506.1532"
-   id="image6032"
-   height="797.58508"
-   width="563.85724" />
-        <image
-   xlink:href="../src/dand/free/04_LGM2013_Variety-01_600dpi-dark.jpg"
-   checksum="b54a22b1d6aadf20"
-   clip-path="url(#clipPath5972)"
    width="563.85724"
    height="797.58508"
-   id="image6034"
+   id="image6032"
+   x="506.1532"
+   y="-11.777328"
+   clip-path="none"
+   checksum="827db78a21fda3c6" />
+        <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/04_LGM2013_Variety-01_600dpi-dark.jpg"
+   xlink:href="../src/dand/free/04_LGM2013_Variety-01_600dpi-dark.jpg"
+   y="-11.777328"
    x="-10.846802"
-   y="-11.777328" />
+   id="image6034"
+   height="797.58508"
+   width="563.85724"
+   clip-path="url(#clipPath5972)"
+   checksum="b54a22b1d6aadf20" />
       </g>
     </g>
   </g>
@@ -13130,13 +13435,14 @@
      id="flowPara10710">The 'local setup' could be installed on any standard GNU/Linux</flowPara><flowPara
      style="font-size:22px;line-height:200%;fill:#280b0b"
      id="flowPara10712">computer (and even OSX worked).</flowPara></flowRoot>    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/160603_dand-conversations.png"
    xlink:href="../src/dand/free/160603_dand-conversations.png"
-   checksum="1fe88664c517199a"
-   y="-2359.5596"
-   x="177.75833"
-   id="image6141"
+   width="668.48334"
    height="945.19391"
-   width="668.48334" />
+   id="image6141"
+   x="177.75833"
+   y="-2359.5596"
+   checksum="1fe88664c517199a" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -13166,13 +13472,14 @@
      id="flowPara10842">contributions through a lot of different layers and complexities,</flowPara><flowPara
      style="font-size:22px;line-height:200%;fill:#280b0b"
      id="flowPara10844">from proofreading to replicating the whole infrastructure.</flowPara></flowRoot>    <image
+   sodipodi:absref="/home/christoph/0000_GIT/NOW/howix/E/../src/dand/free/00037.png"
    xlink:href="../src/dand/free/00037.png"
-   checksum="768870c87496f8ea"
-   y="-2360"
-   x="0"
-   id="image6203"
+   width="1024"
    height="768"
-   width="1024" />
+   id="image6203"
+   x="0"
+   y="-2360"
+   checksum="768870c87496f8ea" />
   </g>
   <g
    inkscape:groupmode="layer"
@@ -13230,6 +13537,7 @@
      x="142.66519"
      y="-1970.6206"
      id="tspan6233">hiding them and making them inaccessible.</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text6235"
@@ -13241,6 +13549,7 @@
      y="-1921.9006"
      x="142.66519"
      sodipodi:role="line">Eric S. Raymond: The Art of Unix Programming</tspan></text>
+
   </g>
   <g
    inkscape:groupmode="layer"
@@ -13302,6 +13611,7 @@
      x="112.66519"
      y="-1949.8606"
      id="tspan6324">so getting your site up and live is quick and seamless</tspan></text>
+
     <text
    sodipodi:linespacing="141%"
    id="text6235-6"
@@ -13313,6 +13623,7 @@
      y="-1886.9006"
      x="112.66519"
      sodipodi:role="line">adobe.com/products/creativecloud.html</tspan></text>
+
   </g>
   <g
    inkscape:label="XX_005000"
@@ -13368,6 +13679,7 @@
      x="511.62061"
      y="-1972.1406"
      id="tspan7769">social, cultural and physical contexts</tspan></text>
+
   </g>
   <g
    style="display:none"
@@ -13419,6 +13731,7 @@
      y="-2120.2041"
      x="454.1947"
      sodipodi:role="line">engage</tspan></text>
+
     <text
    xml:space="preserve"
    style="font-size:36px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:140.99999666%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;display:inline;font-family:Hind;-inkscape-font-specification:Hind Medium"
@@ -13430,6 +13743,7 @@
      x="441.67908"
      y="-1920.204"
      id="tspan6429">consume</tspan></text>
+
     <path
    style="fill:none;stroke:#280b0b;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
    d="m 236.59335,-1422.5 199.00001,0"
@@ -13507,6 +13821,7 @@
      x="472.43304"
      y="-2054.2041"
      id="tspan7259">perspectives</tspan></text>
+
     <text
    sodipodi:linespacing="100%"
    id="text7247"
@@ -13522,6 +13837,7 @@
      x="473.229"
      sodipodi:role="line"
      id="tspan7261">usability</tspan></text>
+
     <path
    style="fill:none;stroke:#280b0b;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
    d="m 539.22709,-2127.5693 55.86145,-55.8614"
@@ -13543,6 +13859,7 @@
      y="-2189.2041"
      x="652.43304"
      sodipodi:role="line">shared</tspan></text>
+
   </g>
   <g
    style="display:none"
@@ -13688,6 +14005,7 @@
      x="132.66519"
      y="-1818.3407"
      id="tspan7905" /></text>
+
   </g>
   <g
    inkscape:label="XX_005610"
@@ -13759,6 +14077,7 @@
      y="-1818.3407"
      x="132.66519"
      sodipodi:role="line" /></text>
+
   </g>
   <g
    inkscape:label="XX_005700"
@@ -13798,6 +14117,7 @@
      x="233.36099"
      id="tspan8192-4"
      sodipodi:role="line">Situated Softwares.</tspan></text>
+
   </g>
   <g
    style="display:none"
@@ -13861,6 +14181,7 @@
      id="tspan3292"
      x="443.6897"
      y="-2093.9773">SOFTWARE</tspan></text>
+
     <path
    sodipodi:nodetypes="cccc"
    id="path3232"
@@ -14125,6 +14446,7 @@
      x="263.46051"
      y="-2026.46"
      id="tspan6324-7-5">Opinions? Questions? Answers?</tspan></text>
+
   </g><g
    sodipodi:insensitive="true"
    inkscape:groupmode="layer"

@@ -3,7 +3,7 @@
 # THIS IS A FRAGILE SYSTEM, HANDLE WITH CARE.                                #
 # --------------------------------------------------------------------------- #
 
-  MAIN=EDIT/160201_hilxalsh.mdsh
+  MAIN=E/160201_hilxalsh.mdsh
 
   TMPDIR=. ;  TMPID=$TMPDIR/TMP`date +%Y%m%H``echo $RANDOM | cut -c 1-4`
   SRCDUMP=${TMPID}.maindump
@@ -19,7 +19,7 @@
 # INCLUDE/COMBINE FUNCTIONS
 # --------------------------------------------------------------------------- #
   FUNCTIONSBASIC="lib/sh/201602_basic.functions"
-   FUNCTIONSPLUS="EDIT/160127_pdf.functions"
+   FUNCTIONSPLUS="E/160127_pdf.functions"
        FUNCTIONS=$TMPID.functions
   cat $FUNCTIONSBASIC $FUNCTIONSPLUS > $FUNCTIONS
   source $FUNCTIONS

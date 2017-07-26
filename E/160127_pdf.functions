@@ -18,7 +18,7 @@ function QR(){ HREF $* ;}
 
 
 # --------------------------------------------------------------------------- #
-  QRDEKOSRC=EDIT/151007_qrdeko-simple.svg
+  QRDEKOSRC=E/151007_qrdeko-simple.svg
    QRURLLOG=${TMPID}.qrurls
 # --------------------------------------------------------------------------- #
 
@@ -994,7 +994,7 @@ function LICENSE(){
          sed 's,[ ]*/[ ]*,_,g'`
   LID=`echo $LNAME | md5sum | cut -c 1-6`
 
-  BADGESRC=EDIT/151025_licenses.svg
+  BADGESRC=E/151025_licenses.svg
   BADGEPDF=${TMPID}${LID}`echo $RANDOM | cut -c 1-2`.pdf
 
 # SELECT LAYERS: ONE FOR EACH UNIQUE NAME
