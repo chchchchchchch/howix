@@ -1,4 +1,11 @@
 
+# --------------------------------------------------------------------------- #
+# DO ONLY WRITE ONCE !!!
+# --------------------------------------------------------------------------- #
+  if [ `grep "% INCLUDED 170501_hcatfowysiwyg.functions" $SRCDUMP | #
+        wc -l` -lt 1 ];then
+
+  write2src "% INCLUDED 170501_hcatfowysiwyg.functions"
   write2src "\renewcommand*{\rmdefault}{pju}\normalfont"
   write2src "\renewcommand*{\embody}{\fontfamily{grm}\selectfont\relscale{.85}}"
   write2src "\renewcommand{\texttt}[1]{%
@@ -24,10 +31,6 @@
                    {\endlist}
              \makeatother"
 
- # write2src "\AtBeginEnvironment{quote}{
- #             \\$QSEP\fontfamily{grm}\selectfont\relscale{.85}}"
- # write2src "\AtEndEnvironment{quote}{\\$QSEP}"
- # http://tex.stackexchange.com/questions/36708/how-can-i-undo-an-etoolbox-patch
    write2src "\renewcommand{\AtBeginQuote}{
                \\$QSEP\fontfamily{grm}\selectfont\relscale{.8}}"
    write2src "\renewcommand{\AtEndQuote}{\\$QSEP}"
@@ -36,12 +39,14 @@
              {\addtolength{\baselineskip}{\fill}%
               \addtolength{\parskip}{\fill}%
               \VerbatimEnvironment%
+              \vfill
               \begin{Verbatim}[fontsize=\relsize{-3},fontseries=b]}%
-             {\end{Verbatim}\medskip\vfill}"
+             {\end{Verbatim}\smallskip\vfill}"
 
    write2src "\addtolength{\skip\footins}{\fill}"
    write2src "\raggedbottom"
 
+   fi
 
 # --------------------------------------------------------------------------- #
 
@@ -58,7 +63,7 @@ function FIGLETHEADINGS(){
 
    TMPNOW=super.tmp
 
-   FLF="lib/fonts/figlet/cybermedium.flf"
+   FLF="../lib/fonts/figlet/cybermedium.flf"
 
  # SEPARATE PREVIOUS
  # ----------------------------
@@ -80,7 +85,7 @@ function FIGLETHEADINGS(){
              egrep -n "$HGREP" | #
              sed "s/ /$S/g"`
     do
-      #FLF=`ls lib/fonts/figlet/*.* | shuf -n 1`
+      #FLF=`ls ../lib/fonts/figlet/*.* | shuf -n 1`
        HTYP=`echo $H           | #
              cut -d "\\\" -f 2 | #
              cut -d "{" -f 1`  
@@ -96,8 +101,8 @@ function FIGLETHEADINGS(){
        echo "\begin{samepage}"   >> ${SRCDUMP}.tmp 
        echo "  \\$HTYP{}"        >> ${SRCDUMP}.tmp
        echo "\begin{figlettext}" >> ${SRCDUMP}.tmp 
-       echo $HTXT     | #
-       fmt -s -w 12   | # 20
+       echo $HTXT             | #
+       fmt -s -w 12           | # 20
        figlet -w 200 -f $FLF     >> ${SRCDUMP}.tmp
        echo "\end{figlettext}"   >> ${SRCDUMP}.tmp 
        echo "\end{samepage}"     >> ${SRCDUMP}.tmp 
@@ -115,15 +120,15 @@ function FIGLETHEADINGS(){
 
 # --------------------------------------------------------------------------- #
 
-function BY(){
-
-  write2src "\vspace{-.4\baselineskip}"
-  write2src "{\by{$*}}"
-  write2src "\bigskip\bigskip"
-  write2src ""
-  write2src "\vfill"
-
-}
+#function BY(){
+#
+#  write2src "\vspace{-.4\baselineskip}"
+#  write2src "{\by{$*}}"
+#  write2src "\bigskip\bigskip"
+#  write2src ""
+#  write2src "\vfill"
+#
+#}
 
 # --------------------------------------------------------------------------- #
 
