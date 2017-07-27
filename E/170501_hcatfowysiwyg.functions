@@ -41,7 +41,7 @@
               \VerbatimEnvironment%
               \vfill
               \begin{Verbatim}[fontsize=\relsize{-3},fontseries=b]}%
-             {\end{Verbatim}\smallskip\vfill}"
+             {\end{Verbatim}\medskip\vfill}"
 
    write2src "\addtolength{\skip\footins}{\fill}"
    write2src "\raggedbottom"
