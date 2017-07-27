@@ -65,3 +65,30 @@
         fi
   }
 
+
+
+ function conformColor() {
+
+      ( CHECK=$1
+        gs -dNumRenderingThreads=4 \
+           -dNOPAUSE -sDEVICE=jpeg \
+           -dFirstPage=1 -dLastPage=1 \
+           -sOutputFile=./checkcolor.jpg \
+           -dJPEGQ=20 -r50 \
+           -q $CHECK -c quit
+
+        HASCOLOR=`convert checkcolor.jpg -colorspace HSL \
+                 -format '%[fx:maxima.g]' info: | sed 's/[^0-9]//g'`
+        if [ $HASCOLOR -eq 0 ]; then
+              pdfxgs $CHECK
+             #sleep 0
+        else
+              pdfxcmyk $CHECK
+             #pdfxgs $CHECK
+             #sleep 0
+        fi
+        rm checkcolor.jpg
+      )
+  }
+
+
