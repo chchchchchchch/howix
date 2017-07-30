@@ -1,403 +1,8 @@
-## --------------------------------------------------------------------------- #
-## HREFSYSTEM (COPIED FROM 201602_basic.functions)
-## --------------------------------------------------------------------------- #
-#
-#  function shortref() {
-#
-#      IDP1=`echo $* | cut -d " " -f 1 | #
-#            sed 's/ //g' | md5sum  | #
-#            base64 | cut -c 1-3`  # 
-#      IDP2=`echo $* | cut -d " " -f 2- | #
-#            sed 's/ //g' | md5sum  | #
-#            base64 | cut -c 4-5` # 
-#     REFID="${IDP1}${IDP2}"
-#
-#     THISFLAG=`echo "$*" | sed 's/^[ \t]*//'`
-#    #echo "${REFID}:$THISFLAG" >> $SHORTURLOG
-#     echo "$SHORTURLBASE/$REFID"
-#  }
-#
-#  function urlitzer() {
-#
-#        IFHTTP=`echo $1 | grep "^http.\?://" | wc -l`
-#        if [ $IFHTTP -ge 1 ]; then
-#             echo $1
-#         else
-#             shortref "$*"
-#        fi
-#  }
-#
-#  function refsrc() {
-#          echo $1
-#  }
-#
-#
-#function HREF() {
-#
-#       O=`echo $* | cut -d " " -f 1`
-#       THISCMD="% HREF:"
-#
-#   if [ "X$O" == "XON"  ] ||
-#      [ "X$O" == "XOFF" ]
-#    then
-#         HREFMODE="$O"
-#        #echo "HREFMODE: $HREFMODE"
-#    else
-#     if [ "X$HREFMODE" != "XOFF"  ]; then
-#
-#         WWWLINK=`urlitzer "$*"`
-#         REFCODE=`refsrc $WWWLINK`
-#         write2src "$REFCODE"
-#     fi
-#   fi
-#}
-
-
-
-
-
-## SAVE FOR NOW: BACKWARDS COMPATIBILITY
-## ---------------------------------------------------------------------------- #
-#
-#function mkqr(){ sleep 0; }
-#function QR(){ HREF $* ;}
-
-
-
-## OVERWRITE
-## ---------------------------------------------------------------------------- #
-#  function refsrc() {
-#
-#    mkqr $* > /dev/null 2>&1
-#    REFCODE="\qrmargin{$QRPDF}{$QRTXT}"
-#    echo "$REFCODE"
-#
-#  }
-## --------------------------------------------------------------------------- #
-
-
-## --------------------------------------------------------------------------- #
-#  QRDEKOSRC=151007_qrdeko-simple.svg
-#   QRURLLOG=${TMPID}.qrurls
-## --------------------------------------------------------------------------- #
-#
-#  function mkqr() {
-#
-#  QURL=`shortref "$*"`
-#  QRID=`echo $QURL | rev | cut -d "/" -f 1 | rev`
-#  QRTXT=`echo $QRID | tr [:lower:] [:upper:]`
-#
-#  QRPDF=$TMPID${QRID}.pdf
-#  QRDEKO=${TMPID}DEKO
-#
-#  if [ ! -f $QRPDF ]; then
-#
-#  SCALE="scale(0.1,-0.1)"
-#  MOVE="translate(55,145)"
-#  TRANSFORMQR="transform=\"$MOVE$SCALE\""
-#
-#  echo $QURL >> $QRURLLOG
-#
-## SELECT LAYERS: ONE FOR EACH UNIQUE NAME
-## --------------------------------------------------------------------------- #
-#  sed ":a;N;\$!ba;s/\n/ /g" $QRDEKOSRC  | # REMOVE ALL LINEBREAKS
-#  sed 's/<g/\n<g/g'                     | # RESTORE GROUP OPEN + NEWLINE
-#  sed '/groupmode="layer"/s/<g/4Fgt7R/g'| # PLACEHOLDER FOR LAYERGROUP OPEN
-#  sed ':a;N;$!ba;s/\n/ /g'              | # REMOVE ALL LINEBREAKS
-#  sed 's/4Fgt7R/\n<g/g'                 | # RESTORE LAYERGROUP OPEN + NEWLINE
-#  sed 's/display:none/display:inline/g' | # MAKE VISIBLE EVEN WHEN HIDDEN
-#  tee head.tmp                          | # DUMP NOW TO EXTRACT HEAD LATER
-#  tail -n +2                            | # REMOVE HEAD (=FIRST LINE)
-#  sed 's/<\/svg>//g'                    | # REMOVE CLOSING TAG
-#  grep -n ""                            | # NUMBER LINES
-#  sed "s/^.*$/&|&/g"                    | # DOUBLE CONTENT FOR ANALYSIS
-#  sed "s/:label/\nX1X/"                 | # MARK LABEL (=NAME)
-#  grep -v ":label=\"XX_"                | # IGNORE XX LAYERS
-#  grep  "^X1X"                          | # SELECT MARKED
-#  shuf                                  | # SHUFFLE
-#  sort -u -t\" -k1,2                    | # SELECT ONE FOR EACH LABEL
-#  cut -d "|" -f 2-                      | # SELECT SECOND/UNTOUCHED CONTEN
-#  sort -n -u -t: -k1,1                  | # SORT ACCORDING TO LINE NUMBER
-#  cut -d ":" -f 2-                      | # REMOVE LINENUMBER
-#  tee  > layers.tmp                       # WRITE TO FILE
-## --------------------------------------------------------------------------- #
-#
-#  head -n 1 head.tmp                      >  ${QRDEKO}.svg
-#  cat layers.tmp | sed "s/VWXYZ/$QRTXT/g" >> ${QRDEKO}.svg
-#  echo "$QURL" | qrencode -iv 1 -t EPS -o $TMPID${QRID}.eps
-#  inkscape --export-plain-svg=$TMPID${QRID}.svg \
-#           $TMPID${QRID}.eps
-#  echo "<g $TRANSFORMQR>"  >> ${QRDEKO}.svg
-#  sed ':a;N;$!ba;s/\n/ /g' $TMPID${QRID}.svg | \
-#  tr -s ' ' | sed 's/</\n&/g' | #
-#  grep "^<path"            >> ${QRDEKO}.svg
-#  echo "</g>"              >> ${QRDEKO}.svg
-#  echo "</svg>"            >> ${QRDEKO}.svg
-#  inkscape --export-pdf=$QRPDF  \
-#           --export-text-to-path \
-#           ${QRDEKO}.svg
-## CLEAN UP
-#  rm *.tmp $TMPID${QRID}.eps $TMPID${QRID}.svg ${QRDEKO}.svg
-#
-#  else
-#       echo "qr graphic for $QURL already generated!"
-#  fi
-#  }
-## --------------------------------------------------------------------------- #
-
-## =========================================================================== #
-##  S H A R E D
-## =========================================================================== #
-#  SHORTURLBASE="http://lfkn.de"
-#  SRCLIST=${TMPID}X.list
-
-## =========================================================================== #
-#
-# function listSrc() {
-#
-#  if [ `echo $* | wc -c` -lt 2 ]; then   # = NO PARAMETERS PROVIDED 
-#       SEP="% ------------"              # THIS IS THE SEPARATOR
-#      SEPN=`grep -n "" $SRCDUMP             | # NUMBER LINES
-#            egrep "$SEP|^[0-9]*:$EMPTYLINE" | # LOCATE SEPARATOR OR EMPTY LINE
-#            tail -n 1                       | # SELECT LAST 
-#            cut -d ":" -f 1`                  # SELECT FIRST FIELD
-#       sed "1,${SEPN}d" $SRCDUMP   | # PRINT FROM LINE NUM TO END
-#       grep -v "^% QUAVERBATIM"    | # IGNORE COMMAND ITSELF
-#       sed "s/^%//"                | # REMOVE LEADING %
-#       sed "s/^[ ]*//"             | # REMOVE ALL LEADING BLANKS
-#       sed "/^[ \t]*$/d"           | # REMOVE EMPTY LINES
-#       tee      > $SRCLIST
-#  else 
-#       echo $*  > $SRCLIST
-#  fi
-#
-# }
-#
-## =========================================================================== #
-#
-# function getFileRange() {
-# 
-#   COLLECTED=$TMPID.srccollected
-# 
-# ( IFS=$'\n'
-#
-#  if [ -f $SRCLIST ]; then
-#   for THISSRC in `cat $SRCLIST`
-#    do
-#       SRCURL=`echo $THISSRC | sed 's/ /\n/g'   | # SPACES TO NEWLINES
-#               sed "/\.functions$/s/^/XXX/g"    | # MARK LINES WITH .functions EXTENSION
-#               sed "/\.[a-z]\{2,4\}$/s/^/XXX/g" | # MARK LINES WITH 2-4 CHAR EXT
-#               grep "^XXX" | sed 's/^XXX//'     | # SELECT AND REMOVE MARK
-#               head -n 1`                         # SELECT FIRST
-#        LINES=`echo $THISSRC | sed "s/ /\n/g"   | # SPACES TO NEWLINES
-#               sed "/[^0-9\\-]/d"               | # NO LINES WITH MORE THAN NUMS AND -
-#               egrep -v "^-|-$"                 | # IGNORE ISOLATED - 
-#               grep -v "^[ ]*$" | tail -n 1`      # LAST LINE ONLY
-#       if [ `echo $LINES | wc -c` -gt 1 ]; then   # IF LINE OPTION IS SET
-#             LINES=`echo $LINES | sed 's/-/,/'`
-#             SELECTSRCLINES="sed -n \"${LINES}p\" "
-#       else                                       # IF LINE OPTION IS NOT SET
-#             SELECTSRCLINES="tee"
-#       fi
-#       SRCGET=${TMPID}SRC`echo $SRCURL | md5sum | cut -c 1-3`.txt  
-#       if [ ! -f $SRCGET ]; then
-#            getFile $SRCURL $SRCGET
-#       fi;  if [ -f $SRCGET ]; then
-#            cat   $SRCGET                 | # START WITH ALL
-#            eval "$SELECTSRCLINES"        | # DO SELECT LINE RANGE
-#            tee                           >> $COLLECTED
-#     fi
-#   done 
-#  fi
-# )
-#   if [ -f $COLLECTED ]; then
-#   INDENT=`cat $COLLECTED        | # START PIPE WITH COLLECTION
-#           sed '/^[ \t]*$/d'     | # IGNORE/DELETE EMPTY LINES
-#           sed -E 's/([^ ]).*//' | # KEEP ONLY LEADING BLANK
-#           sort -r               | # REVERSE SORT
-#           tail -n 1             | # SELECT LAST (=SHORTEST)
-#           wc -c`                  # COUNT  
-#   if [ $INDENT -eq 0 ]; then INDENT=1 ; fi
-#   fi
-# }
-#
-## =========================================================================== #
-
-# function conformColor() {
-#
-#      ( CHECK=$1
-#        gs -dNumRenderingThreads=4 \
-#           -dNOPAUSE -sDEVICE=jpeg \
-#           -dFirstPage=1 -dLastPage=1 \
-#           -sOutputFile=./checkcolor.jpg \
-#           -dJPEGQ=20 -r50 \
-#           -q $CHECK -c quit
-#   
-#        HASCOLOR=`convert checkcolor.jpg -colorspace HSL \
-#                 -format '%[fx:maxima.g]' info: | sed 's/[^0-9]//g'`
-#        if [ $HASCOLOR -eq 0 ]; then
-#              pdfxgs $CHECK
-#             #sleep 0
-#        else
-#             #pdfxcmyk $CHECK
-#              pdfxgs $CHECK
-#             #sleep 0
-#        fi  
-#        rm checkcolor.jpg
-#      )
-#  }
-
-## =========================================================================== #
-#
-#  function svglayers2pdfpages() {
-#
-#   CROP=10.63 # 3mm in px
-#
-#     SVGLAYER=$1
-#     PDFPAGES=$2
-#     SUPERTMP=${TMPID}.`echo $SVGL | md5sum | cut -c 1-4`.tmp
-# 
-#     CANVASWIDTH=`sed ":a;N;\$!ba;s/\n//g" $SVGLAYER | # SVG WITHOUT LINEBREAKS
-#                  sed 's/width=/\n&/g'               | # EXTRACT WIDTH
-#                  grep "^width="                     | # EXTRACT WIDTH
-#                  cut -d "\"" -f 2                   | # EXTRACT WIDTH VALUE
-#                  head -n 1`                           # FIRST WIDTH ONLY
-#      LAYERNAMES=`sed ":a;N;\$!ba;s/\n//g" $SVGLAYER | # SVG WITHOUT LINEBREAKS
-#                  sed 's/nkscape:label/\n&/g'        | # EXTRACT LAYER NAME
-#                  grep "^nkscape:label"              | # EXTRACT LAYER NAME
-#                  cut -d "\"" -f 2                   | # EXTRACT LAYER NAME
-#                  grep -v XX_                        | # IGNORE XX_LAYERS
-#                  sort -u`                             # SORT AND UNIQ
-# 
-#     BFOO=NL`echo ${RANDOM} | cut -c 1`F00
-#     SFOO=SP`echo ${RANDOM} | cut -c 1`F0O
-#   # ----------------------------------------------------------------------- #
-#   # MOVE LAYERS ON SEPARATE LINES (TEMPORARILY; EASIFY PARSING LATER ON)
-#   # ----------------------------------------------------------------------- #
-#     sed ":a;N;\$!ba;s/\n/$BFOO/g" $SVGLAYER | # REMOVE ALL LINEBREAKS (BUT SAVE)
-#     sed "s/ /$SFOO/g"                       | # REMOVE ALL SPACE (BUT SAVE)
-#     sed 's/<g/4Fgt7RfjIoPg7/g'              | # PLACEHOLDER FOR GROUP OPEN
-#     sed ':a;N;$!ba;s/\n/ /g'                | # REMOVE ALL NEW LINES
-#     sed 's/4Fgt7RfjIoPg7/\n<g/g'            | # RESTORE GROUP OPEN + NEWLINE
-#     sed '/groupmode="layer"/s/<g/4Fgt7R/g'  | # PLACEHOLDER FOR LAYERGROUP OPEN
-#     sed ':a;N;$!ba;s/\n/ /g'                | # REMOVE ALL LINEBREAKS
-#     sed 's/4Fgt7R/\n<g/g'                   | # RESTORE LAYERGROUP OPEN + NEWLINE
-#     sed 's/<\/svg>//g'                      | # REMOVE SVG CLOSE
-#     sed 's/display:none/display:inline/g'   | # MAKE VISIBLE EVEN WHEN HIDDEN
-#     tee > ${SUPERTMP}                         # WRITE TO TEMPORARY FILE
-#   # ----------------------------------------------------------------------- #
-#   # WRITE LAYERS TO SEPARATE FILES AND TRANSFORM TO PDF 
-#   # ----------------------------------------------------------------------- #
-#     COUNT=1 
-#     for LAYERNAME in $LAYERNAMES
-#      do
-#         for PAGE in 1 2
-#         do
-#             if [ $PAGE -eq 1 ]; then
-#                  XSHIFT=-$CROP
-#             else
-#                  XSHIFT=-`python -c "print $CANVASWIDTH - $CROP"`
-#             fi
-#             TRANSFORM="transform=\"translate($XSHIFT,0)\""
-#             NUM=`echo 0000$COUNT | rev | cut -c 1-4 | rev`
-#             LNAME=`echo $LAYERNAME | md5sum | cut -c 1-6`
-#
-#                head -n 1 ${SUPERTMP}  | # THE HEADER
-#                sed "s/$BFOO/\n/g"     | # RESTORE ORIGINAL LINEBREAKS
-#                sed "s/$SFOO/ /g"      | # RESTORE ORIGINAL SPACES
-#                tee                    >   ${TMPID}_${NUM}_${LNAME}.svg
-#                echo "<g $TRANSFORM>"  >>  ${TMPID}_${NUM}_${LNAME}.svg
-#                grep "inkscape:label=\"$LAYERNAME\"" ${SUPERTMP} | #
-#                sed "s/$BFOO/\n/g"     | # RESTORE ORIGINAL LINEBREAKS
-#                sed "s/$SFOO/ /g"      | # RESTORE ORIGINAL SPACES
-#                tee                    >>  ${TMPID}_${NUM}_${LNAME}.svg
-#                echo "</g>"            >>  ${TMPID}_${NUM}_${LNAME}.svg
-#                echo "</svg>"          >>  ${TMPID}_${NUM}_${LNAME}.svg 
-#    
-#                inkscape --export-pdf=${TMPID}_${NUM}_${LNAME}.pdf \
-#                         --export-text-to-path \
-#                         ${TMPID}_${NUM}_${LNAME}.svg
-#   
-#                conformColor ${TMPID}_${NUM}_${LNAME}.pdf
-#
-#                rm ${TMPID}_${NUM}_${LNAME}.svg
-#
-#             COUNT=`expr $COUNT + 1`
-#         done
-#     done
-#   # ----------------------------------------------------------------------- #
-#   # MAKE MULTIPAGE PDF
-#   # ----------------------------------------------------------------------- #
-#     pdftk ${TMPID}_*.pdf cat output $PDFPAGES
-#   # ----------------------------------------------------------------------- #
-#   # CLEAN UP(OBSOLETE?)
-#   # ----------------------------------------------------------------------- #
-#     rm ${TMPID}_*.pdf $SVGLAYER
-# 
-#  }
-#
-
-## =========================================================================== #
-#
-#
-# function mkpages() {
-#
-#   FIRSTPAGEIS="" # RESET
-# 
-#   PDFSRC=`echo $* | sed 's/ /\n/g'    | # SPACES TO NEWLINES
-#           egrep "\.svg$|\.pdf$"       | # SELECT ENDING WITH .svg/.pdf
-#           head -n 1`                    # SELECT FIRST
-#    PAGES=`echo $* | sed 's/ /\n/g'    | # SPACES TO NEWLINES
-#           sed "/[^0-9\\-]/d"          | # NO LINES WITH MORE THAN NUMS AND -
-#           egrep -v "^-|-$"            | # IGNORE ISOLATED - 
-#           grep -v "^[ ]*$" | tail -n 1` # 
-#      EXT=`echo $PDFSRC | rev | cut -d "." -f 1 | rev`
-# 
-#   if [ `echo $PAGES | wc -c` -le 1 ]; then
-#         PAGES=-
-#   elif [ `echo $PAGES | grep "^[0-9]" | wc -l` -ge 1 ]; then
-#         P1=`echo $PAGES | cut -d "-" -f 1`
-#         if [ `python -c "print $P1 / 2.0" | #
-#               cut -d "." -f 2` -lt 5 ]; then
-#               FIRSTPAGEIS="even"
-#         else
-#               FIRSTPAGEIS="odd"
-#         fi
-#   else
-#         PAGES=- ; PAGECOMMAND=""
-#   fi
-# 
-#   PDFGET=${TMPID}`echo $PDFSRC | md5sum | cut -c 1-6`.pdf
-#   SVGTMP=${TMPID}`echo $PDFSRC | md5sum | cut -c 4-9`.svg
-# 
-#   if [ -f $PDFGET ]; then
-#        echo "$PDFGET exists"
-#   else 
-#        if [ "X$EXT" == "Xsvg" ]; then
-#    
-#              getFile $PDFSRC $SVGTMP
-#    
-#        if [ "X$SUCCESS" == "XYES" ]; then
-#              SVGTMP=`realpath $SVGTMP`
-#              svglayers2pdfpages $SVGTMP $PDFGET
-#        fi
-#    
-#        elif [ "X$EXT" == "Xpdf" ]; then
-#    
-#               getFile $PDFSRC $PDFGET   
-#               conformColor $PDFGET
-#        fi
-#   fi
-# }
-#
-## =========================================================================== #
-
-
 # --------------------------------------------------------------------------- #
 
 function QUAVERBATIM() {(
 
-  listSrc $*
+  getLines $*
   getFileRange
 
   if [ -f $COLLECTED ]; then
@@ -430,7 +35,7 @@ function QUAVERBATIM() {(
 
 function SRCODE() {(
 
-  listSrc $*
+  getLines $*
   getFileRange
 
   SRCSRC=`tail -n 1 $SRCLIST | sed 's/ /\n/g' | # LAST ENTRY FROM SRCLIST SPACES TO NEWLINES
@@ -497,7 +102,7 @@ function SOFTWAREUSED() {
 
 function PDF() {(
 
-  listSrc $*
+  getLines $*
 
  ( IFS=$'\n'
   for ITEM in `cat $SRCLIST`
@@ -656,15 +261,6 @@ function PP(){(
               egrep "$PPSEP|^[0-9]*:$EMPTYLINE" | # LOCATE SEPARATOR OR EMPTY LINE
               tail -n 1                         | # SELECT LAST 
               cut -d ":" -f 1`                    # SELECT FIRST FIELD
-
-  # REFID=`echo $*             | # START PIPE
-  #        sed 's/REF:/\n&/'   | #
-  #        grep "^REF:"        | #
-  #        head -n 1           | #
-  #        cut -d ":" -f 2     | #
-  #        sed 's/^[ \t]*//'   | # REMOVE LEADING WHITESPACE
-  #        sed 's/[ \t]*$//'   | # REMOVE TRAILING WHITESPACE
-  #        md5sum | cut -c 1-10` # CREATE UNIQUE ID
 
     MOREOPTIONS=`echo $*               | # START PIPE
                  sed 's/OPTIONS:/\n&/' | #
@@ -862,35 +458,7 @@ function FLUSHLOG(){
   write2src "\begin{logfile}"
   write2src "\textbf{Network Activity:}"
 
-# cat $WGETLOG              | #
-# tr -d '\015'              | # CONVERT DOS END OF LINE (IN WGET -d MODE)
-# tr -s ' '                 | # SQUEEZE CONSECUTIVE SPACES
-# sed "s/-/{-}/g"           | #
-# sed "s/_/\\\\_/g"         | #
-# sed "s/%/\\\\%/g"         | #
-# grep -v '\.\.\.\.\.\..*s$'| # IGNORE PROCESS LINES
-# grep -v "^Saving"         | #
-# grep -v " saved "         | #
-# grep -v "^$"              | #
-# sed "s/ /~/g"             | #
-# sed "s/^/\\\\seqsplit{/g" | #
-# sed "s/$/}/g"             | #
-# tee                       >> $SRCDUMP
-
-# cat $WGETLOG              | # USELESS OF CAT
-# tr -d '\015'              | # CONVERT DOS END OF LINE (IN WGET -d MODE)
-# tr -s ' '                 | # SQUEEZE CONSECUTIVE SPACES
-# grep -v '\.\.\.\.\.\..*s$'| # IGNORE PROCESS LINES
-# grep -v "^Saving"         | #
-# grep -v " saved "         | #
-# grep -v "^$"              | #
-# sed "s/-/{-}/g"           | #
-# sed "s/_/\\\\_/g"         | #
-# sed "s/%/\\\\%/g"         | #
-# sed 's|[^ ]\{25,\}|\\seqsplit{&}|g' | #
-# tee                       >> $SRCDUMP
-
-  cat $WGETLOG             | #
+  cat $WGETLOG              | #
   tr -d '\015'              | # CONVERT DOS END OF LINE (IN WGET -d MODE)
   tr -s ' '                 | # SQUEEZE CONSECUTIVE SPACES
   grep -v '\.\.\.\.\.\..*s$'| # IGNORE PROCESS LINES
@@ -912,39 +480,11 @@ function FLUSHLOG(){
   write2src ""
   write2src "\bigskip"
 
-  cat $WGETLOG >> debug.wgetlog
   rm $WGETLOG
 
 }
 
-## --------------------------------------------------------------------------- #
-#
-#function FLUSHQRURLS(){
-#
-#  write2src "\bigskip"
-#  write2src "URLS:"
-#  write2src ""
-#
-#  for SHORTURL in `cat $QRURLLOG`
-#   do
-#     LONGURL=`curl -sIL $SHORTURL         | # CURL URL
-#              tr -d '\015'                | # CONFORM DOS END OF LINE
-#              grep ^Location              | # SELECT LOCATION
-#              cut -d ":" -f 2-            | # CUT SECOND FIELD
-#              tail -n 1                   | # SELECT LAST LINE
-#              sed 's,[ \t]*,,'            | # REMOVE ALL SPACES
-#              sed 's,/$,,'                | # REMOVE TRAILING SLASH
-#              sed "s,^${SHORTURLBASE}$,,"`  # DELETE SHORTURLBASE ONLY
-#     if [ `echo $LONGURL | wc -c` -ge 2 ]; then
-#           write2src "$SHORTURL -> $LONGURL"
-#      else
-#           write2src "$SHORTURL NOT SET!"
-#     fi
-#  done
-#
-#}
-#
-## --------------------------------------------------------------------------- #
+# --------------------------------------------------------------------------- #
 
 function INFO(){
 
@@ -1191,6 +731,249 @@ function SWAP(){
         sed 's/ //g' | sed 's/"//g' | sed 's/\\\/\\\\\\\/g'` 
    
    sed -i "s/\b$FROM\b/$TO/g" ${SRCDUMP}
+}
+
+# --------------------------------------------------------------------------- #
+
+# =========================================================================== #
+# MEMO CUSTOM FUNCTIONS
+# =========================================================================== #
+
+# --------------------------------------------------------------------------- #
+# D O  ( N O T )  R E P E A T   Y O U R S E L F
+# --------------------------------------------------------------------------- #
+
+function DRYCUSTOMTEX() {
+
+  echo "\newcommand\drycc[1]{\mbox{\texttt{\upshape#1}}}" >> $SRCDUMP
+
+  write2src "\newenvironment{quotewwwsite}{%
+        \medskip%
+        \relscale{.8}%
+        \tt%
+   }{
+        \bigskip
+        \vfill
+   }"
+
+  write2src "\makeatletter
+             \renewenvironment{quote}
+                   {\it
+                    \list{}{\listparindent=0pt
+                            \itemindent\listparindent
+                            \leftmargin=6pt
+                            \rightmargin=12pt
+                            \topsep=10pt
+                           }%
+                    \item\relax}
+                   {\endlist}
+             \makeatother"
+}
+
+# --------------------------------------------------------------------------- #
+
+function SWAPTHISHERE(){
+
+  FROM=`echo $* | cut -d " " -f 1 | sed 's/ //g' | #
+        sed 's/"//g' | sed 's/\\\/\\\\\\\/g'`
+    TO=`echo $* | cut -d " " -f 2 | sed 's/ //g' | #
+        sed 's/"//g' | sed 's/\\\/\\\\\\\/g'`
+
+   INCLUDEID="$FID"
+
+   echo "$FROM -> $TO"
+
+   tac $SRCDUMP              | #
+   sed -n "/$INCLUDEID/,\$p" | #
+   tac  > ${SRCDUMP}.tmp
+ 
+   cat $SRCDUMP | #
+   sed -n "/$INCLUDEID/,\$p" | #
+   sed '1d' | #
+   sed "s/$FROM/$TO/g" >> ${SRCDUMP}.tmp
+ 
+   mv ${SRCDUMP}.tmp $SRCDUMP
+
+}
+
+# --------------------------------------------------------------------------- #
+
+function TREATCAMELCASE(){
+
+   C1="\\\drycc{"
+   C2="}"
+
+   INCLUDEID="$FID"
+
+   tac $SRCDUMP              | #
+   sed -n "/$INCLUDEID/,\$p" | #
+   tac  > ${SRCDUMP}.tmp
+ 
+   cat $SRCDUMP | sed -n "/$INCLUDEID/,\$p" | sed '1d' | # SELECT INCLUDE
+   sed "s/^/ /" | sed "s/[ \t]*$/ /" | # MAKE SURE THERE ARE SPACES
+   sed -re "s/([ ]*)([[:punct:]]*)(([A-Z]+[a-z]+){2,})([[:punct:]]*)\b/\1\2$C1\3$C2\5/g" >> ${SRCDUMP}.tmp 
+
+   mv ${SRCDUMP}.tmp $SRCDUMP
+
+}
+
+
+# --------------------------------------------------------------------------- #
+# H A C K E R S   A N D   T H E    F E A R    O F    W Y S I W Y G
+# --------------------------------------------------------------------------- #
+# DO ONLY WRITE ONCE !!!
+# --------------------------------------------------------------------------- #
+
+function HCATOFWYSIWYGCUSTOMTEX() {
+
+  write2src "% INCLUDED HCATFOWYSIWYG FUNCTIONS"
+  write2src "\renewcommand*{\rmdefault}{pju}\normalfont"
+  write2src "\renewcommand*{\embody}{\fontfamily{grm}\selectfont\relscale{.85}}"
+  write2src "\renewcommand{\texttt}[1]{%
+             {\relscale{.8}\fontfamily{\ttstandard}\selectfont%
+              \seqsplit{#1}}}"
+  write2src "\fontsize{11pt}{11pt}\selectfont"
+  write2src "\chapterfont{\fontfamily{pgd}\selectfont}"
+  QSEP=`echo $RANDOM | md5sum | base64 | # CREATE RANDOM STRING
+        sed 's/[^a-z]//g' | cut -c 1-8`  # NO DIGITS/ 8 ONLY
+  write2src "\newcommand\\$QSEP{\vspace{0pt plus 5pt minus 5pt}}"
+  write2src "\setlength{\parskip}{2pt plus 4pt minus 0pt}"
+
+  write2src "\makeatletter
+             \renewenvironment{quote}
+                   {\list{}{\listparindent=2pt
+                            \itemindent\listparindent
+                            \leftmargin=5pt
+                            \rightmargin=10pt
+                            \topsep=10pt
+                    \renewcommand{\embody}{} % MAYBE SOLVE BY IF
+                           }%
+                    \item\relax}
+                   {\endlist}
+             \makeatother"
+
+   write2src "\renewcommand{\AtBeginQuote}{
+               \\$QSEP\fontfamily{grm}\selectfont\relscale{.8}}"
+   write2src "\renewcommand{\AtEndQuote}{\\$QSEP}"
+
+   write2src "\newenvironment{figlettext}
+             {\addtolength{\baselineskip}{\fill}%
+              \addtolength{\parskip}{\fill}%
+              \VerbatimEnvironment%
+              \vfill
+              \begin{Verbatim}[fontsize=\relsize{-3},fontseries=b]}%
+             {\end{Verbatim}\medskip\vfill}"
+
+   write2src "\addtolength{\skip\footins}{\fill}"
+   write2src "\raggedbottom"
+
+}
+
+# --------------------------------------------------------------------------- #
+
+function FIGLETHEADINGS() {
+
+   TMPNOW=super.tmp
+
+   FLF="../lib/fonts/figlet/cybermedium.flf"
+
+   INCLUDEID="$FID"
+
+ # SEPARATE PREVIOUS
+ # ----------------------------
+   tac $SRCDUMP                | #
+   sed -n "/$INCLUDEID/,\$p"   | #
+   tac             > ${SRCDUMP}.tmp
+   echo -e "\n\n" >> ${SRCDUMP}.tmp
+ 
+   cat $SRCDUMP                | #
+   sed -n "/$INCLUDEID/,\$p"   | #
+   sed '1d'       >  $TMPNOW
+   echo -e "\n\n" >> $TMPNOW
+
+   HNUMPREV=1
+   S=XX ;COUNT=1
+   HGREP="^\\\\chapter{|^\\\\section{|^\\\\subsection{"
+
+   for H in `cat $TMPNOW       | #
+             egrep -n "$HGREP" | #
+             sed "s/ /$S/g"`
+    do
+      #FLF=`ls ../lib/fonts/figlet/*.* | shuf -n 1`
+       HTYP=`echo $H           | #
+             cut -d "\\\" -f 2 | #
+             cut -d "{" -f 1`  
+       HTXT=`echo "$H" | sed "s/$S/ /g" | #
+             sed "s/~/ /g" | #
+             cut -d "{" -f 2 | cut -d "}" -f 1`
+       HNUM=`echo $H | cut -d ":" -f 1`
+      #if [ $COUNT -gt 1 ]; then
+           sed "$HNUMPREV,$HNUM!d" $TMPNOW | #
+           egrep -v "$HGREP" >> ${SRCDUMP}.tmp
+      #fi
+
+       echo "\begin{samepage}"   >> ${SRCDUMP}.tmp 
+       echo "  \\$HTYP{}"        >> ${SRCDUMP}.tmp
+       echo "\begin{figlettext}" >> ${SRCDUMP}.tmp 
+       echo $HTXT             | #
+       fmt -s -w 12           | # 20
+       figlet -w 200 -f $FLF     >> ${SRCDUMP}.tmp
+       echo "\end{figlettext}"   >> ${SRCDUMP}.tmp 
+       echo "\end{samepage}"     >> ${SRCDUMP}.tmp 
+
+       HNUMPREV=$HNUM
+       COUNT=`expr $COUNT + 1`
+   done
+  
+   sed -n "$HNUM,\$p" $TMPNOW | #
+   egrep -v "$HGREP"          >> ${SRCDUMP}.tmp
+
+   mv ${SRCDUMP}.tmp $SRCDUMP
+   rm $TMPNOW
+}
+
+# --------------------------------------------------------------------------- #
+
+function RESETFONT() {
+
+  write2src "\fontsize{11pt}{11pt}\selectfont"
+
+}
+
+# --------------------------------------------------------------------------- #
+
+#  A P P R O P R I A T I O N   A N D   T Y P E
+# --------------------------------------------------------------------------- #
+
+function AATBATCUSTOMTEX() {
+
+  write2src "\newcommand{\metafont}{\MF\xspace}"
+  write2src "\newcommand{\tex}{{\fontfamily{lmr}\selectfont\TeX}\xspace}"
+
+}
+
+# --------------------------------------------------------------------------- #
+
+function SWAPHERE(){
+
+  FROM=`echo $* | cut -d " " -f 1   | #
+        sed 's/ //g' | sed 's/"//g' | sed 's/\\\/\\\\\\\/g'`
+    TO=`echo $* | cut -d " " -f 2   | #
+        sed 's/ //g' | sed 's/"//g' | sed 's/\\\/\\\\\\\/g'`
+
+   INCLUDEID="$FID"
+
+   tac $SRCDUMP              | #
+   sed -n "/$INCLUDEID/,\$p" | #
+   tac  > ${SRCDUMP}.tmp
+
+   cat $SRCDUMP | #
+   sed -n "/$INCLUDEID/,\$p" | #
+   sed '1d' | #
+   sed "s/$FROM/$TO/g" >> ${SRCDUMP}.tmp
+
+   mv ${SRCDUMP}.tmp $SRCDUMP
+
 }
 
 # --------------------------------------------------------------------------- #

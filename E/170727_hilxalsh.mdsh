@@ -13,7 +13,7 @@
 % MKPDFXCOMPLIANT:
 % --------------------------------------------------------------------------- %
 
-  
+
 % OPENING NOTES
 % --------------------------------------------------------------------------- %
 % SPREAD: http://freeze.sh/git/7a9d6fe/160128_A5x2-histlpalsh.svg 2
@@ -63,7 +63,7 @@ authors under copyleft licenses.
 
 % INTRODUCTION AS SOURCE CODE
 % --------------------------------------------------------------------------- %
-% SRCODE: 170727_hilxalsh.mdsh 21-65
+% SRCODE: 170727_hilxalsh.mdsh 17-66
 
 
 %  T H I S   B O O K   S E T U P 
@@ -90,11 +90,31 @@ authors under copyleft licenses.
 % SPREAD:  http://github.com/chchchchchchch/A5x2/raw/4328cfc/EDIT/150118_allworknoplay.svg 1
 % SPREAD:  http://github.com/chchchchchchch/A5x2/raw/4328cfc/EDIT/150118_allworknoplay.svg 2
   
- 
+
 % C O N S U M E R   T O   C R E A T O R
 % --------------------------------------------------------------------------- %
-% INCLUDE: 170727_memos.mdsh 2-25
+% HREF: ON
+% CLEARTORIGHT:
+% TOCITEM: Nikolaj Hald Nielsen: From Consumer to Creator
+% --------------------------------------------------------------------------- %
+% TEXIN: \chapterfont{\fontfamily{bbe}\selectfont\relscale{.8}}
+% TEXIN:  \sectionfont{\fontfamily{bbe}\selectfont\relscale{.9}}
+% TEXIN:   \subsectionfont{\fontfamily{bbe}\selectfont\relscale{.9}}
+% TEXIN:    \renewcommand{\texttt}[1]{%
+% TEXIN:    {\fontfamily{\ttstandard}\selectfont%
+% TEXIN:      \seqsplit{#1}}}
 
+% TITLE: From Consumer to Creator
+% SUBTITLE: The Lego Generation in the Digital Age
+% BY: Nikolaj Hald Nielsen
+
+% INFO: http://lfkn.de/ztzi
+% LICENSE: CC-BY-SA (2.5)
+% INCLUDE: http://freeze.sh/etherpad/export/_/freebeer.nielsen.c2c.mdsh/104 32-61
+% HREF: OFF
+% NEWPAGE:
+% INCLUDE: http://freeze.sh/etherpad/export/_/freebeer.nielsen.c2c.mdsh/104 62-260
+% RESETALL:
 
 
 % SPREAD: https://gitlab.com/chch/2xA5/raw/620272a3/EDIT/151130_computerlib.svg 2
@@ -107,23 +127,38 @@ authors under copyleft licenses.
 
 % H A C K E R S   A N D   T H E    F E A R    O F    W Y S I W Y G
 % --------------------------------------------------------------------------- %
-% INCLUDE: 170727_memos.mdsh 28-48
+% HCATOFWYSIWYGCUSTOMTEX:
+% HREF: OFF
+% CLEARTOLEFT:
+% SPREAD: https://github.com/christop/A5x2/raw/11a5a9f/EDIT/151109_hcatfowysiwyg.svg 1
+% --------------------------------------------------------------------------- %
+% SUPERIMPOSE: https://github.com/christop/A5x2/raw/d94e703/EDIT/151109_hcatfowysiwyg.svg 2-22
+% INCLUDE: http://freeze.sh/etherpad/export/_/schrijver.hcatfowysiwyg.mdsh/499 1-510
+
+% VFILL:
+
+% CLEARTOLEFT:
+% HREF: ON
+% TOCITEM: Brendan Howell: In-Reply-To: Hacker Culture and the Fe...
+
+## Brendan Howell (--> `wintermute.org`)
+%  ------------------------------------
+% TEXINJECT: \setlength{\parskip}{10pt plus 10pt minus 5pt}
+% INCLUDE: http://freeze.sh/etherpad/export/_/schrijver.hcatfowysiwyg.mdsh/499 623-684
+% RESETALL:
 
 
 % --------------------------------------------------------------------------- %
 % SPREAD: http://github.com/chchchchchchch/DOK/raw/d185293/EDIT/160310_A5x2-figletheadings.svg 1-3
 
-
 %  L G M:  R E A D / W R I T E
 % --------------------------------------------------------------------------- %
 % INCLUDE: https://gitlab.com/chch/DOK/raw/885e47a/EDIT/151128_rw.mdsh
-
 
 %  C H M O D   + X
 % --------------------------------------------------------------------------- %
 % HREF: OFF
 % INCLUDE: https://gitlab.com/chch/DOK/raw/9d00d4e/EDIT/160214_chmodx.mdsh
-
 
 %  W H A T   T H E   F O R K ? !
 % --------------------------------------------------------------------------- %
@@ -136,7 +171,22 @@ authors under copyleft licenses.
 %  A P P R O P R I A T I O N   A N D   T Y P E
 %  B E F O R E   A N D   T O D A Y
 % --------------------------------------------------------------------------- %
-% INCLUDE: 170727_memos.mdsh 51-69
+% AATBATCUSTOMTEX:
+% HREF: OFF
+% SPREAD: https://github.com/christop/A5x2/raw/cf62fdc/EDIT/151110_aatbat.svg 2-3
+% --------------------------------------------------------------------------- %
+% TEXIN: ~\vfill
+% TEXIN: \chapterfont{\fontfamily{ima}\selectfont\relscale{1.5}}
+% TEXIN: \sectionfont{\fontfamily{ima}\selectfont\relscale{1.2}}
+% TEXIN: \subsectionfont{\fontfamily{ima}\selectfont\relscale{1.2}}
+% TEXIN: \fontsize{10pt}{11pt}\selectfont
+% SUPERIMPOSE: https://github.com/christop/A5x2/raw/cf62fdc/EDIT/151110_aatbat.svg 4
+% HREF: ON
+% TOCITEM: Ricardo Lafuente: Appropriation and Type -- Before and Today
+% INCLUDE: http://freeze.sh/etherpad/export/_/floss+art.lafuente.aatbat.mdsh/276 21-55
+% HREF: OFF
+% INCLUDE: http://freeze.sh/etherpad/export/_/floss+art.lafuente.aatbat.mdsh/276 56-630
+% RESETALL:
 
 
 % SPREAD:  http://github.com/chchchchchchch/DOK/raw/614406d/EDIT/151113_A5x2-fontaintexhowto.svg 3-22
@@ -145,7 +195,18 @@ authors under copyleft licenses.
 % G A M B I A R R A
 % A N D  T H E   P R O T O T Y P I N G   P E R S P E C T I V E
 % --------------------------------------------------------------------------- %
-% INCLUDE: 170727_memos.mdsh 72-86
+% CLEARTOLEFT:
+% TOCITEM: Gabriel Menotti: _Gambiarra_ and The Prototyping Perspective
+% --------------------------------------------------------------------------- %
+% TEXIN: \chapterfont{\scalefont{1.2}\setstretch{1.0}}
+% TEXIN: \renewcommand{\by}[1]{\vspace{-0.6\baselineskip}
+% TEXIN:                       \scalefont{1.2} #1\vfill}
+% TEXIN: \renewcommand*{\rmdefault}{pju}\normalfont
+% TEXIN: \renewcommand*{\embody}{\fontfamily{grm}\selectfont\relscale{.85}}
+% TEXIN: \setlength{\parskip}{10pt plus 10pt minus 5pt}
+% TEXIN: \fontsize{11pt}{11pt}\selectfont
+% INCLUDE: http://freeze.sh/etherpad/export/_/menotti.gambiarra.mdsh/57
+% RESETALL:
 
 
 %  SWARM, PERFORM, EXPLORE
@@ -156,14 +217,21 @@ authors under copyleft licenses.
 
 % D O  ( N O T )  R E P E A T   Y O U R S E L F
 % --------------------------------------------------------------------------- %
-% INCLUDE: 170727_memos.mdsh 89-99
+% DRYCUSTOMTEX:
+% HREF: OFF
+% SPREAD: https://github.com/christop/A5x2/raw/11a5a9f/EDIT/151130_dry.svg 2-3
+% CLEARTORIGHT:
+% TOCITEM: Michael Murtaugh: Do (not) repeat yourself
+% --------------------------------------------------------------------------- %
+% SUPERIMPOSE: https://github.com/christop/A5x2/raw/05a387d/EDIT/151130_dry.svg 4-6
+% INCLUDE: http://freeze.sh/etherpad/export/_/murtaugh.dry.mdsh/649 8-460
+% RESETALL:
 
 
 %  D O   I T   T O G E T H E R
 % --------------------------------------------------------------------------- %
 % HREF: OFF
 % INCLUDE: http://gitlab.com/chch/DOK/raw/4ad2ed4/EDIT/160214_dit.mdsh
-
 
 %  A M R O   2 0 1 6 
 % --------------------------------------------------------------------------- %

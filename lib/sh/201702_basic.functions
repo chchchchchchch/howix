@@ -359,6 +359,8 @@ function INCLUDE() {
   write2src "HEREREF$REFIDIN"
   fi
 
+  echo -e "\n% $FID\n" >> $SRCDUMP
+
 # PROCESS INPUT !!!!!
 # --------------------------------------------------------
   mdsh2src $*
