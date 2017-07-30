@@ -2,14 +2,14 @@
   \usepackage[utf8]{inputenc}
   \renewcommand{\encodingdefault}{T1}
 
-% \usepackage[showframe]{geometry}
-  \usepackage{geometry}
+%X%  % \usepackage[showframe]{geometry}
+%X%    \usepackage{geometry}
   \usepackage{pdfpages}
   \usepackage{scalefnt}
 % https://groups.google.com/forum/#!topic/pandoc-discuss/_tssxEsT0eg
   \usepackage{enumerate}
   \usepackage{twoopt,ifmtarg}
-  \usepackage{lib/tex/151014_listing}
+  \usepackage{151014_listing}
   \usepackage{alltt} % USED BY QUAVERBATIM
   \usepackage{sectsty}
   \usepackage{titlesec}
@@ -22,10 +22,15 @@
   \usepackage{relsize}
 
   \usepackage{bophook}
-  \usepackage[x-1a]{pdfx}
+  \usepackage[x-1a]{pdfx} % IMPORTANT: LOAD BEFORE HYPERREF
   \usepackage{hyperref}
 
+
   \usepackage[defaultlines=5,all]{nowidow}
+  \newcommand{\setwidowstandard}{\setnowidow[5]\setnoclub[5]}
+  \setwidowstandard
+
+
   \usepackage{enumitem}
   \usepackage{afterpage}
   \usepackage{etoolbox}
@@ -44,6 +49,13 @@
               spacing=true,factor=1100,
               stretch=10,shrink=10]{microtype}
   \usepackage{underscore}
+
+% SOLVE ERRORS
+% --------------------------------------------------------------------------- %
+% ! Package inputenc Error: Unicode char \u8:  not set up for use with LaTeX.
+  \DeclareUnicodeCharacter{00A0}{ }
+
+
 
 % --------------------------------------------------------------------------- %
 %  B A S I C 
@@ -179,22 +191,22 @@
    \twocolumn[]\thispagestyle{empty} %
     \onecolumn %
    }
-% --------------------------------------------------------------------------- %
-% MAKE PAGE AMOUNT DIVIDABLE BY FOUR
-% https://groups.google.com/forum/#!topic/de.comp.text.tex/j8wWMv8lZaM
-  \newcount\vs
-  \newcount\vsi
-  \newcommand\cleartofour{
-   \mbox{}\clearpage
-   \pagestyle{empty}
-   \vs\thepage
-   \advance\vs by 3
-   \vsi\vs
-   \divide\vs by 4
-   \multiply\vs by 4
-   \ifnum\vs=\vsi\else\cleartofour\fi
-  }
-% --------------------------------------------------------------------------- %
+%X%  % --------------------------------------------------------------------------- %
+%X%  % MAKE PAGE AMOUNT DIVIDABLE BY FOUR
+%X%  % https://groups.google.com/forum/#!topic/de.comp.text.tex/j8wWMv8lZaM
+%X%    \newcount\vs
+%X%    \newcount\vsi
+%X%    \newcommand\cleartofour{
+%X%     \mbox{}\clearpage
+%X%     \pagestyle{empty}
+%X%     \vs\thepage
+%X%     \advance\vs by 3
+%X%     \vsi\vs
+%X%     \divide\vs by 4
+%X%     \multiply\vs by 4
+%X%     \ifnum\vs=\vsi\else\cleartofour\fi
+%X%    }
+%X%  % --------------------------------------------------------------------------- %
   \newcommand\cleartoleft{%
   \clearpage
   \ifthispageodd{\emptypage}{}
@@ -302,11 +314,11 @@
   \protected\def\harvardand{and}
 
 
-% --------------------------------------------------------------------------- %
-%  F O R M A T
-% --------------------------------------------------------------------------- %
-% A5 + CROP (online-druck.biz)
-  \geometry{paperwidth=154mm,paperheight=216mm}
+%X%  % --------------------------------------------------------------------------- %
+%X%  %  F O R M A T
+%X%  % --------------------------------------------------------------------------- %
+%X%  % A5 + CROP (online-druck.biz)
+%X%    \geometry{paperwidth=154mm,paperheight=216mm}
 
 % =========================================================================== %
   \newcommand{\setstandarddimensions}{ % DEFINE STANDARD DIMENSIONS
@@ -583,7 +595,11 @@
 %  .MDSH  E N V I R O N M E N T S
 % --------------------------------------------------------------------------- %
 
-  \newenvironment{logfile}{\tt\scalefont{.35}}{\par}
+  \newcommand{\logsplit}[1]{\seqsplit{#1}}
+  \newenvironment{logfile}{\setlength{\parskip}{0pt plus 2pt minus 2pt}
+                           \setstretch{0.5}\tt\tiny\sloppy}
+                          {\par}
+
 
   \newenvironment{marginblock}{%
    \ifthispageodd{

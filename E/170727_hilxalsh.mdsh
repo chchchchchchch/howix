@@ -1,0 +1,179 @@
+% --------------------------------------------------------------------------- %
+% EXTENDFUNCTIONS: 170727_Book-A5.functions
+% USEPACKAGE: 170727_Book-A5
+% ---
+% EXTENDFUNCTIONS: 170727_href.functions
+% ---
+% EXTENDFUNCTIONS: 170727_hilxalsh.functions
+% USEPACKAGE: 170727_hilxalsh
+% --------------------------------------------------------------------------- %
+% PDFXTITLE: Christoph Haag: How I learned to stop and love the draft
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% --------------------------------------------------------------------------- %
+
+  
+% OPENING NOTES
+% --------------------------------------------------------------------------- %
+% SPREAD: http://freeze.sh/git/7a9d6fe/160128_A5x2-histlpalsh.svg 2
+% SPREAD: http://freeze.sh/git/d6d9f5e/160128_A5x2-histlpalsh.svg 5
+
+% INTRODUCTION
+% --------------------------------------------------------------------------- %
+
+% How I stopped
+% to learn programmming
+% and love the Bash
+% OR:
+% How I learned
+% to stop programmming
+% and love the Bash
+
+% TEXIN: \hyphenation{eph-em-eral}
+
+While looking for a personal position within increasingly homogenized
+computational environments I discovered the world of free culture some
+years ago. From the direction of DIY and alternative copyright practises
+I proceeded slowly to the technological aspects of free software.
+The book _How I stopped to learn programming and love the Bash_
+collects and revisits memories of growing within and into free software,
+memories of expanding my personal comfort zone. The GNU Bourne-Again SHell
+was and still is a big inspiration towards a practise, not so much focussed
+on 'writing code' but 'embracing connectivity'.
+
+This exploration is driven by the naive desire for a Re-De-McDonaldization
+of my personal practise. The disclosure of tools and doing, to be
+again more, than pushing buttons on the surface of black boxes.
+What `{c,w,sh}ould` this be? I don't know, but I'm curious.
+Digital, intermediary, networked. Sometimes connective, sometimes
+disruptive. Write, make, arrange, process, imagine symbols, operators,
+software, texts, interfaces, relations. Fragile and situative,
+ephemeral and fun. Publishing adventures beyond the desktop with software
+as operational collage. Time will tell.
+
+This book collects documentation, ideas, software and experiments made
+between 2008 and 2016. Furthermore you'll find inspirational writings on
+different aspects of digital culture, generously made available by their
+authors under copyleft licenses.
+
+% STRANGELOVE
+% --------------------------------------------------------------------------- %
+% SPREAD: http://freeze.sh/git/7a9d6fe/160128_A5x2-histlpalsh.svg 7-9
+
+% INTRODUCTION AS SOURCE CODE
+% --------------------------------------------------------------------------- %
+% SRCODE: 170727_hilxalsh.mdsh 21-65
+
+
+%  T H I S   B O O K   S E T U P 
+% --------------------------------------------------------------------------- %
+%+ %! 'on .mdsh'
+
+% SPREAD: http://github.com/chchchchchchch/DOK/raw/d185293/EDIT/160111_A5x2-mdsh.svg 1-2
+% SPREAD: http://github.com/chchchchchchch/DOK/raw/d185293/EDIT/160110_A5x2-etherpash.svg 1-16
+% SPREAD: http://github.com/chchchchchchch/A5x2/raw/d9b91d2/EDIT/151029_onmdsh.svg 9-10
+% SPREAD: http://github.com/chchchchchchch/A5x2/raw/d9b91d2/EDIT/151029_onmdsh.svg 7
+
+
+% T H E   L A C   M A C H I N E
+% --------------------------------------------------------------------------- %
+% http://www.forkable.eu/generators/lacmachine/o/non-free/A3/plakatlac2008_A3_80.pdf
+% PP:
+
+
+% INCLUDE: http://github.com/chchchchchchch/DOK/raw/4ffbf18/EDIT/151126_lac08.mdsh 1-182
+% SRCODE:  http://github.com/chchchchchchch/DOK/raw/4ffbf18/EDIT/151126_lac08.mdsh 1-182
+
+% SRCODE: https://gitlab.com/chch/memo/raw/1772d8c/EDIT/160001.mdsh 70-100
+
+% SPREAD:  http://github.com/chchchchchchch/A5x2/raw/4328cfc/EDIT/150118_allworknoplay.svg 1
+% SPREAD:  http://github.com/chchchchchchch/A5x2/raw/4328cfc/EDIT/150118_allworknoplay.svg 2
+  
+ 
+% C O N S U M E R   T O   C R E A T O R
+% --------------------------------------------------------------------------- %
+% INCLUDE: 170727_memos.mdsh 2-25
+
+
+
+% SPREAD: https://gitlab.com/chch/2xA5/raw/620272a3/EDIT/151130_computerlib.svg 2
+% HREF: OFF
+% ------------------
+% http://www.forkable.eu/g/i-bd/o/non-free/fr/A3/recto/1016-004831.pdf
+% PP:
+% INCLUDE: http://github.com/chchchchchchch/DOK/raw/010d3ad/EDIT/160214_i-bd.mdsh
+
+
+% H A C K E R S   A N D   T H E    F E A R    O F    W Y S I W Y G
+% --------------------------------------------------------------------------- %
+% INCLUDE: 170727_memos.mdsh 28-48
+
+
+% --------------------------------------------------------------------------- %
+% SPREAD: http://github.com/chchchchchchch/DOK/raw/d185293/EDIT/160310_A5x2-figletheadings.svg 1-3
+
+
+%  L G M:  R E A D / W R I T E
+% --------------------------------------------------------------------------- %
+% INCLUDE: https://gitlab.com/chch/DOK/raw/885e47a/EDIT/151128_rw.mdsh
+
+
+%  C H M O D   + X
+% --------------------------------------------------------------------------- %
+% HREF: OFF
+% INCLUDE: https://gitlab.com/chch/DOK/raw/9d00d4e/EDIT/160214_chmodx.mdsh
+
+
+%  W H A T   T H E   F O R K ? !
+% --------------------------------------------------------------------------- %
+% HREF: OFF
+% INCLUDE: http://gitlab.com/chch/DOK/raw/9d00d4e/EDIT/160211_wtf.mdsh
+
+% FLUSHLOG:
+ 
+
+%  A P P R O P R I A T I O N   A N D   T Y P E
+%  B E F O R E   A N D   T O D A Y
+% --------------------------------------------------------------------------- %
+% INCLUDE: 170727_memos.mdsh 51-69
+
+
+% SPREAD:  http://github.com/chchchchchchch/DOK/raw/614406d/EDIT/151113_A5x2-fontaintexhowto.svg 3-22
+
+
+% G A M B I A R R A
+% A N D  T H E   P R O T O T Y P I N G   P E R S P E C T I V E
+% --------------------------------------------------------------------------- %
+% INCLUDE: 170727_memos.mdsh 72-86
+
+
+%  SWARM, PERFORM, EXPLORE
+% --------------------------------------------------------------------------- %
+% HREF: OFF
+% INCLUDE: http://github.com/chchchchchchch/DOK/raw/614406d/EDIT/160307_swaperex.mdsh
+
+
+% D O  ( N O T )  R E P E A T   Y O U R S E L F
+% --------------------------------------------------------------------------- %
+% INCLUDE: 170727_memos.mdsh 89-99
+
+
+%  D O   I T   T O G E T H E R
+% --------------------------------------------------------------------------- %
+% HREF: OFF
+% INCLUDE: http://gitlab.com/chch/DOK/raw/4ad2ed4/EDIT/160214_dit.mdsh
+
+
+%  A M R O   2 0 1 6 
+% --------------------------------------------------------------------------- %
+% INCLUDE: http://gitlab.com/chch/DOK/raw/9d00d4e/EDIT/160214_amroxiv.mdsh
+
+
+% --------------------------------------------------------------------------- %
+% FLUSHLICENSES:
+% FLUSHLOG:
+
+% TEXIN: \cleartofour
+% EOF!
+
