@@ -1,0 +1,26 @@
+% --------------------------------------------------------------------------- %
+% EXTENDFUNCTIONS: 170727_Book-A5.functions
+% USEPACKAGE: 170727_Book-A5
+% USEPACKAGE: 170727_hilxalsh
+% ----
+% EXTENDFUNCTIONS: 170803_index.functions
+% --------------------------------------------------------------------------- %
+% PDFXTITLE: Test Indexing
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% --------------------------------------------------------------------------- %
+
+% ADD2PREAMBLE: \usepackage{makeidx}
+% ADD2PREAMBLE:  \makeindex
+
+% --------------------------------------------------------------------------- %
+% SPREAD: 170803_A5x2-index.svg
+% SPREAD: 170803_A5x2-index.svg 1-2
+% SPREAD: 170803_A5x2-index.svg 2-5
+% SPREAD: 170803_A5x2-index.svg 4-20
+
+% --------------------------------------------------------------------------- %
+% KEYWORDIZE:
+
+
