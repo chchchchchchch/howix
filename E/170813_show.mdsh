@@ -1,0 +1,61 @@
+% --------------------------------------------------------------------------- %
+% EXTENDFUNCTIONS: 170727_Book-A5.functions
+% USEPACKAGE: 170727_Book-A5
+% USEPACKAGE: 170727_hilxalsh
+% ----
+% EXTENDFUNCTIONS: 170813_show.functions
+% --------------------------------------------------------------------------- %
+% PDFXTITLE: Test Griddler
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% --------------------------------------------------------------------------- %
+
+% ---------------------------
+% ../utils/ref/400x400_02.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_02.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_02.svg
+% GRID3X4V1: ----------------
+
+% ---------------------------
+% ../utils/ref/400x400_02.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_02.svg
+% ../utils/ref/400x400_01.svg
+% 
+% ../utils/ref/400x400_02.svg
+% GRID3X4V1: ----------------
+
+% ---------------------------
+% ../utils/ref/400x400_02.svg
+% ../utils/ref/400x400_01.svg
+%
+%
+%
+% ../utils/ref/400x400_02.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_02.svg
+% GRID3X4V1: ----------------
+
+% ---------------------------
+% ../utils/ref/400x400_02.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_02.svg
+% ../utils/ref/400x400_01.svg
+% ../utils/ref/400x400_01.svg
+% 
+% GRID3X4V1: ----------------
+
