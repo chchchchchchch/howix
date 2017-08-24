@@ -60,10 +60,39 @@
 
   }
 # --------------------------------------------------------------------------- #
+  function svgFillWhite() {
+
+  SVGSRC="$1"
+  PROTECTCOLOR="XXXX${RANDOM}"
+  sed -i "s/#[Ff]\{6\}\b/$PROTECTCOLOR/g" ${SVGSRC}
+  sed -i 's/fill:#[a-fA-F0-9]\{6\}\b/fill:#ffffff/g' ${SVGSRC}
+  sed -i 's/stroke:#[a-fA-F0-9]\{6\}\b/stroke:#000000/g' ${SVGSRC}
+  sed -i "s/$PROTECTCOLOR/#ffffff/g" ${SVGSRC}
+
+  }
+# --------------------------------------------------------------------------- #
+  function svgMonochrom() {
+
+  SVGSRC="$1"
+  PROTECTWHITE="XXXX${RANDOM}";PROTECTBLACK="${RANDOM}YYYY"
+  sed -i "s/#[Ff]\{6\}\b/$PROTECTWHITE/g" ${SVGSRC}
+  sed -i "s/#[0]\{6\}\b/$PROTECTBLACK/g" ${SVGSRC}
+  sed -i 's/fill:#[a-fA-F0-9]\{6\}\b/fill:#ffffff/g' ${SVGSRC}
+  sed -i 's/stroke:#[a-fA-F0-9]\{6\}\b/stroke:#000000/g' ${SVGSRC}
+  sed -i "s/$PROTECTWHITE/#ffffff/g" ${SVGSRC}
+  sed -i "s/$PROTECTBLACK/#000000/g" ${SVGSRC}
+
+  }
+# --------------------------------------------------------------------------- #
   function fillGrid() {
 
-         N=12
-       SEP="% -----------------"
+           N=12
+         SEP="% -----------------"
+         SMALLSIZE="$1";LARGESIZE="$2";STROKEWIDTH="$3"
+         SCALEFACTOR=`python -c "print ${SMALLSIZE}.0/${LARGESIZE}.0"`
+         SMALLSTROKE="$STROKEWIDTH"
+         LARGESTROKE=`python -c "print ${STROKEWIDTH}*${SCALEFACTOR}"`
+
     SEPNUM=`grep -n "" $SRCDUMP             | # NUMBER LINES
             egrep "$SEP|^[0-9]*:$EMPTYLINE" | # LOCATE SEPARATOR OR EMPTY LINE
             tail -n 1                       | # SELECT LAST
@@ -88,12 +117,14 @@
    # -------------------------------------------------------------- #            
      for D in $DEFAULT
       do
-         SIZE="400";STROKEWIDTH="2px"
+         SIZE="$SMALLSIZE";STROKEWIDTH="${SMALLSTROKE}px"
          GETFILE=${TMPID}`echo $D | md5sum | cut -c 1-8`
          getFile $D ${GETFILE}.svg
          PDFRESIZE=${TMPID}`echo $D$SIZE$STROKEWIDTH | #
                             md5sum | cut -c 1-8`.pdf   #
          if [ -f ${GETFILE}.svg ] && [ ! -f $PDFRESIZE ]; then
+             #svgFillWhite ${GETFILE}.svg
+              svgMonochrom ${GETFILE}.svg
               inkscape --export-pdf=${PDFRESIZE} ${GETFILE}.svg
               pdfResize ${PDFRESIZE} $SIZE $SIZE
               pdfSetStroke ${PDFRESIZE} $STROKEWIDTH
@@ -108,12 +139,14 @@
    # -------------------------------------------------------------- #            
      for L in $LARGE
       do
-         SIZE="870";STROKEWIDTH="0.919540229886px"
+         SIZE="$LARGESIZE";STROKEWIDTH="${LARGESTROKE}px"
          GETFILE=${TMPID}`echo $L | md5sum | cut -c 1-8`
          getFile $L ${GETFILE}.svg
          PDFRESIZE=${TMPID}`echo $L$SIZE$STROKEWIDTH | #
                             md5sum | cut -c 1-8`.pdf   #
          if [ -f ${GETFILE}.svg ] && [ ! -f $PDFRESIZE ]; then
+             #svgFillWhite ${GETFILE}.svg
+              svgMonochrom ${GETFILE}.svg
               inkscape --export-pdf=${PDFRESIZE} ${GETFILE}.svg
               pdfResize ${PDFRESIZE} $SIZE $SIZE
               pdfSetStroke ${PDFRESIZE} $STROKEWIDTH
@@ -126,23 +159,29 @@
          fi
      done
    # -------------------------------------------------------------- #            
-
+     GRIDFOO=`echo $GRIDFOO          | #
+              sed 's/[LD],{1}/{}/g'  | #
+              sed 's/X\.svg,{1}/{}/g'` #
 }
 
 # --------------------------------------------------------------------------- #
 
 function GRID3X4V1() {
 
-  GRIDFOO="{},{},D,{1},L,{1},{},D,{1},D,{1},D,{1},D,{1},D,{1},D,{1},D,{1}"
+  #GRIDFOO="{},{},D,{1},L,{1},{},D,{1},D,{1},D,{1},D,{1},D,{1},D,{1},D,{1}"
+  #GRIDFOO="D,{1},D,{1},D,{1},D,{1},D,{1},D,{1},D,{1},{},{},D,{1},L,{1},{}"
+   GRIDFOO="D,{1},D,{1},D,{1},D,{1},{},{},D,{1},L,{1},{},D,{1},D,{1},D,{1}"
 
-  fillGrid
+  #fillGrid 400 870 2
 
-     GRIDFOO=`echo $GRIDFOO          | #
-              sed 's/[LD],{1}/{}/g'  | #
-              sed 's/X\.svg,{1}/{}/g'` #
+  #echo "\includepdfmerge[offset=10 0,delta=15 15,"             >> $SRCDUMP
+  #echo "                 nup=3x4,noautoscale=true,scale=0.25]" >> $SRCDUMP
+  #echo "{$GRIDFOO}"                                            >> $SRCDUMP
 
-   echo "\includepdfmerge[offset=10 0,delta=15 15,"             >> $SRCDUMP
-   echo "                 nup=3x4,noautoscale=true,scale=0.25]" >> $SRCDUMP
+   fillGrid 400 750 2
+
+   echo "\includepdfmerge[offset=10 15,delta=-25 -10,"          >> $SRCDUMP
+   echo "                 nup=3x4,noautoscale=true,scale=0.4]"  >> $SRCDUMP
    echo "{$GRIDFOO}"                                            >> $SRCDUMP
 
 }
