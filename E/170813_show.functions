@@ -17,6 +17,10 @@
      echo $IN
 
   }
+# --------------------------------------------------------------------------- #
+  function mkseed(){ openssl enc -aes-256-ctr -pass pass:"$1" \
+                    -nosalt </dev/zero 2>/dev/null; }
+  #shuf -n 1 --random-source=<(mkseed $SRCNAME)
 
 # --------------------------------------------------------------------------- #
   function pdfResize() {
@@ -89,6 +93,7 @@
            N=12
          SEP="% -----------------"
          SMALLSIZE="$1";LARGESIZE="$2";STROKEWIDTH="$3"
+         RANDOMSIZE="$4"
          SCALEFACTOR=`python -c "print ${SMALLSIZE}.0/${LARGESIZE}.0"`
          SMALLSTROKE="$STROKEWIDTH"
          LARGESTROKE=`python -c "print ${STROKEWIDTH}*${SCALEFACTOR}"`
@@ -117,7 +122,19 @@
    # -------------------------------------------------------------- #            
      for D in $DEFAULT
       do
-         SIZE="$SMALLSIZE";STROKEWIDTH="${SMALLSTROKE}px"
+        #SIZE="$SMALLSIZE";STROKEWIDTH="${SMALLSTROKE}px"
+
+
+         MIN=`python -c "print ${SMALLSIZE}.0 / ${RANDOMSIZE}"`
+         MAX=`python -c "print ${SMALLSIZE}.0 * ${RANDOMSIZE}"`
+         SIZEHERE=`seq $MIN $MAX | shuf -n 1`
+        #SIZEHERE=`seq $MIN $MAX | #
+        #          shuf -n 1 --random-source=<(mkseed $D)`
+         SCALEFACTORHERE=`python -c "print ${SIZEHERE}/${SMALLSIZE}.0"`
+         STROKEWIDTH=`python -c "print ${SMALLSTROKE}/${SCALEFACTORHERE}"`
+         SIZE="$SIZEHERE";STROKEWIDTH="${STROKEWIDTH}px"
+
+
          GETFILE=${TMPID}`echo $D | md5sum | cut -c 1-8`
          getFile $D ${GETFILE}.svg
          PDFRESIZE=${TMPID}`echo $D$SIZE$STROKEWIDTH | #
@@ -172,17 +189,17 @@ function GRID3X4V1() {
   #GRIDFOO="D,{1},D,{1},D,{1},D,{1},D,{1},D,{1},D,{1},{},{},D,{1},L,{1},{}"
    GRIDFOO="D,{1},D,{1},D,{1},D,{1},{},{},D,{1},L,{1},{},D,{1},D,{1},D,{1}"
 
-  #fillGrid 400 870 2
+   fillGrid 400 870 2 1
 
-  #echo "\includepdfmerge[offset=10 0,delta=15 15,"             >> $SRCDUMP
-  #echo "                 nup=3x4,noautoscale=true,scale=0.25]" >> $SRCDUMP
-  #echo "{$GRIDFOO}"                                            >> $SRCDUMP
-
-   fillGrid 400 750 2
-
-   echo "\includepdfmerge[offset=10 15,delta=-25 -10,"          >> $SRCDUMP
-   echo "                 nup=3x4,noautoscale=true,scale=0.4]"  >> $SRCDUMP
+   echo "\includepdfmerge[offset=10 0,delta=15 15,"             >> $SRCDUMP
+   echo "                 nup=3x4,noautoscale=true,scale=0.25]" >> $SRCDUMP
    echo "{$GRIDFOO}"                                            >> $SRCDUMP
+
+  #fillGrid 400 750 2
+
+  #echo "\includepdfmerge[offset=10 15,delta=-25 -10,"          >> $SRCDUMP
+  #echo "                 nup=3x4,noautoscale=true,scale=0.4]"  >> $SRCDUMP
+  #echo "{$GRIDFOO}"                                            >> $SRCDUMP
 
 }
 
