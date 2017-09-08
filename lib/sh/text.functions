@@ -1,3 +1,6 @@
+  SRCLIST=${TMPID}X.list
+# =========================================================================== #
+
  function getLines() {
 
   if [ `echo $* | wc -c` -lt 2 ]; then   # = NO PARAMETERS PROVIDED 
