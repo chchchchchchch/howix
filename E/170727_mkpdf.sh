@@ -17,13 +17,13 @@
   OUTDIR="../_" ; TMPDIR="."
   REFURL="http://freeze.sh/etherpad/export/_/references.bib"
   SELECTLINES="tee"
-# -------------------------------------------------------------------------- #
+# --------------------------------------------------------------------------- #
   TMPID=$TMPDIR/TMP`date +%Y%m%H``echo $RANDOM | cut -c 1-4`
   SRCDUMP=${TMPID}.maindump ; TMPTEX=${TMPID}.tex
   FUNCTIONS="$TMPID.functions"; cat $FUNCTIONSBASIC > $FUNCTIONS
-# -------------------------------------------------------------------------- #
+# --------------------------------------------------------------------------- #
 # INCLUDE                                                                     #
-# -------------------------------------------------------------------------- #
+# --------------------------------------------------------------------------- #
   source ../lib/sh/prepress.functions
   source ../lib/sh/page.functions
   source ../lib/sh/text.functions
