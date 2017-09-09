@@ -1,0 +1,92 @@
+# --------------------------------------------------------------------------- #
+
+# TODO: OPTIONAL RM LEADING CHARS (E.G: % )
+
+function QUAVERBATIM() {(
+
+  getLines $*
+  getFileRange
+
+  if [ -f $COLLECTED ]; then
+
+     if [ "X$HREFMODE" != "XOFF"  ]; then
+           WWWLINK=`shortref $*`
+           REFCODE=`refsrc $WWWLINK`
+           write2src "$REFCODE"
+     fi
+
+  # ------------------------------------------------------------------------- #
+   #write2src "\begin{quaverbatim}"
+    write2src "\begin{fitbatim}"
+
+     cat $COLLECTED      | # START ...
+     cut -c ${INDENT}-   | # REMOVE INDENT
+     tee >> $SRCDUMP       # WRITE TO FILE
+
+    write2src "\end{fitbatim}"
+   #write2src "\end{quaverbatim}"
+  # ------------------------------------------------------------------------- #
+
+  rm $COLLECTED
+
+  fi
+
+  if [ -f $SRCLIST ]; then rm $SRCLIST ;fi
+
+)}
+
+# --------------------------------------------------------------------------- #
+
+function SRCODE() {(
+
+  getLines $*
+  getFileRange
+
+  SRCSRC=`tail -n 1 $SRCLIST | sed 's/ /\n/g' | # LAST ENTRY FROM SRCLIST SPACES TO NEWLINES
+          sed "/\.functions$/s/^/XXX/g"       | # MARK LINES WITH .functions EXTENSION
+          sed "/\.[a-z]\{2,4\}$/s/^/XXX/g"    | # MARK LINES WITH 2-4 CHARACTER EXTENSION
+          grep "^XXX" | sed 's/^XXX//'        | # SELECT AND REMOVE MARK
+          head -n 1`                            # SELECT FIRST
+  EXTENSION=`echo $SRCSRC | rev | cut -d "." -f 1 | rev`
+
+     if   [ "X$EXTENSION" == "Xsh" ]; then
+             LSTSET="\lstsetBash"
+     elif [ "X$EXTENSION" == "Xfunctions" ]; then
+             LSTSET="\lstsetBash"
+     elif [ "X$EXTENSION" == "Xtex" ]; then
+             LSTSET="\lstsetTeX"
+     elif [ "X$EXTENSION" == "Xsty" ]; then
+             LSTSET="\lstsetTeX"
+     else    LSTSET="\lstReset";  fi
+
+  if [ -f $COLLECTED ]; then
+
+     if [ "X$HREFMODE" != "XOFF"  ]; then
+           WWWLINK=`shortref $*`
+           REFCODE=`refsrc $WWWLINK`
+           write2src "$REFCODE"
+     fi
+
+    write2src "$LSTSET"
+
+  # ------------------------------------------------------------------------- #
+    write2src "\begin{lstlisting}"
+
+     cat $COLLECTED                     | # START ...
+     cut -c ${INDENT}-                  | # REMOVE INDENT
+     sed 's/^[ \t]*$/°\\emptylinelst°/' | # REPLACE EMPTY LINES WITH COMMAND
+     tee >> $SRCDUMP                      # WRITE TO FILE
+
+    write2src "\end{lstlisting}"
+  # ------------------------------------------------------------------------- #
+
+  rm $COLLECTED
+
+  fi
+
+  if [ -f $SRCLIST ]; then rm $SRCLIST ;fi
+
+)}
+
+# --------------------------------------------------------------------------- #
+

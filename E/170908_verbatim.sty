@@ -1,0 +1,132 @@
+
+% SRCODE
+% -------------------------------------------------------------------- %
+  \usepackage{listings}
+  \usepackage{151015_lstdefineBash}
+  \usepackage{151015_lstdefineTeX}
+  \usepackage{textcomp}
+
+
+
+ %\newcommand{\emptylinelst}{\vspace{-.8\baselineskip}}
+ %\renewcommand{\emptylinelst}{\vfill\vfill}
+
+  \renewcommand{\emptylinelst}{\medskip}
+
+
+
+
+%  \newcommand{\kwbBash}{
+%    morekeywords = [2]{write2src,getFile,mkqr}
+%  }
+%
+%  \newcommand{\lstsetBash}{\lstset{language=Bash+,
+%               morekeywords = [2]{write2src,getFile,
+%                                  mkqr
+%             }}}
+%
+%  \newcommand{\lstsetTeX}{\lstset{language=TeX+}}
+%  \newcommand{\lstReset}{\lstset{language={}}}
+%
+
+%  \newcommand{\kwa}{\bfseries\em}
+%  \newcommand{\kwb}{\kwa}
+%  \newcommand{\kwc}{}
+
+
+
+% ------------------------------------------- %
+  \definecolor{cyan}{cmyk}{1,0,0,0}
+  \definecolor{magenta}{cmyk}{0,1,0,0}
+  \definecolor{darkgreen}{cmyk}{1,0,1,0}
+  \definecolor{red}{cmyk}{0,1,1,0}
+  \definecolor{darkred}{cmyk}{0,1,0,0}
+  \definecolor{yellow}{cmyk}{0,0,1,0}
+  \definecolor{white}{cmyk}{0,0,0,0}
+% ------------------------------------------- %
+
+
+% TODO: HURENKINDER/SCHUSTERJUNGEN
+%       PREVENT LINEBREAKS
+
+  \lstset{
+    basicstyle=\fontfamily{zca}\selectfont\footnotesize\scalefont{.95},
+    commentstyle=\scalefont{.8},
+    keywordstyle = \kwa,
+    keywordstyle = [2]{\kwb},
+    keywordstyle = [3]{\kwc},
+    stringstyle=\bfseries\scalefont{.8},
+   %directivestyle=\bfseries\color{red}, % ?????
+    showspaces=false,
+    showtabs=false,
+    columns=fixed,
+    numbers=none,
+    frame=none,
+   %frame=single,            % PREVENT PAGE BREAK ?? NOT WORKING?
+   %rulecolor=\color{cyan},  % PREVENT PAGE BREAK ?? NOT WORKING?
+    numberstyle=\tiny,
+    breaklines=false,
+    showstringspaces=false,
+    aboveskip=\baselineskip\vfill,
+    belowskip=2\baselineskip\vfill,
+    lineskip=-.5\baselineskip,
+    xleftmargin=0cm,
+    upquote=true,
+    escapechar=°
+  }
+
+
+
+
+
+
+% QUAVERBATIM/FITBATIM
+% -------------------------------------------------------------------- %
+
+
+%% \renewenvironment{quaverbatim}{%
+%% \setstretch{2}
+%%  \begin{alltt}%
+%%   \fontsize{6pt}{7pt}\selectfont
+%% }{\end{alltt}}
+%
+%% \newenvironment{fitbatim}{%
+%% %\setlength{\baselineskip}{4em}
+%%  \setstretch{2}
+%%  \begin{alltt}%
+%%   \fontsize{6pt}{7pt}\selectfont
+%% }{\end{alltt}}
+%
+%  \DefineVerbatimEnvironment{trybatim}{Verbatim}{
+%    fontsize=\small,
+%    lineheight=\baselineskip
+%  }
+%
+% % \newenvironment{werbatim}%
+% % {\vskip\baselineskip\VerbatimEnvironment
+% %  \scalefont{.5}
+% %  \begin{BVerbatim}}
+% % {\end{BVerbatim}%
+% %  \vskip\baselineskip\resetfont}
+%
+%%  \newenvironment{fitbatim}%
+%%  {\vskip\baselineskip
+%%  %\setlength{\baselineskip}{10pt plus \textheight minus 4pt}
+%%   \setlength{\baselineskip}{10pt plus \vfill minus 5pt}
+%%   \VerbatimEnvironment
+%%   \begin{BVerbatim}}
+%%  {\end{BVerbatim}\vskip\baselineskip}
+%
+%   \newenvironment{fitbatim}%
+%   {\vskip\baselineskip
+%    \VerbatimEnvironment
+%    \setlength{\baselineskip}{10pt plus 100pt minus 5pt}
+%    \setlength{\parskip}{10pt plus 100pt minus 5pt}
+%    \begin{BVerbatim}}
+%   {\end{BVerbatim}\vskip\baselineskip}
+
+ \newenvironment{fitbatim}{%
+  \begin{alltt}%
+   \fontsize{6pt}{7pt}\selectfont
+ }{\end{alltt}}
+
