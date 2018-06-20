@@ -2,15 +2,11 @@
   \usepackage[utf8]{inputenc}
   \renewcommand{\encodingdefault}{T1}
 
-%X%  % \usepackage[showframe]{geometry}
-%X%    \usepackage{geometry}
   \usepackage{pdfpages}
   \usepackage{scalefnt}
-% https://groups.google.com/forum/#!topic/pandoc-discuss/_tssxEsT0eg
+
   \usepackage{enumerate}
   \usepackage{twoopt,ifmtarg}
-%X%  \usepackage{151014_listing}
-% \usepackage{alltt} % USED BY QUAVERBATIM % OBSOLETE?
   \usepackage{sectsty}
   \usepackage{titlesec}
   % https://en.wikibooks.org/wiki/LaTeX/Special_Characters
@@ -52,24 +48,18 @@
   \usepackage{textcomp}
   \usepackage{eurosym} % https://tex.stackexchange.com/a/109267
   \let\texteuro\euro
-
-
-% SOLVE ERRORS
-% --------------------------------------------------------------------------- %
-% ! Package inputenc Error: Unicode char \u8:  not set up for use with LaTeX.
   \DeclareUnicodeCharacter{00A0}{ }
-
-
 
 % --------------------------------------------------------------------------- %
 %  B A S I C 
 % --------------------------------------------------------------------------- %
 
-% https://groups.google.com/forum/#!topic/pandoc-discuss/O-N0H1eBnVU
+  % https://groups.google.com/forum/#!topic/pandoc-discuss/O-N0H1eBnVU
   \let\oldhref=\href 
   \renewcommand{\href}[2]{#2\footnote{#1}}
 
-% http://tex.stackexchange.com/questions/167823/multiply-define-a-label-on-purpose
+  % http://tex.stackexchange.com/questions/167823/
+  % -> multiply-define-a-label-on-purpose
   \makeatletter
   \def\@newl@bel#1#2#3{{%
     \@ifundefined{#1@#2}%
@@ -101,15 +91,6 @@
   \renewenvironment{itemize}{\begin{samepage}\ITEMIZE}
                             {\ENDITEMIZE\end{samepage}}
 
- %\usepackage{newunicodechar}
- %\newunicodechar{ }{~} % tree non-breaking space ??!!
- %\DeclareUnicodeCharacter{00A0}{X}
- %\newunicodechar{─}{-} % tree
- %\newunicodechar{├}{+} % tree
- %\newunicodechar{│}{|} % tree
- %\newunicodechar{└}{-} % tree
-
-
 % --------------------------------------------------------------------------- %
 %  T A B L E   O F   C O N T E N T
 % --------------------------------------------------------------------------- %
@@ -123,7 +104,6 @@
 % --------------------------------------------------------------------------- %
 %  F O O T N O T E S 
 % --------------------------------------------------------------------------- %
-
   \renewcommand{\footnotelayout}{\raggedright}
 
 % SMALLER DISTANCE FOOTNOTENUMBER AND TEXT
@@ -144,89 +124,29 @@
   \setlength{\SKIPFOOTINS}{\skip\footins}
 
 % --------------------------------------------------------------------------- %
-%  C O N D I T I O N S
-% --------------------------------------------------------------------------- %
-
-%!% IF BODYTEXT WORKAROUND; TO DO BETTER
-%!  \newif\ifbodytext
-%!  \bodytexttrue
-%!% SET CONDITION (AND BY THE WAY REMOVE NUMBERING (=\chapter*{x}))
-%!  \let\Chapter\chapter
-%!  \renewcommand\chapter[1]{\bodytextfalse\Chapter*{#1}\bodytexttrue}
-%!  \let\Section\section
-%!  \renewcommand\section[1]{\bodytextfalse\Section*{#1}\bodytexttrue}
-%!  \let\Subsection\subsection
-%!  \renewcommand\subsection[1]{\bodytextfalse\Subsection*{#1}\bodytexttrue}
-%!  \let\Subsubsection\subsubsection
-%!  \renewcommand\subsubsection[1]{\bodytextfalse\Subsubsection*{#1}\bodytexttrue}
-%!% TODO: HEADER/FOOTER/TOC
-%!
-%!% IF FOOTNOTE (+NOT BODYTEXT)
-%!  \newif\iffootnote
-%!  \let\Footnote\footnote
-%!  \renewcommand\footnote[1]{%
-%!  \begingroup%
-%!  \bodytextfalse%
-%!  \footnotetrue\Footnote{#1}%
-%!  \bodytexttrue%
-%!  \endgroup}
-%!
-%!%% IF QUOTE/QUOTATION
-%!%  \newif\ifquote
-%!%  \let\QUOTEA\quote
-%!%  \let\QUOTEE\endquote
-%!% %\let\origquote\quote
-%!% %\let\endorigquote\endquote
-%!%  \renewenvironment{quote}{%
-%!%  \QUOTEA XXXX
-%!%  }%
-%!% {\QUOTEE}
-
-%%\newcommand{\rotif}{90}
-% \def\rotif{
-% \ifodd\value{page} 90 
-% \else -90 \fi}
-
-
-% --------------------------------------------------------------------------- %
 %  P A G E   C O M M A N D S
 % --------------------------------------------------------------------------- %
   \newcommand{\emptypage}{ % SOMEHOW HACKY
    \twocolumn[]\thispagestyle{empty} %
     \onecolumn %
-   }
-%X%  % --------------------------------------------------------------------------- %
-%X%  % MAKE PAGE AMOUNT DIVIDABLE BY FOUR
-%X%  % https://groups.google.com/forum/#!topic/de.comp.text.tex/j8wWMv8lZaM
-%X%    \newcount\vs
-%X%    \newcount\vsi
-%X%    \newcommand\cleartofour{
-%X%     \mbox{}\clearpage
-%X%     \pagestyle{empty}
-%X%     \vs\thepage
-%X%     \advance\vs by 3
-%X%     \vsi\vs
-%X%     \divide\vs by 4
-%X%     \multiply\vs by 4
-%X%     \ifnum\vs=\vsi\else\cleartofour\fi
-%X%    }
-%X%  % --------------------------------------------------------------------------- %
+  }
+% --------------------------------------------------------------------------- %
   \newcommand\cleartoleft{%
   \clearpage
   \ifthispageodd{\emptypage}{}
- }
+  }
 % --------------------------------------------------------------------------- %
   \newcommand\cleartoright{%
   \clearpage
-% http://tex.stackexchange.com/questions/6143/if-then-else-for-odd-page-even-page
+  % http://tex.stackexchange.com/questions/6143/
+  % -> if-then-else-for-odd-page-even-page
   \ifthispageodd{}{\emptypage}
- }
+  }
 % --------------------------------------------------------------------------- %
 
 % --------------------------------------------------------------------------- %
 %  Q R
 % --------------------------------------------------------------------------- %
-
    \makeatletter
     \newcommand{\grafikoverlay}[1]{
      \AddToShipoutPicture*{%
@@ -248,8 +168,9 @@
    \grafikoverlay{#1}
    }}
 
-% VERTICAL SPACE HACK
-% http://tex.stackexchange.com/questions/61627/prevent-action-if-top-of-page
+  % VERTICAL SPACE HACK
+  % http://tex.stackexchange.com/questions/61627/
+  % -> prevent-action-if-top-of-page
   \newcommand\vspacenotonpagetop{%
      \par % make sure we end a paragraph
      \vskip10pt % space above the rule
@@ -272,11 +193,6 @@
 % --------------------------------------------------------------------------- %
 %  C I T A T I O N
 % --------------------------------------------------------------------------- %
- %\makeatletter
- %\DeclareCiteCommand{\fullcite}{%
- % YY
- %}\makeatother
-
   \AtEveryCitekey{\clearfield{url}}
   \AtEveryCitekey{\clearfield{note}}
 
@@ -316,13 +232,6 @@
   }
   \makeatother
   \protected\def\harvardand{and}
-
-
-%X%  % --------------------------------------------------------------------------- %
-%X%  %  F O R M A T
-%X%  % --------------------------------------------------------------------------- %
-%X%  % A5 + CROP (online-druck.biz)
-%X%    \geometry{paperwidth=154mm,paperheight=216mm}
 
 % =========================================================================== %
   \newcommand{\setstandarddimensions}{ % DEFINE STANDARD DIMENSIONS
@@ -390,12 +299,7 @@
    \renewcommand*{\ttdefault}{\ttstandard}\selectfont
    \renewcommand*{\rmdefault}{\rmstandard}\selectfont
    \renewcommand*{\sfdefault}{\sfstandard}\selectfont
-  %\renewcommand\urlsplit[1]{\seqsplit{\tt\tiny ##1}} % OBSOLETE?
-  %\renewcommand\urlf[1]{{\scalefont{.8}\tt ##1}}     % OBSOLETE?
    \renewcommand\http[1]{{\scalefont{.8}\seqsplit{\tt ##1}}}
-
-  %\renewcommand{\embody}{\fontfamily{pju}\fontshape{it}%
-  %                       \selectfont\relscale{1.2}}
    \renewcommand{\embody}{\it}
    \renewcommand{\texttt}[1]{%
    \OldTexttt{\fontfamily{\ttstandard}%
@@ -410,10 +314,9 @@
 % --------------------------------------------------------------------------- %
 % H E A D L I N E S
 % --------------------------------------------------------------------------- %
-
-% REMOVE NUMBERING
-% https://tex.stackexchange.com/questions/80113/
-% -> hide-section-numbers-but-keep-numbering
+  % REMOVE NUMBERING
+  % https://tex.stackexchange.com/questions/80113/
+  % -> hide-section-numbers-but-keep-numbering
   \renewcommand*{\chapterformat}{}
   \let\CHAPTER\chapter
   \renewcommand\chapter[1]{\CHAPTER{#1}}
@@ -441,25 +344,9 @@
 % Q U O T E
 % --------------------------------------------------------------------------- %
 
-  %\newcommand{\AtEndQuote}{}%
-  %\AtEndEnvironment{quote}{\AtEndQuote}
-  %\newcommand{\AtBeginQuote}{}%
-  %\AtBeginEnvironment{quote}{\AtBeginQuote}
 % =========================================================================== %
   \newcommand{\setstandardquote}{ % DEFINE STANDARD QUOTE ENVIRONMENT
 % ........................................................................... %
-   % \makeatletter
-   % \renewenvironment{quote}
-   %               {\list{}{\listparindent=2pt%whatever you need
-   %                        \itemindent    \listparindent
-   %                        \leftmargin=15pt%  whatever you need
-   %                        \rightmargin=30pt%whatever you need
-   %                        \topsep=5pt%%%%%  whatever you need
-   %                       %\parsep        \z@ \@plus\p@
-   %                       }%
-   %                \item\relax}
-   %               {\endlist}
-   % \makeatother
     \makeatletter
     \renewenvironment{quote}
                   {\list{}{\listparindent=0pt%whatever you need
@@ -473,10 +360,15 @@
                    \item\relax}
                   {\endlist}
     \makeatother
-    %\renewcommand{\AtBeginQuote}{}
-    %\renewcommand{\AtEndQuote}{}
 % ........................................................................... %
   }
+
+  \newcommand{\AtEndQuote}{}%
+  \AtEndEnvironment{quote}{\AtEndQuote}
+
+  \newcommand{\AtBeginQuote}{}%
+  \AtBeginEnvironment{quote}{\AtBeginQuote}
+
 % =========================================================================== %
 
 % --------------------------------------------------------------------------- %
@@ -492,25 +384,19 @@
   }
 % =========================================================================== %
 
-  \newcommand{\AtEndQuote}{}%
-  \AtEndEnvironment{quote}{\AtEndQuote}
-
-  \newcommand{\AtBeginQuote}{}%
-  \AtBeginEnvironment{quote}{\AtBeginQuote}
-
-
 % --------------------------------------------------------------------------- %
 % P A G E   H E A D E R /  F O O T E R
 % --------------------------------------------------------------------------- %
 
-% http://texblog.org/2007/11/07/headerfooter-in-latex-with-fancyhdr/
+  % http://texblog.org/2007/11/07/headerfooter-in-latex-with-fancyhdr
   \pagestyle{fancy}
   \fancyhead{} % CLEAR DEFAULT
   \fancyfoot{} % CLEAR DEFAULT
   \fancyfoot[LO]{\vspace{1mm} \hspace{-13mm} {\scriptsize\thepage}}
   \fancyfoot[RE]{\vspace{1mm} {\scriptsize\thepage} \hspace{-13mm}}
 
-% http://tex.stackexchange.com/questions/114956/how-to-insert-footer-in-first-pages-of-chapter 
+  % http://tex.stackexchange.com/questions/114956/
+  % -> how-to-insert-footer-in-first-pages-of-chapter 
   \fancypagestyle{plain}{%
   \fancyfoot[LO]{\vspace{1mm} \hspace{-13mm} {\scriptsize\thepage}}
   \fancyfoot[RE]{\vspace{1mm} {\scriptsize\thepage} \hspace{-13mm}}
@@ -688,33 +574,16 @@
 
 % INCLUDE GRAPHICS ....
 % --------------------------------------------------------------------------- %
+  \newcommand\fullpagefloat[3]{%
+    see p.\pageref{#3}
 
-   %\newcommand\fullpagefloat[3]{%
-   % see p.\pageref{#3}\afterpage{\AddThispageHook{
-   % \includepdf[pages=#2,pagecommand={\label{#3}}]{#1}%
-   %}\newpage}%
-   %}
-
-   %\newcommand\fullpagefloat[3]{%
-   %  see p.\pageref{#3}
-   %
-   %  \afterpage{\AddThispageHook{ %
-   %  \includepdf[pages=#2, %
-   %   pagecommand={\thispagestyle{fancy}}] %
-   %  {#1}}\label{#3}\newpage}%
-   %}
-
-   \newcommand\fullpagefloat[3]{%
-     see p.\pageref{#3}
-
-     \afterpage{\AddThispageHook{ %
-     \includepdf[pages=#2, %
-      pagecommand={\thispagestyle{fancy}}] %
-     {#1}}\label{#3}
-     ~
-     \newpage}%
-   }
-
+    \afterpage{\AddThispageHook{ %
+    \includepdf[pages=#2, %
+     pagecommand={\thispagestyle{fancy}}] %
+    {#1}}\label{#3}
+    ~
+    \newpage}%
+  }
 
 % --------------------------------------------------------------------------- %
    \newcommand\spread[3]{%
@@ -769,12 +638,8 @@
 %  .MDSH  E N V I R O N M E N T S
 % --------------------------------------------------------------------------- %
 
- %\newcommand{\logsplit}[1]{\seqsplit{#1}} % OBSOLETE ?
- %\newenvironment{logfile}{\setlength{\parskip}{0pt plus 2pt minus 2pt}
- %                         \setstretch{0.5}\tt\tiny\sloppy}
- %                        {\par}
- % https://tex.stackexchange.com/questions/282263/
- % lstlisting-keep-hyphens-dashes-from-combining-into-one
+  % https://tex.stackexchange.com/questions/282263/
+  % -> lstlisting-keep-hyphens-dashes-from-combining-into-one
   \newcommand{\wgetlog}[1]{\newpage\lstReset
                            \lstset{basicstyle=\fontencoding{T1}\linespread{.9}
                                               \fontfamily{ipm}\selectfont%
@@ -810,18 +675,6 @@
          \ifthispageodd{\flushright}{\flushleft}
       }{\end{minipage}\end{tabular}}
 
- %\newenvironment{quaverbatim}{%
- % \begin{alltt}%
- %  \fontsize{6pt}{7pt}\selectfont
- %}{\end{alltt}}
-
- % \newenvironment{werbatim}%
- % {\vskip\baselineskip\VerbatimEnvironment
- %  \scalefont{.5}
- %  \begin{BVerbatim}}
- % {\end{BVerbatim}%
- %  \vskip\baselineskip\resetfont}
-
   \DefineVerbatimEnvironment{werbatim}{Verbatim}{
     fontsize=\tiny
   }
@@ -852,5 +705,4 @@
 
 % +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
   \resetall % <- START WITH STANDARDS
-
 

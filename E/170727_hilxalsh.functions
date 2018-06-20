@@ -680,34 +680,6 @@ function TITLE() {
 
 function FLUSHLOG(){
 
-# write2src ""
-# write2src "\newpage"
-# write2src "\begin{logfile}"
-# write2src "\textbf{Network Activity:}"
-
-# cat $WGETLOG              | #
-# tr -d '\015'              | # CONVERT DOS END OF LINE (IN WGET -d MODE)
-# tr -s ' '                 | # SQUEEZE CONSECUTIVE SPACES
-# grep -v '\.\.\.\.\.\..*s$'| # IGNORE PROCESS LINES
-# grep -v "^Saving"         | #
-# grep -v " saved "         | #
-# grep -v "^$"              | #
-# sed ":a;N;\$!ba;s/\n/ /g" | # RM NEWLINES
-# fold -s -w 200            | #
-# sed "s/-/{-}/g"           | #
-# sed "s/_/\\\\_/g"         | #
-# sed "s/%/\\\\%/g"         | #
-# sed 's/ /\n/g'            | #
-##sed '/logfile/!s/^http.\{30,\}$/\\logsplit{&}/' | # 
-# sed '/^[ \t]*$/d'         | #
-# sed 's/^{-[0-9 -{}]\{16,\}$/\n&/' | #
-# tee                       >> $SRCDUMP
-
-# write2src "\end{logfile}"
-# write2src ""
-# write2src "\bigskip"
-
-
   WGETLOGID=`md5sum $WGETLOG | cut -c 1-4`
 
   cat $WGETLOG               | # USELESS USE OF CAT
