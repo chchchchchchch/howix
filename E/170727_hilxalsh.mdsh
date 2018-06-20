@@ -1,18 +1,23 @@
 % --------------------------------------------------------------------------- %
-% EXTENDFUNCTIONS: 170727_Book-A5.functions
-% USEPACKAGE: 170727_Book-A5
-% ---
-% EXTENDFUNCTIONS: 170727_href.functions
-% ---
-% EXTENDFUNCTIONS: 170727_hilxalsh.functions
+% EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% --------------------------------------------------------------------------- %
 % USEPACKAGE: 170727_hilxalsh
+% ---
+% USEPACKAGE: ../lib/tex/conditions
+% USEPACKAGE: ../lib/tex/lstlanguages
 % --------------------------------------------------------------------------- %
 % PDFXTITLE: Christoph Haag: How I learned to stop and love the draft
 % PDFXAUTHOR: Christoph Haag
 % PDFXORG: LAFKON Publishing
 % MKPDFXCOMPLIANT:
+% ---
+% EXTENDFUNCTIONS: ../lib/mdsh/href.functions
+% ---
+% EXTENDFUNCTIONS: ../lib/mdsh/bibref.functions
+% BIBREF: http://freeze.sh/etherpad/export/_/references.bib
+% --
+% EXTENDFUNCTIONS: 170727_hilxalsh.functions
 % --------------------------------------------------------------------------- %
-
 
 % OPENING NOTES
 % --------------------------------------------------------------------------- %
@@ -63,7 +68,7 @@ authors under copyleft licenses.
 
 % INTRODUCTION AS SOURCE CODE
 % --------------------------------------------------------------------------- %
-% SRCODE: 170727_hilxalsh.mdsh 17-66
+% SRCODE: 170727_hilxalsh.mdsh 22-71
 
 
 %  T H I S   B O O K   S E T U P 
@@ -75,12 +80,10 @@ authors under copyleft licenses.
 % SPREAD: http://github.com/chchchchchchch/A5x2/raw/d9b91d2/EDIT/151029_onmdsh.svg 9-10
 % SPREAD: http://github.com/chchchchchchch/A5x2/raw/d9b91d2/EDIT/151029_onmdsh.svg 7
 
-
 % T H E   L A C   M A C H I N E
 % --------------------------------------------------------------------------- %
 % http://www.forkable.eu/generators/lacmachine/o/non-free/A3/plakatlac2008_A3_80.pdf
 % PP:
-
 
 % INCLUDE: http://github.com/chchchchchchch/DOK/raw/4ffbf18/EDIT/151126_lac08.mdsh 1-182
 % SRCODE:  http://github.com/chchchchchchch/DOK/raw/4ffbf18/EDIT/151126_lac08.mdsh 1-182
@@ -133,7 +136,11 @@ authors under copyleft licenses.
 % SPREAD: https://github.com/christop/A5x2/raw/11a5a9f/EDIT/151109_hcatfowysiwyg.svg 1
 % --------------------------------------------------------------------------- %
 % SUPERIMPOSE: https://github.com/christop/A5x2/raw/d94e703/EDIT/151109_hcatfowysiwyg.svg 2-22
-% INCLUDE: http://freeze.sh/etherpad/export/_/schrijver.hcatfowysiwyg.mdsh/499 1-510
+% TEXIN: \vspace*{.4\textheight} % MAKE SPACE FOR HEADLINE
+% INCLUDE: http://freeze.sh/etherpad/export/_/schrijver.hcatfowysiwyg.mdsh/504 24-510
+
+% HYPHENATE: Micro-soft 10
+% HYPHENATE: Word-Per-fect
 
 % VFILL:
 
@@ -188,9 +195,7 @@ authors under copyleft licenses.
 % INCLUDE: http://freeze.sh/etherpad/export/_/floss+art.lafuente.aatbat.mdsh/276 56-630
 % RESETALL:
 
-
 % SPREAD:  http://github.com/chchchchchchch/DOK/raw/614406d/EDIT/151113_A5x2-fontaintexhowto.svg 3-22
-
 
 % G A M B I A R R A
 % A N D  T H E   P R O T O T Y P I N G   P E R S P E C T I V E
@@ -227,7 +232,6 @@ authors under copyleft licenses.
 % INCLUDE: http://freeze.sh/etherpad/export/_/murtaugh.dry.mdsh/649 8-460
 % RESETALL:
 
-
 %  D O   I T   T O G E T H E R
 % --------------------------------------------------------------------------- %
 % HREF: OFF
@@ -237,11 +241,10 @@ authors under copyleft licenses.
 % --------------------------------------------------------------------------- %
 % INCLUDE: http://gitlab.com/chch/DOK/raw/9d00d4e/EDIT/160214_amroxiv.mdsh
 
-
 % --------------------------------------------------------------------------- %
 % FLUSHLICENSES:
 % FLUSHLOG:
 
-% TEXIN: \cleartofour
+
 % EOF!
 

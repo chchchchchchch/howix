@@ -9,15 +9,16 @@
 % https://groups.google.com/forum/#!topic/pandoc-discuss/_tssxEsT0eg
   \usepackage{enumerate}
   \usepackage{twoopt,ifmtarg}
-  \usepackage{151014_listing}
-  \usepackage{alltt} % USED BY QUAVERBATIM
+%X%  \usepackage{151014_listing}
+% \usepackage{alltt} % USED BY QUAVERBATIM % OBSOLETE?
   \usepackage{sectsty}
   \usepackage{titlesec}
-% https://en.wikibooks.org/wiki/LaTeX/Special_Characters
+  % https://en.wikibooks.org/wiki/LaTeX/Special_Characters
   \usepackage{pifont}
   \usepackage{seqsplit}
   \usepackage[hang,multiple]{footmisc}
   \usepackage{everypage}
+  \usepackage{afterpage}
   \usepackage{setspace}
   \usepackage{relsize}
 
@@ -25,14 +26,11 @@
   \usepackage[x-1a]{pdfx} % IMPORTANT: LOAD BEFORE HYPERREF
   \usepackage{hyperref}
 
-
   \usepackage[defaultlines=5,all]{nowidow}
   \newcommand{\setwidowstandard}{\setnowidow[5]\setnoclub[5]}
   \setwidowstandard
 
-
   \usepackage{enumitem}
-  \usepackage{afterpage}
   \usepackage{etoolbox}
   \usepackage{marginnote}
   \usepackage{tocloft}
@@ -49,6 +47,12 @@
               spacing=true,factor=1100,
               stretch=10,shrink=10]{microtype}
   \usepackage{underscore}
+ %\usepackage{listings}
+  \usepackage{listingsutf8} % https://tex.stackexchange.com/questions/378600
+  \usepackage{textcomp}
+  \usepackage{eurosym} % https://tex.stackexchange.com/a/109267
+  \let\texteuro\euro
+
 
 % SOLVE ERRORS
 % --------------------------------------------------------------------------- %
@@ -97,13 +101,13 @@
   \renewenvironment{itemize}{\begin{samepage}\ITEMIZE}
                             {\ENDITEMIZE\end{samepage}}
 
-  \usepackage{newunicodechar}
+ %\usepackage{newunicodechar}
  %\newunicodechar{ }{~} % tree non-breaking space ??!!
  %\DeclareUnicodeCharacter{00A0}{X}
-  \newunicodechar{─}{-} % tree
-  \newunicodechar{├}{+} % tree
-  \newunicodechar{│}{|} % tree
-  \newunicodechar{└}{-} % tree
+ %\newunicodechar{─}{-} % tree
+ %\newunicodechar{├}{+} % tree
+ %\newunicodechar{│}{|} % tree
+ %\newunicodechar{└}{-} % tree
 
 
 % --------------------------------------------------------------------------- %
@@ -143,45 +147,45 @@
 %  C O N D I T I O N S
 % --------------------------------------------------------------------------- %
 
-% IF BODYTEXT WORKAROUND; TO DO BETTER
-  \newif\ifbodytext
-  \bodytexttrue
-% SET CONDITION (AND BY THE WAY REMOVE NUMBERING (=\chapter*{x}))
-  \let\Chapter\chapter
-  \renewcommand\chapter[1]{\bodytextfalse\Chapter*{#1}\bodytexttrue}
-  \let\Section\section
-  \renewcommand\section[1]{\bodytextfalse\Section*{#1}\bodytexttrue}
-  \let\Subsection\subsection
-  \renewcommand\subsection[1]{\bodytextfalse\Subsection*{#1}\bodytexttrue}
-  \let\Subsubsection\subsubsection
-  \renewcommand\subsubsection[1]{\bodytextfalse\Subsubsection*{#1}\bodytexttrue}
-% TODO: HEADER/FOOTER/TOC
+%!% IF BODYTEXT WORKAROUND; TO DO BETTER
+%!  \newif\ifbodytext
+%!  \bodytexttrue
+%!% SET CONDITION (AND BY THE WAY REMOVE NUMBERING (=\chapter*{x}))
+%!  \let\Chapter\chapter
+%!  \renewcommand\chapter[1]{\bodytextfalse\Chapter*{#1}\bodytexttrue}
+%!  \let\Section\section
+%!  \renewcommand\section[1]{\bodytextfalse\Section*{#1}\bodytexttrue}
+%!  \let\Subsection\subsection
+%!  \renewcommand\subsection[1]{\bodytextfalse\Subsection*{#1}\bodytexttrue}
+%!  \let\Subsubsection\subsubsection
+%!  \renewcommand\subsubsection[1]{\bodytextfalse\Subsubsection*{#1}\bodytexttrue}
+%!% TODO: HEADER/FOOTER/TOC
+%!
+%!% IF FOOTNOTE (+NOT BODYTEXT)
+%!  \newif\iffootnote
+%!  \let\Footnote\footnote
+%!  \renewcommand\footnote[1]{%
+%!  \begingroup%
+%!  \bodytextfalse%
+%!  \footnotetrue\Footnote{#1}%
+%!  \bodytexttrue%
+%!  \endgroup}
+%!
+%!%% IF QUOTE/QUOTATION
+%!%  \newif\ifquote
+%!%  \let\QUOTEA\quote
+%!%  \let\QUOTEE\endquote
+%!% %\let\origquote\quote
+%!% %\let\endorigquote\endquote
+%!%  \renewenvironment{quote}{%
+%!%  \QUOTEA XXXX
+%!%  }%
+%!% {\QUOTEE}
 
-% IF FOOTNOTE (+NOT BODYTEXT)
-  \newif\iffootnote
-  \let\Footnote\footnote
-  \renewcommand\footnote[1]{%
-  \begingroup%
-  \bodytextfalse%
-  \footnotetrue\Footnote{#1}%
-  \bodytexttrue%
-  \endgroup}
-
-%% IF QUOTE/QUOTATION
-%  \newif\ifquote
-%  \let\QUOTEA\quote
-%  \let\QUOTEE\endquote
-% %\let\origquote\quote
-% %\let\endorigquote\endquote
-%  \renewenvironment{quote}{%
-%  \QUOTEA XXXX
-%  }%
-% {\QUOTEE}
-
- %\newcommand{\rotif}{90}
-  \def\rotif{
-  \ifodd\value{page} 90 
-  \else -90 \fi}
+%%\newcommand{\rotif}{90}
+% \def\rotif{
+% \ifodd\value{page} 90 
+% \else -90 \fi}
 
 
 % --------------------------------------------------------------------------- %
@@ -358,11 +362,11 @@
   \newcommand{\rmstandard}{phv}
   \newcommand{\sfstandard}{phv}
    
-  \newcommand\urlf[1]{{\tt #1}}
-  \newcommand\urlsplit[1]{\seqsplit{\tt #1}}
+ %\newcommand\urlf[1]{{\tt #1}}              % OBSOLETE?
+ %\newcommand\urlsplit[1]{\seqsplit{\tt #1}} % OBSOLETE?
+  \newcommand\http[1]{{\scalefont{.8}\seqsplit{\tt #1}}}
 
  % ttneu
-
   \let\OldTexttt\texttt
   \renewcommand{\texttt}[1]{%
   \OldTexttt{\fontfamily{\ttstandard}%
@@ -386,8 +390,10 @@
    \renewcommand*{\ttdefault}{\ttstandard}\selectfont
    \renewcommand*{\rmdefault}{\rmstandard}\selectfont
    \renewcommand*{\sfdefault}{\sfstandard}\selectfont
-   \renewcommand\urlsplit[1]{\seqsplit{\tt\tiny ##1}}
-   \renewcommand\urlf[1]{{\scalefont{.8}\tt ##1}}
+  %\renewcommand\urlsplit[1]{\seqsplit{\tt\tiny ##1}} % OBSOLETE?
+  %\renewcommand\urlf[1]{{\scalefont{.8}\tt ##1}}     % OBSOLETE?
+   \renewcommand\http[1]{{\scalefont{.8}\seqsplit{\tt ##1}}}
+
   %\renewcommand{\embody}{\fontfamily{pju}\fontshape{it}%
   %                       \selectfont\relscale{1.2}}
    \renewcommand{\embody}{\it}
@@ -395,6 +401,7 @@
    \OldTexttt{\fontfamily{\ttstandard}%
                \selectfont{%
                 \relscale{.95}{##1}}}}
+   \lstdefinestyle{inline}{basicstyle=\ttfamily}
    \fontsize{8pt}{8pt}
 % ........................................................................... %
   }
@@ -403,6 +410,20 @@
 % --------------------------------------------------------------------------- %
 % H E A D L I N E S
 % --------------------------------------------------------------------------- %
+
+% REMOVE NUMBERING
+% https://tex.stackexchange.com/questions/80113/
+% -> hide-section-numbers-but-keep-numbering
+  \renewcommand*{\chapterformat}{}
+  \let\CHAPTER\chapter
+  \renewcommand\chapter[1]{\CHAPTER{#1}}
+  \let\SECTION\section
+  \renewcommand\section[1]{\SECTION*{#1}}
+  \let\SUBSECTION\subsection
+  \renewcommand\subsection[1]{\SUBSECTION*{#1}}
+  \let\SUBSUBSECTION\subsubsection
+  \renewcommand\subsubsection[1]{\SUBSUBSECTION*{#1}}
+
 
 % =========================================================================== %
   \newcommand{\setstandardheadings}{ % DEFINE STANDARD HEADINGS
@@ -497,6 +518,158 @@
 
   \renewcommand{\headrulewidth}{0pt}
 
+% --------------------------------------------------------------------------- %
+%  C O D E   E N V I R O N M E N T S
+% --------------------------------------------------------------------------- %
+
+  \newcommand{\emptylinelst}{\vspace{-.5\baselineskip}}
+
+  \newcommand{\kwa}{\bfseries}
+  \newcommand{\kwb}{\kwa}
+  \newcommand{\kwc}{}
+
+  \lstdefinestyle{inline}{basicstyle=\ttfamily,
+                          breaklines=true,
+                          escapechar=°}
+
+  \newcommand{\lstsetHeritage}{%
+  \lstset{
+    basicstyle=\fontfamily{zca}\selectfont\footnotesize,
+    commentstyle=\scalefont{.9},
+    keywordstyle = \kwa,
+    keywordstyle = [2]{\kwb},
+    keywordstyle = [3]{\kwc},
+    stringstyle=\bfseries\scalefont{.8},
+   %directivestyle=\bfseries\color{red}, % ?????
+    showspaces=false,
+    showtabs=false,
+    columns=fixed,
+    numbers=none,
+    frame=none,
+    numberstyle=\tiny,
+    breaklines=false,
+    showstringspaces=false,
+    aboveskip=1em,
+    xleftmargin=0cm,
+    upquote=true,
+    escapechar=°
+   }
+  \renewcommand{\emptylinelst}{\vspace{-.5\baselineskip}}
+  }
+
+  \newcommand{\lstsetCode}[1]{%
+  \lstset{ %
+    basicstyle=\fontencoding{T1}\linespread{#1}
+               \fontfamily{ipm}\selectfont%
+               \small,
+    commentstyle=\scalefont{1},
+    keywordstyle = \kwa,
+    keywordstyle = [2]{\kwb},
+    keywordstyle = [3]{\kwc},
+    stringstyle=\scalefont{1},
+    showspaces=false,
+    showtabs=false,
+    columns=fixed,
+    numbers=none,
+    frame=none,
+    numberstyle=\tiny,
+    breaklines=flase,
+    showstringspaces=false,
+    aboveskip=1em,
+    xleftmargin=1em,
+    upquote=true,
+  % https://tex.stackexchange.com/a/24532
+    inputencoding=utf8,
+    extendedchars=true,
+    literate={▭}{{\symrect}}1
+             {♢ }{{\symrhombus}}1
+             {⏢}{{\symtrapez}}1
+             {→}{{\symarrowright}}1,
+    escapechar=°
+   }\renewcommand{\emptylinelst}{\vspace{-1\baselineskip}
+                                 \vfill\pagebreak[0]}
+  }
+
+  \newcommand{\lstsetQuaverbatim}{%
+  \lstset{ %
+    basicstyle=\fontencoding{T1}\linespread{1.1}
+               \fontfamily{iad}\selectfont\footnotesize,
+    breaklines=true,breakautoindent=false,breakindent=1em,
+    aboveskip=1em,xleftmargin=0cm,showspaces=false,
+    showtabs=false,columns=fixed,numbers=none,frame=none,
+    showstringspaces=false,upquote=true,escapechar=°,
+    inputencoding=utf8,extendedchars=true,
+    literate={Á}{{\'A}}1 {Ã}{{\~A}}1 {É}{{\'E}}1
+             {á}{{\'a}}1 {ã}{{\~a}}1 {é}{{\'e}}1
+             {À}{{\`A}}1 {è}{{\`E}}1 {Ò}{{\`O}}1
+             {à}{{\`a}}1 {è}{{\`e}}1 {ò}{{\`o}}1
+             {Ö}{{\"O}}1 {Ü}{{\"ü}}1 {Ä}{{\"A}}1
+             {ö}{{\"o}}1 {ü}{{\"u}}1 {ä}{{\"a}}1
+             {»}{\guillemotleft}1 {«}{\guillemotright}1
+             {'}{\textquotesingle}1 {€}{\euro}1
+             {-}{\textemdash}1 { }{{\,}}1
+    }
+
+   \renewcommand{\emptylinelst}{\vspace{.1\baselineskip}
+                                \pagebreak[2]}
+   }
+
+  \newcommand{\lstReset}{\lstset{language={}}
+                         \renewcommand{\emptylinelst}{\vspace{.5\baselineskip}}}
+
+  \newcommand{\lstsetBash}{\lstset{language=Bash+,
+               morekeywords = [2]{write2src,getFile,
+                                  mkqr,getVerbatim},
+               basicstyle=\fontencoding{T1}\linespread{1.5}
+                          \fontfamily{ipm}\selectfont\scriptsize}
+              }
+  \newcommand{\lstsetPython}{\lstset{language=Python,
+                                     basicstyle=\fontencoding{T1}\linespread{1.5}
+                                                 \fontfamily{ipm}\selectfont\footnotesize}
+                              \renewcommand{\emptylinelst}{%
+                               \vspace{-.4\baselineskip}}
+  }
+  \newcommand{\lstsetMake}{\lstset{language=Make,
+                                   basicstyle=\fontencoding{T1}\linespread{1.5}
+                                              \fontfamily{ipm}\selectfont\footnotesize}
+  }
+  \lstnewenvironment{plain}[1]{\lstsetCode{1}\lstReset
+                               \ifnum\numexpr#1 < 5
+                              %\color{green}
+                               \else
+                              %\color{red}
+                               \fi}
+                              {}
+  \lstnewenvironment{smallcode}[1]{\lstsetCode{1}\lstReset
+                                   \lstset{basicstyle=\fontencoding{T1}
+                                   \fontfamily{ipm}\selectfont%
+                                   \scriptsize}}
+                              {}
+  \lstnewenvironment{bashcode}[1]{\lstsetCode{1.5}\lstsetBash}{}
+  \lstnewenvironment{pythoncode}[1]{\lstsetCode{1}\lstsetPython}{}
+  \lstnewenvironment{makecode}[1]{\lstsetCode{1}\lstsetMake}{}
+  \lstnewenvironment{quaverbatim}[1]{\lstReset\lstsetQuaverbatim}{}
+  \lstnewenvironment{srcode}[1]{\lstsetHeritage}{}
+
+  \newcommand{\lstinputplain}[1]{\lstsetCode{1}\lstReset %
+                                 \smallskip
+                                 \lstinputlisting{#1}
+                                 \smallskip}
+  \newcommand{\lstinputbashcode}[1]{\lstsetCode{1.5}\lstsetBash %
+                                    \lstinputlisting{#1}}
+  \newcommand{\lstinputpythoncode}[1]{\lstsetCode{1}\lstsetPython %
+                                      \lstinputlisting{#1}}
+  \newcommand{\lstinputquaverbatim}[1]{\lstsetQuaverbatim %
+                                       \lstinputlisting{#1}}
+  \newcommand{\lstinputsmallcode}[1]{\lstsetCode{1}\lstReset
+                                     \lstset{basicstyle=\fontencoding{T1}
+                                     \fontfamily{ipm}\selectfont%
+                                     \scriptsize}
+                                     \lstinputlisting{#1}}
+  \newcommand{\lstinputmakecode}[1]{\lstsetCode{1.5}\lstsetMake %
+                                    \lstinputlisting{#1}}
+  \newcommand{\lstinputsrcode}[1]{\lstsetCode{1}\lstsetHeritage%
+                                  \lstinputlisting{#1}}
 
 % --------------------------------------------------------------------------- %
 %  .MDSH  C O M M A N D S
@@ -591,15 +764,23 @@
   \fi\fi}%
   }}\makeatother
 
+
 % --------------------------------------------------------------------------- %
 %  .MDSH  E N V I R O N M E N T S
 % --------------------------------------------------------------------------- %
 
-  \newcommand{\logsplit}[1]{\seqsplit{#1}}
-  \newenvironment{logfile}{\setlength{\parskip}{0pt plus 2pt minus 2pt}
-                           \setstretch{0.5}\tt\tiny\sloppy}
-                          {\par}
-
+ %\newcommand{\logsplit}[1]{\seqsplit{#1}} % OBSOLETE ?
+ %\newenvironment{logfile}{\setlength{\parskip}{0pt plus 2pt minus 2pt}
+ %                         \setstretch{0.5}\tt\tiny\sloppy}
+ %                        {\par}
+ % https://tex.stackexchange.com/questions/282263/
+ % lstlisting-keep-hyphens-dashes-from-combining-into-one
+  \newcommand{\wgetlog}[1]{\newpage\lstReset
+                           \lstset{basicstyle=\fontencoding{T1}\linespread{.9}
+                                              \fontfamily{ipm}\selectfont%
+                                              \scalefont{.4},
+                                              literate = {-}{-}1,}
+                           \lstinputlisting{#1}\bigskip}
 
   \newenvironment{marginblock}{%
    \ifthispageodd{
@@ -629,10 +810,10 @@
          \ifthispageodd{\flushright}{\flushleft}
       }{\end{minipage}\end{tabular}}
 
-  \newenvironment{quaverbatim}{%
-   \begin{alltt}%
-    \fontsize{6pt}{7pt}\selectfont
-  }{\end{alltt}}
+ %\newenvironment{quaverbatim}{%
+ % \begin{alltt}%
+ %  \fontsize{6pt}{7pt}\selectfont
+ %}{\end{alltt}}
 
  % \newenvironment{werbatim}%
  % {\vskip\baselineskip\VerbatimEnvironment

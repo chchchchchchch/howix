@@ -1,4 +1,4 @@
-  SHORTURLBASE="http://lfkn.de"
+# SHORTURLBASE="http://lfkn.de"
   SRCLIST=${TMPID}X.list
 # --------------------------------------------------------------------------- #
 # SHARED/REUSED
@@ -33,7 +33,7 @@
   }
 
 # --------------------------------------------------------------------------- #
-  QRDEKOSRC=151007_qrdeko-simple.svg
+# QRDEKOSRC=151007_qrdeko-simple.svg
    QRURLLOG=${TMPID}.qrurls
 # --------------------------------------------------------------------------- #
 
@@ -97,74 +97,6 @@
   else
        echo "qr graphic for $QURL already generated!"
   fi
-  }
-# --------------------------------------------------------------------------- #
-# OVERWRITE
-# --------------------------------------------------------------------------- #
-  function refsrc() {
-
-    mkqr $* > /dev/null 2>&1
-    REFCODE="\qrmargin{$QRPDF}{$QRTXT}"
-    echo "$REFCODE"
 
   }
-# --------------------------------------------------------------------------- #
-
-
-# =========================================================================== #
-# MDSH FUNCTIONS
-# =========================================================================== #
-
-# --------------------------------------------------------------------------- #
-
-function HREF() {
-
-       O=`echo $* | cut -d " " -f 1`
-       THISCMD="% HREF:"
-
-   if [ "X$O" == "XON"  ] ||
-      [ "X$O" == "XOFF" ]
-    then
-         HREFMODE="$O"
-        #echo "HREFMODE: $HREFMODE"
-    else
-     if [ "X$HREFMODE" != "XOFF"  ]; then
-
-         WWWLINK=`urlitzer "$*"`
-         REFCODE=`refsrc $WWWLINK`
-         write2src "$REFCODE"
-     fi
-   fi
-}
-
-# --------------------------------------------------------------------------- #
-
-# --------------------------------------------------------------------------- #
-
-function FLUSHQRURLS(){
-
-  write2src "\bigskip"
-  write2src "URLS:"
-  write2src ""
-
-  for SHORTURL in `cat $QRURLLOG`
-   do
-     LONGURL=`curl -sIL $SHORTURL         | # CURL URL
-              tr -d '\015'                | # CONFORM DOS END OF LINE
-              grep ^Location              | # SELECT LOCATION
-              cut -d ":" -f 2-            | # CUT SECOND FIELD
-              tail -n 1                   | # SELECT LAST LINE
-              sed 's,[ \t]*,,'            | # REMOVE ALL SPACES
-              sed 's,/$,,'                | # REMOVE TRAILING SLASH
-              sed "s,^${SHORTURLBASE}$,,"`  # DELETE SHORTURLBASE ONLY
-     if [ `echo $LONGURL | wc -c` -ge 2 ]; then
-           write2src "$SHORTURL -> $LONGURL"
-      else
-           write2src "$SHORTURL NOT SET!"
-     fi
-  done
-
-}
-
-# --------------------------------------------------------------------------- #
 
