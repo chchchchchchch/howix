@@ -1,88 +1,311 @@
+# --------------------------------------------------------------------------- # 
+# MODIFY $TMPTEX BEFORE COMPILING PDF 
+# --------------------------------------------------------------------------- # 
+  function modTeX() { 
+ 
+ # MOVE NEWLINE ON NEW LINE 
+   sed -i 's/\\\\/\n\\\\/g'                                  $SRCDUMP 
+ 
+ # CHANGE STANDARD ENVIRONMENT CREATED BY PANDOC  
+   sed -i 's/\\begin{lstlisting}/\\begin{plain}{10}/'        $SRCDUMP 
+   sed -i 's/{lstlisting}/{plain}/'                          $SRCDUMP
+
+ # WRAP URLS IN COMMAND 
+   sed -i '/^%/!s,\bhttp.\?://[^ }!]*,\\http{&},g'           $SRCDUMP 
+
+ # ESCAPE \http MACRO INSIDE \lstinline
+  #sed -i 's/\(lstinline!\)\(\\http{[^}]*}\)/\1°\2°/g'       $SRCDUMP
+ # RM \http MACRO INSIDE \lstinline
+   sed -i 's/\(lstinline!\)\(\\http{\)\([^}]*\)\(}\)/\1\3/g' $SRCDUMP
+
+ # CUSTOM STYLE FOR \lstinline 
+   sed -i 's,\\lstinline!,\\lstinline[style=inline]!,g'      $SRCDUMP 
+ 
+ # INJECT NON-BREAKING SPACE HACK 
+   sed -i 's,\([a-zA-Z]\)\(::\)\([a-zA-Z]\),\1~\3,g'         $SRCDUMP 
+ 
+ # INJECT LINEBREAK HACK 
+   sed -i 's,\([a-zA-Z]\)\(:;\)\([a-zA-Z]\),\1 \\\\ \3,g'    $SRCDUMP 
+
+ # MAKE ARROWS
+   sed -i "s/--\\\textgreater{}/\\\ding{222}/g"              $SRCDUMP
+ 
+  } 
+ 
+ # ------------------------------------------------------------------------- # 
+ # DO IT AT THE END 
+ # ------------------------------------------------------------------------- # 
+   if [ "$OUTPUTFORMAT" == pdf ];then 
+ 
+       # ADD ONLY ONCE 
+         if [ `echo $preOutput | grep modTeX | wc -l ` -lt 1 ];then 
+               preOutput="$preOutput modTeX" 
+         fi 
+ 
+   elif [ "$OUTPUTFORMAT" == html ];then 
+ 
+         sleep 0 
+ 
+   fi 
+ # ------------------------------------------------------------------------- # 
+# --------------------------------------------------------------------------- # 
+
+# --------------------------------------------------------------------------- #
+# OVERWRITE
 # --------------------------------------------------------------------------- #
 
-function QUAVERBATIM() {(
+function INCLUDE() {
 
-  getLines $*
-  getFileRange
+  # echo "INCLUDE STARTS ====================================================="
 
-  if [ -f $COLLECTED ]; then
+# SAVE FUNCTION ID (NOT AS VARIABLE, MAY BE OVERWRITTEN)
+# ------------------------------------------------------ #
+  FID=`date +%s%N`; echo $FID >> ${TMPID}.fid
 
-     if [ "X$HREFMODE" != "XOFF"  ]; then
-           WWWLINK=`shortref $*`
-           REFCODE=`refsrc $WWWLINK`
-           write2src "$REFCODE"
-     fi
+# MAKE HREF
+# --------------------------------------------------------
+  WWWLINK=`shortref $*`
+  REFCODE=`refsrc $WWWLINK       | #
+           sed 's/\\\/\\\\\\\/g' | #
+           sed 's/\//\\\\\//g'`    #
+   IDINID=`echo $REFCODE | md5sum | cut -c 1-6`
+  REFIDIN="$IDINID"
+  if [ X"$HREFMODE" != "XOFF" ]; then
+  write2src "HEREREF$REFIDIN"
+  fi
 
-  # ------------------------------------------------------------------------- #
-    write2src "\begin{quaverbatim}"
+  echo -e "\n% $FID\n" >> $SRCDUMP
 
-     cat $COLLECTED      | # START ...
-     cut -c ${INDENT}-   | # REMOVE INDENT
-     tee >> $SRCDUMP       # WRITE TO FILE
+# PROCESS INPUT !!!!!
+# --------------------------------------------------------
+  mdsh2src $*
 
-    write2src "\end{quaverbatim}"
-  # ------------------------------------------------------------------------- #
+# ADD REFERENCE IF NOT SKIPPED
+# --------------------------------------------------------
+  if [ X"$SKIP"     != "XYES" ] &&
+     [ Y"$RUN"      == "YYES" ]; then
+       sed -i "s,HEREREF$REFIDIN,$REFCODE," $SRCDUMP
+  else
+       sed -i "/^HEREREF${REFIDIN}$/d" $SRCDUMP
+  fi
+       sed -i "/^HEREREF.*$/d" $SRCDUMP # EMERGENCY REMOVE
 
-  rm $COLLECTED
+# REMOVE ADDED FUNCTIONS
+# --------------------------------------------------------
+  if [ -f ${TMPID}.fid ]; then
+
+# LOAD LATEST FUNCTION ID
+  FID=`tail -n 1 ${TMPID}.fid`
+# REMOVE FROM FUNCTIONS
+  sed -i "/${FID} -- START$/,/${FID} -- END$/d" ${FUNCTIONS}
+# REMOVE FROM SAVED FUNCTIONS
+  sed -i "/$FID/d" ${TMPID}.fid
+# RELOAD FUNCTIONS
+  source $FUNCTIONS
 
   fi
 
-  if [ -f $SRCLIST ]; then rm $SRCLIST ;fi
+  # echo "INCLUDE ENDS  ======================================================"
+}
 
-)}
+# --------------------------------------------------------------------------- #
+# ../lib/mdsh/href.functions 
+# --------------------------------------------------------------------------- #
+  SHORTURLBASE="http://lfkn.de"
+  QRDEKOSRC=$MAINPATH/151007_qrdeko-simple.svg
+# --------------------------------------------------------------------------- #
+
+function HREF() {
+
+       O=`echo $* | cut -d " " -f 1`
+       THISCMD="% HREF:"
+
+   if [ "X$O" == "XON"  ] ||
+      [ "X$O" == "XOFF" ]
+    then
+         HREFMODE="$O"
+        #echo "HREFMODE: $HREFMODE"
+    else
+     if [ "X$HREFMODE" != "XOFF"  ]; then
+
+         WWWLINK=`urlitzer "$*"`
+         REFCODE=`refsrc $WWWLINK`
+         write2src "$REFCODE"
+     fi
+   fi
+}
 
 # --------------------------------------------------------------------------- #
 
-function SRCODE() {(
+function FLUSHQRURLS(){
 
-  getLines $*
-  getFileRange
+  write2src "\bigskip"
+  write2src "URLS:"
+  write2src ""
 
-  SRCSRC=`tail -n 1 $SRCLIST | sed 's/ /\n/g' | # LAST ENTRY FROM SRCLIST SPACES TO NEWLINES
-          sed "/\.functions$/s/^/XXX/g"       | # MARK LINES WITH .functions EXTENSION
-          sed "/\.[a-z]\{2,4\}$/s/^/XXX/g"    | # MARK LINES WITH 2-4 CHARACTER EXTENSION
-          grep "^XXX" | sed 's/^XXX//'        | # SELECT AND REMOVE MARK
-          head -n 1`                            # SELECT FIRST
-  EXTENSION=`echo $SRCSRC | rev | cut -d "." -f 1 | rev`
-
-     if   [ "X$EXTENSION" == "Xsh" ]; then
-             LSTSET="\lstsetBash"
-     elif [ "X$EXTENSION" == "Xfunctions" ]; then
-             LSTSET="\lstsetBash"
-     elif [ "X$EXTENSION" == "Xtex" ]; then
-             LSTSET="\lstsetTeX"
-     elif [ "X$EXTENSION" == "Xsty" ]; then
-             LSTSET="\lstsetTeX"
-     else
-             LSTSET="\lstReset"
+  for SHORTURL in `cat $QRURLLOG`
+   do
+     LONGURL=`curl -sIL $SHORTURL         | # CURL URL
+              tr -d '\015'                | # CONFORM DOS END OF LINE
+              grep ^Location              | # SELECT LOCATION
+              cut -d ":" -f 2-            | # CUT SECOND FIELD
+              tail -n 1                   | # SELECT LAST LINE
+              sed 's,[ \t]*,,'            | # REMOVE ALL SPACES
+              sed 's,/$,,'                | # REMOVE TRAILING SLASH
+              sed "s,^${SHORTURLBASE}$,,"`  # DELETE SHORTURLBASE ONLY
+     if [ `echo $LONGURL | wc -c` -ge 2 ]; then
+           write2src "$SHORTURL -> $LONGURL"
+      else
+           write2src "$SHORTURL NOT SET!"
      fi
+  done
 
-  if [ -f $COLLECTED ]; then
+}
 
-     if [ "X$HREFMODE" != "XOFF"  ]; then
-           WWWLINK=`shortref $*`
-           REFCODE=`refsrc $WWWLINK`
-           write2src "$REFCODE"
-     fi
+# --------------------------------------------------------------------------- #
+# OVERWRITE
+# --------------------------------------------------------------------------- #
+  function refsrc() {
 
-  # ------------------------------------------------------------------------- #
-    write2src "\begin{lstlisting}"
+    mkqr $* > /dev/null 2>&1
+    REFCODE="\qrmargin{$QRPDF}{$QRTXT}"
+    echo "$REFCODE"
 
-     cat $COLLECTED                     | # START ...
-     cut -c ${INDENT}-                  | # REMOVE INDENT
-     sed 's/^[ \t]*$/°\\emptylinelst°/' | # REPLACE EMPTY LINES WITH COMMAND
-     tee >> $SRCDUMP       # WRITE TO FILE
+  }
+# --------------------------------------------------------------------------- #
+# --------------------------------------------------------------------------- #
 
-    write2src "\end{lstlisting}"
-  # ------------------------------------------------------------------------- #
+function SRCCODE() {
 
-  rm $COLLECTED
+ # ------------------------------------------------------------------------ #
+ # CHECK/SET LANGUAGE ARGUMENT
+ # ------------------------------------------------------------------------ #
+   ALL="$*";THISCMD="SRCCODE";
+   ENVIRONMENT="" # RESET
+   SRCLANG=`echo $1 | sed 's/ //g' | sed 's/[^a-z]//g'`
 
-  fi
+   if [ "$SRCLANG" != "" ];then
+         ENVIRONMENT=`grep -ih "newenvironment{$SRCLANG" ${TMPID}*.sty | #
+                      grep -v "^%" | head -n 1 | #
+                      cut -d "{" -f 2 | cut -d "}" -f 1`
+   fi
+   if [ `echo $ALL | sed "s/^[ ]*$SRCLANG[ ]*//" | wc -c` -gt 1 ];then
+      if [ "$ENVIRONMENT" != "" ];then
+            echo $ALL | sed "s/^[ ]*$SRCLANG[ ]*//" > ${TMPID}.xtract
+       else
+            echo $ALL                               > ${TMPID}.xtract
+      fi
+         # GET NUMBER FOR CMD LINE IN (UNPROCESSED) MDSH SRC AND
+         # DISABLE CMD LINE IN MDSH SRC (PREVENT DOUBLE MATCH)
+         # ----
+           LNCMD=`grep -n "^% $THISCMD:" $MDSH | # FIND CMD LINE
+                  head -n 1 | cut -d ":" -f 1`   # SELECT LAST MATCH
+           sed -i "${LNCMD}s/^% $THISCMD:/%X${THISCMD}:/" $MDSH
+    else
+         getVerbatim "$THISCMD" ${TMPID}.xtract
+   fi
+   if [ "$ENVIRONMENT" == "" ];then ENVIRONMENT="plain"; fi
 
-  if [ -f $SRCLIST ]; then rm $SRCLIST ;fi
+ # ------------------------------------------------------------------------ #
+ # LOOP THROUGH EXTRACT AND BRUTE FORCE getFile
+ # ------------------------------------------------------------------------ #
+ ( IFS=$'\n'
+   for L in `grep -n "" ${TMPID}.xtract`
+    do L=`echo $L | cut -d ":" -f 2-` # cat SKIPPED EMPTY LINES?
+       if [ `echo $L | grep "^[ ]*%[ ]*F:" | wc -l` -gt 0 ];then
 
-)}
+         TRY=`echo $L | cut -d ":" -f 2- | #
+              sed 's/^[ ]*//' | cut -d " " -f 1`
+         getFile $TRY tmp.tmp
+
+         if [ "$SUCCESS" == "YES" ];then
+               LINES=`echo $L | sed "s/ /\n/g" | # SPACES TO NEWLINES
+                      sed "/[^0-9\\-]/d"       | # NUMBERS AND - ONLY
+                      grep -v "^[ ]*$"         | # NO EMPTY LINES
+                      egrep -v "^-|-$"         | # IGNORE ISOLATED -
+                      tail -n 1`                 # LAST LINE ONLY
+               if [ "$LINES" != "" ];then
+                     LINES=`echo $LINES | sed 's/-/,/'`
+                     SELECTLINES="sed -n \"${LINES}p\" "
+                else
+                     SELECTLINES="tee"
+               fi
+               cat   tmp.tmp       | # START WITH ALL
+               eval "$SELECTLINES" | # DO SELECT LINE RANGE
+               tee                 >> ${TMPID}SRCCODE.tmp
+               rm tmp.tmp
+         fi
+       else
+            echo "$L"               >> ${TMPID}SRCCODE.tmp
+       fi
+   done;)
+
+   mv ${TMPID}SRCCODE.tmp ${TMPID}.xtract
+
+ # ------------------------------------------------------------------------ #
+ # FORMAT EXTRACT
+ # ------------------------------------------------------------------------ #
+   unIndent ${TMPID}.xtract
+   sed -i 's/^[ \t]*$/°\\emptylinelst°/' ${TMPID}.xtract
+   LN=`wc -l ${TMPID}.xtract | cut -d " " -f 1`
+ # ------------------------------------------------------------------------ #
+   VERBATIM=${TMPID}.`md5sum ${TMPID}.xtract | cut -c 1-8`.verbatim
+   mv ${TMPID}.xtract $VERBATIM
+
+   if [ "$OUTPUTFORMAT" == pdf ];then
+
+     #write2src "\begin{$ENVIRONMENT}{$LN}"
+     # cat ${TMPID}.xtract >> $SRCDUMP
+     #write2src "\end{$ENVIRONMENT}"
+      write2src "\lstinput${ENVIRONMENT}{$VERBATIM}"
+
+   elif [ "$OUTPUTFORMAT" == html ];then
+
+      write2src "<pre><code class=\"${ENVIRONMENT}\">"
+       cat ${TMPID}.xtract >> $SRCDUMP
+      write2src '</code></pre>'
+
+   fi
+ # ------------------------------------------------------------------------ #
+ # rm ${TMPID}.xtract # CLEAN UP
+
+}
+
+# --------------------------------------------------------------------------- #
+# SUPPORT OLD SYNTAX
+# --------------------------------------------------------------------------- #
+
+function SRCODE() {
+
+   REFTMP="R${RANDOM}F";write2src "$REFTMP"
+
+    SRCCODE srcode % F: $*
+
+   if [ "X$HREFMODE" != "XOFF"  ]; then
+         WWWLINK=`shortref $*`
+         REFCODE=`refsrc $WWWLINK       | #
+                  sed 's/\\\/\\\\\\\/g' | #
+                  sed 's/\//\\\\\//g'`    #
+         sed -i "s,$REFTMP,$REFCODE,g" $SRCDUMP
+   fi;   sed -i "s,$REFTMP,,g" $SRCDUMP
+}
+
+function QUAVERBATIM() {
+
+   REFTMP="R${RANDOM}F";write2src "$REFTMP"
+
+    SRCCODE quaverbatim % F: $*
+
+   if [ "X$HREFMODE" != "XOFF"  ]; then
+         WWWLINK=`shortref $*`
+         REFCODE=`refsrc $WWWLINK       | #
+                  sed 's/\\\/\\\\\\\/g' | #
+                  sed 's/\//\\\\\//g'`    #
+         sed -i "s,$REFTMP,$REFCODE,g" $SRCDUMP
+   fi;   sed -i "s,$REFTMP,,g" $SRCDUMP
+}
+
+# --------------------------------------------------------------------------- #
 
 # --------------------------------------------------------------------------- #
 
@@ -102,7 +325,12 @@ function SOFTWAREUSED() {
 
 function PDF() {(
 
-  getLines $*
+  THISCMD="PDF"
+  if [ `echo $* | wc -c` -lt 2 ]; then # = NO PARAMETERS PROVIDED
+        getVerbatim "$THISCMD" $SRCLIST
+  else
+        echo $* > $SRCLIST
+  fi
 
  ( IFS=$'\n'
   for ITEM in `cat $SRCLIST`
@@ -276,7 +504,6 @@ function PP(){(
             sed "s/^%//"                   | # REMOVE LEADING %
             sed "s/^[ ]*//"`                 # REMOVE ALL LEADING BLANKS
     PPNUM=`echo $PPPDFS |  sed 's/ /\n/g' | wc -l` # COUNT
-
 
      if [ "X$HREFMODE" != "XOFF"  ]; then
            PPLINK=`shortref $PPPDFS`
@@ -453,32 +680,20 @@ function TITLE() {
 
 function FLUSHLOG(){
 
-  write2src ""
-  write2src "\newpage"
-  write2src "\begin{logfile}"
-  write2src "\textbf{Network Activity:}"
+  WGETLOGID=`md5sum $WGETLOG | cut -c 1-4`
 
-  cat $WGETLOG              | #
-  tr -d '\015'              | # CONVERT DOS END OF LINE (IN WGET -d MODE)
-  tr -s ' '                 | # SQUEEZE CONSECUTIVE SPACES
-  grep -v '\.\.\.\.\.\..*s$'| # IGNORE PROCESS LINES
-  grep -v "^Saving"         | #
-  grep -v " saved "         | #
-  grep -v "^$"              | #
-  sed ":a;N;\$!ba;s/\n/ /g" | # RM NEWLINES
-  fold -s -w 200            | #
-  sed "s/-/{-}/g"           | #
-  sed "s/_/\\\\_/g"         | #
-  sed "s/%/\\\\%/g"         | #
-  sed 's/ /\n/g'            | #
-  sed '/logfile/!s/^http.\{30,\}$/\\logsplit{&}/' | # 
-  sed '/^[ \t]*$/d'         | #
-  sed 's/^{-[0-9 -{}]\{16,\}$/\n&/' | #
-  tee                       >> $SRCDUMP
+  cat $WGETLOG               | # USELESS USE OF CAT
+  tr -d '\015'               | # CONVERT DOS END OF LINE (IN WGET -d MODE)
+  tr -s ' '                  | # SQUEEZE CONSECUTIVE SPACES
+  grep -v '\.\.\.\.\.\..*s$' | # IGNORE PROCESS LINES
+  grep -v "^Saving"          | #
+  grep -v " saved "          | #
+  grep -v "^$"               | #
+  sed ":a;N;\$!ba;s/\n/ /g"  | # RM NEWLINES
+  fold -w 140                | #
+  tee                       >> ${TMPID}.${WGETLOGID}.wgetlog
 
-  write2src "\end{logfile}"
-  write2src ""
-  write2src "\bigskip"
+  write2src "\wgetlog{${TMPID}.${WGETLOGID}.wgetlog}"
 
   rm $WGETLOG
 
@@ -543,10 +758,10 @@ function INFO(){
        sed "s/$BHERE/\n/g"         | # RESTORE LINEBREAKS
        sed "s/$LHERE/ /g"          | # RESTORE EMPTY LINES
        sed 's/ /\n/g'              | #
-       sed -e '/^http.\{20\}/s/^/\\urlsplit{/' \
-           -e '/^\\urlsplit/s/$/}/'| #
-       sed -e '/^http:\/\//s/^/\\urlf{/' \
-           -e '/^\\urlf/s/$/}/'| #
+      #sed -e '/^http.\{20\}/s/^/\\urlsplit{/' \
+      #    -e '/^\\urlsplit/s/$/}/'| #
+      #sed -e '/^http:\/\//s/^/\\urlf{/' \
+      #    -e '/^\\urlf/s/$/}/'| #
        tee  >> $SRCDUMP              # WRITE TO FILE
        write2src ""                  # EMPTY LINE
 
@@ -630,7 +845,7 @@ function LICENSE(){
          sed 's,[ ]*/[ ]*,_,g'`
   LID=`echo $LNAME | md5sum | cut -c 1-6`
 
-  BADGESRC=151025_licenses.svg
+  BADGESRC="$MAINPATH/151025_licenses.svg"
   BADGEPDF=${TMPID}${LID}`echo $RANDOM | cut -c 1-2`.pdf
 
 # SELECT LAYERS: ONE FOR EACH UNIQUE NAME
@@ -735,6 +950,41 @@ function SWAP(){
 
 # --------------------------------------------------------------------------- #
 
+function HYPHENATE() {
+
+  N=`echo $* | sed 's/ /\n/g' | #
+     sed '/^[^0-9]\+$/d' | tail -n 1`
+  if [ "$N" == "" ];then N=1; fi
+
+  UNHYPHENATED=`echo $* | sed 's/ /\n/g' | #
+                sed '/^[0-9]\+$/d' | head -n 1 | #
+                sed 's/-//g'`
+  HYPHENATIZED=`echo $* |  sed 's/ /\n/g' | #
+                sed '/^[0-9]\+$/d' | head -n 1 | #
+                sed 's,-,\\\\\\\-,g'`
+
+  for N in `seq $N`
+   do
+      LNHYPH=`grep -n "$UNHYPHENATED" $SRCDUMP | #
+              tail -n 1 | cut -d ":" -f 1 `
+      if [ "$LNHYPH" != "" ];then
+    
+         if [ "$OUTPUTFORMAT" == pdf ];then
+              sed -i "${LNHYPH}s/$UNHYPHENATED/$HYPHENATIZED/" $SRCDUMP
+         fi
+      fi
+  done
+
+}
+
+# --------------------------------------------------------------------------- #
+
+# function SLOPPY?
+# https://tex.stackexchange.com/questions/298331/
+# -> disable-microtype-for-a-single-paragraph
+
+
+
 # =========================================================================== #
 # MEMO CUSTOM FUNCTIONS
 # =========================================================================== #
@@ -811,7 +1061,7 @@ function TREATCAMELCASE(){
  
    cat $SRCDUMP | sed -n "/$INCLUDEID/,\$p" | sed '1d' | # SELECT INCLUDE
    sed "s/^/ /" | sed "s/[ \t]*$/ /" | # MAKE SURE THERE ARE SPACES
-   sed -re "s/([ ]*)([[:punct:]]*)(([A-Z]+[a-z]+){2,})([[:punct:]]*)\b/\1\2$C1\3$C2\5/g" >> ${SRCDUMP}.tmp 
+   sed -re "s/([ ]+)([[:punct:]]*)(([A-Z]+[a-z]+){2,})([[:punct:]]*)\b/\1\2$C1\3$C2\5/g" >> ${SRCDUMP}.tmp 
 
    mv ${SRCDUMP}.tmp $SRCDUMP
 
@@ -828,10 +1078,11 @@ function HCATOFWYSIWYGCUSTOMTEX() {
 
   write2src "% INCLUDED HCATFOWYSIWYG FUNCTIONS"
   write2src "\renewcommand*{\rmdefault}{pju}\normalfont"
-  write2src "\renewcommand*{\embody}{\fontfamily{grm}\selectfont\relscale{.85}}"
+  write2src "\renewcommand*{\embody}{\fontfamily{grm}\selectfont\relscale{.8}}"
   write2src "\renewcommand{\texttt}[1]{%
              {\relscale{.8}\fontfamily{\ttstandard}\selectfont%
               \seqsplit{#1}}}"
+  write2src "\lstdefinestyle{inline}{basicstyle=\ttfamily\relscale{.85}}"
   write2src "\fontsize{11pt}{11pt}\selectfont"
   write2src "\chapterfont{\fontfamily{pgd}\selectfont}"
   QSEP=`echo $RANDOM | md5sum | base64 | # CREATE RANDOM STRING
@@ -875,7 +1126,7 @@ function FIGLETHEADINGS() {
 
    TMPNOW=super.tmp
 
-   FLF="../lib/fonts/figlet/cybermedium.flf"
+   FLF="$MAINPATH/../lib/fonts/figlet/cybermedium.flf"
 
    INCLUDEID="$FID"
 
@@ -941,7 +1192,6 @@ function RESETFONT() {
 }
 
 # --------------------------------------------------------------------------- #
-
 #  A P P R O P R I A T I O N   A N D   T Y P E
 # --------------------------------------------------------------------------- #
 
