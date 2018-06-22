@@ -1,10 +1,10 @@
 % --------------------------------------------------------------------------- %
 % EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
 % --------------------------------------------------------------------------- %
-% USEPACKAGE: 170727_hilxalsh
-% ---
 % USEPACKAGE: ../lib/tex/conditions
 % USEPACKAGE: ../lib/tex/lstlanguages
+% ---
+% USEPACKAGE: 170727_hilxalsh
 % --------------------------------------------------------------------------- %
 % PDFXTITLE: Christoph Haag: How I learned to stop and love the draft
 % PDFXAUTHOR: Christoph Haag
@@ -245,6 +245,6 @@ authors under copyleft licenses.
 % FLUSHLICENSES:
 % FLUSHLOG:
 
-
+% CLOSEBOOK:
 % EOF!
 
