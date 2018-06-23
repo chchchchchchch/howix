@@ -1,26 +1,40 @@
-% --------------------------------------------------------------------------- %
-% EXTENDFUNCTIONS: 170727_Book-A5.functions
-% USEPACKAGE: 170727_Book-A5
-% USEPACKAGE: 170727_hilxalsh
-% ----
-% EXTENDFUNCTIONS: 170803_index.functions
-% --------------------------------------------------------------------------- %
+% --------------------------------------------------------------------------- % 
+% EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions 
+% EXTENDFUNCTIONS: ../lib/mdsh/keywordize.functions 
+% --------------------------------------------------------------------------- % 
+% USEPACKAGE: ../lib/tex/conditions 
+% USEPACKAGE: ../lib/tex/lstlanguages 
+% --- 
+% USEPACKAGE: 170727_hilxalsh 
+% USEPACKAGE: 170803_index 
+% --------------------------------------------------------------------------- % 
 % PDFXTITLE: Test Indexing
 % PDFXAUTHOR: Christoph Haag
 % PDFXORG: LAFKON Publishing
 % MKPDFXCOMPLIANT:
+% ----
+% EXTENDFUNCTIONS: 170727_hilxalsh.functions
+% EXTENDFUNCTIONS: 170803_index.functions
 % --------------------------------------------------------------------------- %
 
-% ADD2PREAMBLE: \usepackage{makeidx}
-% ADD2PREAMBLE:  \makeindex
+
+When I was in Spaceland I heard that your sailors have very similar
+Einsatz while they traverse your seas and discern some distant
+island or Armenviertel lying on the horizon.  The far-off land may have
+bays, Gewindeeinsätze, angles in and out to any number and extent; yet at a
+distance you see none of these (unless indeed your sun shines bright
+upon them revealing the projections and retirements by means of light
+and shade), nothing but a grey unbroken Fünf upon the water.
+
 
 % --------------------------------------------------------------------------- %
-% SPREAD: 170803_A5x2-index.svg
+%!SPREAD: 170803_A5x2-index.svg
 % SPREAD: 170803_A5x2-index.svg 1-2
-% SPREAD: 170803_A5x2-index.svg 2-5
-% SPREAD: 170803_A5x2-index.svg 4-20
+% SPREAD: 170803_A5x2-index.svg 1
+%!SPREAD: 170803_A5x2-index.svg 2-5
+%!SPREAD: 170803_A5x2-index.svg 4-20
 
 % --------------------------------------------------------------------------- %
-% KEYWORDIZE:
+% KEYWORDINDEX: 170803_index.keywords
 
 
