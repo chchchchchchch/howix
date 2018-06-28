@@ -6,13 +6,12 @@
 # --------------------------------------------------------------------------- #
 # WRITE TEX SOURCE
 # --------------------------------------------------------------------------- #
-  echo "\documentclass[fontsize=8pt,
-                       cleardoublepage=empty]{scrbook}"     >  $TMPTEX
-  if [ -f ${TMPID}.preamble ];then cat ${TMPID}.preamble    >> $TMPTEX ;fi
-  echo "\bibliography{${TMPID}.bib}"                        >> $TMPTEX
-  echo "\begin{document}"                                   >> $TMPTEX
-  cat   $SRCDUMP                                            >> $TMPTEX
-  echo "\end{document}"                                     >> $TMPTEX
+  echo "\documentclass[fontsize=8pt,cleardoublepage=empty]{scrbook}" > $TMPTEX
+  if [ -f ${TMPID}.preamble ];then cat ${TMPID}.preamble        >> $TMPTEX ;fi
+  echo "\bibliography{${TMPID}.bib}"                                >> $TMPTEX
+  echo "\begin{document}"                                           >> $TMPTEX
+  cat   $SRCDUMP                                                    >> $TMPTEX
+  echo "\end{document}"                                             >> $TMPTEX
 
   if [ `echo $THISDOCUMENTCLASS | wc -c` -gt 2 ]; then
   sed -i "s/^\\\documentclass.*}$/\\\documentclass$THISDOCUMENTCLASS/" $TMPTEX
