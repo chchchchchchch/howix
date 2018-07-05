@@ -1,0 +1,215 @@
+     SHORTURLBASE="https://freeze.sh"
+  BASEURLMKBTBOTS="https://freeze.sh/_/2017/socialbots/o"
+
+  DEFINESIZES="A:800|B:1000|C:1200|D:1400|E:1600"
+  STANDARDSTROKE="2";STANDARDW="800";STANDARDH="650"
+
+# --------------------------------------------------------------------------- #
+  function fillGrid() {
+
+   NUP=`echo $TEXCONF | sed 's/nup=/\n&/' | grep "^nup="       | #
+        cut -d "=" -f 2 | sed 's/\([0-9]\+x[0-9]\+\)\(.*\)/\1/'` #
+   COLS=`echo $NUP | cut -d "x" -f 1`;ROWS=`echo $NUP | cut -d "x" -f 2`
+
+ # ------------------------------------------------------------------------- #
+     NONURL="\\\\hspace*{9em}"
+   INFOGRID=`echo $SELECTGRID                | # DISPLAY GRID  
+             sed "s/{}/#/g"                  | # PLACEHOLDER FOR EMPTY
+             sed "s/[,{}1]//g"               | # RM OBSOLETE
+             sed "s/[A-Z#]/&|\n/${COLS};P;D" | # ADD NEWLINE EACH ROW 
+             sed 's/|$/\\\\newline/'`          # """"""""""""""""""""
+   INFOTXT="{\small $SHORTURLBASE/\ding{225}}
+             \vspace{.8\baselineskip} \newline
+             $INFOGRID" # RESET
+ # ------------------------------------------------------------------------- #
+
+   for SIZETYPE in `cat $LSMKBTBOTS | cut -d ":" -f 2 | sort -u`
+    do 
+       THISW=`echo $DEFINESIZES    | # DISPLAY ALL SIZES
+              sed 's/|/\n/g'       | # SPLIT ON LINES
+              grep "^${SIZETYPE}:" | # SELECT CURRENT SIZETYPE
+              cut -d ":" -f 2`       # EXTRACT SIZE
+       SCALEFACTORHERE=`python -c "print ${THISW}/${STANDARDW}.0"`
+       THISH=`python -c "print $STANDARDH * ${SCALEFACTORHERE}"`
+       STROKEWIDTH=`python -c "print ${STANDARDSTROKE}/${SCALEFACTORHERE}"`
+     # ------------------------------------------------------------------- #
+       for THIS in `grep ":${SIZETYPE}$" $LSMKBTBOTS | #
+                    cut -d ":" -f 1`
+        do
+           SVGURL="$BASEURLMKBTBOTS/${THIS}.svg";# echo "$SVGURL"
+          SHORTID=`basename "$THIS"            | #
+                   cut -c 1-8 | sed 's/^B/bt/' | #
+                   tr [:upper:] [:lower:]`       # 
+         # --------------------------------------------------- #
+         # if [ $CNT == $ROWS ]
+         # then INFOIN="$SHORTID \\\newline ";CNT=0
+         # else INFOIN="$SHORTID \\\hfill ";fi
+
+           INFOIN="$SHORTID \\\hfill "
+           INFOTXT=`echo $INFOTXT | sed "s/$SIZETYPE/$INFOIN/"`
+         # --------------------------------------------------- #
+           GETFILE=${TMPID}`echo $SVGURL |
+                            md5sum | cut -c 1-8`
+           getFile $SVGURL ${GETFILE}.svg
+           PDFRESIZE=${TMPID}`echo $THIS$THISW$STROKEWIDTH | #
+                              md5sum | cut -c 1-8`.pdf   #
+
+         if [ -f ${GETFILE}.svg ] && [ ! -f $PDFRESIZE ]; then
+              svgMonochrom ${GETFILE}.svg
+              inkscape --export-text-to-path    \
+                       --export-pdf=${PDFRESIZE} \
+                       ${GETFILE}.svg
+
+              pdfResize ${PDFRESIZE} $THISW $THISH
+              pdfSetStroke ${PDFRESIZE} ${STROKEWIDTH}px
+             #conformColor ${PDFRESIZE}
+         fi
+         if [ ! -f $PDFRESIZE ]; then
+         SELECTGRID=`echo $SELECTGRID | sed "s|\b${SIZETYPE}\b|0|"`
+         else
+         SELECTGRID=`echo $SELECTGRID | sed "s|\b${SIZETYPE}\b|$PDFRESIZE|"`
+         fi
+
+       done
+     # ------------------------------------------------------------------- #
+     done
+   # -------------------------------------------------------------- #            
+     SELECTGRID=`echo $SELECTGRID       | # DISPLAY COLLECTED
+                 sed 's/[A-Z],{1}/{}/g' | # DELETE UNFILLED
+                 sed 's/0,{1}/{}/g'`      # CONFORM EMPTY
+     MXNON=`echo $INFOTXT | #
+            sed "s/[#]\+\\\\\newline/\n&\n/g" | #
+            grep "^#" | #
+            awk '{ print length($0) " " $0; }' $file | #
+            sort -n | cut -d ' ' -f 2- | #
+            head -n 1 | #
+            sed 's/[^#]//g' | sed 's/.$//' | wc -c`
+
+     INFOTXT=`echo $INFOTXT | #
+             #sed "s/\\\\\hfill [#]\\\\\newline/\\\\\newline/g" | # RM NONURL AT END OF LINE
+              sed "s/\([#]\{$MXNON\}\)\(\\\\\newline\)/\2/g"  | #
+              sed "s/#/$NONURL  \\\\\hfill /g"                | #
+              sed "s/\\\\\hfill \\\\\newline/\\\\\newline/g"  | #
+              sed "s/\\\\\hfill[ ]*$//"`                        #
+}
+
+# =========================================================================== #
+
+function SHOWMKBOTBOTS() {
+
+ THISCMD="SHOWMKBOTBOTS"
+
+ # MAKE LIST
+ # ---------------------------------------------- #
+   LSFILE=`echo $* | sed 's/ /\n/g' | #
+           sed 's/F:/\n&/g' | grep "^F:" | #
+           cut -d ":" -f 2-`
+   if [ "$LSFILE" != "" ];then
+  
+        echo $LSFILE
+        getFile $LSFILE ${TMPID}.mkbtbtls.txt
+        sleep 2
+   else
+        getVerbatim "$THISCMD" $TMPID.xtract
+        cat $TMPID.xtract | # USELESS OF CAT
+        sed 's/^%[ ]*//'  | # RM LEADING
+        sed '/^[ ]*$/d'   | # RM EMPTY LINES
+        tee > ${TMPID}.mkbtbtls.txt
+   fi
+ # ---------------------------------------------- #
+
+   LSMKBTBOTS="${TMPID}.mkbtbtls.txt"
+   GRIDSETS="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA|1  \n
+             AAA0B0A0B0AAAAA0B0A0B0AAAA0B0A|11 \n
+             A00AA0C00AA0A0A0A0AAC0A0A0A0A0|2 \n
+             A0AAA0C00AA0AAAAA0AC00A0A0A0A0|3  \n
+             A00AA0AC00A0AAAAA0AC0AA0A0A0A0|12  \n
+             A00AA0AC00A0A00AA0AC0AA0AAAAA0|12 \n
+             AA0AA0AD00A0AA00A0AD00A0AAAAA0|2  \n
+             AA0AA0AC00A0AA00A0AE00A0AAAAA0|2  \n
+             AA0AA0AC00A0AA00A0AE00AC0C00C0|4  \n
+             AA0AA0AC00ACAA00A0AE00AC0C00C0|4  \n
+             AA0AA0AC00A0AA00E0AE00AC0C00C0|4  \n
+             AA0AA0AC00A0C000E0AE00AC0C00C0|4  \n
+             AA0AAAAC00AAC00000AE000A0C00C0|5  \n
+             CA0AAAAC00AAC00000AE000A0C00C0|6  \n
+             C0C0000C0C00C0C0000C0C00C0C000|7  \n
+             D0D0000D0D00D0D0000D0D00D0D000|8  \n
+             D0D0000E0E00D0D0000E0E00D0D000|9  \n
+             C000C00E00E0C00C000E00E0C000C0|10"
+
+         # X EVEN/X ODD/Y/XINFO ODD/XINFO EVEN /W INFO/TEX
+          # { 1}{ 2}{ 3}{  4 }{  5 }{  6 }{           7          }
+   TEXCONF="{15}{10}{30}{2.35}{3.35}{1.02}{delta=-110 -35,nup=6x5} \n
+            {10}{50}{30}{2.35}{3.25}{1.02}{delta=-110 -35,nup=6x5} \n
+            {10}{60}{30}{2.70}{5.25}{0.85}{delta=-110 -35,nup=6x5} \n
+            {25}{0}{25}{2.35}{3.25}{1.020}{delta=-110 -35,nup=6x5} \n
+            {25}{20}{25}{2.35}{3.25}{1.02}{delta=-110 -35,nup=6x5} \n
+            {-30}{40}{0}{000000}{000000}{}{delta=-170 -80,nup=6x5} \n
+            {-50}{110}{30}{2.5}{4.8}{.95}{delta=-165 -110,nup=6x5} \n
+            {-40}{90}{40}{2.8}{4.8}{0.85}{delta=-210 -145,nup=6x5} \n
+            {-60}{70}{40}{3.2}{4.0}{0.95}{delta=-210 -145,nup=6x5} \n
+            {30}{20}{30}{2.35}{3.25}{1.02}{delta=-200 -110,nup=6x5}\n
+            {15}{10}{30}{2.7}{3.9}{.95}{delta=-110 -35,nup=6x5}    \n
+            {10}{50}{30}{2.6}{4.8}{.85}{delta=-110 -35,nup=6x5}"
+
+
+   NEEDGRID="";GRIDSETSINFO="" # RESET
+   for SIZETYPE in `cat $LSMKBTBOTS | # SHOW LIST
+                    cut -d ":" -f 2 | # SELECT SIZETYPES
+                    sort -u`          # ONE FOR EACH (UNIQ)
+   do NEEDGRID="$NEEDGRID$SIZETYPE:"`grep ":${SIZETYPE}$" $LSMKBTBOTS | #
+                                     wc -l`";"
+   done
+   for GRID in `echo $GRIDSETS`
+    do GRIDINFO="" # RESET
+       for SIZETYPE in `echo ${GRID}      | # DISPLAY GRID
+                        sed 's/[^A-Z]//g' | # RM ALL BUT SIZETYPES
+                        sed 's/./&\n/g'   | # PUT ALL ON NEW LINES
+                        sort -u`            # ONE FOR EACH (UNIQ)
+        do  NUMSIZE=`awk -F "${SIZETYPE}" '{print NF-1}' <<< "${GRID}"`
+            GRIDINFO="${GRIDINFO}${SIZETYPE}:${NUMSIZE};"        # COLLECT
+       done; GRIDSETSINFO="$GRIDSETSINFO"`echo ${GRIDINFO}     | # COLLECT
+                           rev | sed 's/;/|;/' | rev`"${GRID}\n" # COLLECT
+   done; SELECTGRID=`echo -e $GRIDSETSINFO | # SHOW GRIDSETS
+                     grep "$NEEDGRID"      | # FIND MATCHES
+                     cut -d "|" -f 2-      | # RM COLLECTED INFO
+                     shuf -n 1`              # SELECT ONE
+
+   if [ "$SELECTGRID" != "" ];then
+
+        SELECTTEXCONF=`echo $SELECTGRID | cut -d "|" -f 2`
+        TEXCONF=`echo -e $TEXCONF           | # DISPLAY ALL TEXCONFS
+                 sed -n "${SELECTTEXCONF}p" | # SELECT THE RIGHT ONE
+                 sed "s/^[ ]*//"`             # RM LEADING BLANKS
+        SELECTGRID=`echo $SELECTGRID | cut -d "|" -f 1`
+
+       #echo "TEXCONF: $TEXCONF"
+       #echo "NEEDGRID: $NEEDGRID"
+       #echo "SELECTGRID: $SELECTGRID"
+
+        SELECTGRID=`echo $SELECTGRID        | # START WITH $SELECTGRID
+                    sed 's/[A-Z]/,&,{1},/g' | # CODE FOR GRAPHIC
+                    sed 's/0/,{},/g'        | # CODE FOR EMPTY
+                    tr -s ','               | # SQUEEZE COMMATA
+                    sed 's/^,//'            | # RM FIRST COMMA
+                    sed 's/,$//'`             # RM LAST COMMA
+
+        echo ""                     >> $SRCDUMP
+        echo "% $TEXCONF"           >> $SRCDUMP
+        echo "% $SELECTGRID"        >> $SRCDUMP
+        echo ""                     >> $SRCDUMP
+                fillGrid
+
+        echo "\mkbtbotpage$TEXCONF" >> $SRCDUMP
+        echo "{${SELECTGRID}}{$INFOTXT}" >> $SRCDUMP
+        echo -e "\n\n"              >> $SRCDUMP
+   else
+        echo "NO MATCHING GRID"
+   fi
+
+
+ rm ${TMPID}.mkbtbtls.txt
+
+}
+

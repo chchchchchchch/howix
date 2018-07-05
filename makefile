@@ -6,3 +6,5 @@ hilxalsh:
 
 170803_index:
 	./lib/mdsh/mk.sh E/170803_index.mdsh pdf
+180705_mkbtbts:
+	./lib/mdsh/mk.sh E/180705_mkbtbts.mdsh pdf
