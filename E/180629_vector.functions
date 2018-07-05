@@ -1,0 +1,90 @@
+# --------------------------------------------------------------------------- #
+  function px2in() {
+
+    # https://unix.stackexchange.com/questions/40786/
+    # -> how-to-do-integer-float-calculations-in-bash-or-other-languages-frameworks
+     PX="$1"
+     PT=`python -c "print ${PX}/1.25"`
+     IN=`python -c "print ${PT}*0.0138889"`
+     echo $IN
+
+  }
+
+  function pt2in() {
+
+     PT="$1"
+     IN=`python -c "print ${PT}*0.0138889"`
+     echo $IN
+
+  }
+# --------------------------------------------------------------------------- #
+  function mkseed(){ openssl enc -aes-256-ctr -pass pass:"$1" \
+                    -nosalt </dev/zero 2>/dev/null; }
+  #shuf -n 1 --random-source=<(mkseed $SRCNAME)
+
+# --------------------------------------------------------------------------- #
+  function pdfResize() {
+
+       PDFSRC="$1"
+      WTARGET=`px2in $2`"in" # GIVEN IN PIXEL -> INCH
+      HTARGET=`px2in $3`"in" # GIVEN IN PIXEL -> INCH
+       TMPNOW=${TMPID}`echo $RANDOM | md5sum | cut -c 1-8`
+
+    echo "\documentclass{article}"           >  ${TMPNOW}.tex
+    echo "\usepackage{pdfpages}"             >> ${TMPNOW}.tex
+    echo "\usepackage{geometry}"             >> ${TMPNOW}.tex
+    echo "\geometry{paperwidth=$WTARGET,"    >> ${TMPNOW}.tex
+    echo "          paperheight=$HTARGET}"   >> ${TMPNOW}.tex
+    echo "\begin{document}"                  >> ${TMPNOW}.tex
+    echo "\includepdf[scale=1]"              >> ${TMPNOW}.tex
+    echo "{$PDFSRC}"                         >> ${TMPNOW}.tex
+    echo "\end{document}"                    >> ${TMPNOW}.tex
+
+    pdflatex -interaction=nonstopmode \
+             -output-directory=$TMPDIR \
+             ${TMPNOW}.tex > /dev/null
+    mv ${TMPNOW}.pdf $PDFSRC
+
+  if [ `echo ${TMPNOW} | wc -c` -ge 4 ] &&
+     [ `ls ${TMPNOW}*.* 2>/dev/null | wc -l` -gt 0 ]
+  then  rm ${TMPNOW}*.* ; fi
+
+  }
+# --------------------------------------------------------------------------- #
+  function pdfSetStroke() {
+
+  PDFSRC="$1"
+  STROKEWEIGHT="$2"
+
+  inkscape --export-plain-svg=${TMPNOW}.svg $PDFSRC
+  sed -i "s/stroke-width:[0-9.]*/stroke-width:$STROKEWEIGHT/g" ${TMPNOW}.svg
+  inkscape --export-pdf=$PDFSRC ${TMPNOW}.svg
+  rm ${TMPNOW}.svg  
+
+  }
+# --------------------------------------------------------------------------- #
+  function svgFillWhite() {
+
+  SVGSRC="$1"
+  PROTECTCOLOR="XXXX${RANDOM}"
+  sed -i "s/#[Ff]\{6\}\b/$PROTECTCOLOR/g" ${SVGSRC}
+  sed -i 's/fill:#[a-fA-F0-9]\{6\}\b/fill:#ffffff/g' ${SVGSRC}
+  sed -i 's/stroke:#[a-fA-F0-9]\{6\}\b/stroke:#000000/g' ${SVGSRC}
+  sed -i "s/$PROTECTCOLOR/#ffffff/g" ${SVGSRC}
+
+  }
+# --------------------------------------------------------------------------- #
+  function svgMonochrom() {
+
+  SVGSRC="$1"
+  PROTECTWHITE="XXXX${RANDOM}";PROTECTBLACK="${RANDOM}YYYY"
+  sed -i "s/#[Ff]\{6\}\b/$PROTECTWHITE/g" ${SVGSRC}
+  sed -i "s/#[0]\{6\}\b/$PROTECTBLACK/g" ${SVGSRC}
+  sed -i 's/fill:#[a-fA-F0-9]\{6\}\b/fill:#ffffff/g' ${SVGSRC}
+  sed -i 's/stroke:#[a-fA-F0-9]\{6\}\b/stroke:#000000/g' ${SVGSRC}
+  sed -i "s/$PROTECTWHITE/#ffffff/g" ${SVGSRC}
+  sed -i "s/$PROTECTBLACK/#000000/g" ${SVGSRC}
+
+  }
+# --------------------------------------------------------------------------- #
+
