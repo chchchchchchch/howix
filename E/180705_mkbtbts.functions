@@ -41,10 +41,6 @@
                    cut -c 1-8 | sed 's/^B/bt/' | #
                    tr [:upper:] [:lower:]`       # 
          # --------------------------------------------------- #
-         # if [ $CNT == $ROWS ]
-         # then INFOIN="$SHORTID \\\newline ";CNT=0
-         # else INFOIN="$SHORTID \\\hfill ";fi
-
            INFOIN="$SHORTID \\\hfill "
            INFOTXT=`echo $INFOTXT | sed "s/$SIZETYPE/$INFOIN/"`
          # --------------------------------------------------- #
