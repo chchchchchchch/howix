@@ -4,6 +4,8 @@
   DEFINESIZES="A:800|B:1000|C:1200|D:1400|E:1600"
   STANDARDSTROKE="2";STANDARDW="800";STANDARDH="650"
 
+      TMPKEEP="$TMPDIR/tmpmkbtbt"
+
 # --------------------------------------------------------------------------- #
   function fillGrid() {
 
@@ -44,11 +46,11 @@
            INFOIN="$SHORTID \\\hfill "
            INFOTXT=`echo $INFOTXT | sed "s/$SIZETYPE/$INFOIN/"`
          # --------------------------------------------------- #
-           GETFILE=${TMPID}`echo $SVGURL |
-                            md5sum | cut -c 1-8`
+           GETFILE=${TMPKEEP}`echo $SVGURL       | #
+                              md5sum | cut -c 1-8` #
            getFile $SVGURL ${GETFILE}.svg
-           PDFRESIZE=${TMPID}`echo $THIS$THISW$STROKEWIDTH | #
-                              md5sum | cut -c 1-8`.pdf   #
+           PDFRESIZE=${TMPKEEP}`echo $THIS$THISW$STROKEWIDTH | #
+                                md5sum | cut -c 1-8`.pdf       #
 
          if [ -f ${GETFILE}.svg ] && [ ! -f $PDFRESIZE ]; then
               svgMonochrom ${GETFILE}.svg
