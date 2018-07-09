@@ -1,0 +1,73 @@
+# =========================================================================== #
+# --------------------------------------------------------------------------- #
+   SPREADPG="\\"`echo pagespread | md5sum        | # 
+                 base64 | tr [:upper:] [:lower:] | # 
+                 sed 's/[^a-z]//g' | cut -c 1-8  | # 
+                 tee``echo $RANDOM | md5sum      | # 
+                 sed 's/[^a-f]//g' | cut -c 1-4`   #
+# --------------------------------------------------------------------------- #  
+  write2src "% -------------------------------------------------- %"
+  write2src "   \newcommand${SPREADPG}[2]{%"
+  write2src "   \includepdf[pagecommand={\thispagestyle{empty}},"
+  write2src "               scale=1,pages=#2]{#1}"
+  write2src "  }"
+  write2src "% -------------------------------------------------- %"
+
+# --------------------------------------------------------------------------- #
+# =========================================================================== #
+
+function SPREAD() {
+
+   mkpages $*
+
+ # MOVE TMP mkpages ??
+ # ----
+   NUMPAGES=`pdftk $PDFGET dump_data | #
+             grep NumberOfPages      | #
+             cut -d ":" -f 2         | #
+             sed 's/[^0-9]//g'`        #
+
+   if [ "$P2" != "" ]                  #
+    then if [ "$P2" -gt "$NUMPAGES" ]  #
+          then P2="$NUMPAGES"          #
+          fi
+               PAGESEQ=`seq $P1 $P2`   #
+
+         if [ "$P2" -lt "$P1" ]        #
+          then PAGESEQ=`seq $P2 $P1 |  #
+                        tac`           #
+         fi
+    else PAGESEQ="$P1"                 #
+   fi
+   if [ "$PAGES" == "-" ]; then
+         P1="1";P2="$NUMPAGES"
+         PAGESEQ=`seq $P2`
+   fi
+
+   MACRO="% something went wrong with $SVGSRC" # WRITE AT LEAST SOMETHING
+   if   [ "$FIRSTPAGEIS" == "odd" ]; then
+           PAGECOMMAND="\cleartoleft"
+   elif [ "$FIRSTPAGEIS" == "even" ]; then
+           PAGECOMMAND="\cleartoright"
+   else  # ALL PAGES
+         # PAGECOMMAND=""
+           PAGECOMMAND="\cleartoleft" # P1 = 1
+   fi
+
+ # ALLOW IRREGULAR PLACEMENT
+ # ----
+   if [ `echo $PAGES | grep -v "-" | # RM - AND 0-9 => 2 -gt 0
+         wc -l` -gt 0 ]; then  PAGECOMMAND=""; fi
+
+   if [ -f $PDFGET ]; then
+        write2src "$PAGECOMMAND"
+        for PAGENUM in $PAGESEQ
+         do
+            write2src "${SPREADPG}{$PDFGET}{$PAGENUM}"
+        done
+   fi
+
+}
+
+# --------------------------------------------------------------------------- #
+
