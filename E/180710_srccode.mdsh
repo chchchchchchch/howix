@@ -1,0 +1,115 @@
+% --------------------------------------------------------------------------- %
+% EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% --------------------------------------------------------------------------- %
+% USEPACKAGE: ../lib/tex/conditions
+% ---
+% USEPACKAGE: 180710_howix
+% --------------------------------------------------------------------------- %
+% PDFXTITLE: Test SRCCODE Setup
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% ----
+% USEPACKAGE: ../lib/tex/lstlanguages
+% USEPACKAGE: 180710_srccode
+% EXTENDFUNCTIONS: 180710_srccode.functions
+% --------------------------------------------------------------------------- %
+%!ADD2PREAMBLE: \usepackage{showframe}
+
+
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci \footnote{sfdsfds}
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+
+ad sdci sdfds dfds
+% SRCINLINE: for X in `seq 10`; do echo $X; done
+ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+% SRCINLINE: echo 'asdsa' | rev | cut -c 1-4
+ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+% SRCINLINE: echo "asdsa" | rev | cut -c 1-4 | rev | cut -c 1-4 | rev | cut -c 1-4
+ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+ad sdci sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+%ad sdci sf `sfsd erw sfddsfdsf` sdf sdfs sdfefd dsf fds
+
+sfdsf
+
+% --------------
+
+  ad sdci sf 'sfsd erw' sfddsfdsf find sdf sdfs sdfefd
+  ad `sdci` sf sfsd erw sfddsfdsf sdf sdfs sdfefd dsf fds
+
+% SRCCODE: plain
+
+
+sfdsf sfds
+
+
+% --------------
+
+  ad sdci sf sfsd
+
+% SRCCODE: plain
+
+
+% ----
+% F:../lib/mdsh/mk.sh 1-36
+% SRCCODE: bashcode 
+
+syfdsf
+sfds
+
+
+% ----
+% F:180706_txtalong.mdsh
+% SRCCODE: quaverbatim 
+
+
+% -----
+ _            _   
+| |_ ___  ___| |_ 
+| __/ _ \/ __| __|
+| ||  __/\__ \ |_ 
+ \__\___||___/\__|
+
+% SRCCODE: quaverbatim 
+
+
+
+
+% ----
+% F:180710_srccode.sty
+% SRCCODE: texcode
+
+
+           
