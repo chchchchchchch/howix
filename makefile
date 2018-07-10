@@ -8,3 +8,5 @@ hilxalsh:
 	./lib/mdsh/mk.sh E/170803_index.mdsh pdf
 180705_mkbtbts:
 	./lib/mdsh/mk.sh E/180705_mkbtbts.mdsh pdf
+180710_srccode:
+	./lib/mdsh/mk.sh E/180710_srccode.mdsh pdf
