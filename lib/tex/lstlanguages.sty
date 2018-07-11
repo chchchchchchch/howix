@@ -608,14 +608,59 @@
 
 \lstdefinelanguage{TeX+}{%
   language     = {[LaTeX]TeX},
-% texcsstyle=*\bfseries\color{red},
-  texcsstyle=*\kwa,
 % ---------------------------------------------------
-  morekeywords = {\makeatother},
-% ---------------------------------------------------
-  morekeywords = [2]{\fancyfoot},
-% ---------------------------------------------------
-  morekeywords = {\includegraphics,\scalefont},
+  morekeywords = {AddEverypageHook,AddThispageHook,addtocounter,
+                  AddToShipoutPicture,AddToShipoutPictureFG,afterpage,
+                  appto,arabic,AtBeginEnvironment,AtBeginPage,
+                  AtEndEnvironment,AtEveryCitekey,baselineskip,begin,
+                  begingroup,bfseries,bgroup,bigskip,brokenpenalty,
+                  cftaftertoctitleskip,cftbeforechapskip,
+                  cftbeforetoctitleskip,chapter,chapterfont,
+                  chapterformat,chapterheadendvskip,
+                  chapterheadstartvskip,cite,citealp,citep,
+                  cleardoublepage,clearfield,clearpage,color,
+                  columnsep,columnseprule,contentsname,csname,
+                  DeclareFieldFormat,DeclareTextFontCommand,
+                  DeclareUnicodeCharacter,def,DefineVerbatimEnvironment,
+                  doimposetrue,edef,egroup,else,emph,
+                  encodingdefault,end,endcsname,endgroup,enditemize,
+                  endlist,euro,evensidemargin,expandafter,fancyfoot,
+                  fancyhead,fancypagestyle,fi,flushbottom,flushleft,
+                  flushright,fontencoding,fontfamily,fontsize,
+                  footins,footnote,footnotelayout,footnotemargin,
+                  footnoterule,footnotesize,footskip,fullcite,
+                  guillemotleft,guillemotright,harvardand,
+                  headrulewidth,hfill,href,hspace,hypersetup,if,
+                  ifbodytext,ifdoimpose,iffootnote,ifnum,ifodd,
+                  ifpunct,ifthispageodd,includegraphics,includepdf,
+                  indexname,it,item,itemindent,itemize,label,
+                  large,leaders,leftmargin,let,linespread,list,
+                  listparindent,lstdefinestyle,lsthk,lstinline,
+                  lstinputlisting,lstnewenvironment,lstset,makeatletter,
+                  makeatother,makeindex,MakeUppercase,marginpar,
+                  marginparsep,marginparwidth,mbox,newcommand,
+                  newcounter,newenvironment,newif,newlength,newpage,
+                  nobibliography,nobreak,noindent,nointerlineskip,
+                  normalfont,normalsize,numexpr,oddsidemargin,
+                  oldcitep,oldfootnote,oldhref,OldTexttt,onecolumn,
+                  pagebreak,pageref,pagestyle,paperheight,
+                  paperwidth,par,parindent,parsep,parskip,
+                  patchcmd,printindex,printnames,protected,put,
+                  raggedright,raisebox,relax,relscale,renewbibmacro,
+                  renewcommand,renewcommandtwoopt,renewenvironment,
+                  reversemarginpar,rightmargin,rmdefault,rule,
+                  scalefont,scriptsize,section,sectionfont,
+                  selectfont,seqsplit,setcounter,setitemize,
+                  setlength,setlist,setnoclub,setnowidow,setstretch,
+                  sfdefault,skip,sl,small,smallskip,stepcounter,
+                  subsection,subsectionfont,subsubsection,
+                  symarrowright,symrect,symrhombus,symtrapez,textbf,
+                  textemdash,texteuro,textheight,textquotesingle,
+                  textsc,texttt,textwidth,thepage,thispagestyle,
+                  tiny,titlespacing,tmp,tocloftpagestyle,topmargin,
+                  topsep,ttdefault,ttfamily,twocolumn,uchyph,
+                  unitlength,usepackage,value,vfill,vrule,vskip,
+                  xdef,xpretocmd,z},
 % ---------------------------------------------------
 % SELF DEFINED COMMANDS
 % ---------------------------------------------------
@@ -634,6 +679,7 @@
                      \setstandarditemize,\setstandardquote,
                      \setstandardwhitespace,\setwidowstandard,\sfstandard,
                      \spread,\superimpose,\ttstandard,\urlf,\urlsplit,
-                     \vspacenotonpagetop,\wgetlog}
+                     \vspacenotonpagetop,\wgetlog
+ }
 }
 
