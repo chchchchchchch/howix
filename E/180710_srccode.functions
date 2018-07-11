@@ -128,33 +128,50 @@ function SRCCODE() {
                 tee``echo $RANDOM | md5sum      | #
                 sed 's/[^a-f]//g' | cut -c 1-4`   #
 
-   echo "\newcommand{$LSTESCA}{\%*}" >> $SRCDUMP
-   echo "\newcommand{$LSTESCZ}{*)}"  >> $SRCDUMP
+   echo "\newcommand{$LSTESCA}{\textbackslash\%*}" >> $SRCDUMP
+   echo "\newcommand{$LSTESCZ}{*)}"                >> $SRCDUMP
+ # ----
+   if [ `grep "\unidummy" $SRCDUMP | wc -l` -lt 1 ];then
+         echo "\newcommand{\unidummy}{\ding{53}}" >> $SRCDUMP ;fi
  # ------------------------------------------------------------------------ #
  # MODIFY EXTRACT
  # ------------------------------------------------------------------------ #
+   UTF8MACROMAP="$SHDIR/../tex/utf8-macro-map.txt"
    unIndent ${TMPID}.xtract
    cat -s ${TMPID}.xtract > tmp.tmp # RM CONSECUTIVE EMPTY LINES
    mv tmp.tmp ${TMPID}.xtract       # MOVE BACK IN PLACE
 
-
-  #if [ "$ENVIRONMENT" == "texcode" ];then
-
-        for C in `sed 's/./\n&/g' ${TMPID}.xtract | #
-                  sort -u | grep -P "[\x80-\xFF]"`
-         do sed -i "s/$C/X/g" ${TMPID}.xtract
-        done
-
+      # ----
         sed -i -e "s,\\\%\*,${LSTESCA},g" \
                -e "s,\*),\\${LSTESCZ},g"   \
                -e "s,${LSTESCA},%*\\\&*),g" \
                -e "s,\\${LSTESCZ},%*&*),g" ${TMPID}.xtract
         sed -i 's/^[ \t]*$/%*\\emptylinelst*)/' ${TMPID}.xtract
+      # ----
+        for C in `sed 's/./\n&/g' ${TMPID}.xtract | #
+                  sort -u | grep -P "[\x80-\xFF]"`
+         do  #INFO=`echo $C | #
+             #      recode utf8..dump-with-names | #
+             #      tail -2 | head -1` #
+             #UNICODE=`echo $INFO | cut -d " " -f 1`
 
-  #else
-  #     sed -i 's/^[ \t]*$/%*\\emptylinelst*)/' ${TMPID}.xtract
-  #fi
+             MACROLN=`grep -n "^\\\\\\\" $UTF8MACROMAP | #
+                      sed 's/[ ]\+/:/g'                | #
+                      cut -d ":" -f 1,3                | #
+                      grep "${C}$"                     | #
+                      head -n 1                        | #
+                      cut -d ":" -f 1`
 
+             if [ "$MACROLN" != "" ];then
+                   CMACRO=`sed -n "${MACROLN}p" $UTF8MACROMAP | #
+                           cut -d " " -f 1`
+             else
+                   CMACRO="\unidummy"
+             fi
+
+             sed -i "s/$C/%*\\$CMACRO*)/g" ${TMPID}.xtract
+        done
+      # ----
 
    LN=`wc -l ${TMPID}.xtract | cut -d " " -f 1`
  # ------------------------------------------------------------------------ #
@@ -174,7 +191,7 @@ function SRCCODE() {
    fi
  # ------------------------------------------------------------------------ #
  # DEBUG/DEV
- # cp $VERBATIM debug.`date +%s%N | cut -c 1-3,18-20`.verbatim
+ # cp $VERBATIM debug.`date +%s%N `.verbatim
 
 }
 
