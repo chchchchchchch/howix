@@ -71,6 +71,7 @@
     frame=none,
     numberstyle=\tiny,
     breaklines=false,
+    breakatwhitespace=false,
     showstringspaces=false,
     aboveskip=1em,
     xleftmargin=.2em,
@@ -118,19 +119,37 @@
                                    morekeywords = [2]{write2src,getFile,
                                                       mkqr,getVerbatim},
                                    basicstyle=\fontencoding{T1}%
-                                              \linespread{1}   %
-                                              \fontfamily{grm} %
-                                              \selectfont      %
+                                              \linespread{1}%
+                                              \fontfamily{grm}%
+                                              \selectfont%
                                               \scalefont{.7}}
                           }
 % --------------------------------------------------------------------------- %
-  \newcommand{\lstsetTeX}{\lstset{language=TeX+}}
+  \definecolor{lsttexcomment}{cmyk}{0,0,0,0.9}
+  \newcommand{\lstsetTeX}{\lstset{language = {TeX+},
+                                  basicstyle = {\fontencoding{T1}%
+                                                \linespread{.8}%
+                                                \fontfamily{grm}%
+                                                \selectfont%
+                                                \scalefont{.7}},%
+                                  keywordstyle = [4]{\fontfamily{ipm}%
+                                                     \selectfont%
+                                                     \bfseries%
+                                                     \scalefont{.95}},%
+                                  commentstyle = {\color{lsttexcomment}%
+                                                  \scalefont{.9}}
+                         }
+       \renewcommand{\emptylinelst}{\vspace{0.2\baselineskip 
+                                      plus  2.5\baselineskip
+                                      minus 2.0\baselineskip}
+                                    \pagebreak[2]}
+  }
 % --------------------------------------------------------------------------- %
   \newcommand{\lstReset}{\lstset{language={},keywords={}}
-                         \renewcommand{\emptylinelst}{\vspace{0.5\baselineskip 
-                                                        plus  0.5\baselineskip
-                                                        minus 1.0\baselineskip}
-                        }}
+               \renewcommand{\emptylinelst}{\vspace{0.5\baselineskip 
+                                              plus  0.5\baselineskip
+                                              minus 1.0\baselineskip}
+              }}
 % =========================================================================== %
 % ENVIRONMENTS (CURRENTLY USED TO CHECK ONLY)
 % --------------------------------------------------------------------------- %
