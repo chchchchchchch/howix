@@ -1,0 +1,276 @@
+# --------------------------------------------------------------------------- #
+
+function SHOWBOOKPAGES() {
+
+    BKURL="$1";P1="";P2="" # RESET
+
+    mkCropPages $BKURL
+
+    if [ -f $PDFMOD ];then
+
+    PAGES=`echo $* | sed 's/ /\n/g'    | # SPACES TO NEWLINES
+           sed "/[^0-9\\-]/d"          | # NO LINES WITH MORE THAN NUMS AND -
+           egrep -v "^-|-$"            | # IGNORE ISOLATED - 
+           grep -v "^[ ]*$" | tail -n 1` # IGNORE EMPTY/SELECT LAST
+    PDFPAGES=`pdfinfo $PDFMOD     | #
+              grep ^Pages:        | #
+              sed 's/[^0-9\.]*//g'` #
+
+   if [ `echo $PAGES | wc -c` -le 1 ]; then
+         P1=1;NUMPAGES="$PDFPAGES"
+   elif [ `echo $PAGES | grep "^[0-9]" | wc -l` -ge 1 ]; then
+
+         P1=`echo $PAGES | cut -d "-" -f 1`
+         P2=`echo $PAGES | sed 's/^[0-9]*-/-/' | #
+             grep "-" | cut -d "-" -f 2`
+         P2=`expr $P2 + 1`
+
+         if [ `python -c "print $P1 / 2.0" | #
+               cut -d "." -f 2` -lt 5 ]; then
+              #FIRSTPAGEIS="even"
+               P1=`expr $P1 + 1` # = ORIGINAL + 1 
+               NUMPAGES=`expr $P2 - $P1`
+         else
+              #FIRSTPAGEIS="odd"
+               P1="$P1"          # = ORIGINAL - 1 + 1
+               NUMPAGES=`expr $P2 - $P1`
+         fi
+   fi
+
+     W=`pdfinfo $PDFMOD       | #
+        grep "^Page size"     | #
+        sed 's/[^0-9x\.]*//g' | #
+        cut -d "x" -f 1       | #
+        cut -d "." -f 1`        #
+ 
+     if   [ "$W" -gt 400 ];then OFFSET="170" # A5
+     elif [ "$W" -lt 400 ] &&
+          [ "$W" -gt 300 ];then OFFSET="80"  # A6
+     fi
+
+     write2src "\showbookpages{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}"
+
+  #else echo "NOTHING TO DO"
+   fi
+
+}
+
+# --------------------------------------------------------------------------- #
+
+# =========================================================================== #
+# WRITE TEX MACRO
+# --------------------------------------------------------------------------- #
+  if [ `grep '\newcommand{\showbookpages}[4]' ${TMPID}.preamble | #
+        wc -l` -lt 1 ];then
+
+  echo '% ----'                                           >> ${TMPID}.preamble
+  echo '  \newcounter{c}\newcounter{n}'                   >> ${TMPID}.preamble
+  echo '% --'                                             >> ${TMPID}.preamble
+  echo '  \newcommand{\pagestep}[1]{'                     >> ${TMPID}.preamble
+  echo '   \setcounter{c}{\value{page}}'                  >> ${TMPID}.preamble
+  echo '   \ifnum\value{c}>\value{n}'                     >> ${TMPID}.preamble
+  echo '         #1'                                      >> ${TMPID}.preamble
+  echo '   \else #1 \pagestep{#1}'                        >> ${TMPID}.preamble
+  echo '   \fi'                                           >> ${TMPID}.preamble
+  echo '  }'                                              >> ${TMPID}.preamble
+  echo '% ===='                                           >> ${TMPID}.preamble
+  echo '  \newcount\vs\newcount\vsi'                      >> ${TMPID}.preamble
+  echo '  \newcounter{first}\newcounter{last}'            >> ${TMPID}.preamble
+  echo '% ----'                                           >> ${TMPID}.preamble
+  echo ' \newcommand{\showbookpages}[4]{'                 >> ${TMPID}.preamble
+  echo '  \newpage\vs\thepage'                            >> ${TMPID}.preamble
+  echo '  \setcounter{n}{\value{page}}'                   >> ${TMPID}.preamble
+  echo '  \addtocounter{n}{#3}'                           >> ${TMPID}.preamble
+  echo '  \addtocounter{n}{-2}'                           >> ${TMPID}.preamble
+  echo '  \setcounter{first}{#2}'                         >> ${TMPID}.preamble
+  echo '  \setcounter{last}{\value{first}}'               >> ${TMPID}.preamble
+  echo '  \addtocounter{last}{1}'                         >> ${TMPID}.preamble
+  echo '  \pagestep{\AddToShipoutPictureBG*{%'            >> ${TMPID}.preamble
+  echo '            \setlength{\unitlength}{\paperwidth}' >> ${TMPID}.preamble
+  echo '            \put(0,0){\colorbox{black}{%'         >> ${TMPID}.preamble
+  echo '                      \makebox(1,1.4){}}}}'       >> ${TMPID}.preamble
+  echo '  \includepdf[pagecommand={}, 
+                      offset=#4 15,nup=2x1,
+                      pages=\arabic{first}-\arabic{last},
+                      noautoscale=true,
+                      scale=0.8]{#1}' | tr -s ' '         >> ${TMPID}.preamble
+  echo '   \vs\thepage \advance\vs by 2'                  >> ${TMPID}.preamble
+  echo '   \vsi\vs\divide\vs by 2 \multiply\vs by 2'      >> ${TMPID}.preamble
+  echo '   \ifnum\vs=\vsi'                                >> ${TMPID}.preamble
+  echo '   \addtocounter{first}{2}\addtocounter{last}{2}' >> ${TMPID}.preamble
+  echo '   \fi'                                           >> ${TMPID}.preamble
+  echo '  }'                                              >> ${TMPID}.preamble
+  echo ' }'                                               >> ${TMPID}.preamble
+  echo '% ===='                                           >> ${TMPID}.preamble
+
+  fi
+
+# =========================================================================== #
+# USED ABOVE
+# --------------------------------------------------------------------------- #
+  TMPKEEP="$TMPDIR/shbkpgs"
+# --------------------------------------------------------------------------- #
+  function mkCropPages() {
+
+       BKURL="$1"
+       BKPDF="$TMPID"`echo $BKURL | md5sum | cut -c 1-10`.pdf
+       TMPNOW="${TMPID}"`echo $BKPDF | md5sum | cut -c 1-10`
+    
+       getFile $BKURL $BKPDF
+    
+       PDFMOD="$TMPKEEP"`echo $BKURL | md5sum | cut -c 1-10`.pdf
+    
+       if [ ! -f $PDFMOD ];then
+    
+            WPDF=`pdfinfo $BKPDF        | #
+                  grep "^Page size"     | #
+                  sed 's/[^0-9x\.]*//g' | #
+                  cut -d "x" -f 1`        #
+            HPDF=`pdfinfo $BKPDF        | #
+                  grep "^Page size"     | #
+                  sed 's/[^0-9x\.]*//g' | #
+                  cut -d "x" -f 2`        #
+
+     # ================================================================ #
+     # ADD LAYOUT MARKS
+     # ================================================================ #
+       CROPMM="3"
+     # VALUES FOR INPUT PDF ----------------------------------------- #
+       WPDFMM=`pt2mm $WPDF`; WPDFPX=`mm2px $WPDFMM`
+       HPDFMM=`pt2mm $HPDF`; HPDFPX=`mm2px $HPDFMM`
+       XPDFMM=`python -c "print 1 * $CROPMM"`;  XPDFPX=`mm2px $XPDFMM`
+       YPDFMM=`python -c "print 1 * $CROPMM"`;  YPDFPX=`mm2px $YPDFMM`
+     # ----
+     # VALUES FOR NEW/ENLARGED CANVAS ------------------------------- #
+       WBGMM=`python -c "print $WPDFMM + 2*$CROPMM"`  # ADD SOME SPACE
+       HBGMM=`python -c "print $HPDFMM + 2*$CROPMM"`  # ADD SOME SPACE
+       WBGPX=`mm2px $WBGMM`; HBGPX=`mm2px $HBGMM`
+       WBGPT=`mm2pt $WBGMM`; HBGPT=`mm2pt $HBGMM`
+     # ----
+     # VALUES FOR PAGE (= PDF MINUX CROP) --------------------------- #
+       WPAGEMM=`python -c "print $WPDFMM - 2*$CROPMM"` # SUBTRACT CROP
+       HPAGEMM=`python -c "print $HPDFMM - 2*$CROPMM"` # SUBTRACT CROP
+       WPAGEPX=`mm2px $WPAGEMM`; HPAGEPX=`mm2px $HPAGEMM`
+       XPAGEMM=`python -c "print 2 * $CROPMM"`; XPAGEPX=`mm2px $XPAGEMM`
+       YPAGEMM=`python -c "print 2 * $CROPMM"`; YPAGEPX=`mm2px $YPAGEMM`
+     # ---------------------------------------------------------------- #
+     # ---------------------------------------------------------------- #
+       BGTMP="${TMPNOW}"`echo $BKURL | md5sum | cut -c 1-8`
+     # ---------------------------------------------------------------- #
+     # START SVG ------------------------------------------------------ #
+       echo "<svg width=\"$WBGPX\" height=\"$HBGPX\">"  >  ${BGTMP}.svg
+     # DRAW BACKGROUND INCLUDING CROPAREA ----------------------------- #
+       echo "<path style=\"fill:#dcdcdc;stroke:none\"  \
+                   d=\"m $XPDFPX,$YPDFPX $WPDFPX,0      \
+                         0,$HPDFPX -$WPDFPX,0 z\"        \
+                   id=\"bgfull\"/>" | tr -s ' '         >> ${BGTMP}.svg
+     # DRAW BACKGROUND TO FIT PAGE ------------------------------------ #
+        echo "<path style=\"fill:#ffffff;stroke:none\" \
+                    d=\"m $XPAGEPX,$YPAGEPX $WPAGEPX,0  \
+                          0,$HPAGEPX -$WPAGEPX,0 z\"     \
+                    id=\"bgfit\"/>" | tr -s ' '         >> ${BGTMP}.svg
+     # CLOSE SVG ------------------------------------------------------ #
+       echo '</svg>'                                    >> ${BGTMP}.svg
+     # MAKE PDF ------------------------------------------------------- #
+       inkscape --export-pdf=${BGTMP}.pdf ${BGTMP}.svg
+    
+     # ---------------------------------------------------------------- #
+     # PLACE PDF ON ENLARGED CANVAS
+     # ---------------------------------------------------------------- #
+       echo "\documentclass{article}"                  >  ${TMPNOW}.tex
+       echo "\usepackage{pdfpages}"                    >> ${TMPNOW}.tex
+       echo "\usepackage{geometry}"                    >> ${TMPNOW}.tex
+       echo "\geometry{paperwidth=${WBGMM}mm,"         >> ${TMPNOW}.tex
+       echo "          paperheight=${HBGMM}mm}"        >> ${TMPNOW}.tex
+       echo "\begin{document}"                         >> ${TMPNOW}.tex
+       echo "\includepdf[noautoscale,pages=-]"         >> ${TMPNOW}.tex
+       echo "{"`realpath $BKPDF`"}"                    >> ${TMPNOW}.tex
+       echo "\end{document}"                           >> ${TMPNOW}.tex
+       pdflatex -interaction=nonstopmode \
+                -output-directory=$TMPDIR \
+                ${TMPNOW}.tex > /dev/null
+       pdftk ${TMPNOW}.pdf background ${BGTMP}.pdf output ${TMPNOW}1.pdf
+    
+     # ---------------------------------------------------------------- #
+       FGTMP="${TMPNOW}."`echo $BKURL | md5sum | cut -c 1-8`
+     # ---------------------------------------------------------------- #
+       for P in 1 2
+        do
+      # -------------------------------------------------------------- #
+      # START SVG ---------------------------------------------------- #
+        echo "<svg width=\"$WBGPX\" height=\"$HBGPX\">" > ${FGTMP}.svg
+      # GROUP TRANSFORM TO FLIP -------------------------------------- #
+        echo "<g $FLIP>"                              >> ${FGTMP}.svg
+      # DRAW WHITE OVER INNERCROP ------------------------------------ #
+        echo "<path style=\"fill:#ffffff;stroke:none\" \
+                    d=\"m 0,$YPDFPX $XPAGEPX,0          \
+                          0,$HPDFPX -$XPAGEPX,0 z\"      \
+                    id=\"innercrop\"/>" | tr -s ' '    >> ${FGTMP}.svg
+     # DRAW OUTLINE INCLUDING CROPAREA ------------------------------- #
+       echo "<path style=\"fill:none;stroke:#f0f0f0;  \
+                                     stroke-width:1\"  \
+                   d=\"m $XPDFPX,$YPDFPX $WPDFPX,0      \
+                         0,$HPDFPX -$WPDFPX,0 z\"        \
+                   id=\"bgfull\"/>" | tr -s ' '        >> ${FGTMP}.svg
+      # LINE FOR BINDING --------------------------------------------- #
+        echo "<path style=\"fill:none;stroke:#eeeeee; \
+                                      stroke-width:1\" \
+               d=\"m $XPAGEPX,0 0,$HBGPX\"              \
+               id=\"binding\"/>"                       >> ${FGTMP}.svg 
+      # CLOSE SVG
+        echo '</g></svg>'                              >> ${FGTMP}.svg
+      # MAKE PDF ----------------------------------------------------- #
+        inkscape --export-pdf=${FGTMP}.${P}.pdf ${FGTMP}.svg
+    
+      # SET FLIP AND DO AGAIN ---------------------------------------- #
+        FLIP=" transform=\"scale(-1,1) translate(-$WBGPX,0)\""
+      # -------------------------------------------------------------- #
+       done
+     # ---------------------------------------------------------------- #
+    
+     # COMBINE THE 2 DIFFERENT ORIENTATIONS --------------------------- #
+       pdftk `ls ${FGTMP}.*.pdf` cat output ${TMPNOW}CROP.pdf
+    
+     # CREATE A PDF WITH A LOT OF PAGES ------------------------------- #
+       pdftk `printf "${TMPNOW}CROP.pdf %.0s" {1..500}` \
+              cat output ${TMPID}CROP1000.pdf
+    
+     # COMBINE CROP/BOOK PDF ------------------------------------------ #
+       pdftk ${TMPID}CROP1000.pdf \
+             multibackground ${TMPNOW}1.pdf \
+             output ${TMPNOW}3.pdf
+    
+     # REDUCE TO INPUT PAGE NUMBER ------------------------------------ #
+       PAGENUM=`pdfinfo ${TMPNOW}1.pdf | #
+                grep ^Pages:           | #
+                sed 's/[^0-9\.]*//g'`    #
+       pdftk ${TMPNOW}3.pdf cat 1-$PAGENUM output ${TMPNOW}4.pdf
+    
+     # ---------------------------------------------------------------- #
+     # SHIFT TO INNER CROP (ADD EMPYT PAGE FOR DOUBLE PAGES)
+     # ---------------------------------------------------------------- #
+       echo "\documentclass{scrbook}"                  >  ${TMPNOW}.tex
+       echo "\usepackage{pdfpages}"                    >> ${TMPNOW}.tex
+       echo "\usepackage{geometry}"                    >> ${TMPNOW}.tex
+       echo "\geometry{paperwidth=${WBGMM}mm,"         >> ${TMPNOW}.tex
+       echo "          paperheight=${HBGMM}mm}"        >> ${TMPNOW}.tex
+       echo "\begin{document}"                         >> ${TMPNOW}.tex
+       echo "\thispagestyle{empty}\null\newpage"       >> ${TMPNOW}.tex
+       echo "\includepdf[scale=1,"                     >> ${TMPNOW}.tex 
+       echo "            pages=-,"                     >> ${TMPNOW}.tex
+       echo "            offset=6mm 0]"               >> ${TMPNOW}.tex
+       echo "{"`realpath ${TMPNOW}4.pdf`"}"            >> ${TMPNOW}.tex
+       echo "\end{document}"                           >> ${TMPNOW}.tex
+       pdflatex -interaction=nonstopmode \
+                -output-directory=$TMPDIR \
+                ${TMPNOW}.tex > /dev/null
+       mv ${TMPNOW}.pdf $PDFMOD
+     # ---------------------------------------------------------------- #
+  
+    #else echo "$PDFMOD ALREADY EXISTS";
+     fi
+}
+
+# --------------------------------------------------------------------------- #
+# =========================================================================== #
+

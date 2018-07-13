@@ -1,0 +1,44 @@
+% --------------------------------------------------------------------------- %
+% EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% --------------------------------------------------------------------------- %
+% USEPACKAGE: ../lib/tex/conditions
+% USEPACKAGE: ../lib/tex/lstlanguages
+% ---
+% USEPACKAGE: 180710_howix
+% --------------------------------------------------------------------------- %
+% PDFXTITLE: Test makebotbot Setup
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% ----
+% EXTENDFUNCTIONS: 180629_vector.functions
+% EXTENDFUNCTIONS: 180712_showbook.functions
+% --------------------------------------------------------------------------- %
+%!ADD2PREAMBLE: \usepackage{showframe}
+
+
+
+
+% SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 1-4
+
+sfdsf
+
+% SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 3-4
+
+dsffds
+
+% SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 20
+
+fff
+
+% SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 37-39
+
+% SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/tgsoguide_1806051351.pdf 37-39
+
+%!SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 5-20
+%!SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 6-4
+%!SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf
+
+sdfdsf
+
+

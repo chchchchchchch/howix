@@ -10,3 +10,6 @@ hilxalsh:
 	./lib/mdsh/mk.sh E/180705_mkbtbts.mdsh pdf
 180710_srccode:
 	./lib/mdsh/mk.sh E/180710_srccode.mdsh pdf
+180712_showbook:
+	./lib/mdsh/mk.sh E/180712_showbook.mdsh pdf
+
