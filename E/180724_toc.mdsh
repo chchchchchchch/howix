@@ -1,0 +1,56 @@
+% --------------------------------------------------------------------------- %
+% EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% --------------------------------------------------------------------------- %
+% USEPACKAGE: ../lib/tex/conditions
+% ---
+% USEPACKAGE: 180710_howix
+% --------------------------------------------------------------------------- %
+% PDFXTITLE: Test TOC Setup
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% ----
+% EXTENDFUNCTIONS: 180724_toc.functions
+% USEPACKAGE: 180724_toc
+% --------------------------------------------------------------------------- %
+%!ADD2PREAMBLE: \usepackage{showframe}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% TOC:
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+% ----------------------------------------- %
+% COMMISSIONED: Linux Audio Conference 2008
+% ----------------------------------------- %
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% ----------------------------------------- %
+% COMMISSIONED: make art 2009
+% ----------------------------------------- %
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
