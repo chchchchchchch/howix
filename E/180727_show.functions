@@ -1,0 +1,206 @@
+
+    GITREPOURL="http://xx.xx.xx"
+  STROKECOMMON="0.4"
+    SHOWURLLOG=${TMPID}.showurllog
+# --------------------------------------------------------------------------- #
+# OVERWRITE
+# --------------------------------------------------------------------------- #
+  function svgScaleStroke() {
+
+  SVGSRC="$1";STROKESCALE="$2"
+
+  for OLDSTROKE in `sed 's/stroke-width/\n&/g' $SVGSRC | #
+                    grep '^stroke-width' | cut -d ":" -f 2  | #
+                    sed 's/;.*//' | sort -u | sed 's/[^0-9\.]//g' | #
+                    awk '{ print length($0) " " $0; }' | sort -n      | #
+                    tac | cut -d ' ' -f 2-`
+   do
+      NEWSTROKE=`python -c "print round($OLDSTROKE * $STROKESCALE,2)"`
+      if [ `echo $OLDSTROKE | cut -d "." -f 1` -lt 5 ];then
+     #echo "$OLDSTROKE -> $NEWSTROKE"
+      sed -i "s/stroke-width:$OLDSTROKE/stroke-width:XX$NEWSTROKE/g" $SVGSRC
+      else
+     #echo "$OLDSTROKE -> $NEWSTROKE (DON'T SCALE)"
+      sed -i "s/stroke-width:$OLDSTROKE/stroke-width:XX$OLDSTROKE/g" $SVGSRC
+      fi
+  done
+
+  sed -i 's/stroke-width:XX/stroke-width:/g' $SVGSRC
+
+  }
+# --------------------------------------------------------------------------- #
+
+# --------------------------------------------------------------------------- #
+
+function SHOW() {
+
+   THISCMD="SHOW"
+
+ # MAKE LIST
+ # ---------------------------------------------- #
+   LSSHOW="${TMPID}.show.txt"
+ # ---------------------------------------------- #
+   SHOWSRC=`echo $* | sed 's/ /\n/g' | #
+            grep "\.svg$" | head -n 1`
+   if [ "$SHOWSRC" != "" ];then
+        echo "$*" > $LSSHOW 
+        WRAPMODE="1"
+   else
+        getVerbatim "$THISCMD" $TMPID.xtract
+        cat $TMPID.xtract | # USELESS OF CAT
+        sed 's/^%[ ]*//'  | # RM LEADING
+        sed '/^[ ]*$/d'   | # RM EMPTY LINES
+        tee > $LSSHOW       # WRITE TO FILE
+        WRAPMODE="2"
+   fi
+ # ---------------------------------------------- #
+
+   echo "\showwrap{$WRAPMODE}{" >> $SRCDUMP
+
+( IFS=$'\n'
+  for SHOW in `cat $LSSHOW`
+   do 
+# --------------------------------------------------------------------------- #
+# EXTRACT FLAGS
+# --------------------------------------------------------------------------- #
+    SVGSRC=`echo $SHOW | sed 's/ /\n/g'       | #
+            grep "\.svg$" | head -n 1`          #
+    LAYERS=`echo $SHOW | sed 's/ /\n/g'       | #
+            grep "^--layers="                 | #
+            head -n 1 | cut -d "=" -f 2-`       #
+      AREA=`echo $SHOW | sed 's/ /\n/g'       | #
+            grep "^--area="                   | #
+            head -n 1 | cut -d "=" -f 2-`       #
+      SIZE=`echo $SHOW | sed 's/ /\n/g'       | #
+            grep "^--size=" | cut -d "=" -f 2 | #
+            sed '/[^0-9\.]\+/d' | head -n 1`    #
+       REF=`echo $SHOW | sed 's/ /\n/g'       | #
+            grep "^--ref="                    | #
+            head -n 1 | cut -d "=" -f 2-`       #
+  # - - - - - - - - - - - - - - - - - - - - - - #
+    THISTMP=$TMPID`echo $SHOW | sed 's/ //g'  | #
+                   md5sum  | cut -c 1-12`       #
+
+# --------------------------------------------------------------------------- #
+# CREATE STANDARD REF
+# --------------------------------------------------------------------------- #
+
+  IFHTTP=`echo $SVGSRC | grep "http.\?://" | wc -l`
+  if [ $IFHTTP -ge 1 ];then
+       SHOWURL="$SVGSRC"                      #
+  else SHOWURL="$GITREPOURL/$SVGSRC"          #
+  fi; #SHOWURL=`curl -sIL $SHOWURL          | # CURL URL
+      #         tr -d '\015'                | # CONFORM DOS END OF LINE
+      #         grep ^Location              | # SELECT LOCATION
+      #         cut -d ":" -f 2-            | # CUT SECOND FIELD
+      #         tail -n 1                   | # SELECT LAST LINE
+      #         sed 's,[ \t]*,,'`             # REMOVE ALL SPACES
+       DEFAULTREF=`echo $SHOWURL | md5sum | cut -c 1-16`
+       echo ${SHOWURL}:$DEFAULTREF >> $SHOWURLLOG
+       DEFAULTREF="\label{$DEFAULTREF}"
+ # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+   if [ "$REF" != "" ];then
+         REFPLUS=`echo $REF | #
+                  sed 's/[^a-zA-Z0-9]//g' | #
+                  md5sum | cut -c 1-8`
+         DEFAULTREF="${DEFAULTREF}\label{$REFPLUS}"
+   fi
+
+# --------------------------------------------------------------------------- #
+# GET AND PROCESS SRC
+# --------------------------------------------------------------------------- #
+  if [ "$SVGSRC" != "" ];then getFile $SVGSRC ${THISTMP}.tmp.svg
+
+     if [ -f ${THISTMP}.tmp.svg ];then
+       # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+         if [ "$LAYERS" == "" ];then
+               mv ${THISTMP}.tmp.svg ${THISTMP}.svg
+         else  extractLayers ${THISTMP}.tmp.svg ${THISTMP}.svg $LAYERS
+         fi
+       # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+         if [ "$AREA" == "" ];then
+               sleep 0
+         else cropArea ${THISTMP}.svg ${THISTMP}.tmp.svg $AREA
+              mv ${THISTMP}.tmp.svg ${THISTMP}.svg
+         fi
+       # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+     fi
+  fi
+# --------------------------------------------------------------------------- #
+# GO FURTHER (IF SUCCESSFUL)
+# --------------------------------------------------------------------------- #
+  if [ -f ${THISTMP}.svg ];then
+
+   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+   # COLLECT/CREATE INFORMATION
+   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+     WSVG=`sed 's/width/\n&/g' ${THISTMP}.svg  | #
+           grep "^width=" | head -n 1 | cut -d "\"" -f 2`
+     HSVG=`sed 's/height/\n&/g' ${THISTMP}.svg | #
+           grep "^height=" | head -n 1 | cut -d "\"" -f 2`
+
+     if [ "$SIZE" != "" ];then
+
+       SHOWSCALE="$SIZE"
+
+     else
+          RATIO=`python -c "print int(float(${WSVG}) / $HSVG * 100)"`
+   
+          if   [ "$RATIO" -lt  45 ];then FORMAT="PORTRAITPLUS"
+          elif [ "$RATIO" -lt  95 ];then FORMAT="PORTRAIT"
+          elif [ "$RATIO" -gt 350 ];then FORMAT="LANDSCAPEPLUS"
+          elif [ "$RATIO" -gt 105 ];then FORMAT="LANDSCAPE"
+          else    FORMAT="SQUARISH";fi
+
+          inkscape --export-pdf=${THISTMP}.pdf ${THISTMP}.svg
+          FILESIZE=`du -b ${THISTMP}.pdf | cut -f 1`
+          COMPLEXITY=`python -c "print ($FILESIZE / 100.0) ** 2"`
+
+          if [ "$FORMAT" == "LANDSCAPEPLUS" ];then
+
+               SHOWSCALE="1.0"
+          else
+               SHOWSCALE=`python -c "from numpy import interp; \
+                          print round(interp($COMPLEXITY,[200,2000],[0.2,1]) \
+                                      ,2)"`
+          fi
+     fi
+
+     SHOWSIZE=`python -c "print 100.0 / $WSVG * $SHOWSCALE"`
+     STROKESCALE=`python -c "print round(1 / $SHOWSIZE * $STROKECOMMON,2)"`
+
+     svgScaleStroke ${THISTMP}.svg $STROKESCALE
+     svgFillWhite ${THISTMP}.svg
+     inkscape --export-pdf=${THISTMP}.pdf ${THISTMP}.svg
+     THISPDF="${THISTMP}.pdf"
+
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+    echo "\showinside{$SHOWSCALE}{$THISPDF}{$DEFAULTREF}{$REF}" >> $SRCDUMP
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+
+  fi
+
+  done;)
+ 
+  echo '}' >> $SRCDUMP
+
+}
+
+# --------------------------------------------------------------------------- #
+
+function FLUSHSHOWURLS() {
+
+  sleep 0
+
+}
+
+# --------------------------------------------------------------------------- #
+
+function REFSHOW() {
+
+  sleep 0
+
+}
+
+# --------------------------------------------------------------------------- #
+

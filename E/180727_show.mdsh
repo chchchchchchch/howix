@@ -1,0 +1,84 @@
+% --------------------------------------------------------------------------- %
+% EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% --------------------------------------------------------------------------- %
+% USEPACKAGE: ../lib/tex/conditions
+% ---
+% USEPACKAGE: 180710_howix
+% --------------------------------------------------------------------------- %
+% PDFXTITLE: Test TOC Setup
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% ----
+% EXTENDFUNCTIONS: 180629_vector.functions
+% EXTENDFUNCTIONS: 180727_show.functions
+% USEPACKAGE: 180727_show
+% --------------------------------------------------------------------------- %
+%!ADD2PREAMBLE: \usepackage{showframe}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% -----------
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=956:2266:270:141 --layers=XX_UNDRAFT --size=1
+% SHOW:
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+% -----------
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=956:2266:270:141 --layers=XX_UNDRAFT
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=977:2413:320:156 --layers=XX_UNDRAFT --ref=0323.2c18e5.1 
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=977:2613:152:76  --layers=XX_UNDRAFT
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=977:2703:255:86  --layers=XX_UNDRAFT --size=0.5
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=977:2696:335:93  --layers=XX_UNDRAFT
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=1038:2790:145:93 --layers=XX_UNDRAFT
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=280:1486:163:101 --layers=XX_UNDRAFT --ref=0323.2c18e5.2
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=119:1489:157:63  --layers=XX_UNDRAFT
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=138:1282:125:138 --layers=XX_UNDRAFT
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=138:1282:125:138 --layers=XX_UNDRAFT --size=0.5
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=977:2703:255:86  --layers=XX_UNDRAFT --ref=0323.2c18e5.3 --size=0.45
+% https://git.io/170901_A5x2-0323.2c18e5.svg --area=977:2413:320:156 --layers=XX_UNDRAFT --size=1
+%
+% SHOW:
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% -----------
+% SHOW: https://git.io/170901_A5x2-0323.2c18e5.svg --area=956:2266:270:141 --layers=XX_UNDRAFT --size=1
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+

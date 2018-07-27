@@ -1,0 +1,43 @@
+\usepackage[export]{adjustbox}
+
+ \newcommand{\showwrap}[2]{%
+ \ifnum\numexpr#1 < 2
+  \begin{figure}
+  \centering#2
+  \end{figure}%
+ \else
+ \vfill
+ {\centering
+  #2
+ \par}
+ \vfill
+ \fi
+ }
+
+ \newlength{\fullwidthshow}
+ \setlength{\fullwidthshow}{\textwidth}
+ \definecolor{shwrf}{cmyk}{0,0,0,0.3}
+
+ \newcommand{\showinside}[4]{%
+  \if\relax\detokenize{#4}\relax%
+    % #2 EMPTY -> DO NOTHING
+   \vspace{-1pt}
+   \includegraphics[width=#1\fullwidthshow,
+                    cfbox=white 0.0pt -1.0pt 0pt]{#2}%
+                   %cfbox=blue 0.5pt -1.5pt 0pt]{#2}%
+  %\label{#3}%
+   #3 %
+  \else
+   \includegraphics[width=#1\fullwidthshow,
+                    cfbox=shwrf 0.5pt -1.5pt 0pt]{#2}%
+  \put(0,0){\hspace{-#1\fullwidthshow}%
+            \parbox{4em}{\vspace{-12pt}\hspace{2pt}
+  \fcolorbox{shwrf}{white}{\color{shwrf}\tiny#4}}}
+  %\label{#3}%
+   #3 %
+   \vspace{1pt}
+ \fi
+   \hfill
+   \pagebreak[0]%
+ }
+
