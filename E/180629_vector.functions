@@ -43,12 +43,6 @@
 
   }
 # =========================================================================== #
-
-# --------------------------------------------------------------------------- #
-  function mkseed(){ openssl enc -aes-256-ctr -pass pass:"$1" \
-                    -nosalt </dev/zero 2>/dev/null; }
-  #shuf -n 1 --random-source=<(mkseed $SRCNAME)
-
 # --------------------------------------------------------------------------- #
   function pdfResize() {
 
@@ -90,6 +84,25 @@
 
   }
 # --------------------------------------------------------------------------- #
+  function svgScaleStroke() {
+
+  SVGSRC="$1"
+  STROKESCALE="$2"
+
+  for OLDSTROKE in `sed 's/stroke-width/\n&/g' $SVGSRC | #
+                    grep '^stroke-width' | cut -d ":" -f 2 | #
+                    sed 's/;.*//' | sort -u | sed 's/[^0-9\.]//g' | #
+                    awk '{ print length($0) " " $0; }' | sort -r -n | #
+                    cut -d ' ' -f 2-`
+   do
+      NEWSTROKE=`python -c "print round($OLDSTROKE * $STROKESCALE,2)"`
+      sed -i "s/stroke-width:$OLDSTROKE/stroke-width:XX$NEWSTROKE/g" $SVGSRC
+  done
+
+  sed -i 's/stroke-width:XX/stroke-width:/g' $SVGSRC
+
+  }
+# --------------------------------------------------------------------------- #
   function svgFillWhite() {
 
   SVGSRC="$1"
@@ -113,5 +126,6 @@
   sed -i "s/$PROTECTBLACK/#000000/g" ${SVGSRC}
 
   }
+
 # --------------------------------------------------------------------------- #
 
