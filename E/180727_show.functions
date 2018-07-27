@@ -2,6 +2,7 @@
     GITREPOURL="http://xx.xx.xx"
   STROKECOMMON="0.4"
     SHOWURLLOG=${TMPID}.showurllog
+    SHOWREFPLUS=${TMPID}.showrefplus
 # --------------------------------------------------------------------------- #
 # OVERWRITE
 # --------------------------------------------------------------------------- #
@@ -96,14 +97,20 @@ function SHOW() {
       #         tail -n 1                   | # SELECT LAST LINE
       #         sed 's,[ \t]*,,'`             # REMOVE ALL SPACES
        DEFAULTREF=`echo $SHOWURL | md5sum | cut -c 1-16`
-       echo ${SHOWURL}:$DEFAULTREF >> $SHOWURLLOG
+       echo ${SHOWURL}:${DEFAULTREF} >> $SHOWURLLOG
        DEFAULTREF="\label{$DEFAULTREF}"
  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
    if [ "$REF" != "" ];then
-         REFPLUS=`echo $REF | #
+         REFPLUS=`echo $REF               | #
+                  sed 's/^[ \t]*//'       | # REMOVE LEADING WHITESPACE
+                  sed 's/[ \t]*$//'       | # REMOVE TRAILING WHITESPACE
                   sed 's/[^a-zA-Z0-9]//g' | #
                   md5sum | cut -c 1-8`
+         REFMARK="$REF"
          DEFAULTREF="${DEFAULTREF}\label{$REFPLUS}"
+         echo ${REFPLUS}:${REFMARK} >> $SHOWREFPLUS
+   else
+         REFMARK=""
    fi
 
 # --------------------------------------------------------------------------- #
@@ -174,9 +181,9 @@ function SHOW() {
      inkscape --export-pdf=${THISTMP}.pdf ${THISTMP}.svg
      THISPDF="${THISTMP}.pdf"
 
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
-    echo "\showinside{$SHOWSCALE}{$THISPDF}{$DEFAULTREF}{$REF}" >> $SRCDUMP
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+   echo "\showinside{$SHOWSCALE}{$THISPDF}{$DEFAULTREF}{$REFMARK}" >> $SRCDUMP
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 
   fi
 
@@ -198,9 +205,46 @@ function FLUSHSHOWURLS() {
 
 function REFSHOW() {
 
-  sleep 0
+  REFID=`echo $*                 | # WHAT? 
+         sed 's/^[ \t]*//'       | # REMOVE LEADING WHITESPACE
+         sed 's/[ \t]*$//'       | # REMOVE TRAILING WHITESPACE
+         sed 's/[^a-zA-Z0-9]//g' | #
+         md5sum | cut -c 1-8`
+  REFMARKTMP=`echo $REFID | md5sum | cut -c 1-16`
+  write2src "(\ding{222}~p.~\pageref{$REFID},~$REFMARKTMP)"
 
 }
+
+# --------------------------------------------------------------------------- # 
+# MODIFY $TMPTEX BEFORE COMPILING PDF 
+# --------------------------------------------------------------------------- # 
+  function placeRefMarks() {
+
+    for I in `cat $SHOWREFPLUS`
+     do
+        REFID=`echo $I | cut -d ":" -f 1`
+        REFMARK=`echo $I | cut -d ":" -f 2-`
+        REFMARKTMP=`echo $REFID | md5sum | cut -c 1-16`
+        sed -i "s/$REFMARKTMP/$REFMARK/g" $SRCDUMP
+    done
+
+  }
+
+ # ------------------------------------------------------------------------- # 
+ # DO IT AT THE END 
+ # ------------------------------------------------------------------------- # 
+   if [ "$OUTPUTFORMAT" == pdf ];then
+
+       # ADD ONLY ONCE 
+         if [ `echo $preOutput | grep placeRefMarks | wc -l ` -lt 1 ];then
+               preOutput="$preOutput placeRefMarks"
+         fi
+
+   elif [ "$OUTPUTFORMAT" == html ];then
+
+         sleep 0
+
+   fi
 
 # --------------------------------------------------------------------------- #
 
