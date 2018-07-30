@@ -113,14 +113,14 @@ function SHOWBOOKPAGES() {
   function mkCropPages() {
 
        BKURL="$1"
-       BKPDF="$TMPID"`echo $BKURL | md5sum | cut -c 1-10`.pdf
-       TMPNOW="${TMPID}"`echo $BKPDF | md5sum | cut -c 1-10`
+       BKPDF="$TMPKEEP"`echo $BKURL | md5sum | cut -c 1-10`.pdf
+       TMPNOW="$TMPID"`echo $BKPDF | md5sum | cut -c 1-10`
     
+       PDFMOD="$TMPKEEP"`echo $BKURL | md5sum | cut -c 1-12`.pdf
+
        getFile $BKURL $BKPDF
     
-       PDFMOD="$TMPKEEP"`echo $BKURL | md5sum | cut -c 1-10`.pdf
-    
-       if [ ! -f $PDFMOD ];then
+       if [ ! -f $PDFMOD ] && [ "$SUCCESS" == "YES" ];then
     
             WPDF=`pdfinfo $BKPDF        | #
                   grep "^Page size"     | #
