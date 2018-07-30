@@ -112,9 +112,9 @@ function SHOWBOOKPAGES() {
 # --------------------------------------------------------------------------- #
   function mkCropPages() {
 
-       BKURL="$1"
-       BKPDF="$TMPKEEP"`echo $BKURL | md5sum | cut -c 1-10`.pdf
-       TMPNOW="$TMPID"`echo $BKPDF | md5sum | cut -c 1-10`
+        BKURL="$1"
+        BKPDF="$TMPKEEP"`echo $BKURL | md5sum | cut -c 1-10`.pdf
+       TMPNOW="$TMPID"`echo $BKURL | md5sum | cut -c 1-10`
     
        PDFMOD="$TMPKEEP"`echo $BKURL | md5sum | cut -c 1-12`.pdf
 
@@ -192,7 +192,7 @@ function SHOWBOOKPAGES() {
        pdftk ${TMPNOW}.pdf background ${BGTMP}.pdf output ${TMPNOW}1.pdf
     
      # ---------------------------------------------------------------- #
-       FGTMP="${TMPNOW}."`echo $BKURL | md5sum | cut -c 1-8`
+       FGTMP="${TMPNOW}"`echo $BKURL | md5sum | cut -c 9-16`;FLIP=""
      # ---------------------------------------------------------------- #
        for P in 1 2
         do
@@ -258,7 +258,7 @@ function SHOWBOOKPAGES() {
        echo "\thispagestyle{empty}\null\newpage"       >> ${TMPNOW}.tex
        echo "\includepdf[scale=1,"                     >> ${TMPNOW}.tex 
        echo "            pages=-,"                     >> ${TMPNOW}.tex
-       echo "            offset=6mm 0]"               >> ${TMPNOW}.tex
+       echo "            offset=6mm 0]"                >> ${TMPNOW}.tex
        echo "{"`realpath ${TMPNOW}4.pdf`"}"            >> ${TMPNOW}.tex
        echo "\end{document}"                           >> ${TMPNOW}.tex
        pdflatex -interaction=nonstopmode \
@@ -266,9 +266,10 @@ function SHOWBOOKPAGES() {
                 ${TMPNOW}.tex > /dev/null
        mv ${TMPNOW}.pdf $PDFMOD
      # ---------------------------------------------------------------- #
-  
+
     #else echo "$PDFMOD ALREADY EXISTS";
      fi
+
 }
 
 # --------------------------------------------------------------------------- #
