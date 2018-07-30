@@ -1,0 +1,145 @@
+# --------------------------------------------------------------------------- #
+# OVERWRITE
+# --------------------------------------------------------------------------- #
+# ../lib/mdsh/href.functions 
+# --------------------------------------------------------------------------- #
+  SHORTURLBASE="http://lfkn.de"
+  QRDEKOSRC=$MAINPATH/151007_qrdeko-simple.svg
+# --------------------------------------------------------------------------- #
+  function refsrc() {
+
+    mkqr $* > /dev/null 2>&1
+    REFCODE="\qrmargin{$QRPDF}{$QRTXT}"
+    echo "$REFCODE"
+
+  }
+# --------------------------------------------------------------------------- #
+
+function HREF() {
+
+       O=`echo $* | cut -d " " -f 1`
+       THISCMD="% HREF:"
+
+   if [ "X$O" == "XON"  ] ||
+      [ "X$O" == "XOFF" ]
+    then
+         HREFMODE="$O"
+    else
+     if [ "X$HREFMODE" != "XOFF"  ]; then
+
+         WWWLINK=`urlitzer "$*"`
+         REFCODE=`refsrc $WWWLINK`
+         write2src "$REFCODE"
+     fi
+   fi
+}
+
+# --------------------------------------------------------------------------- #
+
+function PP(){(
+
+      THISCMD="PP"
+
+    PPCOLLECT="" # RESET
+      PPPAGES="" # RESET
+      REFCODE="" # RESET
+
+    MOREOPTIONS=`echo $*               | # START PIPE
+                 sed 's/OPTIONS:/\n&/' | #
+                 grep "^OPTIONS:"      | #
+                 head -n 1             | #
+                 cut -d ":" -f 2`
+
+    getVerbatim "$THISCMD" $TMPID.xtract 
+
+    PPPDFS=`cat $TMPID.xtract              | # USELESS USE OF CAT
+            sed "s/[ ]*${COMSTART}[ ]*//g" | #
+            sed "s/[ ]*$COMCLOSE[ ]*//g"   | #
+            sed "s/^[%]*[ ]*$/X.pdf/"      | # ALLOW EMPTY (=TO SHIFT)
+            grep "\.pdf$"                  | # SELECT LINES WITH .pdf EXTENSION
+            sed "s/^%//"                   | # REMOVE LEADING %
+            sed "s/^[ ]*//"`                 # REMOVE ALL LEADING BLANKS
+
+    PPNUM=`echo $PPPDFS |  sed 's/ /\n/g' | wc -l` # COUNT
+
+     if [ "X$HREFMODE" != "XOFF"  ]; then
+           PPLINK=`shortref $PPPDFS`
+           echo $PPLINK
+           REFCODE=`refsrc $PPLINK | sed 's/qrmargin/qroverlay/'`
+       if [ "A$PPLINK" == "A$PPLBEFORE" ];then
+           REFCODE=""
+           echo "REF is the same"
+       fi
+           PPLBEFORE="$PPLINK"
+     fi
+
+   for PDFSRC in $PPPDFS
+    do
+       if [ "X$PDFSRC" == "XX.pdf" ]; then
+             echo "do empty!"
+             PPPAGES=$PPPAGES,
+       else
+        PDFGET=${TMPID}`echo $PDFSRC | md5sum | cut -c 1-8`.pdf
+
+        if [ ! -f $PDFGET ]; then
+              getFile $PDFSRC $PDFGET
+            if [ -f $PDFGET ]; then
+              conformColor $PDFGET
+              PPPAGES="$PPPAGES,${PDFGET},-"
+            fi
+        else
+            #echo "no need to download"
+             PPPAGES="$PPPAGES,$PDFGET,-"
+        fi
+       fi
+   done
+          MKPN="pagecommand={\thispagestyle{fancy}\label{$REFID}$REFCODE},"
+          OPTIONFILTER=`echo XX,$MOREOPTIONS | sed 's/,/\n/g' | #
+                        cut -d "=" -f 1 | sed ':a;N;$!ba;s/\n/|/g' |#
+                        sed 's/|$//' | sed 's/ //g'`
+          PPPAGES=`echo $PPPAGES | sed 's/^,//'`
+
+    if   [ $PPNUM -eq 1 ]; then
+
+           PPPAGES=`echo $PPPAGES | sed "s/,-//g"`
+          OPTIONS="nup=1x1,scale=.625,frame=true,
+                   offset=28.5 27,$MKPN"
+           PMACRO="\includepdf[$OPTIONS]{$PPPAGES}"
+
+    elif [ $PPNUM -eq 2 ]; then
+
+           OPTIONS="nup=1x2,frame=true,angle=\rotif,offset=28.5 27,
+                    delta=10 10,scale=.637,$MKPN"
+            PMACRO="\includepdfmerge[$OPTIONS]{$PPPAGES}"
+
+    elif [ $PPNUM -eq 3 ]; then
+
+           OPTIONS="nup=2x2,frame=true,offset=5 0,
+                    delta=20 25,scale=.85,$MKPN"
+            PMACRO="\includepdfmerge[$OPTIONS]{$PPPAGES}"
+
+    elif [ $PPNUM -eq 4 ]; then
+
+           OPTIONS="nup=2x2,frame=true,offset=28.5 30,
+                    delta=10 10,scale=.61,$MKPN"
+            PMACRO="\includepdfmerge[$OPTIONS]{$PPPAGES}"
+
+    elif [ $PPNUM -eq 9 ]; then
+ 
+           OPTIONS="nup=3x3,scale=1.97,frame=true,offset=29 27.5,
+                    delta=10 10,$MKPN"
+            PMACRO="\includepdfmerge[$OPTIONS]{$PPPAGES}"
+    else
+           OPTIONS=`echo "nup=4x4,frame=true,offset=28.5 30,
+                    delta=10 10,scale=1.29,$MKPN" | #
+                    sed 's/,/,\n/g' | #
+                    egrep -v "$OPTIONFILTER"`",$MOREOPTIONS"
+            PMACRO="\includepdfmerge[$OPTIONS]{$PPPAGES}"
+    fi
+
+       echo $PMACRO >> $SRCDUMP
+)}
+
+# --------------------------------------------------------------------------- #
+
+

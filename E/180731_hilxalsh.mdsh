@@ -1,0 +1,36 @@
+% --------------------------------------------------------------------------- %
+% EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% --------------------------------------------------------------------------- %
+% USEPACKAGE: ../lib/tex/conditions
+% ---
+% USEPACKAGE: 180710_howix
+% --------------------------------------------------------------------------- %
+% PDFXTITLE: Porting "How I..." Functions
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% ----
+% EXTENDFUNCTIONS: 180730_hilxalsh.functions
+% --------------------------------------------------------------------------- %
+%!ADD2PREAMBLE: \usepackage{showframe}
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% --------------------------- 
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_37.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_96.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_09.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_40.pdf
+% PP:
+
+% HREF: ON
+% --------------------------- 
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_59.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_22.pdf
+% PP:
