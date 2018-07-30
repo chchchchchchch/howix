@@ -17,28 +17,43 @@
 %!ADD2PREAMBLE: \usepackage{showframe}
 
 
+% SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 1-4
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 3-4
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 20
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 
-% SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 1-4
+% SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 37-39
+% SHOWBOOKPAGES: http://lfkn.de/tgsoguide-pdf 37-39
 
-sfdsf
 
-% SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 3-4
-
-dsffds
-
-% SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 20
-
-fff
-
-% SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 37-39
-
-% SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/tgsoguide_1806051351.pdf 37-39
-
-%!SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 5-20
-%!SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf 6-4
-%!SHOWBOOKPAGES: /home/christoph/0000_Projekte/000_PRINTED/DONE/150211_conversations.pdf
-
-sdfdsf
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 
