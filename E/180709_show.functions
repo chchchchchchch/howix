@@ -18,7 +18,7 @@
 
 function SPREAD() {
 
-   mkpages $*
+   mkpages $* --keeptmp
 
  # MOVE TMP mkpages ??
  # ----

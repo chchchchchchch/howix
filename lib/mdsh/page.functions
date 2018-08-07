@@ -110,8 +110,17 @@
          PAGES=- ; PAGECOMMAND=""
    fi
 
-   PDFGET=${TMPID}`echo $PDFSRC | md5sum | cut -c 1-6`.pdf
-   SVGTMP=${TMPID}`echo $PDFSRC | md5sum | cut -c 4-9`.svg
+   KEEPTMP=`echo $* | sed 's,--,\n--,g' | #
+            grep -- "--keeptmp" | wc -l`  #
+
+   if [ "$KEEPTMP" -lt 1 ];then
+        PDFGET=${TMPID}`echo $PDFSRC | md5sum | cut -c 1-6`.pdf
+        SVGTMP=${TMPID}`echo $PDFSRC | md5sum | cut -c 4-9`.svg
+   else TMPKEEP="$TMPDIR/tmpspread"
+        PDFGET=${TMPKEEP}`echo $PDFSRC | md5sum | cut -c 1-6`.pdf
+        SVGTMP=${TMPKEEP}`echo $PDFSRC | md5sum | cut -c 4-9`.svg
+   fi
+
 
    if [ -f $PDFGET ]; then
         echo "$PDFGET exists"
