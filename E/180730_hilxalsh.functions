@@ -227,3 +227,34 @@ function HYPHENATE() {
 
 # --------------------------------------------------------------------------- #
 
+function CLEARTOLEFT() {
+
+    if [ "$OUTPUTFORMAT" == pdf ];then
+
+         write2src "\cleartoleft"
+    fi
+}
+
+# --------------------------------------------------------------------------- #
+
+function CLEARTORIGHT() {
+
+    if [ "$OUTPUTFORMAT" == pdf ];then
+
+         write2src "\cleartoright"
+    fi
+}
+
+# --------------------------------------------------------------------------- #
+
+function EMPTYPAGE() {
+
+    if [ "$OUTPUTFORMAT" == pdf ];then
+
+         write2src "\emptypage"
+    fi
+}
+
+# --------------------------------------------------------------------------- #
+
+
