@@ -48,7 +48,8 @@ function SHOWBOOKPAGES() {
           [ "$W" -gt 300 ];then OFFSET="80"  # A6
      fi
 
-     write2src "\showbookpages{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}"
+    #write2src "\showbookpages{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}"
+     write2src "\showbookpagesplustxt{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}"
 
   #else echo "NOTHING TO DO"
    fi
@@ -104,7 +105,48 @@ function SHOWBOOKPAGES() {
   echo '% ===='                                           >> ${TMPID}.preamble
 
   fi
+  if [ `grep '\newcommand{\showbookpagesplustxt}[4]' ${TMPID}.preamble | #
+        wc -l` -lt 1 ];then
+  echo '  \newcommand\offpagetxt[1]{'                     >> ${TMPID}.preamble
+  echo '  \begin{minipage}{10\paperwidth} % MAKE IT HUGE' >> ${TMPID}.preamble
+  echo '  {\vspace{-4\paperheight} % MOVE IT OUT'         >> ${TMPID}.preamble
+  echo '   \tiny #1} % MAKE IT TINY'                      >> ${TMPID}.preamble
+  echo '  \end{minipage}}'                                >> ${TMPID}.preamble
+  echo '  % ----'                                         >> ${TMPID}.preamble
+  echo '   \newcommand{\showbookpagesplustxt}[5]{'        >> ${TMPID}.preamble
+  echo '    \newpage\vs\thepage'                          >> ${TMPID}.preamble
+  echo '    \setcounter{n}{\value{page}}'                 >> ${TMPID}.preamble
+  echo '    \addtocounter{n}{#3}'                         >> ${TMPID}.preamble
+  echo '    \addtocounter{n}{-2}'                         >> ${TMPID}.preamble
+  echo '    \setcounter{first}{#2}'                       >> ${TMPID}.preamble
+  echo '    \setcounter{last}{\value{first}}'             >> ${TMPID}.preamble
+  echo '    \addtocounter{last}{1}'                       >> ${TMPID}.preamble
+  echo '    \pagestep{\AddToShipoutPictureBG*{%'          >> ${TMPID}.preamble
+  echo '            \setlength{\unitlength}{\paperwidth}' >> ${TMPID}.preamble
+  echo '             \put(0,0){\colorbox{yellow}{%'       >> ${TMPID}.preamble
+  echo '                        \makebox(1,1.4){}}}}'     >> ${TMPID}.preamble
+  echo '     \ifthispageodd{'                             >> ${TMPID}.preamble
+  echo '      \includepdf[pagecommand={\offpagetxt{%'     >> ${TMPID}.preamble
+  echo '            \input{#1.\arabic{last}.verbatim}}},' >> ${TMPID}.preamble
+  echo '             offset=#4 15,nup=2x1,'               >> ${TMPID}.preamble
+  echo '             pages=\arabic{first}-\arabic{last},' >> ${TMPID}.preamble
+  echo '             noautoscale=true,'                   >> ${TMPID}.preamble
+  echo '             scale=0.8]{#1}'                      >> ${TMPID}.preamble
+  echo '       \addtocounter{first}{2}'                   >> ${TMPID}.preamble
+  echo '       \addtocounter{last}{2}'                    >> ${TMPID}.preamble
+  echo '     }{'                                          >> ${TMPID}.preamble
+  echo '      \includepdf[pagecommand={\offpagetxt{%'     >> ${TMPID}.preamble
+  echo '           \input{#1.\arabic{first}.verbatim}}},' >> ${TMPID}.preamble
+  echo '            offset=#4 15,nup=2x1,'                >> ${TMPID}.preamble
+  echo '            pages=\arabic{first}-\arabic{last},'  >> ${TMPID}.preamble
+  echo '            noautoscale=true,'                    >> ${TMPID}.preamble
+  echo '            scale=0.8]{#1}'                       >> ${TMPID}.preamble
+  echo '     }'                                           >> ${TMPID}.preamble
+  echo '    }'                                            >> ${TMPID}.preamble
+  echo '   }'                                             >> ${TMPID}.preamble
+  echo '% ===='                                           >> ${TMPID}.preamble
 
+  fi
 # =========================================================================== #
 # USED ABOVE
 # --------------------------------------------------------------------------- #
@@ -266,6 +308,20 @@ function SHOWBOOKPAGES() {
                 ${TMPNOW}.tex > /dev/null
        mv ${TMPNOW}.pdf $PDFMOD
      # ---------------------------------------------------------------- #
+     # EXTRACT TXT FOR SEPARATE PAGES
+     # ---------------------------------------------------------------- #
+       pdftk $PDFMOD burst output $TMPDIR/tmppage.%0d.pdf
+       for PDF in `ls $TMPDIR/tmppage.[0-9]*.pdf`
+        do PAGENUM=`basename $PDF       | #
+                    sed 's/tmppage\.//' | #
+                    sed 's/\.pdf$//'`     #   
+           pdftotext -eol unix -nopgbrk $PDF - | #
+           sed '/^[ \t]*$/d' | tr -s ' '| #
+           sed ":a;N;\$!ba;s/\n/ /g" | #
+           tee > $TMPDIR/`basename $PDFMOD`.$PAGENUM.verbatim
+           rm $PDF
+       done
+
 
     #else echo "$PDFMOD ALREADY EXISTS";
      fi

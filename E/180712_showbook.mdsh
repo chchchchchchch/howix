@@ -1,5 +1,6 @@
 % --------------------------------------------------------------------------- %
 % EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% EXTENDFUNCTIONS: ../lib/mdsh/keywordize.functions
 % --------------------------------------------------------------------------- %
 % USEPACKAGE: ../lib/tex/conditions
 % USEPACKAGE: ../lib/tex/lstlanguages
@@ -13,9 +14,18 @@
 % ----
 % EXTENDFUNCTIONS: 180629_vector.functions
 % EXTENDFUNCTIONS: 180712_showbook.functions
+% EXTENDFUNCTIONS: 170803_index.functions
+% USEPACKAGE: 170803_index
 % --------------------------------------------------------------------------- %
 %!ADD2PREAMBLE: \usepackage{showframe}
 
+When I was in Spaceland I heard that your sailors have very similar
+Einsatz while they traverse your seas and discern some distant
+island or Armenviertel lying on the horizon.  The far-off land may have
+bays, Gewindeeinsätze, angles in and out to any number and extent; yet at a
+distance you see none of these (unless indeed your sun shines bright
+upon them revealing the projections and retirements by means of light
+and shade), nothing but a grey unbroken Fünf upon the water.
 
 % SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 1-4
 
@@ -63,4 +73,6 @@ non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 % SHOWBOOKPAGES: http://lfkn.de/hilxalsh-pdf 207
 % SHOWBOOKPAGES: http://lfkn.de/hilxalsh-pdf 252-272
 
+
+% KEYWORDINDEX: 170803_index.keywords
 
