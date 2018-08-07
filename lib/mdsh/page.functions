@@ -33,6 +33,7 @@
      sed '/^[ ]*$/d'                         | # RM EMPTY LINES
      sed 's/<\/svg>/\n&/g'                   | # PUT SVG CLOSE ON NEW LINE
      sed 's/display:none/display:inline/g'   | # MAKE VISIBLE EVEN WHEN HIDDEN
+     sed 's/opacity:[0-9\.]*/1/g'            | # RM TRANSPARENCY (PDFX PROBLEM)
      tee > ${SUPERTMP}                         # WRITE TO TEMPORARY FILE 
 
    # ----------------------------------------------------------------------- #
