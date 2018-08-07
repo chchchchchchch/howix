@@ -91,12 +91,12 @@
 # ---------------------------------------
   OFFPAGETEXTMACRO="\\"`echo offpagetext$RANDOM | md5sum | #
                         base64 | tr [:upper:] [:lower:]  | #
-                        sed 's/[^a-z]//g'``echo $RANDOM  | #
-                        md5sum | sed 's/[^a-f]//g'`
+                        sed 's/[^a-z]//g' | cut -c 1-6``echo $RANDOM | #
+                        md5sum | sed 's/[^a-f]//g' | cut -c 1-6`
   SPREADWITHTEXTMACRO="\\"`echo offpagetext$RANDOM | md5sum | #
                            base64 | tr [:upper:] [:lower:]  | #
-                           sed 's/[^a-z]//g'``echo $RANDOM  | #
-                           md5sum | sed 's/[^a-f]//g'`
+                           sed 's/[^a-z]//g' | cut -c 1-6``echo $RANDOM | #
+                           md5sum | sed 's/[^a-f]//g' | cut -c 1-6`
 
   write2src "% ------------------------------------------------ %"
   write2src   "\newcommand${OFFPAGETEXTMACRO}[1]{"
