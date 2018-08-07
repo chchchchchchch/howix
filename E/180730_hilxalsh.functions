@@ -174,25 +174,21 @@ function PDF() {(
      # else echo "no options provided"
       fi
 
-   PDFGET=${TMPKEEP}`echo $PDFSRC | md5sum | cut -c 1-4`.pdf
-   if [ ! -f $PDFGET ]; then
+   PDFGET=${TMPKEEP}`echo $PDFSRC  | md5sum | cut -c 1-4`.pdf #
+
+   if [ ! -f $PDFGET ];then
          getFile $PDFSRC $PDFGET
-
+         if [ -f $PDFGET ]; then conformColor $PDFGET; fi
+   # else echo "no need to download"
+   fi
    if [ -f $PDFGET ]; then
-
-      conformColor $PDFGET
-
-     if [ "X$HREFMODE" != "XOFF"  ]; then
-           WWWLINK=`shortref $*`
-           REFCODE=`refsrc $WWWLINK | sed 's/qrmargin/qroverlay/'`
-           write2src "\newpage"
-           write2src "$REFCODE"
-     fi
-           write2src "\pdfpage{$PDFGET}{$PAGES}{$OPTIONS}"
-   fi
-
-  # else echo "no need to download"
-   fi
+      if [ "X$HREFMODE" != "XOFF"  ]; then
+            WWWLINK=`shortref $*`
+            REFCODE=`refsrc $WWWLINK | sed 's/qrmargin/qroverlay/'`
+            write2src "\newpage"
+            write2src "$REFCODE"
+      fi;   write2src "\pdfpage{$PDFGET}{$PAGES}{$OPTIONS}"
+   fi 
 
   done )
 
