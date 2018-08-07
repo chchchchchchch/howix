@@ -84,10 +84,13 @@ function SRCCODE() {
  ( IFS=$'\n'
    for L in `grep -n "" ${TMPID}.xtract`
     do L=`echo $L | cut -d ":" -f 2-` # cat SKIPPED EMPTY LINES?
-       if [ `echo $L | grep "^[ ]*%[ ]*F:" | wc -l` -gt 0 ];then
+       if [ `echo $L | egrep -- "^[ ]*%[ ]*F:|-F=" | wc -l` -gt 0 ];then
 
-         TRY=`echo $L | cut -d ":" -f 2- | #
-              sed 's/^[ ]*//' | cut -d " " -f 1`
+         TRY=`echo $L          | # DISPLAY LINE
+              sed 's/-F=/F:/g' | # CONFORM SYNTAX
+              cut -d ":" -f 2- | # SELECT FIELD (AFTER ':')
+              sed 's/^[ ]*//'  | # RM LEADING BLANKS
+              cut -d " " -f 1`   # SELECT FIELD (BEFORE ' ')
          getFile $TRY tmp.tmp
 
          if [ "$SUCCESS" == "YES" ];then
