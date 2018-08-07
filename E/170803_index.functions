@@ -65,7 +65,7 @@
                 inkscape --export-pdf=${TMPID}_${NUM}_${LNAME}.pdf \
                          ${TMPID}_${NUM}_${LNAME}.svg
                 pdftotext -eol unix -nopgbrk ${TMPID}_${NUM}_${LNAME}.pdf - | #
-                sed '/^[ \t]*$/d' $PDFTXT | tr -s ' ' | #
+                sed '/^[ \t]*$/d' | tr -s ' ' | #
                 sed ":a;N;\$!ba;s/\n/ /g" > $PDFPAGES.${NUM}.txt
               # ------------------------------------------------------------ #
                 inkscape --export-pdf=${TMPID}_${NUM}_${LNAME}.pdf \
