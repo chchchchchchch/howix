@@ -20,38 +20,60 @@ function SPREAD() {
 
    mkpages $* --keeptmp
 
- # MOVE TMP mkpages ??
- # ----
-   NUMPAGES=`pdftk $PDFGET dump_data | #
-             grep NumberOfPages      | #
-             cut -d ":" -f 2         | #
-             sed 's/[^0-9]//g'`        #
+   FIRSTPAGEIS="" # RESET
+   NUMPAGES=`pdftk $PDFGET dump_data  | # GET INFO ($PDFGET SET BY mkpages)
+             grep NumberOfPages       | # GET PAGE NUMBER INFO
+             cut -d ":" -f 2          | # CUT FIELD
+             sed 's/[^0-9]//g'`         # RM ALL BUT NUMBERS
 
-   if [ "$P2" != "" ]                  #
-    then if [ "$P2" -gt "$NUMPAGES" ]  #
-          then P2="$NUMPAGES"          #
-          fi
-               PAGESEQ=`seq $P1 $P2`   #
+ # EXTRACT PAGE FLAG VALUES
+ # ------------------------------------------------------------------------ #
+   PAGES=`echo $* | sed 's/ /\n/g'    | # SPACES TO NEWLINES
+          sed "/[^0-9\\-]/d"          | # NO LINES WITH MORE THAN NUMS AND -
+          egrep -v "^-|-$"            | # IGNORE ISOLATED - 
+          grep -v "^[ ]*$" | tail -n 1` # 
+   if   [ `echo $PAGES | wc -c` -le 1 ] # PAGES ARE NOT SET
+   then  PAGES="-"
+   elif [ `echo $PAGES | grep "^[0-9]" | # PAGES DO ACTUALLY ...
+           wc -l` -ge 1 ]                # ... START WITH A NUMBER
+   then  P1=`echo $PAGES | cut -d "-" -f 1` # SET P1 TO NUM BEFORE DASH
+         P2=`echo $PAGES               | # DISPAY PAGE FLAG
+             sed 's/^[0-9]*-/-/'       | # CONVERT LEADING NUMBERS TO DASH
+             grep "-" | cut -d "-" -f 2` # SELECT AND CUT LEADING DASH
+   else  PAGES="-" ; PAGECOMMAND=""; fi      # DEFINE FALLBACK
 
-         if [ "$P2" -lt "$P1" ]        #
-          then PAGESEQ=`seq $P2 $P1 |  #
-                        tac`           #
+ # CONFORM PAGE VALUES
+ # ------------------------------------------------------------------------ #
+   if [ "$P1" != "" ] # IF P1 IS SET
+   then if [ "$P1" -gt "$NUMPAGES" ];then P1="$NUMPAGES"; fi;fi
+
+   if [ "$P2" != "" ]                 # IF P2 IS SET
+    then if [ "$P2" -gt "$NUMPAGES" ] # IF P2 IS GREATER THAN MAX PAGE NUMBER ...
+         then P2="$NUMPAGES"          # ... SET TO MAX PAGE NUMBER
+         fi;  PAGESEQ=`seq $P1 $P2`   # SET PAGE SEQUENCE
+         if [ "$P2" -lt "$P1" ]       # IF P2 IS BIGGER THAN P1
+         then PAGESEQ=`seq $P2 $P1  | # START PAGE SEQUENCE FROM LOWER VALUE
+                       tac`           # ... AND REVERT
          fi
-    else PAGESEQ="$P1"                 #
+   else PAGESEQ="$P1"                 # IF P2 IS NOT SET PAGE SEQUENCE = P1
    fi
-   if [ "$PAGES" == "-" ]; then
-         P1="1";P2="$NUMPAGES"
-         PAGESEQ=`seq $P2`
+   if [ "$PAGES" == "-" ];then        # IF PAGE FLAG REQUIRES ALL ...
+         P1="1";P2="$NUMPAGES"        # ... SET PAGE SEQUENCE ...
+         PAGESEQ=`seq $P2`            # ... TO MAX PAGE NUMBER
    fi
 
-   MACRO="% something went wrong with $SVGSRC" # WRITE AT LEAST SOMETHING
+   if [ `python -c "print $P1 / 2.0" | # DIVIDE BY 2
+         cut -d "." -f 2` -lt 1 ]      # CUT AND CHECK VALUE AFTER .
+   then  FIRSTPAGEIS="even"            # IF = 0 -> PAGE IS EVEN
+   else  FIRSTPAGEIS="odd"             # IF > 0 -> PAGE IS ODD
+   fi    
+
    if   [ "$FIRSTPAGEIS" == "odd" ]; then
            PAGECOMMAND="\cleartoleft"
    elif [ "$FIRSTPAGEIS" == "even" ]; then
            PAGECOMMAND="\cleartoright"
-   else  # ALL PAGES
-         # PAGECOMMAND=""
-           PAGECOMMAND="\cleartoleft" # P1 = 1
+   else  # ALL PAGES -> P1 = 1
+           PAGECOMMAND="\cleartoleft"
    fi
 
  # ALLOW IRREGULAR PLACEMENT

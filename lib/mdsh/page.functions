@@ -83,32 +83,10 @@
 
  function mkpages() {
 
-   FIRSTPAGEIS="" # RESET
-
    PDFSRC=`echo $* | sed 's/ /\n/g'    | # SPACES TO NEWLINES
            egrep "\.svg$|\.pdf$"       | # SELECT ENDING WITH .svg/.pdf
            head -n 1`                    # SELECT FIRST
-    PAGES=`echo $* | sed 's/ /\n/g'    | # SPACES TO NEWLINES
-           sed "/[^0-9\\-]/d"          | # NO LINES WITH MORE THAN NUMS AND -
-           egrep -v "^-|-$"            | # IGNORE ISOLATED - 
-           grep -v "^[ ]*$" | tail -n 1` # 
       EXT=`echo $PDFSRC | rev | cut -d "." -f 1 | rev`
-
-   if [ `echo $PAGES | wc -c` -le 1 ]; then
-         PAGES=-
-   elif [ `echo $PAGES | grep "^[0-9]" | wc -l` -ge 1 ]; then
-         P1=`echo $PAGES | cut -d "-" -f 1`
-         P2=`echo $PAGES | sed 's/^[0-9]*-/-/' | #
-             grep "-" | cut -d "-" -f 2`
-         if [ `python -c "print $P1 / 2.0" | #
-               cut -d "." -f 2` -lt 5 ]; then
-               FIRSTPAGEIS="even"
-         else
-               FIRSTPAGEIS="odd"
-         fi
-   else
-         PAGES=- ; PAGECOMMAND=""
-   fi
 
    KEEPTMP=`echo $* | sed 's,--,\n--,g' | #
             grep -- "--keeptmp" | wc -l`  #
@@ -120,7 +98,6 @@
         PDFGET=${TMPKEEP}`echo $PDFSRC | md5sum | cut -c 1-6`.pdf
         SVGTMP=${TMPKEEP}`echo $PDFSRC | md5sum | cut -c 4-9`.svg
    fi
-
 
    if [ -f $PDFGET ]; then
         echo "$PDFGET exists"
