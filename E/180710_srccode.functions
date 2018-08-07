@@ -70,7 +70,7 @@ function SRCCODE() {
         # DISABLE CMD LINE IN MDSH SRC (PREVENT DOUBLE MATCH)
         # ----
           LNCMD=`grep -n "^% ${THISCMD}:" $MDSH    | # FIND CMD LINE
-                 grep "$THISARGUMENTS"             | # MATCH OPTIONS
+                 grep -- "$THISARGUMENTS"          | # MATCH OPTIONS
                  head -n 1 | cut -d ":" -f 1`        # SELECT LAST MATCH
           sed -i "${LNCMD}s/^% $THISCMD:/%X${THISCMD}:/" $MDSH 
     else
