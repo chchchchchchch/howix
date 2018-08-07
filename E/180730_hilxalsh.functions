@@ -38,7 +38,7 @@ function HREF() {
 
 function PP(){(
 
-      THISCMD="PP"
+      THISCMD="PP";TMPKEEP="$TMPDIR/tmppdf"
 
     PPCOLLECT="" # RESET
       PPPAGES="" # RESET
@@ -79,7 +79,7 @@ function PP(){(
              echo "do empty!"
              PPPAGES=$PPPAGES,
        else
-        PDFGET=${TMPID}`echo $PDFSRC | md5sum | cut -c 1-8`.pdf
+        PDFGET=${TMPKEEP}`echo $PDFSRC | md5sum | cut -c 1-8`.pdf
 
         if [ ! -f $PDFGET ]; then
               getFile $PDFSRC $PDFGET
