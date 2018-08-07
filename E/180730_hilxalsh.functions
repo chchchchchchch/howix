@@ -142,6 +142,66 @@ function PP(){(
 
 # --------------------------------------------------------------------------- #
 
+function PDF() {(
+
+  THISCMD="PDF";TMPKEEP="$TMPDIR/tmppdf"
+  if [ `echo $* | wc -c` -lt 2 ]; then # = NO PARAMETERS PROVIDED
+        getVerbatim "$THISCMD" $SRCLIST
+  else
+        echo $* > $SRCLIST
+  fi
+
+ ( IFS=$'\n'
+  for ITEM in `cat $SRCLIST`
+   do
+      PDFSRC=`echo $ITEM | sed 's/ /\n/g'  | # SPACES TO NEWLINES
+              grep "\.pdf$" | head -n 1`     # SELECT FIRST ENDING WITH .pdf
+       PAGES=`echo $ITEM | sed "s/#/\n#/g" | # HASH TO NEWLINES
+              grep -v "^#"                 | # IGNORE HASH LINES
+              sed 's/ /\n/g'               | # SPACES TO NEWLINES
+              sed "/[^0-9\\-]/d"           | # NO LINES WITH MORE THAN NUMS AND -
+              egrep -v "^-|-$"             | # IGNORE ISOLATED -
+              grep -v "^[ ]*$" | tail -n 1`  # NO EMPTY / LAST LINE ONLY
+
+      if [ `echo $PAGES | wc -c` -le 1 ]; then
+            PAGES=-
+      fi
+      OPTIONS=`echo $ITEM | sed "s/#/\n#/g"       | #
+               grep "^#" | tail -n 1              | #
+               cut -d "#" -f 2 | sed 's/^[ \t]*//'` #
+      if [ `echo $OPTIONS | wc -c` -gt 1 ]; then
+            OPTIONS=",$OPTIONS"
+     # else echo "no options provided"
+      fi
+
+   PDFGET=${TMPKEEP}`echo $PDFSRC | md5sum | cut -c 1-4`.pdf
+   if [ ! -f $PDFGET ]; then
+         getFile $PDFSRC $PDFGET
+
+   if [ -f $PDFGET ]; then
+
+      conformColor $PDFGET
+
+     if [ "X$HREFMODE" != "XOFF"  ]; then
+           WWWLINK=`shortref $*`
+           REFCODE=`refsrc $WWWLINK | sed 's/qrmargin/qroverlay/'`
+           write2src "\newpage"
+           write2src "$REFCODE"
+     fi
+           write2src "\pdfpage{$PDFGET}{$PAGES}{$OPTIONS}"
+   fi
+
+  # else echo "no need to download"
+   fi
+
+  done )
+
+  if [ -f $SRCLIST ]; then rm $SRCLIST ;fi
+
+)}
+
+# --------------------------------------------------------------------------- #
+
 function HYPHENATE() {
 
   N=`echo $* | sed 's/ /\n/g' | #
