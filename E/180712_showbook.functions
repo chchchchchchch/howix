@@ -132,8 +132,6 @@ function SHOWBOOKPAGES() {
   echo '             pages=\arabic{first}-\arabic{last},' >> ${TMPID}.preamble
   echo '             noautoscale=true,'                   >> ${TMPID}.preamble
   echo '             scale=0.8]{#1}'                      >> ${TMPID}.preamble
-  echo '       \addtocounter{first}{2}'                   >> ${TMPID}.preamble
-  echo '       \addtocounter{last}{2}'                    >> ${TMPID}.preamble
   echo '     }{'                                          >> ${TMPID}.preamble
   echo '      \includepdf[pagecommand={\offpagetxt{%'     >> ${TMPID}.preamble
   echo '           \input{#1.\arabic{first}.verbatim}}},' >> ${TMPID}.preamble
@@ -142,6 +140,11 @@ function SHOWBOOKPAGES() {
   echo '            noautoscale=true,'                    >> ${TMPID}.preamble
   echo '            scale=0.8]{#1}'                       >> ${TMPID}.preamble
   echo '     }'                                           >> ${TMPID}.preamble
+  echo '   \vs\thepage \advance\vs by 2'                  >> ${TMPID}.preamble
+  echo '   \vsi\vs\divide\vs by 2 \multiply\vs by 2'      >> ${TMPID}.preamble
+  echo '   \ifnum\vs=\vsi'                                >> ${TMPID}.preamble
+  echo '   \addtocounter{first}{2}\addtocounter{last}{2}' >> ${TMPID}.preamble
+  echo '   \fi'                                           >> ${TMPID}.preamble
   echo '    }'                                            >> ${TMPID}.preamble
   echo '   }'                                             >> ${TMPID}.preamble
   echo '% ===='                                           >> ${TMPID}.preamble
