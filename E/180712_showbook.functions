@@ -319,12 +319,10 @@ function SHOWBOOKPAGES() {
                     sed 's/tmppage\.//' | #
                     sed 's/\.pdf$//'`     #   
            pdftotext -eol unix -nopgbrk $PDF - | #
-           sed '/^[ \t]*$/d' | tr -s ' '| #
-           sed ":a;N;\$!ba;s/\n/ /g" | #
-           tee > $TMPDIR/`basename $PDFMOD`.$PAGENUM.verbatim
+           sed '/^[ \t]*$/d' | tr -s ' ' | sed ":a;N;\$!ba;s/\n/ /g" | #
+           $PANDOCACTION > $TMPDIR/`basename $PDFMOD`.$PAGENUM.verbatim
            rm $PDF
        done
-
 
     #else echo "$PDFMOD ALREADY EXISTS";
      fi
