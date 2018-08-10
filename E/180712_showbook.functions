@@ -113,7 +113,7 @@ function SHOWBOOKPAGES() {
   echo '   \tiny #1} % MAKE IT TINY'                      >> ${TMPID}.preamble
   echo '  \end{minipage}}'                                >> ${TMPID}.preamble
   echo '  % ----'                                         >> ${TMPID}.preamble
-  echo '   \newcommand{\showbookpagesplustxt}[5]{'        >> ${TMPID}.preamble
+  echo '   \newcommand{\showbookpagesplustxt}[4]{'        >> ${TMPID}.preamble
   echo '    \newpage\vs\thepage'                          >> ${TMPID}.preamble
   echo '    \setcounter{n}{\value{page}}'                 >> ${TMPID}.preamble
   echo '    \addtocounter{n}{#3}'                         >> ${TMPID}.preamble
