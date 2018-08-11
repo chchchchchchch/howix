@@ -30,10 +30,12 @@ function SHOWBOOKPAGES() {
               #FIRSTPAGEIS="even"
                P1=`expr $P1 + 1` # = ORIGINAL + 1 
                NUMPAGES=`expr $P2 - $P1`
+               PAGESHIFT="\cleartoleft"
          else
               #FIRSTPAGEIS="odd"
                P1="$P1"          # = ORIGINAL - 1 + 1
                NUMPAGES=`expr $P2 - $P1`
+               PAGESHIFT="\cleartoright"
          fi
    fi
 
@@ -49,6 +51,7 @@ function SHOWBOOKPAGES() {
      fi
 
     #write2src "\showbookpages{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}"
+     write2src "$PAGESHIFT"
      write2src "\showbookpagesplustxt{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}"
 
   #else echo "NOTHING TO DO"
