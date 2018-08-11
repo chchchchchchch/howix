@@ -49,7 +49,9 @@ function SHOWBOOKPAGES() {
      fi
 
     #write2src "\showbookpages{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}"
+     write2src "\afterpage{"
      write2src "\showbookpagesplustxt{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}"
+     write2src "}"
 
   #else echo "NOTHING TO DO"
    fi
