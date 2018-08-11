@@ -30,12 +30,10 @@ function SHOWBOOKPAGES() {
               #FIRSTPAGEIS="even"
                P1=`expr $P1 + 1` # = ORIGINAL + 1 
                NUMPAGES=`expr $P2 - $P1`
-               PAGESHIFT="\cleartoleft"
          else
               #FIRSTPAGEIS="odd"
                P1="$P1"          # = ORIGINAL - 1 + 1
                NUMPAGES=`expr $P2 - $P1`
-               PAGESHIFT="\cleartoright"
          fi
    fi
 
@@ -51,7 +49,6 @@ function SHOWBOOKPAGES() {
      fi
 
     #write2src "\showbookpages{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}"
-     write2src "$PAGESHIFT"
      write2src "\showbookpagesplustxt{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}"
 
   #else echo "NOTHING TO DO"
@@ -129,6 +126,7 @@ function SHOWBOOKPAGES() {
   echo '             \put(0,0){\colorbox{yellow}{%'       >> ${TMPID}.preamble
   echo '                        \makebox(1,1.4){}}}}'     >> ${TMPID}.preamble
   echo '     \ifthispageodd{'                             >> ${TMPID}.preamble
+  echo '      \cleartoright'                              >> ${TMPID}.preamble
   echo '      \includepdf[pagecommand={\offpagetxt{%'     >> ${TMPID}.preamble
   echo '            \input{#1.\arabic{last}.verbatim}}},' >> ${TMPID}.preamble
   echo '             offset=#4 15,nup=2x1,'               >> ${TMPID}.preamble
@@ -136,6 +134,7 @@ function SHOWBOOKPAGES() {
   echo '             noautoscale=true,'                   >> ${TMPID}.preamble
   echo '             scale=0.8]{#1}'                      >> ${TMPID}.preamble
   echo '     }{'                                          >> ${TMPID}.preamble
+  echo '      \cleartoleft'                               >> ${TMPID}.preamble
   echo '      \includepdf[pagecommand={\offpagetxt{%'     >> ${TMPID}.preamble
   echo '           \input{#1.\arabic{first}.verbatim}}},' >> ${TMPID}.preamble
   echo '            offset=#4 15,nup=2x1,'                >> ${TMPID}.preamble
