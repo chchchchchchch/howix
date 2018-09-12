@@ -21,35 +21,36 @@ function SHOWBOOKPAGES() {
    elif [ `echo $PAGES | grep "^[0-9]" | wc -l` -ge 1 ]; then
 
          P1=`echo $PAGES | cut -d "-" -f 1`
-         P2=`echo $PAGES | sed 's/^[0-9]*-/-/' | #
-             grep "-" | cut -d "-" -f 2`
-         P2=`expr $P2 + 1`
-
-         if [ `python -c "print $P1 / 2.0" | #
-               cut -d "." -f 2` -lt 5 ]; then
-              #FIRSTPAGEIS="even"
-               P1=`expr $P1 + 1` # = ORIGINAL + 1 
-               NUMPAGES=`expr $P2 - $P1`
-         else
-              #FIRSTPAGEIS="odd"
-               P1="$P1"          # = ORIGINAL - 1 + 1
-               NUMPAGES=`expr $P2 - $P1`
-         fi
+         P2=`echo $PAGES         | #
+             sed 's/^[0-9]*-/-/' | #
+             grep "-"            | #
+             cut -d "-" -f 2`      #
+       # ----
+         P2=`expr $P2 + 1`         # INCREASE PAGENUM TO MATCH TMP PDF
+         NUMPAGES=`expr $P2 - $P1` # CALCULATE NUMBER OF PAGES
+         P1=`expr $P1 + 1`         # INCREASE PAGENUM TO MATCH TMP PDF
    fi
+
+
+     REFID=`basename $BKURL    | #
+            sed 's/ //g'       | #              
+            md5sum | cut -c 1-8`
+     THISID=`echo $RANDOM | #
+             md5sum | cut -c 1-8`
+
 
      W=`pdfinfo $PDFMOD       | #
         grep "^Page size"     | #
         sed 's/[^0-9x\.]*//g' | #
         cut -d "x" -f 1       | #
-        cut -d "." -f 1`        #
- 
+        cut -d "." -f 1`        # 
      if   [ "$W" -gt 400 ];then OFFSET="170" # A5
      elif [ "$W" -lt 400 ] &&
           [ "$W" -gt 300 ];then OFFSET="80"  # A6
      fi
 
      write2src "\afterpage{"
-     write2src "\showbookpagesplustxt{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}"
+     write2src "\showbookpages{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}{$REFID}"
      write2src "}"
 
   #else echo "NOTHING TO DO"
@@ -59,10 +60,23 @@ function SHOWBOOKPAGES() {
 
 # --------------------------------------------------------------------------- #
 
+function BOOKREF() {
+
+  BKURL="$1"
+  REFID=`basename $BKURL    | #
+         sed 's/ //g'       | #              
+         md5sum | cut -c 1-8`
+  write2src "\pageref{$REFID}"
+ #write2src "\ding{222} p.~\pageref{${REFID}.24}"
+
+}
+
+# --------------------------------------------------------------------------- #
+
 # =========================================================================== #
 # WRITE TEX MACRO
 # --------------------------------------------------------------------------- #
-  if [ `grep '\newcommand{\showbookpagesplustxt}[4]' ${TMPID}.preamble | #
+  if [ `grep '\newcommand{\showbookpages}[5]' ${TMPID}.preamble | #
         wc -l` -lt 1 ];then
   echo '  \newcommand\offpagetxt[1]{'                     >> ${TMPID}.preamble
   echo '  \begin{minipage}{10\paperwidth} % MAKE IT HUGE' >> ${TMPID}.preamble
@@ -85,31 +99,50 @@ function SHOWBOOKPAGES() {
   echo '  \newcount\vs\newcount\vsi'                      >> ${TMPID}.preamble
   echo '  \newcounter{first}\newcounter{last}'            >> ${TMPID}.preamble
   echo '  % ----'                                         >> ${TMPID}.preamble
-  echo '   \newcommand{\showbookpagesplustxt}[4]{'        >> ${TMPID}.preamble
+  echo '   \newcommand{\showbookpages}[5]{'               >> ${TMPID}.preamble
+ #echo '    \label{#5}%'                                  >> ${TMPID}.preamble
   echo '    \newpage\vs\thepage'                          >> ${TMPID}.preamble
   echo '    \setcounter{n}{\value{page}}'                 >> ${TMPID}.preamble
   echo '    \addtocounter{n}{#3}'                         >> ${TMPID}.preamble
-  echo '    \addtocounter{n}{-2}'                         >> ${TMPID}.preamble
+  echo '    \addtocounter{n}{-1}'                         >> ${TMPID}.preamble
   echo '    \setcounter{first}{#2}'                       >> ${TMPID}.preamble
+  echo '  % ----'                                         >> ${TMPID}.preamble
+  echo '  % CHECK IF FIRST PAGE IS ODD'                   >> ${TMPID}.preamble
+  echo '  % ----'                                         >> ${TMPID}.preamble
+  echo '    \vs\value{first}'                             >> ${TMPID}.preamble
+  echo '  % INCREASE BY 1 TO MATCH PREPARED PDF ORDER'    >> ${TMPID}.preamble
+  echo '    \advance\vs by 1'                             >> ${TMPID}.preamble
+  echo '    \vsi\vs'                                      >> ${TMPID}.preamble
+  echo '    \divide\vs by 2 \multiply\vs by 2'            >> ${TMPID}.preamble
+  echo '     \ifnum\vs=\vsi'                              >> ${TMPID}.preamble
+  echo '       \cleartoleft'                              >> ${TMPID}.preamble
+  echo '     \else'                                       >> ${TMPID}.preamble
+  echo '       \cleartoright\addtocounter{first}{-1}'     >> ${TMPID}.preamble
+  echo '     \fi'                                         >> ${TMPID}.preamble
+  echo '  % ----'                                         >> ${TMPID}.preamble
   echo '    \setcounter{last}{\value{first}}'             >> ${TMPID}.preamble
   echo '    \addtocounter{last}{1}'                       >> ${TMPID}.preamble
+
   echo '    \pagestep{\AddToShipoutPictureBG*{%'          >> ${TMPID}.preamble
   echo '            \setlength{\unitlength}{\paperwidth}' >> ${TMPID}.preamble
   echo '             \put(0,0){\colorbox{yellow}{%'       >> ${TMPID}.preamble
   echo '                        \makebox(1,1.4){}}}}'     >> ${TMPID}.preamble
+ #echo '     \label{#5}%'                                 >> ${TMPID}.preamble
   echo '     \ifthispageodd{'                             >> ${TMPID}.preamble
-  echo '      \cleartoright'                              >> ${TMPID}.preamble
   echo '      \includepdf[pagecommand={\offpagetxt{%'     >> ${TMPID}.preamble
-  echo '            \input{#1.\arabic{last}.verbatim}}},' >> ${TMPID}.preamble
-  echo '             offset=#4 15,nup=2x1,'               >> ${TMPID}.preamble
+  echo '            \input{#1.\arabic{last}.verbatim}}'   >> ${TMPID}.preamble
+  echo '             \label{#5.\arabic{last}}'            >> ${TMPID}.preamble
+  echo '             \label{#5}'                          >> ${TMPID}.preamble
+  echo '            },offset=#4 15,nup=2x1,'              >> ${TMPID}.preamble
   echo '             pages=\arabic{first}-\arabic{last},' >> ${TMPID}.preamble
   echo '             noautoscale=true,'                   >> ${TMPID}.preamble
   echo '             scale=0.8]{#1}'                      >> ${TMPID}.preamble
   echo '     }{'                                          >> ${TMPID}.preamble
-  echo '      \cleartoleft'                               >> ${TMPID}.preamble
   echo '      \includepdf[pagecommand={\offpagetxt{%'     >> ${TMPID}.preamble
-  echo '           \input{#1.\arabic{first}.verbatim}}},' >> ${TMPID}.preamble
-  echo '            offset=#4 15,nup=2x1,'                >> ${TMPID}.preamble
+  echo '           \input{#1.\arabic{first}.verbatim}}'   >> ${TMPID}.preamble
+  echo '             \label{#5.\arabic{first}}'           >> ${TMPID}.preamble
+  echo '             \label{#5}'                          >> ${TMPID}.preamble
+  echo '           },offset=#4 15,nup=2x1,'               >> ${TMPID}.preamble
   echo '            pages=\arabic{first}-\arabic{last},'  >> ${TMPID}.preamble
   echo '            noautoscale=true,'                    >> ${TMPID}.preamble
   echo '            scale=0.8]{#1}'                       >> ${TMPID}.preamble
