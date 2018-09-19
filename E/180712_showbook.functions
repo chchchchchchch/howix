@@ -35,8 +35,8 @@ function SHOWBOOKPAGES() {
      REFID=`basename $BKURL    | #
             sed 's/ //g'       | #              
             md5sum | cut -c 1-8`
-     THISID=`echo $RANDOM | #
-             md5sum | cut -c 1-8`
+    #THISID=`echo $RANDOM | #
+    #        md5sum | cut -c 1-8`
 
 
      W=`pdfinfo $PDFMOD       | #
@@ -49,9 +49,9 @@ function SHOWBOOKPAGES() {
           [ "$W" -gt 300 ];then OFFSET="80"  # A6
      fi
 
-     write2src "\afterpage{"
+    #write2src "\afterpage{"
      write2src "\showbookpages{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}{$REFID}"
-     write2src "}"
+    #write2src "}"
 
   #else echo "NOTHING TO DO"
    fi
@@ -66,97 +66,12 @@ function BOOKREF() {
   REFID=`basename $BKURL    | #
          sed 's/ //g'       | #              
          md5sum | cut -c 1-8`
-  write2src "\pageref{$REFID}"
- #write2src "\ding{222} p.~\pageref{${REFID}.24}"
+
+  write2src "\showrefs{$REFID}"
 
 }
 
 # --------------------------------------------------------------------------- #
-
-# =========================================================================== #
-# WRITE TEX MACRO
-# --------------------------------------------------------------------------- #
-  if [ `grep '\newcommand{\showbookpages}[5]' ${TMPID}.preamble | #
-        wc -l` -lt 1 ];then
-  echo '  \newcommand\offpagetxt[1]{'                     >> ${TMPID}.preamble
-  echo '  \begin{minipage}{10\paperwidth} % MAKE IT HUGE' >> ${TMPID}.preamble
-  echo '  {\vspace{-4\paperheight} % MOVE IT OUT'         >> ${TMPID}.preamble
-  echo '   \tiny #1} % MAKE IT TINY'                      >> ${TMPID}.preamble
-  echo '  \end{minipage}}'                                >> ${TMPID}.preamble
-
-  echo '% ----'                                           >> ${TMPID}.preamble
-  echo '  \newcounter{c}\newcounter{n}'                   >> ${TMPID}.preamble
-  echo '% --'                                             >> ${TMPID}.preamble
-  echo '  \newcommand{\pagestep}[1]{'                     >> ${TMPID}.preamble
-  echo '   \setcounter{c}{\value{page}}'                  >> ${TMPID}.preamble
-  echo '   \ifnum\value{c}>\value{n}'                     >> ${TMPID}.preamble
-  echo '         #1'                                      >> ${TMPID}.preamble
-  echo '   \else #1 \pagestep{#1}'                        >> ${TMPID}.preamble
-  echo '   \fi'                                           >> ${TMPID}.preamble
-  echo '  }'                                              >> ${TMPID}.preamble
-
-  echo '% ===='                                           >> ${TMPID}.preamble
-  echo '  \newcount\vs\newcount\vsi'                      >> ${TMPID}.preamble
-  echo '  \newcounter{first}\newcounter{last}'            >> ${TMPID}.preamble
-  echo '  % ----'                                         >> ${TMPID}.preamble
-  echo '   \newcommand{\showbookpages}[5]{'               >> ${TMPID}.preamble
- #echo '    \label{#5}%'                                  >> ${TMPID}.preamble
-  echo '    \newpage\vs\thepage'                          >> ${TMPID}.preamble
-  echo '    \setcounter{n}{\value{page}}'                 >> ${TMPID}.preamble
-  echo '    \addtocounter{n}{#3}'                         >> ${TMPID}.preamble
-  echo '    \addtocounter{n}{-1}'                         >> ${TMPID}.preamble
-  echo '    \setcounter{first}{#2}'                       >> ${TMPID}.preamble
-  echo '  % ----'                                         >> ${TMPID}.preamble
-  echo '  % CHECK IF FIRST PAGE IS ODD'                   >> ${TMPID}.preamble
-  echo '  % ----'                                         >> ${TMPID}.preamble
-  echo '    \vs\value{first}'                             >> ${TMPID}.preamble
-  echo '  % INCREASE BY 1 TO MATCH PREPARED PDF ORDER'    >> ${TMPID}.preamble
-  echo '    \advance\vs by 1'                             >> ${TMPID}.preamble
-  echo '    \vsi\vs'                                      >> ${TMPID}.preamble
-  echo '    \divide\vs by 2 \multiply\vs by 2'            >> ${TMPID}.preamble
-  echo '     \ifnum\vs=\vsi'                              >> ${TMPID}.preamble
-  echo '       \cleartoleft'                              >> ${TMPID}.preamble
-  echo '     \else'                                       >> ${TMPID}.preamble
-  echo '       \cleartoright\addtocounter{first}{-1}'     >> ${TMPID}.preamble
-  echo '     \fi'                                         >> ${TMPID}.preamble
-  echo '  % ----'                                         >> ${TMPID}.preamble
-  echo '    \setcounter{last}{\value{first}}'             >> ${TMPID}.preamble
-  echo '    \addtocounter{last}{1}'                       >> ${TMPID}.preamble
-
-  echo '    \pagestep{\AddToShipoutPictureBG*{%'          >> ${TMPID}.preamble
-  echo '            \setlength{\unitlength}{\paperwidth}' >> ${TMPID}.preamble
-  echo '             \put(0,0){\colorbox{yellow}{%'       >> ${TMPID}.preamble
-  echo '                        \makebox(1,1.4){}}}}'     >> ${TMPID}.preamble
- #echo '     \label{#5}%'                                 >> ${TMPID}.preamble
-  echo '     \ifthispageodd{'                             >> ${TMPID}.preamble
-  echo '      \includepdf[pagecommand={\offpagetxt{%'     >> ${TMPID}.preamble
-  echo '            \input{#1.\arabic{last}.verbatim}}'   >> ${TMPID}.preamble
-  echo '             \label{#5.\arabic{last}}'            >> ${TMPID}.preamble
-  echo '             \label{#5}'                          >> ${TMPID}.preamble
-  echo '            },offset=#4 15,nup=2x1,'              >> ${TMPID}.preamble
-  echo '             pages=\arabic{first}-\arabic{last},' >> ${TMPID}.preamble
-  echo '             noautoscale=true,'                   >> ${TMPID}.preamble
-  echo '             scale=0.8]{#1}'                      >> ${TMPID}.preamble
-  echo '     }{'                                          >> ${TMPID}.preamble
-  echo '      \includepdf[pagecommand={\offpagetxt{%'     >> ${TMPID}.preamble
-  echo '           \input{#1.\arabic{first}.verbatim}}'   >> ${TMPID}.preamble
-  echo '             \label{#5.\arabic{first}}'           >> ${TMPID}.preamble
-  echo '             \label{#5}'                          >> ${TMPID}.preamble
-  echo '           },offset=#4 15,nup=2x1,'               >> ${TMPID}.preamble
-  echo '            pages=\arabic{first}-\arabic{last},'  >> ${TMPID}.preamble
-  echo '            noautoscale=true,'                    >> ${TMPID}.preamble
-  echo '            scale=0.8]{#1}'                       >> ${TMPID}.preamble
-  echo '     }'                                           >> ${TMPID}.preamble
-  echo '   \vs\thepage \advance\vs by 2'                  >> ${TMPID}.preamble
-  echo '   \vsi\vs\divide\vs by 2 \multiply\vs by 2'      >> ${TMPID}.preamble
-  echo '   \ifnum\vs=\vsi'                                >> ${TMPID}.preamble
-  echo '   \addtocounter{first}{2}\addtocounter{last}{2}' >> ${TMPID}.preamble
-  echo '   \fi'                                           >> ${TMPID}.preamble
-  echo '    }'                                            >> ${TMPID}.preamble
-  echo '   }'                                             >> ${TMPID}.preamble
-  echo '% ===='                                           >> ${TMPID}.preamble
-
-  fi
 
 # =========================================================================== #
 # USED ABOVE
@@ -167,8 +82,10 @@ function BOOKREF() {
 
         BKURL="$1"
         BKPDF="$TMPKEEP"`echo $BKURL | md5sum | cut -c 1-10`.pdf
-       TMPNOW="$TMPID"`echo $BKURL | md5sum | cut -c 1-10`
-    
+        REFID=`basename $BKURL    | #
+               sed 's/ //g'       | #              
+               md5sum | cut -c 1-8` #
+       TMPNOW="$TMPID"`echo $BKURL | md5sum | cut -c 1-10` 
        PDFMOD="$TMPKEEP"`echo $BKURL | md5sum | cut -c 1-12`.pdf
 
        getFile $BKURL $BKPDF
@@ -326,9 +243,13 @@ function BOOKREF() {
         do PAGENUM=`basename $PDF       | #
                     sed 's/tmppage\.//' | #
                     sed 's/\.pdf$//'`     #   
-           pdftotext -eol unix -nopgbrk $PDF - | #
-           sed '/^[ \t]*$/d' | tr -s ' ' | sed ":a;N;\$!ba;s/\n/ /g" | #
-           $PANDOCACTION > $TMPDIR/`basename $PDFMOD`.$PAGENUM.verbatim
+           PDFMETA="$TMPDIR/"`basename $PDFMOD`.$PAGENUM.verbatim
+         # ----
+           pdftotext -eol unix -nopgbrk $PDF - | sed '/^[ \t]*$/d' | #
+           tr -s ' ' | sed ":a;N;\$!ba;s/\n/ /g" | $PANDOCACTION >  $PDFMETA
+         # ----
+           PAGE=`expr $PAGENUM - 1`;echo "\mlabel{$REFID.$PAGE}" >> $PDFMETA
+         # ----
            rm $PDF
        done
 

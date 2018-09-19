@@ -1,0 +1,86 @@
+\usepackage{etoolbox}
+
+% https://tex.stackexchange.com/questions/33832/
+% -> special-handling-of-first-and-or-last-item-in-an-etoolbox-list
+
+\newcommand{\commalist}[1]{%
+            \def\process{\def\process{, }}%
+            \def\do##1{\process##1}%
+            \dolistloop{#1}}
+\newcommand{\commalistnobreak}[1]{%
+            \def\process{\def\process{,~}}%
+            \def\do##1{\process##1}%
+            \dolistloop{#1}}
+
+% https://www.dickimaw-books.com/latex/admin/html/etoolboxlist.shtml
+% https://tex.stackexchange.com/questions/89506/
+% -> save-an-etoolbox-list-to-a-file-and-read-it-after
+
+% CREATE A UNIQ LABEL AS A COMBINATION
+% OF LABEL AND PAGE NUMBER
+% ----
+% NEW GLOBAL MULTI LABEL NUMBER
+ \newcounter{mlabelcnt}
+% --
+ \newcommand{\writeline}[1]{\immediate%
+                            \write\mlabltmpw{%
+                           {\unexpanded{#1}}}}
+ \newcommand{\addref}[1]{\listadd\templist{\pageref{#1}}}
+% --
+ \newwrite\mlabltmpw \newread\mlabltmpr
+% ----
+ \newcommand{\mlabel}[1]{%
+  % ADD IF NOT ALREADY DONE
+   \xifinlistcs{mlabel#1.\arabic{page}}%
+               {mlabel#1}{}{%
+  % ADD LIST ENTRY
+   \listcsxadd{mlabel#1}{mlabel#1.\arabic{page}} %
+  % PLACE UNIQ LABEL (LIST NAME + GLOBAL NUMBER)
+   \label{mlabel#1.\arabic{page}}%
+  }
+ % ----
+ % WRITE THE LIST AT THE VERY END
+ % = WHEN ALL LABELS ARE COLLECTED
+  \ifcsdef{mlabel#1}{
+   \AtEndDocument{
+    \immediate\openout
+     \mlabltmpw=\jobname.mlabel#1.aux
+     \forlistcsloop{\writeline}{mlabel#1}
+    \immediate\closeout\mlabltmpw
+   }
+  }{}
+
+ }
+
+% ====
+ \newcommand{\mref}[1]{
+  % INCLUDE LABEL LIST FILLED AT 1ST RUN
+   \IfFileExists{\jobname.mlabel#1.aux}{%
+   % READ AUX FILE (IF EXISTING)
+    \openin
+     \mlabltmpr=\jobname.mlabel#1.aux
+    {\endlinechar=-1\def\templist{}
+      \everyeof{}\loop
+       \unless\ifeof\mlabltmpr
+       \read\mlabltmpr to \temp
+      \ifx\temp\empty\else
+       \expandafter\addref\temp
+      \fi\repeat\global\let\b\templist
+    }\closein\mlabltmpr
+   % WRITE LIST 
+   %\forlistcsloop{\mpref}{b}
+    \commalistnobreak\b
+   }{ % IF AUX FILE DOES
+   }  % NOT EXIST -> DO NOTHING
+ }
+% ====
+
+\newcommand{\showrefs}[1]{%
+ \IfFileExists{\jobname.mlabel#1.aux}{%
+  \nobreak\hspace{.5em plus .5em minus .2em}%
+ (\nobreak\hspace{.1em}{\small See~p.~%
+  \nobreak\hspace{-.8em}\mref{#1}}
+  \nobreak\hspace{-0.5em plus 0em minus 0em})
+ }{} % IF AUX FILE DOES NOT EXIST -> DO NOTHING
+ }
+
