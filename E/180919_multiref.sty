@@ -100,7 +100,9 @@
  % CLEAR DATA
   \DTLifdbexists{list}{\DTLcleardb{list}}{\DTLnewdb{list}}
  % INSERT DATA
-  \forlistcsloop{\dtladd}{collectedrefs}
+  \ifcsdef{collectedrefs}{% IF LIST EXISTS 
+                          \forlistcsloop{\dtladd}{collectedrefs}
+  }{}                     % ELSE: DO NOTHING
   \ifnum\DTLrowcount{list} > 0
  % SORT DATA
   \DTLsort*{value}{list}
