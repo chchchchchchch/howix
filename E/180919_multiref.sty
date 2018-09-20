@@ -1,16 +1,5 @@
-\usepackage{etoolbox}
-
-% https://tex.stackexchange.com/questions/33832/
-% -> special-handling-of-first-and-or-last-item-in-an-etoolbox-list
-
-\newcommand{\commalist}[1]{%
-            \def\process{\def\process{, }}%
-            \def\do##1{\process##1}%
-            \dolistloop{#1}}
-\newcommand{\commalistnobreak}[1]{%
-            \def\process{\def\process{,~}}%
-            \def\do##1{\process##1}%
-            \dolistloop{#1}}
+ \usepackage{etoolbox}
+ \usepackage{datatool}
 
 % https://www.dickimaw-books.com/latex/admin/html/etoolboxlist.shtml
 % https://tex.stackexchange.com/questions/89506/
@@ -18,10 +7,10 @@
 
 % CREATE A UNIQ LABEL AS A COMBINATION
 % OF LABEL AND PAGE NUMBER
-% ----
+% ------------------------------------
 % NEW GLOBAL MULTI LABEL NUMBER
  \newcounter{mlabelcnt}
-% --
+% ====
  \newcommand{\writeline}[1]{\immediate%
                             \write\mlabltmpw{%
                            {\unexpanded{#1}}}}
@@ -30,6 +19,7 @@
  \newwrite\mlabltmpw \newread\mlabltmpr
 % ----
  \newcommand{\mlabel}[1]{%
+  % ----
   % ADD IF NOT ALREADY DONE
    \xifinlistcs{mlabel#1.\arabic{page}}%
                {mlabel#1}{}{%
@@ -49,11 +39,14 @@
     \immediate\closeout\mlabltmpw
    }
   }{}
-
  }
-
 % ====
+ \newcommand{\collectrefs}[2]{%
+             \def\do##1{\listcsadd{#2}{##1}}%
+             \dolistloop{#1}}
+% ----
  \newcommand{\mref}[1]{
+  % ----
   % INCLUDE LABEL LIST FILLED AT 1ST RUN
    \IfFileExists{\jobname.mlabel#1.aux}{%
    % READ AUX FILE (IF EXISTING)
@@ -67,20 +60,58 @@
        \expandafter\addref\temp
       \fi\repeat\global\let\b\templist
     }\closein\mlabltmpr
-   % WRITE LIST 
-   %\forlistcsloop{\mpref}{b}
-    \commalistnobreak\b
+   % COLLECT REFS
+    \collectrefs{\b}{collectedrefs}
    }{ % IF AUX FILE DOES
    }  % NOT EXIST -> DO NOTHING
  }
+
+% =========================================================================== %
+
+ % https://tex.stackexchange.com/questions/33832/
+ % -> special-handling-of-first-and-or-last-item-in-an-etoolbox-list
+
+ %\newcommand{\commalist}[1]{%
+ %            \def\process{\def\process{, }}%
+ %            \def\do##1{\process##1}%
+ %            \dolistloop{#1}}
+ %\newcommand{\commalistnobreak}[1]{%
+ %            \def\process{\def\process{,~}}%
+ %            \def\do##1{\process##1}%
+ %            \dolistloop{#1}}
+
 % ====
 
-\newcommand{\showrefs}[1]{%
- \IfFileExists{\jobname.mlabel#1.aux}{%
-  \nobreak\hspace{.5em plus .5em minus .2em}%
- (\nobreak\hspace{.1em}{\small See~p.~%
-  \nobreak\hspace{-.8em}\mref{#1}}
-  \nobreak\hspace{-0.5em plus 0em minus 0em})
- }{} % IF AUX FILE DOES NOT EXIST -> DO NOTHING
- }
+ % https://tex.stackexchange.com/questions/388642/
+ % -> sorting-data-in-datatool-depending-on-argument
+
+ \newcommand{\dtladd}[1]{\DTLnewrow{list}\DTLnewdbentry{list}{value}{#1}}
+ 
+% =========================================================================== %
+
+ \newcommand{\showrefs}[1]{%
+ \ifcsdef{collectedrefs}{         % IF LIST EXISTS 
+ \renewcommand{\collectedrefs}{}} % -> RESET
+                        {}        % ELSE: DO NOTHING
+   #1 % PROCESS PROVIDED REFS
+ % DISPLAY LIST
+ %[~\commalistnobreak\collectedrefs~]
+ % ---
+ % CLEAR DATA
+  \DTLifdbexists{list}{\DTLcleardb{list}}{\DTLnewdb{list}}
+ % INSERT DATA
+  \forlistcsloop{\dtladd}{collectedrefs}
+  \ifnum\DTLrowcount{list} > 0
+ % SORT DATA
+  \DTLsort*{value}{list}
+ % DISPLAY DATA
+   [~\DTLforeach*{list}{\theValue=value}{%
+            \DTLiflastrow{}{,~}\theValue}~]%
+  \fi
+  }
+% =========================================================================== %
+
+
+
+
 
