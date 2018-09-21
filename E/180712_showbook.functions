@@ -87,7 +87,7 @@ function BOOKREF() {
        done
        for P in $COLLECTPAGES
         do
-           MREF="$MREF \mref{${REFID}.$P}"
+           MREF="$MREF \mref{${REFID}.p.$P}"
        done
   fi
 
@@ -270,9 +270,9 @@ function BOOKREF() {
            PDFMETA="$TMPDIR/"`basename $PDFMOD`.$PAGENUM.verbatim
          # ----
            pdftotext -eol unix -nopgbrk $PDF - | sed '/^[ \t]*$/d' | #
-           tr -s ' ' | sed ":a;N;\$!ba;s/\n/ /g" | $PANDOCACTION >  $PDFMETA
+           tr -s ' ' | sed ":a;N;\$!ba;s/\n/ /g" | $PANDOCACTION   >  $PDFMETA
          # ----
-           PAGE=`expr $PAGENUM - 1`;echo "\mlabel{$REFID.$PAGE}" >> $PDFMETA
+           PAGE=`expr $PAGENUM - 1`;echo "\mlabel{$REFID.p.$PAGE}" >> $PDFMETA
          # ----
            rm $PDF
        done
