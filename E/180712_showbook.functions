@@ -49,9 +49,9 @@ function SHOWBOOKPAGES() {
           [ "$W" -gt 300 ];then OFFSET="80"  # A6
      fi
 
-    #write2src "\afterpage{"
+     write2src "\afterpage{"
      write2src "\showbookpages{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}{$REFID}"
-    #write2src "}"
+     write2src "}"
 
   #else echo "NOTHING TO DO"
    fi
@@ -66,8 +66,32 @@ function BOOKREF() {
   REFID=`basename $BKURL    | #
          sed 's/ //g'       | #              
          md5sum | cut -c 1-8`
+  PAGES=`echo $* | sed 's/ /\n/g'    | # SPACES TO NEWLINES
+         sed "/[^0-9,\\-]/d"         | # NO LINES WITH OTHER THAN 0-9,-
+         egrep -v "^-|-$"            | # IGNORE ISOLATED - 
+         grep -v "^[ ]*$" | tail -n 1` # 
+  if   [ `echo $PAGES | wc -c` -le 1 ] # PAGES ARE NOT SET
+  then MREF="\mref{$REFID}"
+  else COLLECTPAGES="";MREF="" # RESET
+       for RANGE in `echo $PAGES | sed 's/,/\n/g'`
+        do
+            if [ `echo $RANGE | #
+                  egrep "[0-9]-[0-9]" | #
+                  wc -l` -gt 0 ];then
+                  PAGESEQ=`echo "$RANGE" | #
+                           sed 's/\(^[0-9]\+\)\(-\)/seq \1 /'`
+                  PAGESEQ=`eval $PAGESEQ`
+                  COLLECTPAGES="$COLLECTPAGES $PAGESEQ"
+            else  COLLECTPAGES="$COLLECTPAGES $RANGE"
+            fi
+       done
+       for P in $COLLECTPAGES
+        do
+           MREF="$MREF \mref{${REFID}.$P}"
+       done
+  fi
 
-  write2src "\showrefs{$REFID}"
+  write2src "\showrefs{$MREF}"
 
 }
 
