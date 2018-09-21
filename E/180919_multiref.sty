@@ -44,6 +44,7 @@
  \newcommand{\collectrefs}[2]{%
              \def\do##1{\listcsadd{#2}{##1}}%
              \dolistloop{#1}}
+ \newcommand{\collectedrefs}{} % CREATE EMPTY DEFAULT LIST
 % ----
  \newcommand{\mref}[1]{
   % ----
@@ -90,12 +91,12 @@
 % =========================================================================== %
 
  \newcommand{\showrefs}[1]{%
- \ifcsdef{collectedrefs}{         % IF LIST EXISTS 
- \renewcommand{\collectedrefs}{}} % -> RESET
-                        {}        % ELSE: DO NOTHING
-   #1 % PROCESS PROVIDED REFS
- % DISPLAY LIST
- %[~\commalistnobreak\collectedrefs~]
+  \ifcsdef{collectedrefs}{         % IF LIST EXISTS
+  \renewcommand{\collectedrefs}{}} % -> RESET
+                         {}        % ELSE: DO NOTHING
+   #1 % PROCESS REFS (\mref DOES \collectref AND COPIES TO \collectedref)
+ % DISPLAY \collectedrefs
+ % [~\commalistnobreak\collectedrefs~]
  % ---
  % CLEAR DATA
   \DTLifdbexists{list}{\DTLcleardb{list}}{\DTLnewdb{list}}
