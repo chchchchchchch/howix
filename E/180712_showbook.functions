@@ -125,15 +125,13 @@ function BOOKREF() {
            done
           
            echo $BOOKREF | #
-           sed s/X/-/g | # 
-           sed 's/-[0-9]\+-/-/g' | #
-           sed 's/ /,~/g' > $BOOKREFAUX
+           sed 's/\(\b[0-9]\+\)\([X0-9]*\)\(X[0-9]\+\)/\1\3/g' | #
+           sed 's/X/-/g' | sed 's/ /,~/g' > $BOOKREFAUX
 
        done
-
   fi
 
-  }
+ }
 
  # ADD TO MID OUTPUT HOOK
   if [ `echo $midOutput | grep formatMlabels | wc -l ` -lt 1 ]
