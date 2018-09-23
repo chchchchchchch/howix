@@ -15,11 +15,11 @@
    \else #1 \pagestep{#1}
    \fi
   }
-% ====
+% ====================================================== %
   \newcount\vs\newcount\vsi
   \newcounter{first}\newcounter{last}
-  % ----
-   \newcommand{\showbookpages}[5]{
+ % ---------------------------------------------------- %
+   \newcommand{\showbookpages}[6]{
     \newpage\vs\thepage
     \setcounter{n}{\value{page}}
     \addtocounter{n}{#3}
@@ -35,10 +35,10 @@
     \divide\vs by 2 \multiply\vs by 2
      \ifnum\vs=\vsi 
        \cleartoleft
-       \mlabel{#5}
+       \mlabel{#5}\label{#6}
      \else 
        \cleartoright\addtocounter{first}{-1}
-       \mlabel{#5}
+       \mlabel{#5}\label{#6}
      \fi
   % ----
     \setcounter{last}{\value{first}}
@@ -69,4 +69,10 @@
    \fi
     }
    }
-
+ % ---------------------------------------------------- %
+% ====================================================== %
+ \newcommand{\bookpageanchor}[3]{%
+  \textit{#2}  %
+ (\textbf{#3}) %
+  (See on p.\pageref{#1})
+ }

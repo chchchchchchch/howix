@@ -15,43 +15,52 @@ function SHOWBOOKPAGES() {
     PDFPAGES=`pdfinfo $PDFMOD     | #
               grep ^Pages:        | #
               sed 's/[^0-9\.]*//g'` #
-
-   if [ `echo $PAGES | wc -c` -le 1 ]; then
-         P1=1;NUMPAGES="$PDFPAGES"
-   elif [ `echo $PAGES | grep "^[0-9]" | wc -l` -ge 1 ]; then
-
-         P1=`echo $PAGES | cut -d "-" -f 1`
-         P2=`echo $PAGES         | #
-             sed 's/^[0-9]*-/-/' | #
-             grep "-"            | #
-             cut -d "-" -f 2`      #
-       # ----
-         P2=`expr $P2 + 1`         # INCREASE PAGENUM TO MATCH TMP PDF
-         NUMPAGES=`expr $P2 - $P1` # CALCULATE NUMBER OF PAGES
-         P1=`expr $P1 + 1`         # INCREASE PAGENUM TO MATCH TMP PDF
-   fi
-
-
-     REFID=`basename $BKURL    | #
-            sed 's/ //g'       | #              
-            md5sum | cut -c 1-8`
-    #THISID=`echo $RANDOM | #
-    #        md5sum | cut -c 1-8`
-
-
-     W=`pdfinfo $PDFMOD       | #
-        grep "^Page size"     | #
-        sed 's/[^0-9x\.]*//g' | #
-        cut -d "x" -f 1       | #
-        cut -d "." -f 1`        # 
-     if   [ "$W" -gt 400 ];then OFFSET="170" # A5
-     elif [ "$W" -lt 400 ] &&
-          [ "$W" -gt 300 ];then OFFSET="80"  # A6
+    PDFTITLE=`grep ^Title: ${PDFMOD}.info | # FIND INFO
+              cut -d ":" -f 2-            | # SELECT FIELD
+              sed 's/^[ \t]*//'`            # RM LEADING BLANKS
+    THISINFO="$PDFTITLE"
+  
+     if [ `echo $PAGES | wc -c` -le 1 ]; then
+           P1=1;NUMPAGES="$PDFPAGES"
+           THISPAGES=""
+     elif [ `echo $PAGES | grep "^[0-9]" | wc -l` -ge 1 ]; then
+  
+           P1=`echo $PAGES | cut -d "-" -f 1`
+           P2=`echo $PAGES         | #
+               sed 's/^[0-9]*-/-/' | #
+               grep "-"            | #
+               cut -d "-" -f 2`      #
+           THISPAGES="$P1-$P2"
+         # ----
+           P2=`expr $P2 + 1`         # INCREASE PAGENUM TO MATCH TMP PDF
+           NUMPAGES=`expr $P2 - $P1` # CALCULATE NUMBER OF PAGES
+           P1=`expr $P1 + 1`         # INCREASE PAGENUM TO MATCH TMP PDF
      fi
 
-     write2src "\afterpage{"
-     write2src "\showbookpages{$PDFMOD}{$P1}{$NUMPAGES}{-$OFFSET}{$REFID}"
-     write2src "}"
+    REFID=`basename $BKURL    | #
+           sed 's/ //g'       | #              
+           md5sum | cut -c 1-8`
+    THISID=`echo $RANDOM | #
+            md5sum | cut -c 1-8`
+
+    W=`pdfinfo $PDFMOD       | #
+       grep "^Page size"     | #
+       sed 's/[^0-9x\.]*//g' | #
+       cut -d "x" -f 1       | #
+       cut -d "." -f 1`        # 
+    if   [ "$W" -gt 400 ];then OFFSET="170" # A5
+    elif [ "$W" -lt 400 ] &&
+         [ "$W" -gt 300 ];then OFFSET="80"  # A6
+    fi
+
+
+    write2src "\bookpageanchor{$THISID}{$THISINFO}{$THISPAGES}"
+
+
+    write2src "\afterpage{"
+    write2src "\showbookpages{$PDFMOD}{$P1}{$NUMPAGES}
+                             {-$OFFSET}{$REFID}{$THISID}"
+    write2src "}"
 
   #else echo "NOTHING TO DO"
    fi
@@ -168,6 +177,8 @@ function BOOKREF() {
                   grep "^Page size"     | #
                   sed 's/[^0-9x\.]*//g' | #
                   cut -d "x" -f 2`        #
+
+            pdfinfo $BKPDF > ${PDFMOD}.info
 
      # ================================================================ #
      # ADD LAYOUT MARKS
