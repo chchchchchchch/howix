@@ -323,6 +323,8 @@ function BOOKREF() {
            rm $PDF
        done
 
+     if [ -f "doc_data.txt" ];then rm doc_data.txt ; fi
+
     #else echo "$PDFMOD ALREADY EXISTS";
      fi
 
