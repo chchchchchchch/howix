@@ -70,9 +70,11 @@ function BOOKREF() {
          sed "/[^0-9,\\-]/d"         | # NO LINES WITH OTHER THAN 0-9,-
          egrep -v "^-|-$"            | # IGNORE ISOLATED - 
          grep -v "^[ ]*$" | tail -n 1` # 
+
   if   [ `echo $PAGES | wc -c` -le 1 ] # PAGES ARE NOT SET
-  then MREF="\mref{$REFID}"
-  else COLLECTPAGES="";MREF="" # RESET
+  then MREFTEX="\mref{$REFID}"
+       MREFIDS="$REFID"
+  else COLLECTPAGES="";MREFTEX="";MREFIDS="" # RESET
        for RANGE in `echo $PAGES | sed 's/,/\n/g'`
         do
             if [ `echo $RANGE | #
@@ -87,13 +89,57 @@ function BOOKREF() {
        done
        for P in $COLLECTPAGES
         do
-           MREF="$MREF \mref{${REFID}.p.$P}"
+           MREFTEX="$MREFTEX\mref{${REFID}.p.$P}"
+           MREFIDS="$MREFIDS ${REFID}.p.$P"
        done
+       ALLMLABELS=`echo $MREFIDS | sed 's/ /|/g'`
+       echo "$ALLMLABELS" >> $TMPID.mlabels
   fi
 
-  write2src "\showrefs{$MREF}"
+  BREFID=`echo $ALLMLABELS | md5sum | cut -c 1-8`
+  write2src "% $MREFIDS"
+  write2src "\showrefs{$BREFID}{$MREFTEX}"
 
 }
+
+# --------------------------------------------------------------------------- #
+
+  AUXFILE="${TMPID}.aux"
+
+ function formatMlabels() {
+
+  if [ -f "$AUXFILE" ];then
+
+       for ALLMLABELS in `cat $TMPID.mlabels`
+        do
+           BREFID=`echo $ALLMLABELS | md5sum | cut -c 1-8`
+           BOOKREFAUX="${TMPID}.bookref$BREFID.aux"
+           BOOKREF="" # RESET
+           for PAGEMATCH in `egrep $ALLMLABELS $AUXFILE | #
+                             cut -d "{" -f 5 | cut -d "}" -f 1 | #
+                             sort -un`
+            do if [ "$LASTMATCH" = $((PAGEMATCH - 1)) ];then
+                    BOOKREF="${BOOKREF}X${PAGEMATCH}"
+               else BOOKREF="${BOOKREF} $PAGEMATCH"
+               fi;  LASTMATCH="$PAGEMATCH"
+           done
+          
+           echo $BOOKREF | #
+           sed s/X/-/g | # 
+           sed 's/-[0-9]\+-/-/g' | #
+           sed 's/ /,~/g' > $BOOKREFAUX
+
+       done
+
+  fi
+
+  }
+
+ # ADD TO MID OUTPUT HOOK
+  if [ `echo $midOutput | grep formatMlabels | wc -l ` -lt 1 ]
+  then  midOutput="$midOutput formatMlabels"
+  fi
+
 
 # --------------------------------------------------------------------------- #
 

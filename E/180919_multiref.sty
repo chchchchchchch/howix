@@ -1,5 +1,4 @@
  \usepackage{etoolbox}
- \usepackage{datatool}
 
 % https://www.dickimaw-books.com/latex/admin/html/etoolboxlist.shtml
 % https://tex.stackexchange.com/questions/89506/
@@ -80,37 +79,23 @@
               \def\process{\def\process{,~}}%
               \def\do##1{\process##1}%
               \dolistloop{#1}}
-
-% ====
-
- % https://tex.stackexchange.com/questions/388642/
- % -> sorting-data-in-datatool-depending-on-argument
-
- \newcommand{\dtladd}[1]{\DTLnewrow{list}\DTLnewdbentry{list}{value}{#1}}
  
 % =========================================================================== %
 
- \newcommand{\showrefs}[1]{%
+ \newcommand{\showrefs}[2]{%
+ % -----
   \ifcsdef{collectedrefs}{         % IF LIST EXISTS
   \renewcommand{\collectedrefs}{}} % -> RESET
                          {}        % ELSE: DO NOTHING
-   #1 % PROCESS REFS (\mref DOES \collectref AND COPIES TO \collectedref)
- % DISPLAY \collectedrefs
- % [~\commalistnobreak\collectedrefs~]
- % ---
- % CLEAR DATA
-  \DTLifdbexists{list}{\DTLcleardb{list}}{\DTLnewdb{list}}
- % INSERT DATA
-  \ifcsdef{collectedrefs}{% IF LIST EXISTS 
-                          \forlistcsloop{\dtladd}{collectedrefs}
-  }{}                     % ELSE: DO NOTHING
-  \ifnum\DTLrowcount{list} > 0
- % SORT DATA
-  \DTLsort*{value}{list}
- % DISPLAY DATA
-   [~\DTLforeach*{list}{\theValue=value}{%
-            \DTLiflastrow{}{,~}\theValue}~]%
-  \fi
+   #2 % PROCESS REFS (\mref DOES \collectref AND COPIES TO \collectedref)
+ % --
+   \IfFileExists{\jobname.bookref#1.aux}{% IF FILE EXISTS
+   [~\input{\jobname.bookref#1.aux}]    % INCLUDE PROCESSED FILE 
+   }{ % IF FILE DOES NOT EXIST
+      % DISPLAY \collectedrefs
+   [~\commalistnobreak\collectedrefs~]   % WITHOUT EXTERNAL PROCESSING
+   }
+ % -----
   }
 % =========================================================================== %
 
