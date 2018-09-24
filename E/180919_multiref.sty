@@ -45,7 +45,7 @@
              \dolistloop{#1}}
  \newcommand{\collectedrefs}{} % CREATE EMPTY DEFAULT LIST
 % ----
- \newcommand{\mref}[1]{
+ \newcommand{\mref}[1]{%
   % ----
   % INCLUDE LABEL LIST FILLED AT 1ST RUN
    \IfFileExists{\jobname.mlabel#1.aux}{%
@@ -61,9 +61,9 @@
       \fi\repeat\global\let\b\templist
     }\closein\mlabltmpr
    % COLLECT REFS
-    \collectrefs{\b}{collectedrefs}
-   }{ % IF AUX FILE DOES
-   }  % NOT EXIST -> DO NOTHING
+    \collectrefs{\b}{collectedrefs}%
+   }{% IF AUX FILE DOES
+   }%% NOT EXIST -> DO NOTHING
  }
 
 % =========================================================================== %
@@ -82,21 +82,21 @@
  
 % =========================================================================== %
  \newcommand{\showrefs}[2]{%
- % -----
-  \ifcsdef{collectedrefs}{         % IF LIST EXISTS
-  \renewcommand{\collectedrefs}{}} % -> RESET
-                         {}        % ELSE: DO NOTHING
-   #2 % PROCESS REFS (\mref DOES \collectref AND COPIES TO \collectedref)
- % --
-   \IfFileExists{\jobname.bookref#1.aux}{% IF FILE EXISTS
-   [~\input{\jobname.bookref#1.aux}]    % INCLUDE PROCESSED FILE 
-   }{ % IF FILE DOES NOT EXIST
-      % DISPLAY \collectedrefs
-    \ifdefempty{\collectedrefs}{}{%
-   [~\commalistnobreak\collectedrefs~]   % WITHOUT EXTERNAL PROCESSING
-    } %
-   } %
- % -----
+  % -----
+   \ifcsdef{collectedrefs}{%       % IF LIST EXISTS
+   \renewcommand{\collectedrefs}{}}% -> RESET
+                          {}%      % ELSE: DO NOTHING
+    #2% PROCESS REFS (\mref DOES \collectref AND COPIES TO \collectedref)
+  % --
+    \IfFileExists{\jobname.bookref#1.aux}{%      % IF FILE EXISTS
+    \mbox{[~\input{\jobname.bookref#1.aux}]}%    % INCLUDE PROCESSED FILE 
+    }{ % IF FILE DOES NOT EXIST
+       % DISPLAY \collectedrefs
+    \ifdefempty{\collectedrefs}{\hspace{-.5em}}{%% PUT ANTI-SPACE
+    \mbox{[~\commalistnobreak\collectedrefs~]}%  % WITHOUT EXTERNAL PROCESSING
+    }%
+   }%
+  % -----
  }
 % =========================================================================== %
 
