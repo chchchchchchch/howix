@@ -393,8 +393,9 @@ function BOOKREF() {
                     sed 's/\.pdf$//'`     #   
            PDFMETA="$TMPDIR/"`basename $PDFMOD`.$PAGENUM.verbatim
          # ----
-           pdftotext -eol unix -nopgbrk $PDF - | sed '/^[ \t]*$/d' | #
-           tr -s ' ' | sed ":a;N;\$!ba;s/\n/ /g" | $PANDOCACTION   >  $PDFMETA
+           pdftotext -eol unix -nopgbrk $PDF - | #
+           sed '/^[ \t]*$/d' | tr -s ' ' | sed ":a;N;\$!ba;s/\n/ /g" | #
+           iconv -f utf-8 -t us-ascii//TRANSLIT | $PANDOCACTION    >  $PDFMETA
          # ----
            PAGE=`expr $PAGENUM - 1`;echo "\mlabel{$REFID.p.$PAGE}" >> $PDFMETA
          # ----
