@@ -81,7 +81,6 @@
               \dolistloop{#1}}
  
 % =========================================================================== %
-
  \newcommand{\showrefs}[2]{%
  % -----
   \ifcsdef{collectedrefs}{         % IF LIST EXISTS
@@ -93,13 +92,11 @@
    [~\input{\jobname.bookref#1.aux}]    % INCLUDE PROCESSED FILE 
    }{ % IF FILE DOES NOT EXIST
       % DISPLAY \collectedrefs
+    \ifdefempty{\collectedrefs}{}{%
    [~\commalistnobreak\collectedrefs~]   % WITHOUT EXTERNAL PROCESSING
-   }
+    } %
+   } %
  % -----
-  }
+ }
 % =========================================================================== %
-
-
-
-
 
