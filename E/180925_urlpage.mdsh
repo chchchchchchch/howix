@@ -1,0 +1,43 @@
+% --------------------------------------------------------------------------- %
+% EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% --------------------------------------------------------------------------- %
+% USEPACKAGE: ../lib/tex/conditions
+% USEPACKAGE: ../lib/tex/lstlanguages
+% USEPACKAGE: 180710_srccode
+% USEPACKAGE: 180710_howix
+% ---
+% EXTENDFUNCTIONS: ../lib/mdsh/href.functions
+% ---
+% DOCUMENTCLASS: [fontsize=12pt,cleardoublepage=empty]{scrbook}
+% --------------------------------------------------------------------------- %
+% PDFXTITLE: TEST URLPAGE
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% ----
+% EXTENDFUNCTIONS: 180925_urlpage.functions
+% USEPACKAGE: 180925_urlpage
+% --------------------------------------------------------------------------- %
+%!ADD2PREAMBLE: \usepackage{showframe}
+
+% INTRODUCTION
+% --------------------------------------------------------------------------- %
+
+While looking for a personal position within increasingly homogenized
+computational environments I discovered the world of free culture some
+years ago. From the direction of DIY and alternative copyright practises
+I proceeded slowly to the technological aspects of free software.
+The book _How I stopped to learn programming and love the Bash_
+collects and revisits memories of growing within and into free software,
+memories of expanding my personal comfort zone. The GNU Bourne-Again SHell
+was and still is a big inspiration towards a practise, not so much focussed
+on 'writing code' but 'embracing connectivity'.
+
+% URLPAGE: http://lfkn.de/generation-tony-hawk
+% URLPAGE: http://lfkn.de/md
+% URLPAGE: http://www.wall.org/~larry/pm.html
+% URLPAGE: https://twitter.com/florian_cramer/status/1036690201773522947
+% URLPAGE: http://cramer.pleintekst.nl/essays/free_software_as_text/free_software_as_text.txt
+
+
+
