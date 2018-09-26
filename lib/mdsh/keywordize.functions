@@ -1,4 +1,11 @@
 # --------------------------------------------------------------------------- #
+  if [ `grep '\newcommand{\keyword}[2]{' ${TMPID}.preamble | #
+        wc -l` -lt 1 ];then
+  echo '\newcommand{\keyword}[2]{%'                      >> ${TMPID}.preamble
+  echo '\index{#2}'                                      >> ${TMPID}.preamble
+  echo '}'                                               >> ${TMPID}.preamble
+  fi
+# --------------------------------------------------------------------------- #
 
 function KEYWORDIZE() {
 
@@ -49,9 +56,10 @@ function KEYWORDIZE() {
          # solved via LaTeX (for section so far ...)
          # set +H;
          # ADD \index TO END OF LINE
-           sed -i "s/\(.*\)\(\b$K\b\)\(.*\)/\1K${UN}\2K${UN}\3 \\\index{$MAINFOO}$SFOO/I" $SRCDUMP
-          #sed -i "s/\b$K\b/K${UN}&K${UN}°\\\index{$MAINFOO}°/I" ${TMPID}*.verbatim
-           sed -i "s/\b$K\b/K${UN}&K${UN}°\\\index{$MAINFOO}°/I" ${TMPDIR}/*.verbatim
+          #sed -i "s/\(.*\)\(\b$K\b\)\(.*\)/\1K${UN}\2K${UN}\3 \\\index{$MAINFOO}$SFOO/I" $SRCDUMP
+          #sed -i "s/\b$K\b/K${UN}&K${UN}°\\\index{$MAINFOO}°/I" ${TMPDIR}/*.verbatim
+           sed -i "s/\(.*\)\(\b$K\b\)\(.*\)/\1K${UN}\2K${UN}\3 \\\keyword{}{$MAINFOO}$SFOO/I" $SRCDUMP
+           sed -i "s/\b$K\b/K${UN}&K${UN}°\\\keyword{}{$MAINFOO}°/I" ${TMPDIR}/*.verbatim
        done
       #sed -i "s/K$UN//g" $SRCDUMP ${TMPID}*.verbatim  # NORMALIZE PROTECTED KEYWORD
        sed -i "s/K$UN//g" $SRCDUMP ${TMPDIR}/*.verbatim # NORMALIZE PROTECTED KEYWORD
@@ -82,24 +90,24 @@ function KEYWORDIZE() {
 
         write2src "\insertindex{$KWID}"
 
-   elif [ "$OUTPUTFORMAT" == "html" ];then
+#  elif [ "$OUTPUTFORMAT" == "html" ];then
 
-       for ANCHOR in `sed 's/\\\index{[^}]*}/\n&\n/g' $SRCDUMP | #
-                       grep -- '\index{.*}$' | sort -u`
-        do
-           KEYWORD=`echo $ANCHOR | cut -d "{" -f 2 | cut -d "}" -f 1`
-           CNT=1
-           for MATCH in `grep -n "$ANCHOR" $SRCDUMP | cut -d ":" -f 1`
-            do
-               ID=`echo $KEYWORD$CNT | md5sum | cut -c 1-8`
-               O="<span class=\"k\" id=\"$ID\">";C="<\/span>"
-               sed -i "${MATCH}s/\b[^ >]*$ANCHOR/$O&$C/" $SRCDUMP
-              #echo ${ID}:${KEYWORD}
-               CNT=`expr $CNT + 1`
-           done
-       done
+#      for ANCHOR in `sed 's/\\\index{[^}]*}/\n&\n/g' $SRCDUMP | #
+#                      grep -- '\index{.*}$' | sort -u`
+#       do
+#          KEYWORD=`echo $ANCHOR | cut -d "{" -f 2 | cut -d "}" -f 1`
+#          CNT=1
+#          for MATCH in `grep -n "$ANCHOR" $SRCDUMP | cut -d ":" -f 1`
+#           do
+#              ID=`echo $KEYWORD$CNT | md5sum | cut -c 1-8`
+#              O="<span class=\"k\" id=\"$ID\">";C="<\/span>"
+#              sed -i "${MATCH}s/\b[^ >]*$ANCHOR/$O&$C/" $SRCDUMP
+#             #echo ${ID}:${KEYWORD}
+#              CNT=`expr $CNT + 1`
+#          done
+#      done
 
-       sed -i 's/\\index{[^}]*}//g' $SRCDUMP
+#      sed -i 's/\\index{[^}]*}//g' $SRCDUMP
   fi
 
 }
