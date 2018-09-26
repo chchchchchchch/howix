@@ -1,10 +1,11 @@
 # --------------------------------------------------------------------------- #
-  if [ `grep '\newcommand{\keyword}[2]{' ${TMPID}.preamble | #
-        wc -l` -lt 1 ];then
-  echo '\newcommand{\keyword}[2]{%'                      >> ${TMPID}.preamble
-  echo '#1'                                              >> ${TMPID}.preamble
-  echo '\index{#2}'                                      >> ${TMPID}.preamble
-  echo '}'                                               >> ${TMPID}.preamble
+# ADD MACRO (ONLY ONCE)
+# --------------------------------------------------------------------------- #
+  if [ `grep '\newcommand{\\\keyword}\[2' ${TMPID}.preamble | wc -l` -lt 1 ]
+  then  echo '\newcommand{\keyword}[2]{%'                >> ${TMPID}.preamble
+        echo '#1%'                                       >> ${TMPID}.preamble
+        echo '\index{#2}%'                               >> ${TMPID}.preamble
+        echo '}'                                         >> ${TMPID}.preamble
   fi
 # --------------------------------------------------------------------------- #
 
@@ -21,56 +22,77 @@ function KEYWORDIZE() {
       S=S`echo $RANDOM | cut -c 1-2`P
    SFOO=S`echo $RANDOM | cut -c 1-2`S
 
-   # PROTECT EMPTY LINES
-   # -------------------
-     sed -i "s/^[ \t]*$/E${UN}L/" $SRCDUMP
+ # PROTECT EMPTY LINES
+ # -------------------
+   sed -i "s/^[ \t]*$/E${UN}L/" $SRCDUMP
 
-   # PUT WORDS ON SEPARATE LINES
-   # ---------------------------
-     sed -i "s/[ ]\+/ $SFOO\n/g"  $SRCDUMP
+ # PUT WORDS ON SEPARATE LINES
+ # ---------------------------
+   sed -i "s/[ ]\+/ $SFOO\n/g"  $SRCDUMP
 
    IFS=$'\n'
    for INDEXTHIS in `cat ${TMPID}.keywords         | # TAKE LIST
                      egrep -v "^#|^%"              | # IGNORE SOMETHING
                      sed '/^[ \t]*$/d'             | # NO EMPTY LINES
+                     sort -u                       | # RM DUPLICATES
                      awk 'BEGIN { FS = "|" } ; \
                      { print length($1) ":" $0; }' | # ADD LENGTH OF FIELD 1
                      sort -n                       | # NUMERIC SORT (=LENGTH)
                      cut -d ":" -f 2-              | # REMOVE LENGTH AGAIN
                      tac`                            # REVERT (LONGEST FIRST)
     do
-       MAINKEYWORD=`echo $INDEXTHIS | # START
-                    cut -d "|" -f 1`  # SELECT FIRST FIELD
-       MAINFOO=`echo $MAINKEYWORD   | # PIPE STARTS
-                sed  "s/./&M$UN/g"  | # ADD UNID TO EACH LETTER
-                sed  "s/ /M$S/g"    | # PROTECT/RM SPACE
-                sed 's/\//\\\\\//g'`  # ESCAPE \ FOR sed
-
+       if [ `echo $INDEXTHIS | grep "^:REF::" | wc -l` -gt 0 ]
+       then INDEXTHIS=`echo $INDEXTHIS | sed 's/^:REF:://'`
+            MAINKEYWORD="$INDEXTHIS";MAINFOO=""
+       else
+            MAINKEYWORD=`echo $INDEXTHIS   | # START
+                         cut -d "|" -f 1`    # SELECT FIRST FIELD
+            MAINFOO=`echo $MAINKEYWORD     | # PIPE STARTS
+                     sed  "s/./&M$UN/g"    | # ADD UNID TO EACH LETTER
+                     sed  "s/ /M$S/g"      | # PROTECT/RM SPACE
+                     sed 's/\//\\\\\//g'`    # ESCAPE \ FOR sed
+       fi
+       KEYID=`basename $MAINKEYWORD   | #
+              sed 's/ //g'            | #
+              md5sum | cut -c 1-8`      #
+       COLLECTIDS="$KEYID";MLABELTEX="" # START/RESET
+       MLABFOO=`echo $KEYID$RANDOM | md5sum | #
+                cut -c 1-32 | tr [:lower:] [:upper:]`
+     # ---------------------------------------------------------------------- #
        for KEYWORD in `echo $INDEXTHIS                   | # START
                        sed 's/|/\n/g'                    | # PIPE TO NEWLINE
                        awk '{ print length($1) ":" $0; }'| # PRINT LENGTH
                        sort -n | cut -d ":" -f 2- | tac`   # SORT, CLEAN, REVERT
-       do
+       do  KEYID=`basename $KEYWORD  | #
+                  sed 's/ //g'       | #              
+                  md5sum | cut -c 1-8` #
+           COLLECTIDS="$COLLECTIDS $KEYID"
            K=`echo $KEYWORD       | # START
               sed 's/\//\\\\\//g' | # ESCAPE \ FOR sed
               sed 's/\./\\\./g'`    # ESCAPE \ FOR sed
-         # solved via LaTeX (for section so far ...)
-         # set +H;
-         # ADD \index TO END OF LINE
-          #sed -i "s/\(.*\)\(\b$K\b\)\(.*\)/\1K${UN}\2K${UN}\3 \\\index{$MAINFOO}$SFOO/I" $SRCDUMP
-          #sed -i "s/\b$K\b/K${UN}&K${UN}°\\\index{$MAINFOO}°/I" ${TMPDIR}/*.verbatim
-           sed -i "s/\(.*\)\(\b$K\b\)\(.*\)/\1K${UN}\2K${UN}\3 \\\keyword{}{$MAINFOO}$SFOO/I" $SRCDUMP
-           sed -i "s/\b$K\b/K${UN}&K${UN}°\\\keyword{}{$MAINFOO}°/I" ${TMPDIR}/*.verbatim
+           sed -i "s/\(.*\)\(\b$K\b\)\(.*\)/\1K${UN}\2K${UN}\3 \\\keyword{$MLABFOO}{$MAINFOO}$SFOO/I" $SRCDUMP
+           sed -i "s/\b$K\b/K${UN}&K${UN}°\\\keyword{$MLABFOO}{$MAINFOO}°/I" ${TMPDIR}/*.verbatim
        done
-      #sed -i "s/K$UN//g" $SRCDUMP ${TMPID}*.verbatim  # NORMALIZE PROTECTED KEYWORD
-       sed -i "s/K$UN//g" $SRCDUMP ${TMPDIR}/*.verbatim # NORMALIZE PROTECTED KEYWORD
+     # ---------------------------------------------------------------------- #
+       for MREFID in `echo $COLLECTIDS | #
+                      sed 's/ /\n/g'`    #
+        do MLABELTEX="$MLABELTEX\\\mlabel{${MREFID}}"
+       done
+     # ----
+     # INJECT TEXCODE \mlabelS
+     # ----
+       sed -i "s/$MLABFOO/$MLABELTEX/g" $SRCDUMP ${TMPDIR}/*.verbatim
+     # ----
+     # NORMALIZE PROTECTED KEYWORD
+     # ----
+       sed -i "s/K$UN//g" $SRCDUMP ${TMPDIR}/*.verbatim 
 
    done
 
-  #sed -i "s/M$UN//g" $SRCDUMP ${TMPID}*.verbatim     # NORMALIZE PROTECTED KEYWORD ANCHOR
-  #sed -i "s/M$S/ /g" $SRCDUMP ${TMPID}*.verbatim     # NORMALIZE PROTECTED KEYWORD ANCHOR
-   sed -i "s/M$UN//g" $SRCDUMP ${TMPDIR}/*.verbatim   # NORMALIZE PROTECTED KEYWORD ANCHOR
-   sed -i "s/M$S/ /g" $SRCDUMP ${TMPDIR}/*.verbatim   # NORMALIZE PROTECTED KEYWORD ANCHOR
+ # NORMALIZE PROTECTED KEYWORD ANCHOR
+ # ----
+   sed -i "s/M$UN//g" $SRCDUMP ${TMPDIR}/*.verbatim   
+   sed -i "s/M$S/ /g" $SRCDUMP ${TMPDIR}/*.verbatim
 
   # RESET (PUT WORDS ON SEPARATE LINES)
   # -----------------------------------
@@ -81,7 +103,12 @@ function KEYWORDIZE() {
   # --------------------------
     sed -i "s/E${UN}L/\n/" $SRCDUMP
 
+  # REMOVE SPACES BEFORE \keyword
+  # -----------------------------
+    sed -i 's/\([ ]*\)\(\\\keyword\)/\2/g' $SRCDUMP
+
    ) # END SUBSHELL
+
 
    if [ "$OUTPUTFORMAT" == "pdf" ];then
 
@@ -109,6 +136,7 @@ function KEYWORDIZE() {
 #      done
 
 #      sed -i 's/\\index{[^}]*}//g' $SRCDUMP
+
   fi
 
 }
