@@ -23,21 +23,21 @@
    \xifinlistcs{mlabel#1.\arabic{page}}%
                {mlabel#1}{}{%
   % ADD LIST ENTRY
-   \listcsxadd{mlabel#1}{mlabel#1.\arabic{page}} %
+   \listcsxadd{mlabel#1}{mlabel#1.\arabic{page}}%
   % PLACE UNIQ LABEL (LIST NAME + GLOBAL NUMBER)
    \label{mlabel#1.\arabic{page}}%
-  }
+  }%
  % ----
  % WRITE THE LIST AT THE VERY END
  % = WHEN ALL LABELS ARE COLLECTED
-  \ifcsdef{mlabel#1}{
-   \AtEndDocument{
-    \immediate\openout
-     \mlabltmpw=\jobname.mlabel#1.aux
-     \forlistcsloop{\writeline}{mlabel#1}
-    \immediate\closeout\mlabltmpw
-   }
-  }{}
+  \ifcsdef{mlabel#1}{%
+   \AtEndDocument{%
+    \immediate\openout%
+     \mlabltmpw=\jobname.mlabel#1.aux%
+     \forlistcsloop{\writeline}{mlabel#1}%
+    \immediate\closeout\mlabltmpw%
+   }%
+  }{}%
  }
 % ====
  \newcommand{\collectrefs}[2]{%
