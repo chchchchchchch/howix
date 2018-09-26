@@ -30,6 +30,10 @@ function REF() {
              sed 's/ //g'       | #              
              md5sum | cut -c 1-8` #
      COLLECTIDS="$COLLECTIDS $KEYID"
+   # ----
+   # ADD TO GLOBAL KEYWORD INDEX
+   # ----
+     echo ":REF::$KEYWORD" >> $TMPID.keywords
   done
 
   for MREFID in $COLLECTIDS
@@ -52,6 +56,10 @@ function REFREF() {
              sed 's/ //g'       | #              
              md5sum | cut -c 1-8` #
      COLLECTIDS="$COLLECTIDS $KEYID"
+   # ----
+   # ADD TO GLOBAL KEYWORD INDEX
+   # ----
+     echo ":REF::$KEYWORD" >> $TMPID.keywords
   done
 
   for MREFID in $COLLECTIDS
