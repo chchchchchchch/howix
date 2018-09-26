@@ -180,33 +180,33 @@ function BOOKREF() {
    AUXFILE="${TMPID}.aux"
  # ------------------------------------------------------------------------- #
    function formatMlabels() {
-  
+
     if [ -f "$AUXFILE" ] && [ -f "$TMPID.mlabels" ];then
-  
+
           for ALLMLABELS in `cat $TMPID.mlabels`
            do
-              BREFID=`echo $ALLMLABELS | md5sum | cut -c 1-8`
-              BOOKREFAUX="${TMPID}.mref$BREFID.aux"
-              BOOKREF="" # RESET
+              ALLMID=`echo $ALLMLABELS | md5sum | cut -c 1-8`
+              MREFAUX="${TMPID}.mref$ALLMID.aux"
+              MREFS="" # RESET
               for PAGEMATCH in `egrep $ALLMLABELS $AUXFILE | #
                                 cut -d "{" -f 5 | cut -d "}" -f 1 | #
                                 sort -un`
                do if [ "$LASTMATCH" = $((PAGEMATCH - 1)) ];then
-                       BOOKREF="${BOOKREF}X${PAGEMATCH}"
-                  else BOOKREF="${BOOKREF} $PAGEMATCH"
+                       MREFS="${MREFS}X${PAGEMATCH}"
+                  else MREFS="${MREFS} $PAGEMATCH"
                   fi;  LASTMATCH="$PAGEMATCH"
               done
-             
-              echo $BOOKREF | #
+
+              echo $MREFS | #
               sed 's/\(\b[0-9]\+\)\([X0-9]*\)\(X[0-9]\+\)/\1\3/g' | #
-              sed 's/X/-/g' | sed 's/ /,~/g' > $BOOKREFAUX
-   
+              sed 's/X/-/g' | sed 's/ /,~/g' > $MREFAUX
+
             # ---- DELETE IF EMPTY
-              if [ -f "$BOOKREFAUX" ] &&
-                 [ `wc -c $BOOKREFAUX | #
+              if [ -f "$MREFAUX" ] &&
+                 [ `wc -c $MREFAUX | #
                     cut -d " " -f 1` -lt 2 ]
-              then rm $BOOKREFAUX # echo "$BOOKREFAUX IS EMPTY"
-              fi 
+              then rm $MREFAUX # echo "$MREFAUX IS EMPTY"
+              fi
          done
     fi
    }
