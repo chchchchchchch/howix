@@ -187,7 +187,7 @@ function BOOKREF() {
            do
               ALLMID=`echo $ALLMLABELS | md5sum | cut -c 1-8`
               MREFAUX="${TMPID}.mref$ALLMID.aux"
-              MREFS="" # RESET
+              MREFS="";LASTMATCH="" # RESET
               for PAGEMATCH in `egrep $ALLMLABELS $AUXFILE | #
                                 cut -d "{" -f 5 | cut -d "}" -f 1 | #
                                 sort -un`
