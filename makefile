@@ -1,9 +1,9 @@
 hilxalsh:
 	./lib/mdsh/mk.sh E/170727_hilxalsh.mdsh pdf
+howix:
+	./lib/mdsh/mk.sh E/howix_180000.mdsh pdf
 
 
-170803_index:
-	./lib/mdsh/mk.sh E/170803_index.mdsh pdf
 180705_mkbtbts:
 	./lib/mdsh/mk.sh E/180705_mkbtbts.mdsh pdf
 180710_srccode:
@@ -14,4 +14,8 @@ hilxalsh:
 	./lib/mdsh/mk.sh E/180724_toc.mdsh pdf
 180727_show:
 	./lib/mdsh/mk.sh E/180727_show.mdsh pdf
+180731_hilxalsh:
+	./lib/mdsh/mk.sh E/180731_hilxalsh.mdsh pdf
+180926_referencing:
+	./lib/mdsh/mk.sh E/180926_referencing.mdsh pdf
 
