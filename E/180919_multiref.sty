@@ -88,8 +88,8 @@
                           {}%      % ELSE: DO NOTHING
     #2% PROCESS REFS (\mref DOES \collectref AND COPIES TO \collectedref)
   % --
-    \IfFileExists{\jobname.bookref#1.aux}{%      % IF FILE EXISTS
-    \mbox{[~\input{\jobname.bookref#1.aux}]}%    % INCLUDE PROCESSED FILE 
+    \IfFileExists{\jobname.mref#1.aux}{%      % IF FILE EXISTS
+    \mbox{[~\input{\jobname.mref#1.aux}]}%    % INCLUDE PROCESSED FILE 
     }{ % IF FILE DOES NOT EXIST
        % DISPLAY \collectedrefs
     \ifdefempty{\collectedrefs}{\hspace{-.5em}}{%% PUT ANTI-SPACE
