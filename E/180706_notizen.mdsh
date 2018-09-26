@@ -28,6 +28,42 @@ being stuck in preparation,
 making while making,
 exploring, getting lost
 
+----
+
+Made with Free Software.
+Inkscape, TeX, Processing...
+embedded in the free operating system Debian GNU/Linux
+and its wonderful user interface, Bourne-Again SHell.
+
+> We shape our buildings
+> and afterwards
+> our buildings shape us
+
+% 1943 October 28, Hansard, United Kingdom Parliament,
+% Commons, House of Commons Rebuilding,
+% Speaking: The Prime Minister (Mr. Churchill),
+% HC Deb 28, volume 393, cc403-73.
+% (Accessed hansard.millbanksystems.com on June 25, 2016)
+% https://quoteinvestigator.com/2016/06/26/shape/
+% http://hansard.millbanksystems.com/commons/1943/oct/28/house-of-commons-rebuilding
+
+Relate to the Wittgensteinerish idea of
+"Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt."
+% https://de.wikiquote.org/wiki/Ludwig_Wittgenstein
+The limitations of my software are the limitations of my imagination.
+
+It's not that Free Software is without
+limitations but Free Software comes with
+limitations dictated by different paradigms.
+AdobeTM's Creative SuiteTM feels very much
+modelled after taylorian principles and
+contemporary ideas of convenience.
+
+Free Software comes with ideological problems
+too but it is a cacophony of ideologies and
+they come with the invitation to use, study, change
+and improve, according to your needs. Let's forget
+for a second how feasible this actually is in practise.
 
 ----
 
@@ -38,6 +74,42 @@ this _is_ trial and error.
 
 ----
 
+(Design involves other people.)
+(Annoying differentation art/design)
+
+Design work usually has ambitions
+beside just being in the world for
+its own sake. I don't want to pretend
+that other works of visual culture
+do not have ambitions
+but design involves very often
+different ambitions of different people.
+
+Doing design is defined by what you
+want ot achieve and framing.
+Time. As schedule and costs.
+
+Put it straight. As a designer
+I get paid for
+providing a service. Getting paid
+comes with expectations. Doing
+something as a service comes with
+expectations. These expectations
+are shaped within a broader context
+of service culture and convenience.
+Today things are not hard. You can
+have everything as a service ...
+Everybody does. Everybody relies
+on somebody's service. As far as
+I can see independency is a myth.
+And that's not a problem. My problem
+starts with the situation that most
+of the services we rely on are provided
+by a very small number of institutions.
+And here it's getting a bit creepy.
+
+--
+
 obviously nobody asks for questions.
           -----------
           not so many clients
@@ -47,15 +119,31 @@ projects commissioned by institutions
 that have particular interests in similar issues/questions
      share
 
-I have a conservative notion of design namely not detached
-from everyday questions and applications.
+I have a conservative notion of design namely not 
+detached from everyday questions and applications.
+
+"Design and industrial production?"
+Printing machines of today.
+Have graphic designers been happily detached
+from the questions beneath the surfaces.
+What happens under your desktop?
+
+Subculture?
 
 The space for experiments became rather narrow,
 doing design became a commodity.
 
 Projects touch questions of doing graphic design
-situated within a broader contemporary context.
+situated within a broader context of today.
 This is ...
+
+Graphic design not as the shortest connections
+between you and your increased shareholder value. 
+
+--
+
+Convenience and the general question
+what happen out of your sight.
 
 ----
 
@@ -141,6 +229,12 @@ as you would for specific aesthetic
 
 ----
 
+fascination for unconsidered/archane technologies
+like bash or LaTeX although not limited to these.
+Limited to fascination for exploration.
+
+----
+
 I'd consider myself a graphic designer.
 The graphic design of
 copymachines, printmaking,
@@ -202,6 +296,7 @@ of ???
 ----
 
 work and parawork
+practise and parapractise
 
 ----
 
@@ -232,8 +327,64 @@ A world of things undone, trial and error, a world of constraints.
 ----
 
 A space between white cubes and black boxes.
+When it comes to software in the creative fields
+you either have white cubes or black boxes.
+White cubes like exhibition, something artistic.
+Or black boxes, software as everyday object, things
+you do not want to care about, that just needs to work.
+Seen from this harsh division I am interested in the grey
+area, the everday making of experimental software.
+Crafting of small interventions as entry point to the
+not-so-much expected.
+
+I experience this either-or in other contexts,
+writing, design, code making, media production in general.
+Highly experimental or super-pragmatic.
+
+Greyish as the blurry space between white and black.
 
 
+
+----
+
+With a specific disposition it is a exciting practise.
+Point and shoot
+Trial and error
+
+----
+
+considering economies
+of time
+of money
+
+----
+
+a day job in the
+entertainment industry
+ content
+
+----
+
+nostalgia or a dream of future empowerment?
+it is not nostalgia as it is actually only
+possible through recent developments.
+
+it seems nostalgic as it is
+%contrary to contemporary ideas of optimization
+conservative regarding up-to-date ideas of convenience
+
+nostalgic in computer times by stepping back
+to ideas and approaches from its early ages.
+Anyway it's not so much dreaming of the past
+but dreaming of dreams of the past.
+Personal computing. Exploring unpaved paths.
+
+----
+
+get things done     do things
+                vs.
+
+----
 
 = = = = = = = = = = = = = = = = = = = = =
 
@@ -281,9 +432,10 @@ Political purpose
 
 ===============================================================================
 
------------------------------------------------
-A FOREWORD TO A LICENSE WITH INVARIANT SECTIONS
------------------------------------------------
+------------------------------------------------
+(A FOREWORD TO A LICENSE WITH INVARIANT SECTIONS)
+ FOREWORD TO A COPYRIGHT NOTICE
+------------------------------------------------
 
 this publication is considered
 a frontend not a commodity.
