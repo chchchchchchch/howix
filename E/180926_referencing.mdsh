@@ -6,7 +6,7 @@
 % USEPACKAGE: ../lib/tex/lstlanguages 
 % --- 
 % USEPACKAGE: 170727_hilxalsh 
-% USEPACKAGE: 170803_index 
+% USEPACKAGE: 180926_referencing 
 % --------------------------------------------------------------------------- % 
 % PDFXTITLE: Test Indexing
 % PDFXAUTHOR: Christoph Haag
@@ -14,7 +14,7 @@
 % MKPDFXCOMPLIANT:
 % ----
 % EXTENDFUNCTIONS: 170727_hilxalsh.functions
-% EXTENDFUNCTIONS: 170803_index.functions
+% EXTENDFUNCTIONS: 180926_referencing.functions
 % --------------------------------------------------------------------------- %
 
 
@@ -35,6 +35,6 @@ and shade), nothing but a grey unbroken Fünf upon the water.
 %!SPREAD: 170803_A5x2-index.svg 4-20
 
 % --------------------------------------------------------------------------- %
-% KEYWORDINDEX: 170803_index.keywords
+% KEYWORDINDEX: 180926_referencing.keywords
 
 

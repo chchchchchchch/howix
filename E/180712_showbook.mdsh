@@ -15,8 +15,8 @@
 % EXTENDFUNCTIONS: 180629_vector.functions
 % EXTENDFUNCTIONS: 180712_showbook.functions
 % USEPACKAGE: 180712_showbook
-% EXTENDFUNCTIONS: 170803_index.functions
-% USEPACKAGE: 170803_index
+% EXTENDFUNCTIONS: 180926_referencing.functions
+% USEPACKAGE: 180926_referencing
 % EXTENDFUNCTIONS: 170727_hilxalsh.functions
 % USEPACKAGE: 180919_multiref
 % --------------------------------------------------------------------------- %
@@ -107,5 +107,5 @@ non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 
 % NEWPAGE:
-% KEYWORDINDEX: 170803_index.keywords
+% KEYWORDINDEX: 180926_referencing.keywords
 
