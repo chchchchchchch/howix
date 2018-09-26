@@ -2,6 +2,7 @@
   if [ `grep '\newcommand{\keyword}[2]{' ${TMPID}.preamble | #
         wc -l` -lt 1 ];then
   echo '\newcommand{\keyword}[2]{%'                      >> ${TMPID}.preamble
+  echo '#1'                                              >> ${TMPID}.preamble
   echo '\index{#2}'                                      >> ${TMPID}.preamble
   echo '}'                                               >> ${TMPID}.preamble
   fi
