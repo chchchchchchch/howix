@@ -254,6 +254,15 @@ function EMPTYPAGE() {
          write2src "\emptypage"
     fi
 }
+# --------------------------------------------------------------------------- #
+
+function NEWPAGE() {
+
+    if [ "$OUTPUTFORMAT" == pdf ];then
+
+         write2src "\newpage"
+    fi
+}
 
 # --------------------------------------------------------------------------- #
 
