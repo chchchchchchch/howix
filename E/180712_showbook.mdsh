@@ -6,6 +6,8 @@
 % USEPACKAGE: ../lib/tex/lstlanguages
 % ---
 % USEPACKAGE: 180710_howix
+% ---
+% DOCUMENTCLASS: [fontsize=12pt,cleardoublepage=empty]{scrbook}
 % --------------------------------------------------------------------------- %
 % PDFXTITLE: Test Showbook Setup
 % PDFXAUTHOR: Christoph Haag
@@ -20,7 +22,7 @@
 % EXTENDFUNCTIONS: 170727_hilxalsh.functions
 % USEPACKAGE: 180919_multiref
 % --------------------------------------------------------------------------- %
-%!ADD2PREAMBLE: \usepackage{showframe}
+% ADD2PREAMBLE: \usepackage{showframe}
 
 When I was in Spaceland I heard that your sailors have very similar
 Einsatz while they traverse your seas and discern some distant
