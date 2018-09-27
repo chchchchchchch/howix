@@ -1,12 +1,15 @@
 % --------------------------------------------------------------------------- %
 % EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% EXTENDFUNCTIONS: ../lib/mdsh/keywordize.functions
+% EXTENDFUNCTIONS: ../lib/mdsh/href.functions
 % --------------------------------------------------------------------------- %
 % USEPACKAGE: ../lib/tex/conditions
 % USEPACKAGE: ../lib/tex/lstlanguages
 % USEPACKAGE: 180710_srccode
 % USEPACKAGE: 180710_howix
-% ---
-% EXTENDFUNCTIONS: ../lib/mdsh/href.functions
+% USEPACKAGE: 180926_referencing
+% USEPACKAGE: 180919_multiref
+% USEPACKAGE: 180925_urlpage
 % ---
 % DOCUMENTCLASS: [fontsize=12pt,cleardoublepage=empty]{scrbook}
 % --------------------------------------------------------------------------- %
@@ -15,15 +18,16 @@
 % PDFXORG: LAFKON Publishing
 % MKPDFXCOMPLIANT:
 % ----
+% EXTENDFUNCTIONS: 180730_hilxalsh.functions
 % EXTENDFUNCTIONS: 180925_urlpage.functions
-% USEPACKAGE: 180925_urlpage
+% EXTENDFUNCTIONS: 180926_referencing.functions
 % --------------------------------------------------------------------------- %
 %!ADD2PREAMBLE: \usepackage{showframe}
 
 % INTRODUCTION
 % --------------------------------------------------------------------------- %
 
-While looking for a personal position within increasingly homogenized
+While looking for a personal Einsatz within increasingly homogenized
 computational environments I discovered the world of free culture some
 years ago. From the direction of DIY and alternative copyright practises
 I proceeded slowly to the technological aspects of free software.
@@ -34,10 +38,33 @@ was and still is a big inspiration towards a practise, not so much focussed
 on 'writing code' but 'embracing connectivity'.
 
 % URLPAGE: http://lfkn.de/generation-tony-hawk
-% URLPAGE: http://lfkn.de/md
+% URLPAGE: http://lfkn.de/md --urltitle
 % URLPAGE: http://www.wall.org/~larry/pm.html
-% URLPAGE: https://twitter.com/florian_cramer/status/1036690201773522947
-% URLPAGE: http://cramer.pleintekst.nl/essays/free_software_as_text/free_software_as_text.txt
+% URLPAGE: https://twitter.com/florian_cramer/status/1036690201773522947 --ref=fcramer --urltitle
+% URLPAGE: http://cramer.pleintekst.nl/essays/free_software_as_text/free_software_as_text.txt --ref=fcramer
+
+Refer to page where h(omogenized) appears (% REFREF: homogenized) R.
+Refer to page where l(iterary) appears (% REFREF: literary) R.
+Refer to page where G(odzilla) appears (% REFREF: GODZILLA) R.
+Refer to page where free appears (% REFREF: free).
+Refer to something not existing (% REFREF: adsafsfd).
+
+Refer to Florian Cramer (special ref) (% REFREF: fcramer).
+
+% NEWPAGE:
+
+% URLPAGE: https://forkable.eu/README --ref=forkable.eu
+% URLPAGE: https://forkable.eu/generators/lacmachine --ref=forkable.eu --urltitle
+
+Refer to the _forkable_ repository (special ref) (% REFREF: forkable.eu).
+A somehow brutalist interface.
+
+% URLPAGE: https://forkable.eu/generators/lacmachine/lac2008_plakat.sh
+
+% URLPAGE: https://freeze.sh/0002 --urltitle
 
 
+% NEWPAGE:
+% --------------------------------------------------------------------------- %
+% KEYWORDINDEX: 180926_referencing.keywords
 

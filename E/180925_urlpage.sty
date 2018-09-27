@@ -3,14 +3,21 @@
 % --------------------------------------------------------------------------- %
   % ====================================================== %
     \newcommand\offpagetxt[1]{
-    \begin{minipage}{10\paperwidth} % MAKE IT HUGE
-    {\vspace{-4\paperheight} % MOVE IT OUT
-     \tiny #1} % MAKE IT TINY
-    \end{minipage}}
+    \AddToShipoutPictureBG*{%
+      \begin{minipage}{3\paperwidth}% MAKE IT HUGE
+      \vspace{2\paperheight}% MOVE IT OUT
+             {\scalefont{0.01}#1}% MAKE IT TINY
+     \end{minipage}%
+     }%
+    }
   % ====================================================== %
 % --------------------------------------------------------------------------- %
   \newcommand{\urlpage}[5]{%
+    \afterpage{
     \newpage
+    \IfFileExists{\jobname.#4.verbatim}{%
+    \offpagetxt{\input{\jobname.#4.verbatim}}
+    }{}%
     \if\relax\detokenize{#1}\relax
     % #1 EMPTY = NO TITLE PROVIDED
     % DISPLAY EXPANDED URL
@@ -25,8 +32,12 @@
     }
     \end{minipage}
     % QR CODE
-    % \vfill
-    % \includegraphics[width=.5\textwidth]{#5}
+      \vfill
+      \hspace{.5em}
+                        % left bottom right top
+      \includegraphics[trim=50 35 52 56, clip,
+                       width=.15\textwidth]{#5}
+      \vfill
     % AND SHORT URL AS FOOTNOTE 
       \vfill
       {\scalefont{1.6}%
@@ -52,8 +63,12 @@
       \end{flushleft}
     }%
     % QR CODE
-    % \vfill
-    % \includegraphics[width=.5\textwidth]{#5}
+      \vfill
+      \hspace{.5em}
+                        % left bottom right top
+      \includegraphics[trim=50 35 52 56, clip,
+                       width=.15\textwidth]{#5}
+      \vfill
     % AND EXPANDED URL AS FOOTNOTE
       \vfill
       {\setstretch{2.0}
@@ -71,6 +86,7 @@
     }%
     \fi
     \newpage
+   }
   }
 % --------------------------------------------------------------------------- %
 
