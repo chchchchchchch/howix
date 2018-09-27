@@ -35,7 +35,7 @@
 %  F O R M A T 
 % --------------------------------------------------------------------------- %
 
-  \setlength\topmargin{-.1\paperheight}
+  \setlength\topmargin{-.09\paperheight}
   \setlength\oddsidemargin{.09\paperwidth}
   \setlength\evensidemargin{-.04\paperwidth}
   \setlength\textheight{.76\paperheight}
@@ -175,29 +175,6 @@
   % -> if-then-else-for-odd-page-even-page
   \ifthispageodd{}{\emptypage}
   }
-% --------------------------------------------------------------------------- %
-
-% --------------------------------------------------------------------------- %
-%  I N D E X I N G
-% --------------------------------------------------------------------------- %
-  % http://tex.stackexchange.com/questions/167823/
-  % -> multiply-define-a-label-on-purpose
-  \makeatletter
-  \def\@newl@bel#1#2#3{{%
-    \@ifundefined{#1@#2}%
-      {\def\tmp{#3}}%
-      {%
-  \edef\tmp{%
-    {\expandafter\expandafter\expandafter\@firstoftwo\csname#1@#2\endcsname,
-     \@firstoftwo#3}%
-    {\expandafter\expandafter\expandafter\@secondoftwo\csname#1@#2\endcsname,
-     \@secondoftwo#3}%
-  }}%
-      \expandafter\xdef\csname#1@#2\endcsname{\tmp}%
-  }}
-  \def\@testdef #1#2#3{}
-  \makeatother
-
 
 % --------------------------------------------------------------------------- %
 %  Q R
@@ -282,4 +259,5 @@
                                       \lstsetBash \pagebreak[1]
                                       \needspace{5\baselineskip} %
                                       \lstinputlisting{#1}}
+
 
