@@ -22,13 +22,18 @@ function KEYWORDINDEX() {
 
 function REF() {
 
-  KEYWORDS=`echo $1 | sed 's/,/ /g'`
+  PROTECTSPACE="S${RANDOM}P"
+  KEYWORDS=`echo $1 | sed "s/ /$PROTECTSPACE/g"`
   COLLECTIDS="";MLABELTEX="" # RESET
 
-  for KEYWORD in $KEYWORDS
-   do KEYID=`basename $KEYWORD  | #
-             sed 's/ //g'       | #              
-             md5sum | cut -c 1-8` #
+  for KEYWORD in `echo $KEYWORDS | #
+                  sed 's/,/\n/g'`  #
+   do   KEYWORD=`echo $KEYWORD | #
+                 sed "s/$PROTECTSPACE/ /g" | #
+                 sed 's/^[ ]*//'`
+          KEYID=`basename $KEYWORD  | #
+                 sed 's/ //g'       | #              
+                 md5sum | cut -c 1-8` #
      COLLECTIDS="$COLLECTIDS $KEYID"
    # ----
    # ADD TO GLOBAL KEYWORD INDEX
@@ -48,13 +53,18 @@ function REF() {
 
 function REFREF() {
 
-  KEYWORDS=`echo $1 | sed 's/,/ /g'`
+  PROTECTSPACE="S${RANDOM}P"
+  KEYWORDS=`echo $1 | sed "s/ /$PROTECTSPACE/g"`
   COLLECTIDS="";MREFIDS="";MREFTEX="" # RESET
 
-  for KEYWORD in $KEYWORDS
-   do KEYID=`basename $KEYWORD  | #
-             sed 's/ //g'       | #              
-             md5sum | cut -c 1-8` #
+  for KEYWORD in `echo $KEYWORDS | #
+                  sed 's/,/\n/g'`  #
+   do   KEYWORD=`echo $KEYWORD | #
+                 sed "s/$PROTECTSPACE/ /g" | #
+                 sed 's/^[ ]*//'`
+          KEYID=`basename $KEYWORD  | #
+                 sed 's/ //g'       | #              
+                 md5sum | cut -c 1-8` #
      COLLECTIDS="$COLLECTIDS $KEYID"
    # ----
    # ADD TO GLOBAL KEYWORD INDEX
