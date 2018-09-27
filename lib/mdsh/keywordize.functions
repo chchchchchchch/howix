@@ -71,7 +71,7 @@ function KEYWORDIZE() {
               sed 's/\//\\\\\//g' | # ESCAPE \ FOR sed
               sed 's/\./\\\./g'`    # ESCAPE \ FOR sed
            sed -i "s/\(.*\)\(\b$K\b\)\(.*\)/\1K${UN}\2K${UN}\3 \\\keyword{$MLABFOO}{$MAINFOO}$SFOO/I" $SRCDUMP
-           sed -i "s/\b$K\b/K${UN}&K${UN}°\\\keyword{$MLABFOO}{$MAINFOO}°/I" ${TMPDIR}/*.verbatim
+           sed -i "s/\b$K\b/K${UN}&K${UN}%*\\\\\keyword{$MLABFOO}{$MAINFOO}*)/I" ${TMPDIR}/*.verbatim
        done
      # ---------------------------------------------------------------------- #
        for MREFID in `echo $COLLECTIDS | #
