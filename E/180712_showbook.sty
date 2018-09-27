@@ -43,10 +43,11 @@
   % ----
     \setcounter{last}{\value{first}}
     \addtocounter{last}{1}
-    \pagestep{\AddToShipoutPictureBG*{%
-            \setlength{\unitlength}{\paperwidth}
-             \put(0,0){\colorbox{yellow}{%
-                        \makebox(1,1.4){}}}}
+    \pagestep{\thispagestyle{black}
+        \AddToShipoutPictureBG*{%
+        \setlength{\unitlength}{\paperwidth}
+        \put(0,0){\colorbox{black}{%
+                  \makebox(1,1.4){}}}}
      \ifthispageodd{
       \includepdf[pagecommand={\offpagetxt{%
             \input{#1.\arabic{last}.verbatim}}
