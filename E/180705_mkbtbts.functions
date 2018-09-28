@@ -92,7 +92,7 @@
            PDFRESIZE=${TMPKEEP}`echo $THIS$THISW$STROKEWIDTH | #
                                 md5sum | cut -c 1-8`.pdf       #
 
-         if [ -f ${GETFILE}.svg ] && [ ! -f $PDFRESIZE ]; then
+         if [ -f "${GETFILE}.svg" ] && [ ! -f "$PDFRESIZE" ]; then
               svgMonochrom ${GETFILE}.svg
               inkscape --export-text-to-path    \
                        --export-pdf=${PDFRESIZE} \
@@ -102,7 +102,7 @@
               pdfSetStroke ${PDFRESIZE} ${STROKEWIDTH}px
              #conformColor ${PDFRESIZE}
          fi
-         if [ ! -f $PDFRESIZE ]; then
+         if [ ! -f "$PDFRESIZE" ]; then
          SELECTGRID=`echo $SELECTGRID | sed "s|\b${SIZETYPE}\b|0|"`
          else
          SELECTGRID=`echo $SELECTGRID | sed "s|\b${SIZETYPE}\b|$PDFRESIZE|"`
