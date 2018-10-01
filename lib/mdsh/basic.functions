@@ -27,41 +27,50 @@
 
   SOURCE="$1" ; TARGET="$2"
 
-  if [ `echo $TARGET | wc -c` -lt 2 ]; then SUCCESS="NO"
-       #echo "No target provided! Skipping." 
-  else
-
-  IFHTTP=`echo $SOURCE | grep "http.\?://" | wc -l`
-  if [ $IFHTTP -ge 1 ] && [ ! -f "$TARGET" ]; then
-       URL=$SOURCE;
-       RESPONSE=`curl -s -o /dev/null -IL -w "%{http_code}" $URL`
-       if [ $RESPONSE == '200' ]; then
-            wget --no-check-certificate \
-                 -O $TARGET $URL >> $WGETLOG 2>&1 # > /dev/null 2>&1
-            SUCCESS="YES"
-       else
-            echo "$URL does not exist! Skipping."
-            SUCCESS="NO"
-       fi
-  else
-     # WORKAROUND FOR RELATIVE PATHS = CHECK IN TWO LOCATIONS
-       if [ `ls $SOURCE 2>/dev/null | wc -l` -le 0 ];then
-        if [ `ls $MAINPATH/$SOURCE 2>/dev/null | wc -l` -le 0 ];then
-              echo "No valid input provided!"
-              SUCCESS="NO"
-        else
-              SUCCESS="YES"
-              cp $MAINPATH/$SOURCE $TARGET
-              INPUT=$MAINPATH/$SOURCE
-        fi
-       else
-            SUCCESS="YES"
-            cp $SOURCE $TARGET
-            INPUT=$SOURCE
-       fi
-  fi
-
-  fi
+    if [ `echo $TARGET | wc -c` -lt 2 ]; then SUCCESS="NO"
+         #echo "No target provided! Skipping." 
+    else
+  
+      IFHTTP=`echo $SOURCE | grep "http.\?://" | wc -l`
+      if [ $IFHTTP -ge 1 ] && [ ! -f "$TARGET" ];then
+           URL=$SOURCE;
+           RESPONSE=`curl -s -o /dev/null \
+                     -IL -w "%{http_code}" $URL`
+           if [ $RESPONSE == '200' ]; then
+                wget --no-check-certificate     \
+                     -O $TARGET $URL >> $WGETLOG \
+                     2>&1 # > /dev/null 2>&1
+                SUCCESS="YES"
+           else
+                echo "$URL does not exist! Skipping."
+                SUCCESS="NO"
+           fi
+      else
+           if [ ! -f "$TARGET" ]; then
+             # WORKAROUND FOR RELATIVE PATHS
+             # => CHECK IN TWO LOCATIONS
+                if [ `ls $SOURCE 2>/dev/null | #
+                      wc -l` -le 0 ];then
+                 if [ `ls $MAINPATH/$SOURCE 2>/dev/null | #
+                       wc -l` -le 0 ];then
+                       echo "No valid input provided!"
+                       SUCCESS="NO"
+                 else
+                       SUCCESS="YES"
+                       cp $MAINPATH/$SOURCE $TARGET
+                       INPUT=$MAINPATH/$SOURCE
+                 fi
+                else
+                     SUCCESS="YES"
+                     cp $SOURCE $TARGET
+                     INPUT=$SOURCE
+                fi
+           else
+                SUCCESS="YES"
+                echo "\$TARGET EXISTS ($TARGET)" 
+           fi
+      fi
+    fi
 
   }
 
@@ -284,13 +293,13 @@
        # IF LINE STARTS WITH %
          if [ $ISCOMMENT -ge 1 ]; then
  
-            CMD=`echo "$LINE"          | #
-                 grep "^%[ ]*[A-Z]\+:" | # BE PICKY
-                 cut -d "%" -f 2       | #
-                 cut -d ":" -f 1       | #
-                 sed 's/\[/ /g'        | #
-                 sed 's/\]/ /g'        | #
-                 sed 's/\\\[ ]*$//'    | # NEW! RM TRAILING SLASH
+            CMD=`echo "$LINE"             | #
+                 grep "^%[ ]*[A-Z0-9]\+:" | # BE PICKY
+                 cut -d "%" -f 2          | #
+                 cut -d ":" -f 1          | #
+                 sed 's/\[/ /g'           | #
+                 sed 's/\]/ /g'           | #
+                 sed 's/\\\[ ]*$//'       | # RM TRAILING SLASH
                  sed 's, ,,g'`
             ARG=`echo "$LINE" | cut -d ":" -f 2-`
        # --------------------------------------------------- # 

@@ -33,6 +33,7 @@
      sed '/^[ ]*$/d'                         | # RM EMPTY LINES
      sed 's/<\/svg>/\n&/g'                   | # PUT SVG CLOSE ON NEW LINE
      sed 's/display:none/display:inline/g'   | # MAKE VISIBLE EVEN WHEN HIDDEN
+     sed 's/opacity:[0-9\.]*/1/g'            | # RM TRANSPARENCY (PDFX PROBLEM)
      tee > ${SUPERTMP}                         # WRITE TO TEMPORARY FILE 
 
    # ----------------------------------------------------------------------- #
@@ -82,59 +83,48 @@
 
  function mkpages() {
 
-   FIRSTPAGEIS="" # RESET
- 
    PDFSRC=`echo $* | sed 's/ /\n/g'    | # SPACES TO NEWLINES
            egrep "\.svg$|\.pdf$"       | # SELECT ENDING WITH .svg/.pdf
            head -n 1`                    # SELECT FIRST
-    PAGES=`echo $* | sed 's/ /\n/g'    | # SPACES TO NEWLINES
-           sed "/[^0-9\\-]/d"          | # NO LINES WITH MORE THAN NUMS AND -
-           egrep -v "^-|-$"            | # IGNORE ISOLATED - 
-           grep -v "^[ ]*$" | tail -n 1` # 
       EXT=`echo $PDFSRC | rev | cut -d "." -f 1 | rev`
- 
-   if [ `echo $PAGES | wc -c` -le 1 ]; then
-         PAGES=-
-   elif [ `echo $PAGES | grep "^[0-9]" | wc -l` -ge 1 ]; then
-         P1=`echo $PAGES | cut -d "-" -f 1`
-         if [ `python -c "print $P1 / 2.0" | #
-               cut -d "." -f 2` -lt 5 ]; then
-               FIRSTPAGEIS="even"
-         else
-               FIRSTPAGEIS="odd"
-         fi
-   else
-         PAGES=- ; PAGECOMMAND=""
+
+   KEEPTMP=`echo $* | sed 's,--,\n--,g' | #
+            grep -- "--keeptmp" | wc -l`  #
+
+   if [ "$KEEPTMP" -lt 1 ];then
+        PDFGET=${TMPID}`echo $PDFSRC | md5sum | cut -c 1-6`.pdf
+        SVGTMP=${TMPID}`echo $PDFSRC | md5sum | cut -c 4-9`.svg
+   else TMPKEEP="$TMPDIR/tmpspread"
+        PDFGET=${TMPKEEP}`echo $PDFSRC | md5sum | cut -c 1-6`.pdf
+        SVGTMP=${TMPKEEP}`echo $PDFSRC | md5sum | cut -c 4-9`.svg
    fi
- 
-   PDFGET=${TMPID}`echo $PDFSRC | md5sum | cut -c 1-6`.pdf
-   SVGTMP=${TMPID}`echo $PDFSRC | md5sum | cut -c 4-9`.svg
- 
+
    if [ -f $PDFGET ]; then
         echo "$PDFGET exists"
-   else 
+   else
         if [ "X$EXT" == "Xsvg" ]; then
-    
+
               getFile $PDFSRC $SVGTMP
-    
+
         if [ "X$SUCCESS" == "XYES" ]; then
               SVGTMP=`realpath $SVGTMP`
               svglayers2pdfpages $SVGTMP $PDFGET
         fi
-    
+
         elif [ "X$EXT" == "Xpdf" ]; then
-    
-               getFile $PDFSRC $PDFGET   
+
+               getFile $PDFSRC $PDFGET
                conformColor $PDFGET
         fi
    fi
 
  }
+
 # --------------------------------------------------------------------------- #
 
- function extractLayer() {
+ function extractLayers() {
 
-     SVGSRC="$1"; TARGET="$2"; LAYERNAME="$3"
+     SVGSRC="$1"; TARGET="$2"; LAYERS="$3"
      SUPERTMP=${TMPID}.`echo $SVGSRC | md5sum | cut -c 1-4`.tmp
 
      if [ -f "$SVGSRC" ];then
@@ -159,19 +149,16 @@
      head -n 1 ${SUPERTMP}  | # THE HEADER
      sed "s/$BFOO/\n/g"     | # RESTORE ORIGINAL LINEBREAKS
      sed "s/$SFOO/ /g"      | # RESTORE ORIGINAL SPACES
-     tee                    >   ${TARGET}
-     grep "inkscape:label=\"$LAYERNAME\"" ${SUPERTMP} | #
-     sed "s/$BFOO/\n/g"     | # RESTORE ORIGINAL LINEBREAKS
-     sed "s/$SFOO/ /g"      | # RESTORE ORIGINAL SPACES
-     tee                    >>  ${TARGET}
-     echo "</svg>"          >>  ${TARGET}
+     tee > ${TARGET}          # WRITE TO FILE
 
-     if [ "$4" == Q ];then
-          SRCQUERY=$TMPID`basename ${TARGET}`.query
-          if [ ! -f $SRCQUERY ];then
-          inkscape --query-all $SVGSRC > $SRCQUERY
-          fi
-     fi
+     for LNAME in `echo $LAYERS | sed 's/,/ /g'`
+      do
+         grep "inkscape:label=\"$LNAME\"" ${SUPERTMP} | # GET LAYERS
+         sed "s/$BFOO/\n/g" | sed "s/$SFOO/ /g"       | # RESTORE PLACEHOLDER
+         tee >> ${TARGET}                               # WRITE TO FILE
+     done
+
+     echo "</svg>" >>  ${TARGET}
 
     fi
 
@@ -181,54 +168,34 @@
 
  function cropArea() {
 
-    SVGSRC="$1";TARGET="$2"
-    AREACOLOR="ffd5e5"
+    SVGSRC="$1";TARGET="$2";CROPAREA="$3"
 
-    SRCQUERY=$TMPID`basename ${SVGSRC}`.query
-    if [ ! -f "$SRCQUERY" ];then
-    inkscape --query-all $SVGSRC > $SRCQUERY
-    fi
+    if [ "$CROPAREA" !=  "" ];then # echo "CROPAREA IS SET"
 
-  # GET AREA
-  # ------------------------------------------------------- #
-    IDAREA=`sed ':a;N;$!ba;s/\n//g' $SVGSRC | #
-            sed 's/</\n&/g' | grep "fill:#$AREACOLOR" | # 
-            sed 's/\bid=/\nX&/g' | grep "^Xid=" | #
-            head -n 1 | cut -d "\"" -f 2` #
-    if [ "$IDAREA" !=  "" ];then
-           INFOAREA=`grep $IDAREA $SRCQUERY | head -n 1`
-    else   INFOAREA=""; fi
-
-    if [ "$INFOAREA" !=  "" ];then
-
-  # echo "CROPAREA IS SET"
-
-    XAREA=`echo $INFOAREA | cut -d "," -f 2`
-    YAREA=`echo $INFOAREA | cut -d "," -f 3`
-    WAREA=`echo $INFOAREA | cut -d "," -f 4`
-    HAREA=`echo $INFOAREA | cut -d "," -f 5`
+    XAREA=`echo $CROPAREA | cut -d ":" -f 1`
+    YAREA=`echo $CROPAREA | cut -d ":" -f 2`
+    WAREA=`echo $CROPAREA | cut -d ":" -f 3`
+    HAREA=`echo $CROPAREA | cut -d ":" -f 4`
 
     XSHIFT=`python -c "print $XAREA * -1"`
     YSHIFT=`python -c "print $YAREA * -1"`
     WSHIFT="width=\"$WAREA\"";HSHIFT="height=\"$HAREA\""
     TRANSFORM="transform=\"translate(${XSHIFT},${YSHIFT})\""
 
-    BFOO=N`echo ${RANDOM} | cut -c 4`F0;SFOO=S`echo ${RANDOM} | cut -c 4`FO
+    BFOO=N`echo ${RANDOM} | cut -c 4`F0;
   # ----------------------------------------------------------------------- #
   # MOVE LAYERS ON SEPARATE LINES (TEMPORARILY; EASIFY PARSING LATER ON)
   # ----------------------------------------------------------------------- #
-    sed ":a;N;\$!ba;s/\n/$BFOO/g" $SVGSRC | # RM ALL LINEBREAKS (BUT SAVE)
-    sed "s/width=\"[^\"]*\"/$WSHIFT/"     | # REDEFINE (FIRST) WIDTH
-    sed "s/height=\"[^\"]*\"/$HSHIFT/"    | # REDEFINE (FIRST) HEIGHT
-    sed "s/</\n&/g" | sed "s/>/&\n/g"     | # ADD LINEBREAKS TO BRACKETS <>
-    sed "/^<svg/s/>/&<g $TRANSFORM>/"     | # START OUTER GROUP
-    sed "s/<\/svg/<\/g>&/"                | # CLOSE OUTER GROUP
-    sed ":a;N;\$!ba;s/\n//g"              | # RM ALL LINEBREAKS (BUT SAVE)
-    sed "s/$BFOO/\n/g"                    | # RESTORE LINEBREAKS
-    sed 's/display:none/display:inline/g' | # DISPLAY ALL
-    sed 's/opacity:[0-9.]*/opacity:1/g'   | # NO TRANSPARENCY
-    sed "s/fill:#$AREACOLOR/fill:none/g"  | # DISABLE AREA COLOR
-    tee > ${TARGET}                         # WRITE TO TEMPORARY FILE
+    sed ":a;N;\$!ba;s/\n/$BFOO/g" $SVGSRC  | # RM ALL LINEBREAKS (BUT SAVE)
+    sed "s/width=\"[^\"]*\"/$WSHIFT/"      | # REDEFINE (FIRST) WIDTH
+    sed "s/height=\"[^\"]*\"/$HSHIFT/"     | # REDEFINE (FIRST) HEIGHT
+    sed "s/</\n&/g" | sed "s/>/&\n/g"      | # ADD LINEBREAKS TO BRACKETS <>
+    sed "/^<svg/s/>/&<g $TRANSFORM>/"      | # START OUTER GROUP
+    sed ":a;N;\$!ba;s/\n//g"               | # RM ALL LINEBREAKS
+    sed "s/$BFOO/\n/g"                     | # RESTORE LINEBREAKS
+    sed "s/<\/svg/<\/g>&/"                 | # CLOSE OUTER GROUP
+    sed 's/display:none/display:inline/g'  | # DISPLAY ALL
+    tee > ${TARGET}                          # WRITE TO FILE
 
     else
         # echo "CROPAREA NOT SET"
@@ -238,5 +205,4 @@
  }
 
 # --------------------------------------------------------------------------- #
-
 
