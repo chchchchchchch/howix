@@ -151,7 +151,7 @@
      sed "s/$SFOO/ /g"      | # RESTORE ORIGINAL SPACES
      tee > ${TARGET}          # WRITE TO FILE
 
-     for LNAME in `echo $LAYERS | sed 's/,/ /g'`
+     for LNAME in `echo $LAYERS | sed 's/,/\n/g'`
       do
          grep "inkscape:label=\"$LNAME\"" ${SUPERTMP} | # GET LAYERS
          sed "s/$BFOO/\n/g" | sed "s/$SFOO/ /g"       | # RESTORE PLACEHOLDER
