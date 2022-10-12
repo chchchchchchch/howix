@@ -1,9 +1,19 @@
-*.*.swp
-*.*.[0-9]+
+# IGNORE EXPORT FOLDERS --------------------
+                    # ---------------------
+_/
 E/*.pdf
 E/*.html
 
+# IGNORE SOURCE BLOBS (BUT NOT CONFIG FILES)
+                    # ---------------------
 src/**/*.*
 !src/**/*.xmp
 !src/**/*.remote
+
+# TEMPORARY -------------------------------
+                    # ---------------------
+*.*.swp
+*.*.[0-9]+
+._*
 tmp/
+
