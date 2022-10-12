@@ -1,0 +1,276 @@
+# --------------------------------------------------------------------------- #
+# OVERWRITE
+# --------------------------------------------------------------------------- #
+# ../lib/mdsh/href.functions 
+# --------------------------------------------------------------------------- #
+  SHORTURLBASE="http://lfkn.de"
+  QRDEKOSRC=$MAINPATH/151007_qrdeko-simple.svg
+# --------------------------------------------------------------------------- #
+  function refsrc() {
+
+    mkqr $* > /dev/null 2>&1
+    REFCODE="\qrmargin{$QRPDF}{$QRTXT}"
+    echo "$REFCODE"
+
+  }
+# --------------------------------------------------------------------------- #
+
+function HREF() {
+
+       O=`echo $* | cut -d " " -f 1`
+       THISCMD="% HREF:"
+
+   if [ "X$O" == "XON"  ] ||
+      [ "X$O" == "XOFF" ]
+    then
+         HREFMODE="$O"
+    else
+     if [ "X$HREFMODE" != "XOFF"  ]; then
+
+         WWWLINK=`urlitzer "$*"`
+         REFCODE=`refsrc $WWWLINK`
+         write2src "$REFCODE"
+     fi
+   fi
+}
+
+# --------------------------------------------------------------------------- #
+
+function PP(){(
+
+      THISCMD="PP";TMPKEEP="$TMPDIR/tmppdf"
+
+    PPCOLLECT="" # RESET
+      PPPAGES="" # RESET
+      REFCODE="" # RESET
+
+    MOREOPTIONS=`echo $*               | # START PIPE
+                 sed 's/OPTIONS:/\n&/' | #
+                 grep "^OPTIONS:"      | #
+                 head -n 1             | #
+                 cut -d ":" -f 2`
+
+    getVerbatim "$THISCMD" $TMPID.xtract 
+
+    PPPDFS=`cat $TMPID.xtract              | # USELESS USE OF CAT
+            sed "s/[ ]*${COMSTART}[ ]*//g" | #
+            sed "s/[ ]*$COMCLOSE[ ]*//g"   | #
+            sed "s/^[%]*[ ]*$/X.pdf/"      | # ALLOW EMPTY (=TO SHIFT)
+            grep "\.pdf$"                  | # SELECT LINES WITH .pdf EXTENSION
+            sed "s/^%//"                   | # REMOVE LEADING %
+            sed "s/^[ ]*//"`                 # REMOVE ALL LEADING BLANKS
+
+    PPNUM=`echo $PPPDFS |  sed 's/ /\n/g' | wc -l` # COUNT
+
+     if [ "X$HREFMODE" != "XOFF"  ]; then
+           PPLINK=`shortref $PPPDFS`
+           echo $PPLINK
+           REFCODE=`refsrc $PPLINK | sed 's/qrmargin/qroverlay/'`
+       if [ "A$PPLINK" == "A$PPLBEFORE" ];then
+           REFCODE=""
+           echo "REF is the same"
+       fi
+           PPLBEFORE="$PPLINK"
+     fi
+
+   for PDFSRC in $PPPDFS
+    do
+       if [ "X$PDFSRC" == "XX.pdf" ]; then
+             echo "do empty!"
+             PPPAGES=$PPPAGES,
+       else
+        PDFGET=${TMPKEEP}`echo $PDFSRC | md5sum | cut -c 1-8`.pdf
+
+        if [ ! -f $PDFGET ]; then
+              getFile $PDFSRC $PDFGET
+            if [ -f $PDFGET ]; then
+              conformColor $PDFGET
+              PPPAGES="$PPPAGES,${PDFGET},-"
+            fi
+        else
+            #echo "no need to download"
+             PPPAGES="$PPPAGES,$PDFGET,-"
+        fi
+       fi
+   done
+          MKPN="pagecommand={\thispagestyle{fancy}\label{$REFID}$REFCODE},"
+          OPTIONFILTER=`echo XX,$MOREOPTIONS | sed 's/,/\n/g' | #
+                        cut -d "=" -f 1 | sed ':a;N;$!ba;s/\n/|/g' |#
+                        sed 's/|$//' | sed 's/ //g'`
+          PPPAGES=`echo $PPPAGES | sed 's/^,//'`
+
+    if   [ $PPNUM -eq 1 ]; then
+
+           PPPAGES=`echo $PPPAGES | sed "s/,-//g"`
+          OPTIONS="nup=1x1,scale=.625,frame=true,
+                   offset=28.5 27,$MKPN"
+           PMACRO="\includepdf[$OPTIONS]{$PPPAGES}"
+
+    elif [ $PPNUM -eq 2 ]; then
+
+           OPTIONS="nup=1x2,frame=true,angle=\rotif,offset=28.5 27,
+                    delta=10 10,scale=.637,$MKPN"
+            PMACRO="\includepdfmerge[$OPTIONS]{$PPPAGES}"
+
+    elif [ $PPNUM -eq 3 ]; then
+
+           OPTIONS="nup=2x2,frame=true,offset=5 0,
+                    delta=20 25,scale=.85,$MKPN"
+            PMACRO="\includepdfmerge[$OPTIONS]{$PPPAGES}"
+
+    elif [ $PPNUM -eq 4 ]; then
+
+           OPTIONS="nup=2x2,frame=true,offset=28.5 30,
+                    delta=10 10,scale=.61,$MKPN"
+            PMACRO="\includepdfmerge[$OPTIONS]{$PPPAGES}"
+
+    elif [ $PPNUM -eq 9 ]; then
+ 
+           OPTIONS="nup=3x3,scale=1.97,frame=true,offset=29 27.5,
+                    delta=10 10,$MKPN"
+            PMACRO="\includepdfmerge[$OPTIONS]{$PPPAGES}"
+    else
+           OPTIONS=`echo "nup=4x4,frame=true,offset=28.5 30,
+                    delta=10 10,scale=1.29,$MKPN" | #
+                    sed 's/,/,\n/g' | #
+                    egrep -v "$OPTIONFILTER"`",$MOREOPTIONS"
+            PMACRO="\includepdfmerge[$OPTIONS]{$PPPAGES}"
+    fi
+
+       echo $PMACRO >> $SRCDUMP
+)}
+
+# --------------------------------------------------------------------------- #
+
+function PDF() {(
+
+  THISCMD="PDF";TMPKEEP="$TMPDIR/tmppdf"
+  if [ `echo $* | wc -c` -lt 2 ]; then # = NO PARAMETERS PROVIDED
+        getVerbatim "$THISCMD" $SRCLIST
+  else
+        echo $* > $SRCLIST
+  fi
+
+ ( IFS=$'\n'
+  for ITEM in `cat $SRCLIST`
+   do
+      PDFSRC=`echo $ITEM | sed 's/ /\n/g'  | # SPACES TO NEWLINES
+              grep "\.pdf$" | head -n 1`     # SELECT FIRST ENDING WITH .pdf
+       PAGES=`echo $ITEM | sed "s/#/\n#/g" | # HASH TO NEWLINES
+              grep -v "^#"                 | # IGNORE HASH LINES
+              sed 's/ /\n/g'               | # SPACES TO NEWLINES
+              sed "/[^0-9\\-]/d"           | # NO LINES WITH MORE THAN NUMS AND -
+              egrep -v "^-|-$"             | # IGNORE ISOLATED -
+              grep -v "^[ ]*$" | tail -n 1`  # NO EMPTY / LAST LINE ONLY
+
+      if [ `echo $PAGES | wc -c` -le 1 ]; then
+            PAGES=-
+      fi
+      OPTIONS=`echo $ITEM | sed "s/#/\n#/g"       | #
+               grep "^#" | tail -n 1              | #
+               cut -d "#" -f 2 | sed 's/^[ \t]*//'` #
+      if [ `echo $OPTIONS | wc -c` -gt 1 ]; then
+            OPTIONS=",$OPTIONS"
+     # else echo "no options provided"
+      fi
+
+   PDFGET=${TMPKEEP}`echo $PDFSRC  | md5sum | cut -c 1-4`.pdf #
+
+   if [ ! -f $PDFGET ];then
+         getFile $PDFSRC $PDFGET
+         if [ -f $PDFGET ]; then conformColor $PDFGET; fi
+   # else echo "no need to download"
+   fi
+   if [ -f $PDFGET ]; then
+      if [ "X$HREFMODE" != "XOFF"  ]; then
+            WWWLINK=`shortref $*`
+            REFCODE=`refsrc $WWWLINK | sed 's/qrmargin/qroverlay/'`
+            write2src "\newpage"
+            write2src "$REFCODE"
+      fi;   write2src "\pdfpage{$PDFGET}{$PAGES}{$OPTIONS}"
+   fi 
+
+  done )
+
+  if [ -f $SRCLIST ]; then rm $SRCLIST ;fi
+
+)}
+
+# --------------------------------------------------------------------------- #
+
+function HYPHENATE() {
+
+  N=`echo $* | sed 's/ /\n/g' | #
+     sed '/^[^0-9]\+$/d' | tail -n 1`
+  if [ "$N" == "" ];then N=1; fi
+
+  UNHYPHENATED=`echo $* | sed 's/ /\n/g' | #
+                sed '/^[0-9]\+$/d' | head -n 1 | #
+                sed 's/-//g'`
+  HYPHENATIZED=`echo $* |  sed 's/ /\n/g' | #
+                sed '/^[0-9]\+$/d' | head -n 1 | #
+                sed 's,-,\\\\\\\-,g'`
+
+  for N in `seq $N`
+   do
+      LNHYPH=`grep -n "$UNHYPHENATED" $SRCDUMP | #
+              tail -n 1 | cut -d ":" -f 1 `
+      if [ "$LNHYPH" != "" ];then
+
+         if [ "$OUTPUTFORMAT" == pdf ];then
+              sed -i "${LNHYPH}s/$UNHYPHENATED/$HYPHENATIZED/" $SRCDUMP
+         fi
+      fi
+  done
+
+}
+
+# --------------------------------------------------------------------------- #
+
+function CLEARTOLEFT() {
+
+    if [ "$OUTPUTFORMAT" == pdf ];then
+
+         write2src "\cleartoleft"
+    fi
+}
+
+# --------------------------------------------------------------------------- #
+
+function CLEARTORIGHT() {
+
+    if [ "$OUTPUTFORMAT" == pdf ];then
+
+         write2src "\cleartoright"
+    fi
+}
+
+# --------------------------------------------------------------------------- #
+
+function EMPTYPAGE() {
+
+    if [ "$OUTPUTFORMAT" == pdf ];then
+
+         write2src "\emptypage"
+    fi
+}
+# --------------------------------------------------------------------------- #
+
+function NEWPAGE() {
+
+    if [ "$OUTPUTFORMAT" == pdf ];then
+
+         write2src "\newpage"
+    fi
+}
+
+# --------------------------------------------------------------------------- #
+
+function TEXIN() {
+
+    write2src "$*"
+
+}
+
+# --------------------------------------------------------------------------- #
+

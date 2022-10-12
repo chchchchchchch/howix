@@ -1,0 +1,79 @@
+% ====================================================== %
+  \newcommand\offpagetxt[1]{
+  \begin{minipage}{10\paperwidth} % MAKE IT HUGE
+  {\vspace{-4\paperheight} % MOVE IT OUT
+   \tiny #1} % MAKE IT TINY
+  \end{minipage}}
+% ====================================================== %
+% ----
+  \newcounter{c}\newcounter{n}
+% --
+  \newcommand{\pagestep}[1]{
+   \setcounter{c}{\value{page}}
+   \ifnum\value{c}>\value{n}
+         #1
+   \else #1 \pagestep{#1}
+   \fi
+  }
+% ====================================================== %
+  \newcount\vs\newcount\vsi
+  \newcounter{first}\newcounter{last}
+ % ---------------------------------------------------- %
+   \newcommand{\showbookpages}[6]{
+    \newpage\vs\thepage
+    \setcounter{n}{\value{page}}
+    \addtocounter{n}{#3}
+    \addtocounter{n}{-1}
+    \setcounter{first}{#2}
+
+  % CHECK IF FIRST PAGE IS ODD
+  % ----
+    \vs\value{first}
+  % INCREASE BY 1 TO MATCH PREPARED PDF ORDER
+    \advance\vs by 1
+    \vsi\vs
+    \divide\vs by 2 \multiply\vs by 2
+     \ifnum\vs=\vsi 
+       \cleartoleft
+       \mlabel{#5}\label{#6}
+     \else 
+       \cleartoright\addtocounter{first}{-1}
+       \mlabel{#5}\label{#6}
+     \fi
+  % ----
+    \setcounter{last}{\value{first}}
+    \addtocounter{last}{1}
+    \pagestep{\thispagestyle{black}
+        \AddToShipoutPictureBG*{%
+        \setlength{\unitlength}{\paperwidth}
+        \put(0,0){\colorbox{black}{%
+                  \makebox(1,1.4){}}}}
+     \ifthispageodd{
+      \includepdf[pagecommand={\offpagetxt{%
+            \input{#1.\arabic{last}.verbatim}}
+            },offset=#4 15,nup=2x1,
+             pages=\arabic{first}-\arabic{last},
+             noautoscale=true,
+             scale=0.8]{#1}
+     }{
+      \includepdf[pagecommand={\offpagetxt{%
+           \input{#1.\arabic{first}.verbatim}}
+           },offset=#4 15,nup=2x1,
+            pages=\arabic{first}-\arabic{last},
+            noautoscale=true,
+            scale=0.8]{#1}
+     }
+   \vs\thepage \advance\vs by 2
+   \vsi\vs\divide\vs by 2 \multiply\vs by 2
+   \ifnum\vs=\vsi
+   \addtocounter{first}{2}\addtocounter{last}{2}
+   \fi
+    }
+   }
+ % ---------------------------------------------------- %
+% ====================================================== %
+ \newcommand{\bookpageanchor}[3]{%
+  \textit{#2}  %
+ (\textbf{#3}) %
+  (See on p.\pageref{#1})
+ }

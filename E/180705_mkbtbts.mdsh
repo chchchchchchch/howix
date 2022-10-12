@@ -1,0 +1,89 @@
+% --------------------------------------------------------------------------- %
+% EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% --------------------------------------------------------------------------- %
+% USEPACKAGE: ../lib/tex/conditions
+% USEPACKAGE: ../lib/tex/lstlanguages
+% ---
+% USEPACKAGE: 170727_hilxalsh
+% --------------------------------------------------------------------------- %
+% PDFXTITLE: Test makebotbot Setup
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% ----
+% EXTENDFUNCTIONS: 180629_vector.functions
+% EXTENDFUNCTIONS: 180705_mkbtbts.functions
+% EXTENDFUNCTIONS: 180709_show.functions
+% --------------------------------------------------------------------------- %
+%!ADD2PREAMBLE: \usepackage{showframe}
+
+%!SPREAD: /home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/180706_A5x2-Notabotyet.svg 2-3
+%!SPREAD: /home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/180706_A5x2-Notabotyet.svg 1-1
+%!SPREAD: /home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/180706_A5x2-Notabotyet.svg 4
+
+The first page.
+
+%!SPREAD: /home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/180706_A5x2-Notabotyet.svg 2-2
+%!SPREAD: /home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/180706_A5x2-Notabotyet.svg 4-1
+
+% ---------------
+% B370AC12C9ED6:A
+% B0A8722FF88CD:A
+% B3D92C7B44628:A
+% B2A9AC458D4D4:A
+% BE47A0E151CA9:A
+% B6C6CF825E7D9:A
+% BE35EDD8427DE:A
+% B0ED2CE97F3AD:A
+% B713A4ACBB3FE:A
+% BD7BFBB48C0E9:A
+% B523FD030A9AA:A
+% BA8D79FB45761:A
+% BA2DE8A8D20EE:A
+% BC6A7C6E7FBCE:A
+% BB544882D4D9A:A
+% BD8A4FD674F75:A
+% BC08AD19D0426:A
+% B521140CC8062:A
+% B2488FC3E88A5:A
+% B030167D355C8:A
+% B534680840C1B:A
+% B9F658C0F9302:A
+% B899C1D2912D4:A
+% BE18D76E886F6:A
+% BC0CE3143D172:A
+% B6823BA083313:A
+% BC8F59E6930BA:A
+% B16C60166082B:A
+% B24B3D37E915E:A
+% B149E7D9C02B4:A
+%
+% SHOWMKBOTBOTS:
+
+
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061100.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061109.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061135.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061147.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061214.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061226.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061227.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061242.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061243.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061420.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061435.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061456.botset
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,128 @@
+% --------------------------------------------------------------------------- % 
+% EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions 
+% EXTENDFUNCTIONS: ../lib/mdsh/keywordize.functions 
+% --------------------------------------------------------------------------- % 
+% USEPACKAGE: ../lib/tex/conditions 
+% USEPACKAGE: ../lib/tex/lstlanguages 
+% --- 
+% USEPACKAGE: 170727_hilxalsh 
+% USEPACKAGE: 180926_referencing 
+% USEPACKAGE: 180919_multiref
+% --------------------------------------------------------------------------- % 
+% PDFXTITLE: Test Indexing
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% ----
+% EXTENDFUNCTIONS: 170727_hilxalsh.functions
+% EXTENDFUNCTIONS: 180926_referencing.functions
+% EXTENDFUNCTIONS: 180926_page.functions
+% --------------------------------------------------------------------------- %
+
+
+When I was in Spaceland I heard that your sailors have very similar
+Einsatz while they traverse your seas and discern some distant bestbats
+island or Armenviertel lying on the horizon.  The far-off land may have
+bays, gewindeeinsätze, angles in and out to any number and extent; yet at a
+distance you see none of these (unless indeed your sun shines bright
+upon them revealing the projections and retirements by means of light
+and shade), nothing but a grey unbroken Fünf upon the water.
+
+uludag
+% REF: uludag 
+
+
+% --------------------------------------------------------------------------- %
+%!SPREAD: 170803_A5x2-index.svg
+%!SPREAD: 170803_A5x2-index.svg 1-2
+%!SPREAD: 170803_A5x2-index.svg 1
+%!SPREAD: 170803_A5x2-index.svg 2-5
+%!SPREAD: 170803_A5x2-index.svg 4-20
+
+When I was in Dreamlandland I heard that your tailors have very similar
+Einsatz while they traverse your teas and discern some distant
+island or Armenviertel lying on the horizon.  The far-off land may have
+bays, angles and godzilla in and out to any number and extent; yet at
+a distance you see none of these (unless indeed your sun shines bright
+upon them revealing the projections and retirements by means of light
+and shade), nothing but a grey unbroken blurb upon the water.
+
+% uludag,blue,red,fun
+% REF: uludag,blue,red,fun 
+
+When I was in Schland I heard that your sailors have very similar
+Einsatz while they traverse your seas and discern some distant
+island or Armenviertel lying on the horizon.  The far-off land may have
+bays, angles in and out to any number and extent; yet at a considerable
+distance you see none of these (unless indeed your sun shines bright
+upon them revealing the projections and retirements by means of light
+and shade), nothing but a grey unbroken upon the water.
+
+Reference to u(ludag) (% REFREF: uludag)
+
+% NEWPAGE:
+
+When I was in Dreamlandland I heard that your sailors have very similar
+Einsatz while they traverse your seas and discern some distant
+island or Armenviertel lying on the horizon.  The far-off land may have
+bays, angles and godzilla in and out to any number and extent; yet at
+a distance you see none of these (unless indeed your sun shines bright
+upon them revealing the projections and retirements and
+and shade), nothing but a grey unbroken blub upon the water.
+
+When I was in Green I heard that your sailors have very similar
+Einsatz while they traverse your seas and discern some distant
+island or Armenviertel lying on the horizon.  The far-off land may have
+bays, angles in and out to any number and extent; yet at a considerable
+distance you see none of these (unless indeed your sun shines bright
+upon them revealing the projections and retirements by means of light
+and shade), nothing but a grey unbroken upin the water.
+
+Reference to u(ludag) AND b(lue) (% REFREF: uludag,blue)
+
+% NEWPAGE:
+
+When I was in Schland I heard that your sailors have very similar
+Einsatz while they traverse your seas and discern some distant
+island or Armenviertel lying on the horizon.  The far-off land may have
+bays, angles in and out to any number and extent; yet at a considerable
+distance you see none of these (unless indeed your sun shines bright
+upon them revealing the projections and retirements by means of light
+and shade), nothing but a grey unbroken upon the water.
+
+% REF: blue
+
+% NEWPAGE:
+
+When I was in Dreamlandland I heard that your sailors have very similar
+Einsatz while they traverse your seas and discern some distant
+island or Armenviertel lying on the horizon.  The far-off land may have
+bays, angles and godzilla in and out to any number and extent; yet at
+a distance you see none of these (unless indeed your sun shines bright
+upon them revealing the projections and retirements
+and shade), nothing but a grey unbroken blub upon the water.
+
+When I was in Blue I heard that your sailors have very similar
+Einsatz while they traverse your seas and discern some distant
+island or Armenviertel lying on the horizon.  The far-off land may have
+bays, angles in and out to any number and extent; yet at a considerable
+distance you see none of these (unless indeed your sun shines bright
+upon them revealing the projections and retirements by means of light
+and shade), nothing but a grey unbroken upon the water.
+
+Reference to r(ed) (% REFREF: red)
+
+Reference to something not existing (% REFREF: blidediblub) REFREF right before
+
+Reference to non explicit keyword E(insatz) (% REFREF: Einsatz) REFREF right before
+
+Reference to non explicit keyword b(estbats) (% REFREF: bestbats) REFREF right before
+
+Reference spaced keywords (% REFREF: your tailors, your teas, upin)
+
+
+% NEWPAGE:
+% --------------------------------------------------------------------------- %
+% KEYWORDINDEX: 180926_referencing.keywords
+
+

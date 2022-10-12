@@ -1,0 +1,132 @@
+# --------------------------------------------------------------------------- #
+
+function KEYWORDINDEX() {
+
+ # SRCBASE=`echo $* | sed 's/ //g'`;SRCPLUS="$SRCBASE/export/txt"
+ # REPLYPLUS=`curl -s -o /dev/null -IL -w "%{http_code}" $SRCPLUS`
+ # if [ $REPLYPLUS == '200' ]; then
+ #      SRCGET="$SRCPLUS";else SRCGET="$SRCBASE" ; fi
+ # KWID=`echo keywords | md5sum | cut -c 1-8`
+ # echo "${KWID}:Keyword Index" >> ${TMPID}.toc
+ # echo "${KWID}:4:$*"          >> ${TMPID}.index
+ #
+ # # AND ACTION
+ #   KEYWORDIZE $SRCGET $KWID
+
+   # AND ACTION
+     KEYWORDIZE $1
+
+}
+
+# --------------------------------------------------------------------------- #
+
+function REF() {
+
+  PROTECTSPACE="S${RANDOM}P"
+  KEYWORDS=`echo $1 | sed "s/ /$PROTECTSPACE/g"`
+  COLLECTIDS="";MLABELTEX="" # RESET
+
+  for KEYWORD in `echo $KEYWORDS | #
+                  sed 's/,/\n/g'`  #
+   do   KEYWORD=`echo $KEYWORD | #
+                 sed "s/$PROTECTSPACE/ /g" | #
+                 sed 's/^[ ]*//'`
+          KEYID=`basename $KEYWORD  | #
+                 sed 's/ //g'       | #              
+                 md5sum | cut -c 1-8` #
+     COLLECTIDS="$COLLECTIDS $KEYID"
+   # ----
+   # ADD TO GLOBAL KEYWORD INDEX
+   # ----
+     echo ":REF::$KEYWORD" >> $TMPID.keywords
+  done
+
+  for MREFID in $COLLECTIDS
+   do MLABELTEX="$MLABELTEX\mlabel{${MREFID}}"
+  done
+
+  write2src "\keyword{$MLABELTEX}{}"
+
+}
+
+# --------------------------------------------------------------------------- #
+
+function REFREF() {
+
+  PROTECTSPACE="S${RANDOM}P"
+  KEYWORDS=`echo $1 | sed "s/ /$PROTECTSPACE/g"`
+  COLLECTIDS="";MREFIDS="";MREFTEX="" # RESET
+
+  for KEYWORD in `echo $KEYWORDS | #
+                  sed 's/,/\n/g'`  #
+   do   KEYWORD=`echo $KEYWORD | #
+                 sed "s/$PROTECTSPACE/ /g" | #
+                 sed 's/^[ ]*//'`
+          KEYID=`basename $KEYWORD  | #
+                 sed 's/ //g'       | #              
+                 md5sum | cut -c 1-8` #
+     COLLECTIDS="$COLLECTIDS $KEYID"
+   # ----
+   # ADD TO GLOBAL KEYWORD INDEX
+   # ----
+     echo ":REF::$KEYWORD" >> $TMPID.keywords
+  done
+
+  for MREFID in $COLLECTIDS
+   do MREFTEX="$MREFTEX\mref{${MREFID}}"
+      MREFIDS="$MREFIDS ${MREFID}" 
+  done
+
+  ALLMLABELS=`echo $MREFIDS | sed 's/ /|/g'`
+  KEYREFID=`echo $ALLMLABELS | md5sum | cut -c 1-8`
+
+  echo "$ALLMLABELS" >> $TMPID.mlabels
+  write2src "\showrefs{$KEYREFID}{$MREFTEX}"
+
+}
+
+# --------------------------------------------------------------------------- #
+
+# --------------------------------------------------------------------------- #
+ # ------------------------------------------------------------------------- #
+   AUXFILE="${TMPID}.aux"
+ # ------------------------------------------------------------------------- #
+   function formatMlabels() {
+  
+    if [ -f "$AUXFILE" ] && [ -f "$TMPID.mlabels" ];then
+  
+          for ALLMLABELS in `cat $TMPID.mlabels`
+           do
+              ALLMID=`echo $ALLMLABELS | md5sum | cut -c 1-8`
+              MREFAUX="${TMPID}.mref$ALLMID.aux"
+              MREFS="";LASTMATCH="" # RESET
+              for PAGEMATCH in `egrep $ALLMLABELS $AUXFILE | #
+                                cut -d "{" -f 5 | cut -d "}" -f 1 | #
+                                sort -un`
+               do if [ "$LASTMATCH" = $((PAGEMATCH - 1)) ];then
+                       MREFS="${MREFS}X${PAGEMATCH}"
+                  else MREFS="${MREFS} $PAGEMATCH"
+                  fi;  LASTMATCH="$PAGEMATCH"
+              done
+             
+              echo $MREFS | #
+              sed 's/\(\b[0-9]\+\)\([X0-9]*\)\(X[0-9]\+\)/\1\3/g' | #
+              sed 's/X/-/g' | sed 's/ /,~/g' > $MREFAUX
+   
+            # ---- DELETE IF EMPTY
+              if [ -f "$MREFAUX" ] &&
+                 [ `wc -c $MREFAUX | #
+                    cut -d " " -f 1` -lt 2 ]
+              then rm $MREFAUX # echo "$MREFAUX IS EMPTY"
+              fi 
+         done
+    fi
+   }
+ # ------------------------------------------------------------------------- #
+ # ADD TO MID OUTPUT HOOK
+ # ------------------------------------------------------------------------- #
+  if [ `echo $midOutput | grep formatMlabels | wc -l ` -lt 1 ]
+  then  midOutput="$midOutput formatMlabels"
+  fi
+ # ------------------------------------------------------------------------- #
+# --------------------------------------------------------------------------- #

@@ -1,0 +1,116 @@
+# --------------------------------------------------------------------------- #
+# OVERWRITE
+# --------------------------------------------------------------------------- #
+# ../lib/mdsh/href.functions 
+# --------------------------------------------------------------------------- #
+  SHORTURLBASE="http://lfkn.de"
+  QRDEKOSRC=$MAINPATH/151007_qrdeko-simple.svg
+# --------------------------------------------------------------------------- #
+  function refsrc() {
+
+    mkqr $* > /dev/null 2>&1
+    REFCODE="\qrmargin{$QRPDF}{$QRTXT}"
+    echo "$REFCODE"
+
+  }
+# --------------------------------------------------------------------------- #
+
+function URLPAGE() {
+
+     URLIN=`echo $* | sed 's/ /\n/g' | #
+            grep -v -- "^--" | grep "^http" |#
+            head -n 1`
+   LONGURL=`curl -sIL $URLIN                   | # CURL URL
+            sed "1s|^.*$|Location: $URLIN\n&|" | # APPEND INPUT TO ENSURE RESULT
+            tr -d '\015'                       | # CONFORM DOS END OF LINE
+            grep ^Location                     | # SELECT LOCATION
+            cut -d ":" -f 2-                   | # CUT SECOND FIELD
+            tail -n 1                          | # SELECT LAST LINE
+            sed 's,[ \t]*,,'                   | # REMOVE ALL SPACES
+            sed 's,/$,,'                       | # REMOVE TRAILING SLASH
+            sed "s,^${SHORTURLBASE}$,,"`         # DELETE SHORTURLBASE ONLY
+   SHORTURL="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" # RESET AND MAKE LONG
+      URLID=`echo $LONGURL | md5sum | cut -c 1-8`
+
+    MKQR=`refsrc $LONGURL`  #
+   QRPDF=`echo $MKQR      | # 
+          cut -d "{" -f 2 | #
+          cut -d "}" -f 1`  #
+   QRURL=`echo $MKQR      | # 
+          cut -d "}" -f 2 | #
+          cut -d "{" -f 2`  #
+   QRURL="$SHORTURLBASE/$QRURL"
+   
+   if [ "$LONGURL" != "$URLIN" ]
+   then SHORTURL=`echo $URLIN | sed 's/^[ ]*//'`;fi
+   if [ `echo $SHORTURL | wc -c` -gt 30 ];then SHORTURL="$QRURL";fi
+
+   DUMPHTML="$TMPID.$URLID.html"
+   if [ ! -f "$DUMPHTML" ];then curl -sL $LONGURL > $DUMPHTML;fi
+   if [   -f "$DUMPHTML" ]
+   then   H1=`cat $DUMPHTML            | # USELESS USE OF CAT
+              sed 's/<h[1-4]/\n&/Ig'   | #
+              sed 's/<\/h[1-4]>/&\n/I' | #
+              grep -i "^<h1"           | #
+              head -n 1                | #
+              cut -d ">" -f 2          | #
+              cut -d "<" -f 1`           #
+   HTMLTITLE=`cat $DUMPHTML            | # USELESS USE OF CAT
+              sed 's/<title/\n&/Ig'    | #
+              sed 's/<\/title>/&\n/i'  | #
+              grep -i "^<title"        | #
+              head -n 1                | # 
+              cut -d ">" -f 2          | #
+              cut -d "<" -f 1`           #
+    if [ `echo "$H1" | wc -c` -gt 1 ] &&
+       [ `echo "$HTMLTITLE" | grep "$H1" | wc -l` -gt 0 ]
+    then  URLTITLE=`echo $H1 | html2text -ascii | #
+                    sed ":a;N;\$!ba;s/\n/ /g"   | #
+                    fold -s -w 80 | head -n 1`    #
+     else URLTITLE=`echo $HTMLTITLE             | #
+                    html2text -ascii            | #
+                    sed ":a;N;\$!ba;s/\n/ /g"   | #
+                    fold -s -w 80 | head -n 1`    #
+    fi; if [ `echo $URLTITLE | wc -c` -gt 70 ]
+        then URLTITLE=`echo $URLTITLE | #
+                       cut -c 1-70    | #
+                       sed 's/$/.../'`  #
+        fi
+
+    html2text -ascii $DUMPHTML | #
+    iconv -f latin1 -t ascii//TRANSLIT | #
+    sed 's/[^a-zA-Z ]/ /g' | #
+    tr -s ' ' > $TMPID.$URLID.verbatim
+
+   else      URLTITLE=""
+  fi
+
+
+ # ---- INJECT CUSTOM REF
+   if [ `echo $* | sed 's/--/\n&/g' | sed 's/ /\n/g' | #
+         grep -- "--ref" | wc -l` -gt 0 ];then
+         URLREF=`echo $* | sed 's/--/\n&/g' | sed 's/ /\n/g'   | #
+                 grep -- "--ref" | head -n 1 | cut -d "=" -f 2-` #
+         MREFID=`basename $URLREF   | #
+                 sed 's/ //g'       | #              
+                 md5sum | cut -c 1-8` #
+         echo "$URLREF" >> $TMPID.$URLID.verbatim
+         echo "\keyword{\mlabel{${MREFID}}}{}" >> $TMPID.$URLID.verbatim
+   fi
+ # ---- USE URL AS TITLE
+   if [ `echo $* | sed 's/--/\n&/g' | sed 's/ /\n/g' | #
+         grep -- "--urltitle" | wc -l` -gt 0 ];then
+         URLTITLE=""
+   fi
+ # ----
+
+   LONGURL=`echo $LONGURL  | pandoc -r markdown -w latex`
+  SHORTURL=`echo $SHORTURL | pandoc -r markdown -w latex`
+
+  echo "% $TMPID.html$URLID.verbatim" >> $SRCDUMP
+  write2src "\urlpage{$URLTITLE}{$SHORTURL}{$LONGURL}{$URLID}{$QRPDF}"
+
+}
+
+# --------------------------------------------------------------------------- #
+

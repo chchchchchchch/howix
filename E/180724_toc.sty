@@ -1,0 +1,55 @@
+% --------------------------------------------------------------------------- %
+%  T A B L E   O F   C O N T E N T S
+% --------------------------------------------------------------------------- %
+  % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+   \newcounter{toccheck}\setcounter{toccheck}{1}
+   \newcommand{\tocitem}[3]{ %
+    \ifnum\numexpr#1 < 2
+     \setcounter{toccheck}{1}%
+  
+     \justifying\setlength{\parindent}{0pt}
+    {\small\textbf{\pageref{#3}}~~%
+     \textbf{#2}~::~}%                             % 1 = GROUPING
+     \else
+      \ifnum\numexpr#1 < 3
+       \setcounter{toccheck}{1}
+        {\small#2~~\textbf{\pageref{#3}}}          % 2 = METHOD
+      \else
+       \ifnum\numexpr#1 < 4
+        \setcounter{toccheck}{1}
+        {\small{\fontfamily{iad}\selectfont%
+         #2~}\textbf{\pageref{#3}}}                % 3 = ATTACHMENT
+       \else
+         \ifnum\value{toccheck} < 2
+  
+         \raggedright
+        {\mbox{{\small#2~~\textbf{\pageref{#3}}}}} % 4 = STANDARDS
+         \else
+        {\mbox{{\small#2~~\textbf{\pageref{#3}}}}} % 4 = STANDARDS
+         \fi
+        \stepcounter{toccheck}  % INCREASE COUNTER ..
+       \fi
+      \fi
+    \fi
+ 
+    }
+  % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+    \newenvironment{tocpage}{%
+     \pagebreak[4] %
+     \cleartoleft %
+     \pagecolor{black}
+     \vspace*{-1cm}
+     \thispagestyle{empty}
+     \color{white}
+     \enlargethispage{1cm}
+     \uchyph=1
+     \setstretch{.9}
+    }
+    {\pagebreak[4]
+     \newpage
+     \nopagecolor{}
+     \uchyph=0
+    }
+  % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+% --------------------------------------------------------------------------- %
+

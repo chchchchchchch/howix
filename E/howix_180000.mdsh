@@ -1,0 +1,129 @@
+% --------------------------------------------------------------------------- %
+% EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% EXTENDFUNCTIONS: ../lib/mdsh/keywordize.functions
+% --------------------------------------------------------------------------- %
+% USEPACKAGE: ../lib/tex/conditions
+% USEPACKAGE: ../lib/tex/lstlanguages
+% ---
+% DOCUMENTCLASS: [fontsize=12pt,cleardoublepage=empty]{scrbook}
+% --------------------------------------------------------------------------- %
+% PDFXTITLE: How I X ...
+% PDFXAUTHOR: Christoph Haag
+% PDFXORG: LAFKON Publishing
+% MKPDFXCOMPLIANT:
+% ----
+% EXTENDFUNCTIONS: 180629_vector.functions
+% EXTENDFUNCTIONS: 180709_show.functions
+% EXTENDFUNCTIONS: 180710_srccode.functions
+% EXTENDFUNCTIONS: 180712_showbook.functions
+% EXTENDFUNCTIONS: 180926_referencing.functions
+% EXTENDFUNCTIONS: 180730_hilxalsh.functions
+% EXTENDFUNCTIONS: 180925_urlpage.functions
+% ----
+% USEPACKAGE: 180712_showbook
+% USEPACKAGE: 180926_referencing
+% USEPACKAGE: 180919_multiref
+% USEPACKAGE: 180710_srccode
+% USEPACKAGE: 180710_howix
+% USEPACKAGE: 180925_urlpage
+% --------------------------------------------------------------------------- %
+%!ADD2PREAMBLE: \usepackage{showframe}
+
+When I was in Spaceland I heard that your sailors have very similar
+Einsatz while they traverse your seas and discern some distant
+island or Armenviertel[^]{lying on the horizon}.  The far-off land may have
+bays, Gewindeeinsätze, angles in and out to any number and extent; yet at a
+distance you see none of these (unless indeed your sun shines bright
+upon them revealing the projections and retirements by means of light
+and shade), nothing but a grey unbroken Fünf upon the water.
+% BOOKREF: http://lfkn.de/conversations-pdf 1
+
+% -----
+% F:https://git.io/160201_hilxalsh.d91bbc.mdsh 1-2
+% F:https://git.io/160201_hilxalsh.d91bbc.mdsh 4-50
+% SRCCODE: bashcode
+
+% URLPAGE: http://cramer.pleintekst.nl/essays/free_software_as_text/free_software_as_text.txt --ref=fcramer
+
+% BOOKREF: http://lfkn.de/conversations-pdf 107-110
+% BOOKREF: http://lfkn.de/conversations-pdf 2,108,126
+% BOOKREF: http://lfkn.de/conversations-pdf 2-7,102,160
+
+Konservationen 2-7,102,160 (% BOOKREF: http://lfkn.de/conversations-pdf 2-7,102,160)
+
+% SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 1-4 --nofloat
+
+Alorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+refers to complete Kleiner section (% BOOKREF: conversations-kleiner)
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+refers to Kleiner section page 192-193 (% BOOKREF: conversations-kleiner 192-193)
+
+% ----
+% F:../lib/mdsh/mk.sh 1-36
+% SRCCODE: bashcode
+ 
+% % SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 126-128 --nofloat
+% 
+% Blorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+% tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+% quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+% consequat. Duis aute irure dolor in (% BOOKREF: conversations-pdf 2,108,126)
+% cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+% non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+% 
+% % SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 102-109
+% 
+% Clorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+% tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+% quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+% cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+% non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+% 
+% % SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 185-193 --refid=conversations-kleiner
+% 
+% % SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 3-4 --keywords=blue,nice,flow --nofloat
+% % SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 3-4 --refid=conversations-6
+% % SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 3-4 --refhere
+% 
+% Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+% tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+% quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+% consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+% cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+% non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+% 
+% % SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 20-21
+% 
+% Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+% tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+% quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+% consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+% cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+% non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+% 
+% 
+% % SHOWBOOKPAGES: http://lfkn.de/conversations-pdf 37-39
+% % SHOWBOOKPAGES: http://lfkn.de/tgsoguide-pdf 37-39
+% 
+% 
+% Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+% tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+% quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+% consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+% cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+% non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+% 
+% % SHOWBOOKPAGES: http://lfkn.de/hilxalsh-pdf 4-6
+% 
+% % SHOWBOOKPAGES: http://lfkn.de/hilxalsh-pdf 190
+% % SHOWBOOKPAGES: http://lfkn.de/hilxalsh-pdf 207
+% % SHOWBOOKPAGES: http://lfkn.de/hilxalsh-pdf 252-272
+
+
+% NEWPAGE:
+% KEYWORDINDEX: 180926_referencing.keywords
+

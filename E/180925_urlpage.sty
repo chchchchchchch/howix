@@ -1,0 +1,92 @@
+  \usepackage{seqsplit}
+  \usepackage{adjustbox}
+% --------------------------------------------------------------------------- %
+  % ====================================================== %
+    \newcommand\offpagetxt[1]{
+    \AddToShipoutPictureBG*{%
+      \begin{minipage}{3\paperwidth}% MAKE IT HUGE
+      \vspace{2\paperheight}% MOVE IT OUT
+             {\scalefont{0.01}#1}% MAKE IT TINY
+     \end{minipage}%
+     }%
+    }
+  % ====================================================== %
+% --------------------------------------------------------------------------- %
+  \newcommand{\urlpage}[5]{%
+    \afterpage{
+    \newpage
+    \IfFileExists{\jobname.#4.verbatim}{%
+    \offpagetxt{\input{\jobname.#4.verbatim}}
+    }{}%
+    \if\relax\detokenize{#1}\relax
+    % #1 EMPTY = NO TITLE PROVIDED
+    % DISPLAY EXPANDED URL
+    \begin{minipage}[t]{.98\textwidth}
+    {\setstretch{3}
+     {\scalefont{3.0}%
+      \fontfamily{grm}\selectfont%
+      \textls*[-30]{\seqsplit{#3}}
+      \nobreak\hspace{-.4em}%
+      \raisebox{.2em}{\footnotemark}}%
+    
+    }
+    \end{minipage}
+    % QR CODE
+      \vfill
+      \hspace{.5em}
+                        % left bottom right top
+      \includegraphics[trim=50 35 52 56, clip,
+                       width=.15\textwidth]{#5}
+      \vfill
+    % AND SHORT URL AS FOOTNOTE 
+      \vfill
+      {\scalefont{1.6}%
+       \fontfamily{grm}\selectfont%
+       \hspace{-3.7em}
+       \makebox[3.1em][r]{%
+       \textsuperscript{%
+        \scalefont{1.5}\thefootnote}%
+       \hspace{.2em}}%
+      %\seqsplit{#2}
+       \adjustbox{width=\textwidth}{#2}
+      }%
+    
+    \else
+    % #1 NOT EMPTY = TITLE PROVIDED
+    % DISPLAY PAGE TITLE
+    {\setstretch{3.0}
+      % https://groups.google.com/forum/#!topic/comp.text.tex/e6IhkNjVOX8
+      \begin{flushleft}\rightskip=0pt plus .2\hsize{
+      \fontfamily{pju}\selectfont
+      \scalefont{4}#1%
+      \nobreak}{\scalefont{3}\hspace{.2em}\footnotemark}%
+      \end{flushleft}
+    }%
+    % QR CODE
+      \vfill
+      \hspace{.5em}
+                        % left bottom right top
+      \includegraphics[trim=50 35 52 56, clip,
+                       width=.15\textwidth]{#5}
+      \vfill
+    % AND EXPANDED URL AS FOOTNOTE
+      \vfill
+      {\setstretch{2.0}
+      {\scalefont{2.0}%
+       \fontfamily{grm}\selectfont%
+       \hspace{-3.7em}
+       \makebox[3.1em][r]{%
+       \fontfamily{pju}\selectfont%
+       \textsuperscript{%
+        \scalefont{1.5}\thefootnote}%
+       \hspace{.2em}}%
+       \seqsplit{#3}
+      }%
+    
+    }%
+    \fi
+    \newpage
+   }
+  }
+% --------------------------------------------------------------------------- %
+
