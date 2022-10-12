@@ -11,7 +11,7 @@
 % USEPACKAGE: 180919_multiref
 % USEPACKAGE: 180925_urlpage
 % ---
-% DOCUMENTCLASS: [fontsize=12pt,cleardoublepage=empty]{scrbook}
+% DOCUMENTCLASS: [fontsize=11pt,cleardoublepage=empty]{scrbook}
 % --------------------------------------------------------------------------- %
 % PDFXTITLE: TEST URLPAGE
 % PDFXAUTHOR: Christoph Haag

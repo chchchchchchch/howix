@@ -5,23 +5,92 @@
 % ---
 % USEPACKAGE: 180710_howix
 % --------------------------------------------------------------------------- %
-% PDFXTITLE: Porting "How I..." Functions
+% PDFXTITLE: select/port "How I..." content/functions
 % PDFXAUTHOR: Christoph Haag
 % PDFXORG: LAFKON Publishing
 % MKPDFXCOMPLIANT:
 % ----
 % EXTENDFUNCTIONS: 180730_hilxalsh.functions
+% EXTENDFUNCTIONS: 180709_show.functions
+% ----
+% USEPACKAGE: ../lib/tex/lstlanguages
+% USEPACKAGE: 180710_srccode
+% EXTENDFUNCTIONS: 180710_srccode.functions
 % --------------------------------------------------------------------------- %
 %!ADD2PREAMBLE: \usepackage{showframe}
 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+% OPENING NOTES
+% --------------------------------------------------------------------------- %
+% SPREAD: http://freeze.sh/git/7a9d6fe/160128_A5x2-histlpalsh.svg 2
+% SPREAD: http://freeze.sh/git/d6d9f5e/160128_A5x2-histlpalsh.svg 5
 
+% INTRODUCTION
+% --------------------------------------------------------------------------- %
+
+% How I stopped
+% to learn programmming
+% and love the Bash
+% OR:
+% How I learned
+% to stop programmming
+% and love the Bash
+
+While looking for a personal position within increasingly homogenized
+computational environments I discovered the world of free culture some
+years ago. From the direction of DIY and alternative copyright practises
+I proceeded slowly to the technological aspects of free software.
+The book _How I stopped to learn programming and love the Bash_
+collects and revisits memories of growing within and into free software,
+memories of expanding my personal comfort zone. The GNU Bourne-Again SHell
+was and still is a big inspiration towards a practise, not so much focussed
+on 'writing code' but 'embracing connectivity'.
+
+This exploration is driven by the naive desire for a Re-De-McDonaldization
+of my personal practise. The disclosure of tools and doing, to be
+again more, than pushing buttons on the surface of black boxes.
+What `{c,w,sh}ould` this be? I don't know, but I'm curious.
+Digital, intermediary, networked. Sometimes connective, sometimes
+disruptive. Write, make, arrange, process, imagine symbols, operators,
+software, texts, interfaces, relations. Fragile and situative,
+ephemeral and fun. Publishing adventures beyond the desktop with software
+as operational collage. Time will tell.
+
+This book collects documentation, ideas, software and experiments made
+between 2008 and 2016. Furthermore you'll find inspirational writings on
+different aspects of digital culture, generously made available by their
+authors under copyleft licenses.
+
+% HYPHENATE: eph-em-eral
+
+% STRANGELOVE
+% --------------------------------------------------------------------------- %
+% SPREAD: http://freeze.sh/git/7a9d6fe/160128_A5x2-histlpalsh.svg 7-9
+
+% INTRODUCTION AS SOURCE CODE
+% --------------------------------------------------------------------------- %
+% SRCCODE: -F=180731_hilxalsh.mdsh 23-72
+
+
+
+% =========================================================================== %
+%  T H I S   B O O K   S E T U P
+% =========================================================================== %
+% SPREAD: http://github.com/chchchchchchch/DOK/raw/d185293/EDIT/160110_A5x2-etherpash.svg 1-8
+
+
+
+
+
+% =========================================================================== %
+%  L I N U X   A U D I O   C O N F E R E N C E   2 0 0 8
+% =========================================================================== %
+
+% --------------------------- 
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_80.pdf
+% PP:
+
+% HREF: OFF
 % --------------------------- 
 % http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_37.pdf
 % http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_96.pdf
@@ -29,8 +98,485 @@ non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 % http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_40.pdf
 % PP:
 
+% Anthony's Keynote
+% -----------------
+% INCLUDE: https://github.com/christop/DOK/raw/a34c29b/EDIT/080000_lac.txt 67-111
+  http://lac.linuxaudio.org/2008/khm/rough_cuts/2008-02-28/2008-0228-1059-Martin_Rumori-Frank_Barknecht-LAC2008_Opening.ogv
+
+% SPREAD: http://github.com/christop/DOK/raw/6394dea/EDIT/151116_A5x2-lac08.svg 7-8
+
+% Making connections, somehow structured, yet surprising, maybe ambitious.
+% Modular approach as way of thinking, not as question of your favourite
+% software application. Development in terms of relations and connections,
+% talk-to rather than plug-in? Practise of alternative software at the
+% Klanglabor, discoursive practise in and around software
+
+% SPREAD: http://github.com/christop/DOK/raw/4e9e11b/EDIT/160310_A5x2-lac08-softwareused.svg
+% SPREAD: http://github.com/christop/DOK/raw/4e9e11b/EDIT/160110_A5x2-lac08-setup.svg 1-2
+
+% --------------------------------------------------------------------------- %
+% POSTER SELECTION
+% --------------------------------------------------------------------------- %
+
 % HREF: ON
 % --------------------------- 
 % http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_59.pdf
 % http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_22.pdf
 % PP:
+
+% HREF: OFF
+% --------------------------- 
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_28.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_80.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_42.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_54.pdf
+% PP:
+
+% HREF: ON
+% --------------------------- 
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_78.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_95.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_89.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_16.pdf
+% PP:
+
+% SPREAD: http://github.com/christop/DOK/raw/6394dea/EDIT/151116_A5x2-lac08.svg 5-6
+
+% HREF: OFF
+% --------------------------- 
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_70.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_15.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_67.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_02.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_82.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_75.pdf
+% PP:
+
+% SPREAD: http://github.com/christop/DOK/raw/6394dea/EDIT/151116_A5x2-lac08.svg 13-20
+
+% --------------------------- 
+% http://forkable.eu/g/lacmachine/o/non-free/A3_Stadtgarten/plakatlac@stadtgarten_A3_34.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3_Stadtgarten/plakatlac@stadtgarten_A3_71.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_14.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_20.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_98.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_77.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_56.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_73.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_26.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_91.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_75.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_55.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_84.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_57.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_60.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_28.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_03.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_79.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_89.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_95.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_87.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_15.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_34.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_43.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_09.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_70.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_80.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_78.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_38.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_24.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_29.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_86.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_63.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_67.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_52.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_94.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_14.pdf
+% http://forkable.eu/g/lacmachine/o/non-free/A3/plakatlac2008_A3_24.pdf
+% PP:
+
+
+
+
+% =========================================================================== %
+%  I N - B E T W E E N   D E S I G N (MAKE ART 2010)
+% =========================================================================== %
+
+% HREF: OFF
+% ---------
+% http://www.forkable.eu/g/i-bd/o/non-free/fr/A3/recto/1016-004831.pdf
+% PP:
+
+% A B O U T   T H E   F E S T I V A L
+% -----------------------------------
+% HREF: ON
+% SRCCODE: quaverbatim -F=https://raw.githubusercontent.com/christop/DOK/491b47a/EDIT/100000_i-bd.txt 6-27
+
+% E A R L Y   B I R D S
+% --------------------- 
+% HREF: OFF
+% --------------------- 
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/i-bd_100918-210346.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/i-bd_100918-210021.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/i-bd_100918-210638.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/i-bd_100918-211502.pdf
+% PP:
+% --------------------------- 
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/i-bd_100918-212914.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/i-bd_100918-212902.pdf
+% PP:
+ 
+% P R O G R A M   +   M A P S
+% ---------------------------
+% HREF: ON
+% SRCCODE: quaverbatim -F=https://raw.githubusercontent.com/christop/DOK/491b47a/EDIT/100000_i-bd.txt 95-305
+% HREF: OFF
+% SRCCODE: quaverbatim -F=https://raw.githubusercontent.com/christop/DOK/491b47a/EDIT/100000_i-bd.txt 311-359
+% PDF: http://forkable.eu/g/i-bd/o/non-free/fr/A3/verso/101018-125259.pdf 1
+% PDF: http://forkable.eu/g/i-bd/o/non-free/fr/A3/verso/101018-125259.pdf 4
+% HREF: ON
+ 
+% --------------------------- 
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0829-161547.pdf 
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0829-162650.pdf
+%
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0829-163224.pdf
+% PP:
+ 
+% SPREAD: http://github.com/christop/DOK/raw/5c27d8a/EDIT/160310_A5x2-i-bd-softwareused.svg 1-3
+ 
+% HREF: OFF
+% --------------------------- 
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0929-104210.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0929-105022.pdf
+% 
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0929-103916.pdf
+% PP:
+ 
+% HREF: ON
+% --------------------------- 
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-152813.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-162804.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-162002.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-163953.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-163444.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-163006.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-165636.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-124000.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-124202.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-124756.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-124333.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-142702.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-142822.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-143555.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-143436.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-150342.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-145847.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-150427.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-151100.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-203326.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-202629.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-125056.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-123701.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-152813.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-162804.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-162002.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-163953.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-142822.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-143555.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-143436.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-150342.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1004-145847.pdf
+% PP:
+ 
+% HREF: OFF
+
+% --------------------------- 
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-133847.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-155948.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1011-213741.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1011-212735.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/generators/i-bd/o/non-free/fr/A3/recto/1015-234346.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-134453.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-160820.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-153744.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-155518.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-160152.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-151310.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-135832.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/1005-160113.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/generators/i-bd/o/non-free/fr/A3/recto/1015-232428.pdf
+% http://forkable.eu/generators/i-bd/o/non-free/fr/A3/recto/1015-232547.pdf
+% http://forkable.eu/generators/i-bd/o/non-free/fr/A3/recto/1015-233052.pdf
+% http://forkable.eu/generators/i-bd/o/non-free/fr/A3/recto/1015-234256.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0830-195347.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0831-182451.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0831-183843.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0831-182954.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0928-153510.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0831-192912.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0831-192242.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0831-194658.pdf
+% http://forkable.eu/g/i-bd/doc/i/non-free/v/posterevolution/0831-193608.pdf
+% PP:
+
+
+
+% =========================================================================== %
+%  L G M   2 0 1 3 (READ/WRITE)
+% =========================================================================== %
+
+% SPREAD: https://gitlab.com/chch/DOK/raw/5e37782/EDIT/160110_A5x2-rw-setup.svg 2-6
+% SPREAD: https://gitlab.com/chch/DOK/raw/5e37782/EDIT/160309_A5x2-rw-softwareused.svg
+
+% HREF: OFF
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-1.svg 1
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-1.svg 14
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-1.svg 27-28
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-1.svg 77-78
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-1.svg 17
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-1.svg 40
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-1.svg 83
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-1.svg 125
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-1.svg 131
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-1.svg 133
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-1.svg 143-144
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-2.svg 83-84
+% SPREAD: http://gitlab.com/chch/DOK/raw/787e46ab/EDIT/160306_A5x2-rw-qa-2.svg 131-132
+
+% SPREAD:  https://gitlab.com/chch/DOK/raw/be39a30/EDIT/160306_A5x2-rw-people.svg 1
+
+
+
+% =========================================================================== %
+%  C H M O D  + X
+% =========================================================================== %
+% HREF: OFF
+
+% CLEARTOLEFT:
+
+% SPREAD: https://gitlab.com/chch/DOK/raw/3ba144c/EDIT/151127_A5x2-chmodx-screenshots-01.svg 1
+
+% --------------------------- 
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100116/test_100116_2349.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100117/test_100117_1853.pdf
+%
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100117/test_100117_0047.pdf
+% PP:
+
+% HREF: ON
+% --------------------------- 
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100116/test_100116_1825.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100116/test_100116_2032.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100116/test_100116_1828.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100116/test_100116_2015.pdf
+% PP:
+
+% ---------
+% http://forkable.eu/g/chmod+x/o/free/nl/A2/chmod+x_nl--008.pdf
+% PP:
+
+% SPREAD: https://gitlab.com/chch/DOK/raw/3ba144c/EDIT/151127_A5x2-chmodx-screenshots-01.svg 3-4
+% SPREAD: https://gitlab.com/chch/DOK/raw/3ba144c/EDIT/151127_A5x2-chmodx-screenshots-02.svg 1-2
+
+% --------------------------- 
+% http://forkable.eu/g/chmod+x/o/non-free/en/A2/chmod+x_en--008.pdf
+% http://forkable.eu/g/chmod+x/o/non-free/en/A2/chmod+x_en--090.pdf
+% PP:
+
+% SPREAD: https://gitlab.com/chch/DOK/raw/3ba144c/EDIT/160110_A5x2-chmodx-setup.svg
+% HREF: OFF
+
+% --------------------------- 
+% http://forkable.eu/g/chmod+x/o/non-free/en/A2/chmod+x_en--072.pdf
+% http://forkable.eu/g/chmod+x/o/non-free/nl/A2/chmod+x_nl--089.pdf
+% http://forkable.eu/g/chmod+x/o/non-free/en/A2/chmod+x_en--109.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/chmod+x/o/non-free/en/A2/chmod+x_en--070.pdf
+% http://forkable.eu/g/chmod+x/o/non-free/en/A2/chmod+x_en--057.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/chmod+x/o/non-free/en/A2/chmod+x_en--122.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/chmod+x/o/non-free/nl/A2/chmod+x_nl--119.pdf
+% http://forkable.eu/g/chmod+x/o/non-free/nl/A2/chmod+x_nl--144.pdf
+% PP:
+
+% SPREAD: https://gitlab.com/chch/DOK/raw/3ba144c/EDIT/151125_A5x2-chmodx.svg
+% SPREAD: https://gitlab.com/chch/DOK/raw/3ba144c/EDIT/151127_A5x2-chmodx-screenshots-03.svg
+
+% HREF: ON
+% --------------------------- 
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100111/chmod_loves_richard.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100111/chmod_loves_donald.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100113-1749/chmod+x_loves_richard-e4464f0dbb.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100111/chmod_loves_leslie.pdf
+% PP:
+
+% HREF: OFF
+
+% --------------------------- 
+%
+%
+%
+%
+%
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100113-1749/chmod+x_loves_theodore-817af84313.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100113-1749/chmod+x_loves_luther-6038f74f85.pdf
+%
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100113-1749/chmod+x_loves_paris-bf3f16601c.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100113-1749/chmod+x_loves_britney-3738cdabe4.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100113-1707/chmod+x_loves_marloes-964ab6ccb8.pdf
+%
+%
+%
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100113-1749/chmod+x_loves_aymeric-0a54388303.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100113-1749/chmod+x_loves_goto10-a30a6b5508.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100113-1749/chmod+x_loves_makeart-99fdb01bc8.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100113-1749/chmod+x_loves_nettime-dfbce46089.pdf
+% http://forkable.eu/g/chmod+x/doc/i/non-free/v/100111/chmod_loves_nettime.pdf
+% PP:
+
+% SPREAD: https://gitlab.com/chch/DOK/raw/3ba144c/EDIT/160310_A5x2-chmodx-pp.svg 1-2
+
+
+
+% =========================================================================== %
+%  W H A T   T H E   F O R K ? !
+% =========================================================================== %
+
+% CLEARTOLEFT:
+% HREF: ON
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090912/A3/wtf_xpm_0_08_009-7.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090915/A3/wtf_flg_0_02_081-6.pdf
+% PP:
+
+% HREF: OFF
+% SRCCODE: quaverbatim -F=https://raw.githubusercontent.com/christop/DOK/b701b02/EDIT/090000_wtf.txt 460-486
+% SRCCODE:  -F=https://raw.githubusercontent.com/christop/DOK/b701b02/EDIT/090000_wtf.txt 490-510
+
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090802/A2/wtf_05.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090802/A2/wtf_06.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090802/A2/wtf_02.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090802/A2/wtf_01.pdf
+% 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090802/A2/wtf_03.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090802/A2/wtf_14.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090802/A2/wtf_15.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090802/A2/wtf_13.pdf
+%
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090729/A2/wtf_04_03.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090729/A2/wtf_02_01.pdf
+% PP:
+
+% SPREAD:  http://gitlab.com/chch/DOK/raw/35ff8eb/EDIT/160110_A5x2-wtf-setup.svg
+
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090729/A2/wtf_11.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090729/A2/wtf_06_02.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090729/A2/wtf_04_02.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090729/A2/wtf_05_02.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090811/A3/wtf_aut-0.2_009-2.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090811/A3/wtf_see-0.1_009-6.pdf
+%
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090811/A3/wtf_clp-0.1_009-1.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090805/A3/wtf_A3_01.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090806/A0/wtf_09_A0.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090806/A0/wtf_03_A0.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090806/A0/wtf_05_A0.pdf
+% PP:
+
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090806/A0/wtf_09_A0.pdf
+% PP:
+
+% SPREAD:  http://gitlab.com/chch/DOK/raw/e73bd4e/EDIT/151117_A5x2-wtf-screenshots.svg 3-4
+
+% HREF: ON
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090910/A3/wtf_xpm_0_08_009-3.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090909/A3/wtf_xpm_0_08_009-8.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090902/A3/wtf_xpm_0_04_009-5.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090910/A3/wtf_xpm_0_04_009-1.pdf
+% PP:
+% HREF: OFF
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090820/A3/wtf_xpm_0_02_081-1.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090820/A3/wtf_xpm_0_02_081-3.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090820/A3/wtf_xpm_0_03_081-9.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090820/A3/wtf_xpm_0_01_081-2.pdf
+% PP:
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090915/A3/wtf_xpm_0_04_009-2.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090915/A3/wtf_xpm_0_08_009-4.pdf
+% PP:
+% HREF: ON
+% --------------------------- 
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090915/A3/wtf_typ_0_06_081-8.pdf
+% http://forkable.eu/g/wtf/doc/i/non-free/v/posterevolution/090915/A3/wtf_typ_0_06_081-2.pdf
+% PP:
+% HREF: OFF
+
+% --------------------------- 
+% http://forkable.eu/g/wtf/o/non-free/en/A1/wtf_flg_0_01_009-8.pdf
+% PP:
+% --------------------------- 
+% http://forkable.eu/g/wtf/o/non-free/fr/A3/wtf_flg_0_02_081-6.pdf
+% PP:
+% --------------------------- 
+% http://forkable.eu/g/wtf/o/free/en/A1/wtf_xpm_0_11_009-8.pdf
+% PP:
+% --------------------------- 
+% http://forkable.eu/g/wtf/o/non-free/en/A1/wtf_see_0_01_729-2.pdf
+% PP:
+
+

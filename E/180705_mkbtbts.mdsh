@@ -13,9 +13,18 @@
 % ----
 % EXTENDFUNCTIONS: 180629_vector.functions
 % EXTENDFUNCTIONS: 180705_mkbtbts.functions
+% EXTENDFUNCTIONS: 180709_show.functions
 % --------------------------------------------------------------------------- %
+%!ADD2PREAMBLE: \usepackage{showframe}
+
+%!SPREAD: /home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/180706_A5x2-Notabotyet.svg 2-3
+%!SPREAD: /home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/180706_A5x2-Notabotyet.svg 1-1
+%!SPREAD: /home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/180706_A5x2-Notabotyet.svg 4
 
 The first page.
+
+%!SPREAD: /home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/180706_A5x2-Notabotyet.svg 2-2
+%!SPREAD: /home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/180706_A5x2-Notabotyet.svg 4-1
 
 % ---------------
 % B370AC12C9ED6:A
@@ -52,5 +61,29 @@ The first page.
 % SHOWMKBOTBOTS:
 
 
-% SHOWMKBOTBOTS: F:/home/christoph/SANDBOX/2018/180625--mdsh-dev/mkbtbt/texgen/makebotbots-18.list
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061100.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061109.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061135.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061147.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061214.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061226.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061227.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061242.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061243.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061420.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061435.botset
+% SHOWMKBOTBOTS: F:/home/christoph/0000_GIT/NOW/bits/E/2018/makebotbotdok/1807061456.botset
+
+
+
+
+
+
+
+
+
+
+
+
+
 

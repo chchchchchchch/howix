@@ -123,6 +123,28 @@
   \subsectionfont{\relscale{0.9}}
 
 % --------------------------------------------------------------------------- %
+%  F O O T N O T E S 
+% --------------------------------------------------------------------------- %
+  \renewcommand{\footnotelayout}{\raggedright}
+
+% SMALLER DISTANCE FOOTNOTENUMBER AND TEXT
+  \let\oldfootnote\footnote
+% \, = small non-breaking space
+  \renewcommand\footnote[1]{\,\oldfootnote{#1}}
+  \setlength{\footnotemargin}{1em}
+  \setlength{\footskip}{15mm}
+ % ABSTAND TRENNLINIE FUSSNOTEN
+   \renewcommand{\footnoterule}{
+    \vspace*{5mm}
+     \noindent
+      \rule{\textwidth}{0.5pt}{
+       \vspace*{-3pt}
+  }}
+% SAVE FOR RESET
+  \newlength{\SKIPFOOTINS}
+  \setlength{\SKIPFOOTINS}{\skip\footins}
+
+% --------------------------------------------------------------------------- %
 %  P A G E   H E A D E R /  F O O T E R
 % --------------------------------------------------------------------------- %
 
@@ -130,18 +152,18 @@
   \pagestyle{fancy}
   \fancyhead{} % CLEAR DEFAULT
   \fancyfoot{} % CLEAR DEFAULT
-  \fancyfoot[LO]{\vspace{1mm}%
+  \fancyfoot[LO]{\vspace{-2mm}%
                  \hspace{-15mm} {\scriptsize\thepage}%
                 }
-  \fancyfoot[RE]{\vspace{1mm}%
+  \fancyfoot[RE]{\vspace{-2mm}%
                 {\scriptsize\thepage} \hspace{-15mm}%
                 }
 
   \fancypagestyle{black}{%
-  \fancyfoot[LO]{\vspace{1mm}%
+  \fancyfoot[LO]{\vspace{-2mm}%
                  \hspace{-15mm} {\scriptsize\color{white}\thepage}%
                 }
-  \fancyfoot[RE]{\vspace{1mm}%
+  \fancyfoot[RE]{\vspace{-2mm}%
                 {\scriptsize\color{white}\thepage} \hspace{-15mm}%
                 }
   }
@@ -149,8 +171,8 @@
   % http://tex.stackexchange.com/questions/114956/
   % -> how-to-insert-footer-in-first-pages-of-chapter 
   \fancypagestyle{plain}{%
-  \fancyfoot[LO]{\vspace{1mm} \hspace{-15mm} {\scriptsize\thepage}}
-  \fancyfoot[RE]{\vspace{1mm} {\scriptsize\thepage} \hspace{-15mm}}
+  \fancyfoot[LO]{\vspace{-2mm} \hspace{-15mm} {\scriptsize\thepage}}
+  \fancyfoot[RE]{\vspace{-2mm} {\scriptsize\thepage} \hspace{-15mm}}
   }
 
 
@@ -260,4 +282,694 @@
                                       \needspace{5\baselineskip} %
                                       \lstinputlisting{#1}}
 
+
+
+
+
+
+
+%  \usepackage[utf8]{inputenc}
+%  \renewcommand{\encodingdefault}{T1}
+%
+%  \usepackage{pdfpages}
+%  \usepackage{scalefnt}
+%
+%  \usepackage{enumerate}
+%  \usepackage{twoopt,ifmtarg}
+%  \usepackage{sectsty}
+%  \usepackage{titlesec}
+%  % https://en.wikibooks.org/wiki/LaTeX/Special_Characters
+%  \usepackage{pifont}
+%  \usepackage{seqsplit}
+%  \usepackage[hang,multiple]{footmisc}
+%  \usepackage{everypage}
+%  \usepackage{afterpage}
+%  \usepackage{setspace}
+%  \usepackage{relsize}
+%
+%  \usepackage{bophook}
+% %\usepackage[x-1a]{pdfx} % LOADED BY ../lib/mdsh/book-A5.functions
+%  \usepackage[hidelinks]{hyperref}
+%
+%  \usepackage[defaultlines=5,all]{nowidow}
+%  \newcommand{\setwidowstandard}{\setnowidow[5]\setnoclub[5]}
+%  \setwidowstandard
+%
+%  \usepackage{enumitem}
+%  \usepackage{etoolbox}
+%  \usepackage{marginnote}
+%  \usepackage{tocloft}
+%  \usepackage{csquotes}
+%  \usepackage{fancyhdr}
+%  \usepackage{fancyvrb}
+%  \usepackage[style=fiwi,natbib=true,backend=biber]{biblatex}
+%  \usepackage{bibentry}
+%  \nobibliography*
+%  \usepackage{mflogo}
+%  \usepackage{xspace}
+%  \usepackage[activate={true,nocompatibility},
+%              final,tracking=true,kerning=true,
+%              spacing=true,factor=1100,
+%              stretch=10,shrink=10]{microtype}
+%  \usepackage{underscore}
+% %\usepackage{listingsutf8} % ../lib/tex/lstlanguages.sty
+%  \usepackage{textcomp}
+%  \usepackage{eurosym} % https://tex.stackexchange.com/a/109267
+%  \let\texteuro\euro
+%  \DeclareUnicodeCharacter{00A0}{ }
+%
+%% --------------------------------------------------------------------------- %
+%%  B A S I C 
+%% --------------------------------------------------------------------------- %
+%
+%  % https://groups.google.com/forum/#!topic/pandoc-discuss/O-N0H1eBnVU
+%  \let\oldhref=\href 
+%  \renewcommand{\href}[2]{#2\footnote{#1}}
+%
+%  % http://tex.stackexchange.com/questions/167823/
+%  % -> multiply-define-a-label-on-purpose
+%  \makeatletter
+%  \def\@newl@bel#1#2#3{{%
+%    \@ifundefined{#1@#2}%
+%      {\def\tmp{#3}}%
+%      {%
+%  \edef\tmp{%
+%    {\expandafter\expandafter\expandafter\@firstoftwo\csname#1@#2\endcsname,
+%     \@firstoftwo#3}%
+%    {\expandafter\expandafter\expandafter\@secondoftwo\csname#1@#2\endcsname,
+%     \@secondoftwo#3}%
+%  }}%
+%      \expandafter\xdef\csname#1@#2\endcsname{\tmp}%
+%  }}
+%  \def\@testdef #1#2#3{}
+%  \makeatother
+%
+%% DON'T START CHAPTER ON NEW PAGE AUTOMATICALLY
+%  \makeatletter
+%  \patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+%  \makeatother
+%
+%% PREVENT HYPHENATION FOR WORDS STARTING WITH UPPERCASE
+%  \uchyph=0
+%% PREVENT HYPHENATION OVER PAGE BREAK
+%  \brokenpenalty10000\relax
+%% PREVENT PAGE BREAK WITHIN LISTS
+%  \let\ITEMIZE\itemize
+%  \let\ENDITEMIZE\enditemize
+%  \renewenvironment{itemize}{\begin{samepage}\ITEMIZE}
+%                            {\ENDITEMIZE\end{samepage}}
+%
+%% --------------------------------------------------------------------------- %
+%%  T A B L E   O F   C O N T E N T
+%% --------------------------------------------------------------------------- %
+%  \setlength{\cftbeforetoctitleskip}{-4em}
+%  \setlength{\cftaftertoctitleskip}{1.5em}
+%  \setlength{\cftbeforechapskip}{.6em}
+%  \renewcommand{\contentsname}{}
+%  \tocloftpagestyle{empty}
+%
+%
+%
+%% --------------------------------------------------------------------------- %
+%%  P A G E   C O M M A N D S
+%% --------------------------------------------------------------------------- %
+%  \newcommand{\emptypage}{ % SOMEHOW HACKY
+%   \twocolumn[]\thispagestyle{empty} %
+%    \onecolumn %
+%  }
+%% --------------------------------------------------------------------------- %
+%  \newcommand\cleartoleft{%
+%  \clearpage
+%  \ifthispageodd{\emptypage}{}
+%  }
+%% --------------------------------------------------------------------------- %
+%  \newcommand\cleartoright{%
+%  \clearpage
+%  % http://tex.stackexchange.com/questions/6143/
+%  % -> if-then-else-for-odd-page-even-page
+%  \ifthispageodd{}{\emptypage}
+%  }
+%% --------------------------------------------------------------------------- %
+%
+%% --------------------------------------------------------------------------- %
+%%  Q R
+%% --------------------------------------------------------------------------- %
+%   \makeatletter
+%    \newcommand{\grafikoverlay}[1]{
+%     \AddToShipoutPicture*{%
+%      \setlength{\unitlength}{.1\paperwidth}%
+%       \ifodd\value{page}%
+%        \put(0.3,12.2){%
+%         \includegraphics[width=\marginparwidth]
+%          {#1}}
+%           \else
+%            \put(8.1,12.2){%
+%             \includegraphics[width=\marginparwidth]
+%              {#1}}
+%               \fi
+%   }}\makeatother
+%
+%   \newcommand\qroverlay[2]{
+%   \AddThispageHook{
+%   \newpage
+%   \grafikoverlay{#1}
+%   }}
+%
+%  % VERTICAL SPACE HACK
+%  % http://tex.stackexchange.com/questions/61627/
+%  % -> prevent-action-if-top-of-page
+%  \newcommand\vspacenotonpagetop{%
+%     \par % make sure we end a paragraph
+%     \vskip10pt % space above the rule
+%     \leaders\vrule width \textwidth\vskip0pt % rule thickness is 0pt
+%     \nointerlineskip % disable interline glue here
+%     \vskip10pt % space below the rule
+%  }
+%   \reversemarginpar
+%    \newcommand\qrmargin[2]{%
+%     \vspacenotonpagetop
+%      \marginpar{
+%        ~ \\ % NOTHING NEEDED
+%        \vspace{-15mm}\\
+%         \includegraphics[width=\marginparwidth]{#1}
+%          \smallskip\smallskip
+%    }\vspace{-1.5\baselineskip}
+%   }
+%
+%
+%% --------------------------------------------------------------------------- %
+%%  C I T A T I O N
+%% --------------------------------------------------------------------------- %
+%  \AtEveryCitekey{\clearfield{url}}
+%  \AtEveryCitekey{\clearfield{note}}
+%
+%  \renewbibmacro*{director}{
+%  \ifpunct{}{}\printnames[director]{author}
+%  }
+%  \DeclareFieldFormat{season}{ {\textsc\emph{season}} #1}
+%  \DeclareFieldFormat{episode}{ {\textsc\emph{episode}} #1}
+%  \renewcommand\cite[1]{%
+%   \iffootnote 
+%    { \mbox{\tiny\fullcite{#1}}}
+%   \else
+%    \footnote{\fullcite{#1}}%
+%   \fi
+%   }
+% 
+%  \let\oldcitep\citealp
+%  \makeatletter
+%  \renewcommandtwoopt\citep[3][][]{%
+%  \iffootnote 
+%   \begingroup\protected\def\harvardand{\&}%
+%   \@ifmtarg{#1}%
+%   { {\tiny\fullcite{#3}}}%
+%   {\@ifmtarg{#2}%
+%   { {\tiny\fullcite{#3}, #1}}%
+%   { {\tiny\fullcite{#3}, #1, #2}}}%
+%   \endgroup%
+%  \else
+%   \begingroup\protected\def\harvardand{\&}%
+%   \@ifmtarg{#1}%
+%   {\footnote{\fullcite{#3}}}%
+%   {\@ifmtarg{#2}%
+%   {\footnote{\fullcite{#3}, #1}}%
+%   {\footnote{\fullcite{#3}, #1, #2}}}%
+%   \endgroup%
+%  \fi
+%  }
+%  \makeatother
+%  \protected\def\harvardand{and}
+%
+%% =========================================================================== %
+%  \newcommand{\setstandarddimensions}{ % DEFINE STANDARD DIMENSIONS
+%% ........................................................................... %
+%   \setlength\topmargin{-.07\paperheight}
+%   \setlength\oddsidemargin{.09\paperwidth}
+%   \setlength\evensidemargin{-.04\paperwidth}
+%   \setlength\textheight{.76\paperheight}
+%   \setlength\textwidth{.62\paperwidth}
+%
+%   \setlength\marginparwidth{2.5cm}
+%   \setlength\marginparsep{4pt} % 6pt
+%% ........................................................................... %
+%  }
+%% =========================================================================== %
+%
+%% =========================================================================== %
+%  \newcommand{\setstandardwhitespace}{ % DEFINE STANDARD WHITESPACE
+%% ........................................................................... %
+%   \parindent=0pt
+%   \setlength{\parskip}{5pt plus 5pt minus 5pt}
+%   \setstretch{1.3} % LINEHEIGHT % (P:setspace)
+%
+%   \renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+%   \renewcommand*{\chapterheadendvskip}{\vspace{0pt}}
+%   \titlespacing\section{0pt}{20pt plus 30pt minus 15pt}{2pt plus 3pt minus 0pt}
+%% ........................................................................... %
+%  }
+%% =========================================================================== %
+%
+%
+%% --------------------------------------------------------------------------- %
+%%  F O N T S
+%% --------------------------------------------------------------------------- %
+%
+%  \newcommand{\ttstandard}{grm}
+%  \newcommand{\rmstandard}{phv}
+%  \newcommand{\sfstandard}{phv}
+%   
+% %\newcommand\urlf[1]{{\tt #1}}              % OBSOLETE?
+% %\newcommand\urlsplit[1]{\seqsplit{\tt #1}} % OBSOLETE?
+%  \newcommand\http[1]{{\scalefont{.8}\seqsplit{\tt #1}}}
+%
+% % ttneu
+%  \let\OldTexttt\texttt
+%  \renewcommand{\texttt}[1]{%
+%  \OldTexttt{\fontfamily{\ttstandard}%
+%              \selectfont{%
+%              %\relscale{1.05}{#1}}}}
+%               \relscale{.95}{#1}}}}
+%
+%   \newcommand{\embody}{}
+% % CHANGE \emph FOR BODYTEXT
+%   \DeclareTextFontCommand{\emph}{%
+%     \ifbodytext%
+%     \embody
+%     \else\em %
+%     \fi%
+%    }
+%
+%% =========================================================================== %
+%  \newcommand{\setstandardfonts}{ % DEFINE STANDARD FONTS
+%% ........................................................................... %
+%
+%   \renewcommand*{\ttdefault}{\ttstandard}\selectfont
+%   \renewcommand*{\rmdefault}{\rmstandard}\selectfont
+%   \renewcommand*{\sfdefault}{\sfstandard}\selectfont
+%   \renewcommand\http[1]{{\scalefont{.8}\seqsplit{\tt ##1}}}
+%   \renewcommand{\embody}{\it}
+%   \renewcommand{\texttt}[1]{%
+%   \OldTexttt{\fontfamily{\ttstandard}%
+%               \selectfont{%
+%                \relscale{.95}{##1}}}}
+%   \lstdefinestyle{inline}{basicstyle=\ttfamily}
+%   \fontsize{8pt}{8pt}
+%% ........................................................................... %
+%  }
+%% =========================================================================== %
+%
+%% --------------------------------------------------------------------------- %
+%% H E A D L I N E S
+%% --------------------------------------------------------------------------- %
+%  % REMOVE NUMBERING
+%  % https://tex.stackexchange.com/questions/80113/
+%  % -> hide-section-numbers-but-keep-numbering
+%  \renewcommand*{\chapterformat}{}
+%  \let\CHAPTER\chapter
+%  \renewcommand\chapter[1]{\CHAPTER{#1}}
+%  \let\SECTION\section
+%  \renewcommand\section[1]{\SECTION*{#1}}
+%  \let\SUBSECTION\subsection
+%  \renewcommand\subsection[1]{\SUBSECTION*{#1}}
+%  \let\SUBSUBSECTION\subsubsection
+%  \renewcommand\subsubsection[1]{\SUBSUBSECTION*{#1}}
+%
+%
+%% =========================================================================== %
+%  \newcommand{\setstandardheadings}{ % DEFINE STANDARD HEADINGS
+%% ........................................................................... %
+%
+%   \chapterfont{\large\setstretch{1.0}}
+%   \sectionfont{\relscale{1.1}}
+%   \subsectionfont{\relscale{0.9}}
+%
+%% ........................................................................... %
+%  }
+%% =========================================================================== %
+%
+%% --------------------------------------------------------------------------- %
+%% Q U O T E
+%% --------------------------------------------------------------------------- %
+%
+%% =========================================================================== %
+%  \newcommand{\setstandardquote}{ % DEFINE STANDARD QUOTE ENVIRONMENT
+%% ........................................................................... %
+%    \makeatletter
+%    \renewenvironment{quote}
+%                  {\list{}{\listparindent=0pt%whatever you need
+%                           \itemindent    \listparindent
+%                           \leftmargin=5pt%  whatever you need
+%                           \rightmargin=10pt%whatever you need
+%                           \topsep=2pt%%%%%  whatever you need
+%                          %\parsep        \z@ \@plus\p@
+%                           \sl \raggedright
+%                          }%
+%                   \item\relax}
+%                  {\endlist}
+%    \makeatother
+%% ........................................................................... %
+%  }
+%
+%  \newcommand{\AtEndQuote}{}%
+%  \AtEndEnvironment{quote}{\AtEndQuote}
+%
+%  \newcommand{\AtBeginQuote}{}%
+%  \AtBeginEnvironment{quote}{\AtBeginQuote}
+%
+%% =========================================================================== %
+%
+%% --------------------------------------------------------------------------- %
+%% L I S T S
+%% --------------------------------------------------------------------------- %
+%
+%% =========================================================================== %
+%  \newcommand{\setstandarditemize}{ % DEFINE STANDARD ITEMIZE ENVIRONMENT
+%% ........................................................................... %
+%   \setitemize[0]{leftmargin=10pt,rightmargin=10pt} % (P:enumitem)
+%   \setlist{noitemsep} % (P:enumitem)
+%% ........................................................................... %
+%  }
+%% =========================================================================== %
+%
+%% --------------------------------------------------------------------------- %
+%% P A G E   H E A D E R /  F O O T E R
+%% --------------------------------------------------------------------------- %
+%
+%  % http://texblog.org/2007/11/07/headerfooter-in-latex-with-fancyhdr
+%  \pagestyle{fancy}
+%  \fancyhead{} % CLEAR DEFAULT
+%  \fancyfoot{} % CLEAR DEFAULT
+%  \fancyfoot[LO]{\vspace{1mm} \hspace{-13mm} {\scriptsize\thepage}}
+%  \fancyfoot[RE]{\vspace{1mm} {\scriptsize\thepage} \hspace{-13mm}}
+%
+%  % http://tex.stackexchange.com/questions/114956/
+%  % -> how-to-insert-footer-in-first-pages-of-chapter 
+%  \fancypagestyle{plain}{%
+%  \fancyfoot[LO]{\vspace{1mm} \hspace{-13mm} {\scriptsize\thepage}}
+%  \fancyfoot[RE]{\vspace{1mm} {\scriptsize\thepage} \hspace{-13mm}}
+%  }
+%
+%  \renewcommand{\headrulewidth}{0pt}
+%
+%% --------------------------------------------------------------------------- %
+%%  C O D E   E N V I R O N M E N T S
+%% --------------------------------------------------------------------------- %
+%
+%  \newcommand{\emptylinelst}{\vspace{-.5\baselineskip}}
+%
+%  \newcommand{\kwa}{\bfseries}
+%  \newcommand{\kwb}{\kwa}
+%  \newcommand{\kwc}{}
+%
+%  \lstdefinestyle{inline}{basicstyle=\ttfamily,
+%                          breaklines=true,
+%                          escapechar=°}
+%
+%  \newcommand{\lstsetHeritage}{%
+%  \lstset{
+%    basicstyle=\fontfamily{zca}\selectfont\footnotesize,
+%    commentstyle=\scalefont{.9},
+%    keywordstyle = \kwa,
+%    keywordstyle = [2]{\kwb},
+%    keywordstyle = [3]{\kwc},
+%    stringstyle=\bfseries\scalefont{.8},
+%   %directivestyle=\bfseries\color{red}, % ?????
+%    showspaces=false,
+%    showtabs=false,
+%    columns=fixed,
+%    numbers=none,
+%    frame=none,
+%    numberstyle=\tiny,
+%    breaklines=false,
+%    showstringspaces=false,
+%    aboveskip=1em,
+%    xleftmargin=0cm,
+%    upquote=true,
+%    escapechar=°
+%   }
+%  \renewcommand{\emptylinelst}{\vspace{-.5\baselineskip}}
+%  }
+%
+%  \newcommand{\lstsetCode}[1]{%
+%  \lstset{ %
+%    basicstyle=\fontencoding{T1}\linespread{#1}
+%               \fontfamily{ipm}\selectfont%
+%               \small,
+%    commentstyle=\scalefont{1},
+%    keywordstyle = \kwa,
+%    keywordstyle = [2]{\kwb},
+%    keywordstyle = [3]{\kwc},
+%    stringstyle=\scalefont{1},
+%    showspaces=false,
+%    showtabs=false,
+%    columns=fixed,
+%    numbers=none,
+%    frame=none,
+%    numberstyle=\tiny,
+%    breaklines=flase,
+%    showstringspaces=false,
+%    aboveskip=1em,
+%    xleftmargin=1em,
+%    upquote=true,
+%  % https://tex.stackexchange.com/a/24532
+%    inputencoding=utf8,
+%    extendedchars=true,
+%    literate={▭}{{\symrect}}1
+%             {♢ }{{\symrhombus}}1
+%             {⏢}{{\symtrapez}}1
+%             {→}{{\symarrowright}}1,
+%    escapechar=°
+%   }\renewcommand{\emptylinelst}{\vspace{-1\baselineskip}
+%                                 \vfill\pagebreak[0]}
+%  }
+%
+%  \newcommand{\lstsetQuaverbatim}{%
+%  \lstset{ %
+%    basicstyle=\fontencoding{T1}\linespread{1.1}
+%               \fontfamily{iad}\selectfont\footnotesize,
+%    breaklines=true,breakautoindent=false,breakindent=1em,
+%    aboveskip=1em,xleftmargin=0cm,showspaces=false,
+%    showtabs=false,columns=fixed,numbers=none,frame=none,
+%    showstringspaces=false,upquote=true,escapechar=°,
+%    inputencoding=utf8,extendedchars=true,
+%    literate={Á}{{\'A}}1 {Ã}{{\~A}}1 {É}{{\'E}}1
+%             {á}{{\'a}}1 {ã}{{\~a}}1 {é}{{\'e}}1
+%             {À}{{\`A}}1 {è}{{\`E}}1 {Ò}{{\`O}}1
+%             {à}{{\`a}}1 {è}{{\`e}}1 {ò}{{\`o}}1
+%             {Ö}{{\"O}}1 {Ü}{{\"ü}}1 {Ä}{{\"A}}1
+%             {ö}{{\"o}}1 {ü}{{\"u}}1 {ä}{{\"a}}1
+%             {»}{\guillemotleft}1 {«}{\guillemotright}1
+%             {'}{\textquotesingle}1 {€}{\euro}1
+%             {-}{\textemdash}1 { }{{\,}}1
+%    }
+%
+%   \renewcommand{\emptylinelst}{\vspace{.1\baselineskip}
+%                                \pagebreak[2]}
+%   }
+%
+%  \newcommand{\lstReset}{\lstset{language={}}
+%                         \renewcommand{\emptylinelst}{\vspace{.5\baselineskip}}}
+%
+%  \newcommand{\lstsetBash}{\lstset{language=Bash+,
+%               morekeywords = [2]{write2src,getFile,
+%                                  mkqr,getVerbatim},
+%               basicstyle=\fontencoding{T1}\linespread{1.5}
+%                          \fontfamily{ipm}\selectfont\scriptsize}
+%              }
+%  \newcommand{\lstsetPython}{\lstset{language=Python,
+%                                     basicstyle=\fontencoding{T1}\linespread{1.5}
+%                                                 \fontfamily{ipm}\selectfont\footnotesize}
+%                              \renewcommand{\emptylinelst}{%
+%                               \vspace{-.4\baselineskip}}
+%  }
+%  \newcommand{\lstsetMake}{\lstset{language=Make,
+%                                   basicstyle=\fontencoding{T1}\linespread{1.5}
+%                                              \fontfamily{ipm}\selectfont\footnotesize}
+%  }
+%  \lstnewenvironment{plain}[1]{\lstsetCode{1}\lstReset
+%                               \ifnum\numexpr#1 < 5
+%                              %\color{green}
+%                               \else
+%                              %\color{red}
+%                               \fi}
+%                              {}
+%  \lstnewenvironment{smallcode}[1]{\lstsetCode{1}\lstReset
+%                                   \lstset{basicstyle=\fontencoding{T1}
+%                                   \fontfamily{ipm}\selectfont%
+%                                   \scriptsize}}
+%                              {}
+%  \lstnewenvironment{bashcode}[1]{\lstsetCode{1.5}\lstsetBash}{}
+%  \lstnewenvironment{pythoncode}[1]{\lstsetCode{1}\lstsetPython}{}
+%  \lstnewenvironment{makecode}[1]{\lstsetCode{1}\lstsetMake}{}
+%  \lstnewenvironment{quaverbatim}[1]{\lstReset\lstsetQuaverbatim}{}
+%  \lstnewenvironment{srcode}[1]{\lstsetHeritage}{}
+%
+%  \newcommand{\lstinputplain}[1]{\lstsetCode{1}\lstReset %
+%                                 \smallskip
+%                                 \lstinputlisting{#1}
+%                                 \smallskip}
+%  \newcommand{\lstinputbashcode}[1]{\lstsetCode{1.5}\lstsetBash %
+%                                    \lstinputlisting{#1}}
+%  \newcommand{\lstinputpythoncode}[1]{\lstsetCode{1}\lstsetPython %
+%                                      \lstinputlisting{#1}}
+%  \newcommand{\lstinputquaverbatim}[1]{\lstsetQuaverbatim %
+%                                       \lstinputlisting{#1}}
+%  \newcommand{\lstinputsmallcode}[1]{\lstsetCode{1}\lstReset
+%                                     \lstset{basicstyle=\fontencoding{T1}
+%                                     \fontfamily{ipm}\selectfont%
+%                                     \scriptsize}
+%                                     \lstinputlisting{#1}}
+%  \newcommand{\lstinputmakecode}[1]{\lstsetCode{1.5}\lstsetMake %
+%                                    \lstinputlisting{#1}}
+%  \newcommand{\lstinputsrcode}[1]{\lstsetCode{1}\lstsetHeritage%
+%                                  \lstinputlisting{#1}}
+%
+%% --------------------------------------------------------------------------- %
+%%  .MDSH  C O M M A N D S
+%% --------------------------------------------------------------------------- %
+%% AUTHOR SUBLINE (% BY: xyz)
+%  \newcommand\by[1]{%
+%  \small{by #1}
+%  \vspace{10pt plus 20pt minus 5pt}
+%  }
+%
+%% FONTS BACK TO STANDARD 
+%  \newcommand{\resetfont}{%
+%  % http://www.forkosh.com/pstex/latexcommands.htm
+%    \normalfont\normalsize%
+%   }
+%
+%% INCLUDE GRAPHICS ....
+%% --------------------------------------------------------------------------- %
+%  \newcommand\fullpagefloat[3]{%
+%    see p.\pageref{#3}
+%
+%    \afterpage{\AddThispageHook{ %
+%    \includepdf[pages=#2, %
+%     pagecommand={\thispagestyle{fancy}}] %
+%    {#1}}\label{#3}
+%    ~
+%    \newpage}%
+%  }
+%
+%% --------------------------------------------------------------------------- %
+%   \newcommand\spread[3]{%
+%   #3
+%   \includepdf[pagecommand={\thispagestyle{empty}},%
+%               scale=1,pages=#2]{#1}
+%  }
+%% --------------------------------------------------------------------------- %
+%   \newcommand\pdfpage[3]{%
+%   \includepdf[pagecommand={\thispagestyle{fancy}},%
+%               scale=1,pages=#2#3]{#1}
+%  }
+%% --------------------------------------------------------------------------- %
+%   \newcommand\pdfpageplus[4]{%
+%   \includepdf[pagecommand={\thispagestyle{fancy}#4},%
+%               scale=1,pages=#2#3]{#1}
+%  }
+%% --------------------------------------------------------------------------- %
+%
+%  \newif\ifdoimpose
+%  \newcounter{imposethis}
+%  \newcounter{stopimpose}
+%  \newcounter{didimpose}
+%
+%  \makeatletter
+%  \newcommand{\superimpose}[3]{
+%  \doimposetrue                                  % SET IMPOSE TRUE
+%  \setcounter{imposethis}{#2}                    % PAGE TO START
+%  \addtocounter{imposethis}{-1}                  % COMPENSATE PAGE HOOK
+%  \setcounter{stopimpose}{#3}                    % PAGE TO STOP
+% % - FIRST  ---------                            % FOR THE VERY FIRST TIME
+%  \AddThispageHook{\AddToShipoutPictureFG*{%     %
+%  \includegraphics[width=\paperwidth,%           % INCLUDE PDF 
+%                   page=\arabic{imposethis}]{#1}%% 
+%  }}%                                            %
+%  \setcounter{didimpose}{\value{page}}%          % REMEMBER IF DONE
+%  \stepcounter{imposethis}%                      % INCREASE COUNTER
+% % - REPEAT ---------                            % KEEP ON
+% %\AddEverypageHook{\AddToShipoutPicture*{%      % ON EVERY PAGE
+%  \AtBeginPage{\AddToShipoutPictureFG*{%         % BOPHOOK <-> EVERYPAGE (BUGGY!)
+%  \ifnum\value{imposethis} < \value{stopimpose}% % FOR ALL PAGES
+%  \ifnum\value{page} > \value{didimpose}%        % DO IF NOT DONE
+%  \stepcounter{imposethis}%                      % INCREASE COUNTER
+%  \includegraphics[width=\paperwidth,%           % INCLUDE PDF
+%                   page=\arabic{imposethis}]{#1}%% 
+%  \setcounter{didimpose}{\value{page}}%          % REMEMBER IF DONE
+%  \fi\fi}%
+%  }}\makeatother
+%
+%
+%% --------------------------------------------------------------------------- %
+%%  .MDSH  E N V I R O N M E N T S
+%% --------------------------------------------------------------------------- %
+%
+%  % https://tex.stackexchange.com/questions/282263/
+%  % -> lstlisting-keep-hyphens-dashes-from-combining-into-one
+%  \newcommand{\wgetlog}[1]{\newpage\lstReset
+%                           \lstset{basicstyle=\fontencoding{T1}\linespread{.9}
+%                                              \fontfamily{ipm}\selectfont%
+%                                              \scalefont{.4},
+%                                              literate = {-}{-}1,}
+%                           \lstinputlisting{#1}\bigskip}
+%
+%  \newenvironment{marginblock}{%
+%   \ifthispageodd{
+%    \begin{tabular}{ll}  \hspace{-7mm} & } % SHIFT FOR ODD
+%    {\begin{tabular}{ll} \hspace{-2mm} & } % SHIFT FOR EVEN
+%      \begin{minipage}{.7\marginparwidth}  %
+%       \tiny\ifthispageodd{\flushright}{\flushleft}
+%     }{\end{minipage}\end{tabular}}
+%
+%  \newenvironment{margininfo}{%
+%   \ifthispageodd{
+%    \begin{tabular}{ll}  \hspace{-4mm} & } % SHIFT FOR ODD
+%    {\begin{tabular}{ll} \hspace{1mm} & } % SHIFT FOR EVEN
+%      \begin{minipage}{.6\marginparwidth}  %
+%     \setlength{\parskip}{.6\baselineskip}
+%      \setstretch{1.2}
+%       \tiny\ifthispageodd{\flushright}{\flushleft}
+%     }{\end{minipage}\end{tabular}}
+%
+%  \newenvironment{marginlicenseblock}{%
+%   \vspace{-.5cm}
+%    \ifthispageodd{
+%     \begin{tabular}{ll}  \hspace{-5mm} & } % SHIFT FOR ODD
+%     {\begin{tabular}{ll} \hspace{-1mm} & } % SHIFT FOR EVEN
+%       \begin{minipage}{.64\marginparwidth}  %
+%      % \scalefont{.5}\ifthispageodd{\flushright}{\flushleft}
+%         \ifthispageodd{\flushright}{\flushleft}
+%      }{\end{minipage}\end{tabular}}
+%
+%  \DefineVerbatimEnvironment{werbatim}{Verbatim}{
+%    fontsize=\tiny
+%  }
+%
+%% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+%
+%  \newcommand{\resetall}{
+%   \setstandardfonts
+%   \setstandarddimensions
+%  % ADD MEDSKIP ETC TO WHITESPACE
+%   \setstandardwhitespace
+%   \setstandardheadings
+%   \setstandardquote
+%   \setstandarditemize
+%%
+%%  \AtBeginEnvironment{quote}{} % ??
+%%  \AtEndEnvironment{quote}{}   % ??
+%%
+%   \renewcommand{\AtBeginQuote}{}
+%   \renewcommand{\AtEndQuote}{}
+%   \flushbottom
+%   \setlength{\skip\footins}{\SKIPFOOTINS}
+% % RELOAD ORIGINAL LISTING/SOURCE CODE CONFIGURATION
+% % WIDOW CONFIGURATION
+% % FOOTNOTESEP (<- WHITESPACE)
+%   \resetfont
+%  }
+%
+%% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+%  \resetall % <- START WITH STANDARDS
 
