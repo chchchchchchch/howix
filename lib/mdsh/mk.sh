@@ -28,11 +28,14 @@
 # INCLUDE                                                                     #
 # --------------------------------------------------------------------------- #
   source "$SHDIR/prepress.functions"
-  source "$SHDIR/page.functions"
+  source "$SHDIR/svg.functions"
   source "$SHDIR/text.functions"
 
   source "$SHDIR/output.functions"
   source "$SHDIR/href.functions"
+
+  cat "$SHDIR/page.functions"   >> $FUNCTIONS
+  cat "$SHDIR/latex.functions"  >> $FUNCTIONS
   source "$FUNCTIONS"
 
 # =========================================================================== #

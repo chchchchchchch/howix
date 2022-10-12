@@ -122,10 +122,21 @@
 # ----
   sed -n "/<!--.*${FOOTMARK}.*-->$/,\$p" $OUTPUT >> ${TMPID}.htmltmp
 
-# MOVE IN PLACE
+# START OUTPUT
 # ----
-  mv ${TMPID}.htmltmp $OUTPUT 
 
+  if [ -f ${TMPID}.head ]
+  then  cat ${TMPID}.head   > ${OUTPUT}
+  else  echo "<html><body>" > ${OUTPUT}
+  fi
+
+# INSERT CONENT
+# ----
+  cat ${TMPID}.htmltmp >> $OUTPUT 
+
+# CLOSE OUTPUT
+# ----
+  echo "</body></html>"      >> $OUTPUT
 
  }
 # .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. #
@@ -138,7 +149,7 @@
   # ----------------------------------------------------------------------- #
   # DEFINITIONS SPECIFIC TO OUTPUT
   # ----------------------------------------------------------------------- #
-    PANDOCACTION="pandoc --ascii --no-wrap --listings -r markdown -w latex"
+    PANDOCACTION="pandoc --ascii --wrap=none --listings -r markdown -w latex"
   # ----------------------------------------------------------------------- #
   # FOOTNOTES
   # \footnote{the end is near, the text is here}

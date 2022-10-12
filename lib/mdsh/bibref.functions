@@ -8,9 +8,9 @@ function BIBREF() {
   if [ "$OUTPUTFORMAT" == "pdf" ];then
 
      echo '\usepackage{twoopt,ifmtarg}'          >> ${TMPID}.preamble
-    #echo '\usepackage[style=fiwi,
-    #                  natbib=true, 
-    #                  backend=biber]{biblatex}' >> ${TMPID}.preamble
+     echo '\usepackage[style=fiwi,
+                       natbib=true, 
+                       backend=biber]{biblatex}' >> ${TMPID}.preamble
 #    echo '\usepackage[natbib=true,hyperref=false,
 #                      backend=biber]{biblatex}' >> ${TMPID}.preamble
 #    echo '\usepackage{bibentry}'                >> ${TMPID}.preamble

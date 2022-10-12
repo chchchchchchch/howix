@@ -6,7 +6,7 @@
   then
   echo "% SIZE IS SET"                                 >> ${TMPID}.preamble
   echo "\usepackage{geometry}"                         >> ${TMPID}.preamble
-  echo "\geometry{paperwidth=154mm,paperheight=216mm}" >> ${TMPID}.preamble
+  echo "\geometry{paperwidth=111mm,paperheight=154mm}" >> ${TMPID}.preamble
   fi
 # --------------------------------------------------------------------------- %
 
@@ -17,9 +17,9 @@ function PDFXAUTHOR() { THISPDFXAUTHOR="$*"; }
 function PDFXORG()    { THISPDFXORG="$*";    }
 function MKPDFXCOMPLIANT() {
 
-  ICC="$SHDIR/../icc/FOGRA39L.icc"
+  ICC="$INCLUDEPATH/../lib/icc/FOGRA39L.icc"
 
-  pdfxRequired() {
+  pdfxrequired() {
 
    # PDF/X COMPLIANCY
    # ---------------- #
@@ -44,22 +44,21 @@ function MKPDFXCOMPLIANT() {
       >> ]
           }'                                            >> ${TMPID}.preamble
    }
-
+ 
  # ------------------------------------------------------------------------- # 
  # DO IT AT THE END 
  # ------------------------------------------------------------------------- # 
-   if [ "$OUTPUTFORMAT" == pdf ]
-   then # ADD ONLY ONCE 
-        if [ `echo $preOutput   | #
-              grep pdfxRequired | #
-              wc -l ` -lt 1 ]     #
-        then  preOutput="$preOutput pdfxRequired"
-        fi
+   if [ "$OUTPUTFORMAT" == pdf ];then
+
+       # ADD ONLY ONCE 
+         if [ `echo $preOutput | grep modTeX | wc -l ` -lt 1 ];then
+               preOutput="$preOutput pdfxrequired"
+         fi
    fi
+
 }
 
 # --------------------------------------------------------------------------- #
-
 function USEPACKAGE() {
 
   PACKAGENAME=`echo $1 | sed 's/ //g'`
@@ -100,8 +99,8 @@ function ADD2PREAMBLE() { echo "$*" >> ${TMPID}.preamble ; }
         echo '\newcount\vs
               \newcount\vsi
               \newcommand\cleartofour{
-               \pagestyle{empty}
                \mbox{}\clearpage
+               \pagestyle{empty}
                \vs\thepage
                \advance\vs by 3
                \vsi\vs
@@ -114,11 +113,9 @@ function ADD2PREAMBLE() { echo "$*" >> ${TMPID}.preamble ; }
 
 function CLOSEBOOK() {
 
-   if   [ "$OUTPUTFORMAT" == pdf ]
-   then    write2src "\cleartofour"
-   fi
+   write2src "\cleartofour"
 
-}
+ }
 
 # --------------------------------------------------------------------------- #
 

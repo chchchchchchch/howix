@@ -1,8 +1,9 @@
-# IGNORE EXPORT FOLDERS
-# ---------------------
-_/
-# IGNORE SOURCE FOLDERS
-# ---------------------
-src/
-
+*.*.swp
+*.*.[0-9]+
 E/*.pdf
+E/*.html
+
+src/**/*.*
+!src/**/*.xmp
+!src/**/*.remote
+tmp/
